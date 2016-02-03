@@ -47,12 +47,13 @@ tags: 知识回顾
         
 2. Beautifuk Soup (用来解析网页)      
 >从一个Html网页创建一个Beautiful对象，然后可以搜索节点，find_all,find等可以访问节点的名称和属性。当然配合正则表达式更好
->> \<a href='1111.html' class='article_link'> python </a> 像这一个节点名称为a，属性href为1111.html，属性class为article_link，而节点内容为python
+
+>>```<a href='1111.html' class='article_link'> python </a> ```像这一个节点名称为a，属性href为1111.html，属性class为article_link，而节点内容为python
 >>>创建beautifulSoup对象
         from bs4 import BeautifulSoup    
         soup = BeautifulSoup( html_doc,  'html.parser', from_encoding='utf-8' )      
 >>>搜索节点
-        find_all(nane, attrs, string)
+        find_all(nane, attrs, string)      
         node = soup.find_all('a')     
         soup.find_all('a', href='1111.html')
         soup.find_all('a', href= re.compile(r'/view/\d+\.htm'))     #正则匹配
