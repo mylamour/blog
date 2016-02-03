@@ -73,7 +73,7 @@ tags: 知识回顾
 
 当然你又会问上面的图片是怎么插入的，其实是这样的：  \!\[markdownbiaoge\](../image/ww.png)
 也就是：
-    > ![imgname](imgpath)也可以这样写![imgname][id] [id](imgpath)
+    ``` ![imgname](imgpath)也可以这样写![imgname][id] [id](imgpath) ```
     
     
     
