@@ -50,21 +50,18 @@ tags: 知识回顾
 
 >>```<a href='1111.html' class='article_link'> python </a> ```像这一个节点名称为a，属性href为1111.html，属性class为article_link，而节点内容为python
 >>>创建beautifulSoup对象
-
         from bs4 import BeautifulSoup    
-        
         soup = BeautifulSoup( html_doc,  'html.parser', from_encoding='utf-8' )      
 >>>搜索节点
+>>>>
         find_all(nane, attrs, string)      
-        
         node = soup.find_all('a')     
-        
         soup.find_all('a', href='1111.html')
-        
-        soup.find_all('a', href= re.compile(r'/view/\d+\.htm'))     #正则匹配
-        
+        soup.find_all('a', href= re.compile(r'/view/\d+\.htm'))     #正则匹配 
         soup.find_all ('div', class_= 'abc', string= 'Python')
+        
 >>>访问节点信息
+>>>>
         node.naem
         node['href']
         node.get_text()
