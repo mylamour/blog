@@ -35,7 +35,7 @@
 <span class="categories">
   分类
   
-  <a href="/categories/#howto" title="howto">howto</a>&nbsp;
+  <a href="/categories/#HowTo" title="HowTo">HowTo</a>&nbsp;
   
 </span>
 
@@ -61,18 +61,12 @@
 <h2>1. 安装Jekyll</h2>
 
 <ol>
-<li><blockquote><p>Install Ruby</p>
-
-<pre><code>      &gt;sudo apt-get install ruby
-</code></pre></blockquote></li>
-<li><blockquote><p>Install Gem</p>
-
-<pre><code>      &gt;sudo apt-get install rubygems
-</code></pre></blockquote></li>
-<li><blockquote><p>Install Jekyll</p>
-
-<pre><code>      &gt;gem install jekyll
-</code></pre></blockquote></li>
+<li><blockquote><p>Install Ruby  <br/>
+          >sudo apt-get install ruby</p></blockquote></li>
+<li><blockquote><p>Install Gem
+          >sudo apt-get install rubygems</p></blockquote></li>
+<li><blockquote><p>Install Jekyll
+          >gem install jekyll</p></blockquote></li>
 </ol>
 
 
@@ -120,7 +114,7 @@
 
 
 <p>当然对代码的支持也少不了：
-可以使用```ruby  [Code Here] ```反单引号,也可以使用&lt;code>[Code Here]&lt;code>,甚至对于单行的代码直接使用一个反单引号即可。还有一种方式是&lt;--lang=cpp-->[Code Here]
+可以使用```ruby  [Code Here] ```反单引号,也可以使用\<code>[Code Here]\<code>,甚至对于单行的代码直接使用一个反单引号即可。还有一种方式是\&lt;--lang=cpp-->[Code Here]
 <code></p>
 
 <pre><code>    printf("HE,Er Le, Er Le");
@@ -133,40 +127,34 @@
 <table>
 <thead>
 <tr>
-<th></th>
 <th> name       </th>
-<th align="center">   num      </th>
-<th align="right"> price </th>
+<th style="text-align:center;">   num      </th>
+<th style="text-align:right;"> price </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td></td>
 <td> Acer         </td>
-<td align="center"> 1</td>
-<td align="right"> $1600 </td>
+<td style="text-align:center;"> 1</td>
+<td style="text-align:right;"> $1600</td>
 </tr>
 <tr>
-<td></td>
 <td> MX5         </td>
-<td align="center"> 2</td>
-<td align="right">   $12 </td>
+<td style="text-align:center;"> 2</td>
+<td style="text-align:right;">   $12</td>
 </tr>
 <tr>
-<td></td>
 <td> Boox        </td>
-<td align="center"> 3</td>
-<td align="right">    $1 </td>
+<td style="text-align:center;"> 3</td>
+<td style="text-align:right;">    $1</td>
 </tr>
 </tbody>
 </table>
 
 
 <p>当然你又会问上面的图片是怎么插入的，其实是这样的：  ![markdownbiaoge](../image/ww.png)
-也就是：</p>
-
-<pre><code>``` ![imgname](imgpath)也可以这样写![imgname][id] [id](imgpath) ```
-</code></pre>
+也就是：
+    <code>![imgname](imgpath)也可以这样写![imgname][id] [id](imgpath)</code></p>
 
 <p>现在你已经熟悉了基本的markdown语法，刚才也把Jekyll安装好了，So,Let's Try.</p>
 
@@ -212,31 +200,23 @@ git checkout -b branchName
 而目录下的Sass则支持一种名为SCSS的格式，可以嵌套样式:</p>
 
 <blockquote><p><code>.center
-{</p>
-
-<pre><code>    text-align: center;
-        }
-        .center h1 {
-            margin-bottom: 10px;
-        }
-</code></pre>
-
-<p><code>
+{
+        text-align: center;
+            }
+            .center h1 {
+                margin-bottom: 10px;
+            }
+<code>
 使用Sass可以变成这样：       <br/>
 <code>.center
-{</p>
+{
+             text-align: center;
+                    h1 {
+                             margin-bottom: 10px; }
+}<code></p></blockquote>
 
-<pre><code>         text-align: center;
-                h1 {
-                         margin-bottom: 10px; }
-</code></pre>
-
-<p>}<code></p></blockquote>
-
-<p>posts文件夹用来存放要发布的文章，但是命名格式必须要遵循规范。像下面这样即可：</p>
-
-<pre><code>2016-02-02-Jekyll-and-Markdown.md
-</code></pre>
+<p>posts文件夹用来存放要发布的文章，但是命名格式必须要遵循规范。像下面这样即可：
+    2016-02-02-Jekyll-and-Markdown.md</p>
 
 <p>同样如果新添加一个类别，则可以新建一个目录，然后在该目录下再新建一个index.md</p>
 
@@ -287,9 +267,9 @@ git push</p></blockquote>
 <section align="right">
 <br/>
 <span>
-	<a   class="pageNavInvalid"  >上一篇</a>
+	<a  href="/Something1/" class="pageNav"  >上一篇</a>
 	&nbsp;&nbsp;&nbsp;
-	<a  href="/Python-Web-Spider%20II/" class="pageNav"  >下一篇</a>
+	<a  href="/Python-Web-Spider-II/" class="pageNav"  >下一篇</a>
 </span>
 </section>
 

@@ -12,3 +12,5 @@ hub: mylamour
 safe: true
 paginate: 100
 about: "Never Stop。"
+gems :
+  - jekyll-paginate
