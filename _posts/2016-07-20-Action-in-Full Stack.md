@@ -2,7 +2,7 @@
 layout: post
 title: 全栈工程师的第一篇修炼记录 
 categories: 全栈工程师
-tags: 实习笔记 入职
+tags: 实习笔记
 ---
 
 # 本篇多吐槽，属于Take is cheap
