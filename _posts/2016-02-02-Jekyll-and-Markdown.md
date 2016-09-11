@@ -13,13 +13,14 @@ tags: 知识回顾
 
 # Step by Step 
 ## 1. 安装Jekyll
-1. >Install Ruby    
-             >sudo apt-get install ruby
-2. >Install Gem
-             >sudo apt-get install rubygems
-3. >Install Jekyll
-             >gem install jekyll
-                
+```bash
+* Install Ruby    
+> sudo apt-get install ruby
+* Install Gem
+> sudo apt-get install rubygems
+* Install Jekyll
+> gem install jekyll
+```               
                 
 ## 2. 熟悉一下Markdown的语法（推荐ReText编辑器）
 
@@ -150,9 +151,9 @@ Jekyll详细内容：[教程](http://jekyll.bootcss.com/)
 
 预览直接在你的Jekyll文件目录内运行`Jekyll server`,然后访问[127.0.0.1:4000](http://127.0.0.1:4000)
 提交直接将修改过的目录push到github即可。
-> git add yourfile
-> git commit -m "something"
-> git push
+> `git add yourfile`
+> `git commit -m "something"`
+> `git push`
 
 ### 3.4 自定义域名
 
