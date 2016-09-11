@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="author" content="lamour" />
+		<title>How to Install Caffe in Jeston TK1</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link href="/feed/" rel="alternate" title="lamour" type="application/atom+xml" />
+		<link rel="stylesheet" href="/media/css/style.css" />
+		<link rel="stylesheet" href="/media/css/highlight.css" />
+		<script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="main" role="main">
+				<header>
+				<h1>How to Install Caffe in Jeston TK1</h1>
+				</header>
+				<nav>
+				<span><a title="网站首页" class="" href="/">首页</a></span>
+				<span><a title="文章分类" class="" href="/categories/">分类</a></span>
+				<span><a title="标签索引" class="" href="/tags/">标签</a></span>
+				<!--<span><a title="友情链接" class="" href="/links/">链接</a></span>-->
+				<span><a title="留言交流" class="" href="/guestbook/">留言</a></span>
+                                <!--<span><a title="订阅本站" class="" href="/feed.xml">订阅</a></span>-->
+				<span><a title="关于站长" class="" href="/about/">关于</a></span>
+				</nav>
+				<article class="content">
+				<section class="meta">
+<span class="time">
+  <time datetime="2016-08-28">2016-08-28</time>
+</span>
+
+ | 
+<span class="categories">
+  分类
+  
+  <a href="/categories/#学习数据挖掘的路上" title="学习数据挖掘的路上">学习数据挖掘的路上</a>&nbsp;
+  
+</span>
+
+
+ | 
+<span class="tags">
+  标签
+  
+  <a href="/tags/#学习笔记" title="学习笔记">学习笔记</a>&nbsp;
+  
+</span>
+
+</section>
+<section class="post">
+<h1>Jeston TK1 Install Caffe</h1>
+
+<pre><code class="bash">#!/bin/bash
+
+#以下安装为在jeston TK1(安装的是ubuntu 14.04LTS)上所完成，无意外当适用于普通linux系统.但是在选择cudnn时务必选择自己系统对应的版本。
+
+#安装git
+sudo add-apt-repository universe
+sudo apt-get update
+sudo pat-get install git 
+
+#需要安装opencv ,参考官网
+sudo apt-get install build-essential
+sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
+
+cd ~
+git clone https://github.com/opencv/opencv.git
+mkdir build 
+cd build
+cmake ..
+make
+sudo make install
+
+
+#安装依赖
+sudo apt-get install -y gcc-4.7 g++-4.7
+sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libboost-all-dev libhdf5-serial-dev libgflags-dev libgoogle-glog-dev liblmdb-dev protobuf-compiler libatlas-base-dev
+sudo apt-get install python-dev python-pip python-numpy gfortran
+
+#如果出现cv:imagecode undefined ， 请 尝试 sudo ldconfig ，或者在makefile里面直接把libopencvXXX的库连接上去。
+#如果是opencv3，你需要在makefile.config里面讲opencv3选项选中。
+
+#if you need cudnn, you should download cudnn lib and unzip it to cuda path。 注意cudnn的版本，即便是cuda-6.5也需要cudnn version &gt;3 这个需要去nvdia官网注册，然后才能下载。
+#sudo cp cudnn.h /usr/local/cuda/include
+#sudo cp libcudnn* /usr/local/cuda/lib
+
+
+#安装caffe 
+cd ~
+git clone https://github.com/BVLC/caffe.git
+cd caffe
+cp Makefile.config.example Makefile.config
+#如果你是直接采用在caffe目录下面进行make -j 4 all， 也未尝不可。
+mkdir build
+cd build
+cmake ..
+make -j 4 all
+
+
+#other， caffe 安装过程gcc ,g++ 4.7 版本，版本不同导致出现问题。不知道是否已经解决了。我之前安装的是5.8的吧，最后又装了4.7的才行。
+#Youtube 上有个jestonhacks，还是不会安装的话可以看他的教程,不过他的教程也有很多问题，毕竟时间已经很久了。
+#安装完成之后，去caffe官网跑个demo看看。
+#也许你在安装opencv的过程中也会出现问题，那么，不论哪里出现了问题都记得多google即可。
+#另附：没有显示器的情况下，用一根网线也是可以连接进Jeston TK1的，最初之所以没有连接进去，是因为以前用的时候设了静态IP，以至于不能重新获得新的IP。
+</code></pre>
+
+</section>
+<section align="right">
+<br/>
+<span>
+	<a  href="/uber-in-nodejs/" class="pageNav"  >上一篇</a>
+	&nbsp;&nbsp;&nbsp;
+	<a  href="/ssh-remote-free/" class="pageNav"  >下一篇</a>
+</span>
+</section>
+
+	
+	<div class="ds-thread" />
+		
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"lamour"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+
+
+				</article>
+			</div>
+
+			<footer>
+			<p><small>
+				<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/cn/" target="_blank" title="许可协议">©</a> 2014 - 2016 <a href="/about/">lamour</a>
+			</small></p>
+			</footer>
+
+		</div>
+	</body>
+</html>

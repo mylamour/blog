@@ -1,7 +1,7 @@
 markdown: rdiscount
 permalink: /:title/
 url: http://iami.xyz
-highlighter: pygments
+highlighter: rouge
 name: iami
 description: lamour | Life is Short, But Art is Long.
 author: lamour

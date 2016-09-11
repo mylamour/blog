@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="author" content="lamour" />
+		<title>成为全栈工程师过程中的踩过的坑</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link href="/feed/" rel="alternate" title="lamour" type="application/atom+xml" />
+		<link rel="stylesheet" href="/media/css/style.css" />
+		<link rel="stylesheet" href="/media/css/highlight.css" />
+		<script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="main" role="main">
+				<header>
+				<h1>成为全栈工程师过程中的踩过的坑</h1>
+				</header>
+				<nav>
+				<span><a title="网站首页" class="" href="/">首页</a></span>
+				<span><a title="文章分类" class="" href="/categories/">分类</a></span>
+				<span><a title="标签索引" class="" href="/tags/">标签</a></span>
+				<!--<span><a title="友情链接" class="" href="/links/">链接</a></span>-->
+				<span><a title="留言交流" class="" href="/guestbook/">留言</a></span>
+                                <!--<span><a title="订阅本站" class="" href="/feed.xml">订阅</a></span>-->
+				<span><a title="关于站长" class="" href="/about/">关于</a></span>
+				</nav>
+				<article class="content">
+				<section class="meta">
+<span class="time">
+  <time datetime="2016-08-08">2016-08-08</time>
+</span>
+
+ | 
+<span class="categories">
+  分类
+  
+  <a href="/categories/#全栈工程师" title="全栈工程师">全栈工程师</a>&nbsp;
+  
+</span>
+
+
+ | 
+<span class="tags">
+  标签
+  
+  <a href="/tags/#实习笔记" title="实习笔记">实习笔记</a>&nbsp;
+  
+</span>
+
+</section>
+<section class="post">
+<h3>一些踩过的坑</h3>
+
+<p>1.不要jade中同时用Space和Tab，一不留神就使用了，全他妈是错误呀</p>
+
+<p>2.我记得之前有个E: Sub-process /usr/bin/dpkg returned an error code (1)</p>
+
+<blockquote><p>之前我的解决办法是按照网上来的，大概是大一的时候，
+现在想想，当时完全没有动脑筋思考。</p>
+
+<blockquote><pre><code class="bash">sudo mv /var/lib/dpkg/info /var/lib/dpkg/info.bak 
+sudo mkdir /var/lib/dpkg/info
+</code></pre>
+
+<p>其实这种写法完全不如<code>killall aptd</code>,而且不需要去考虑是不是错杀其他进程，因为apt-get install 都是独占的。只允许一个存在。</p></blockquote></blockquote>
+
+<p>3.网站优化压缩代码时使用的是YUICompressor，之后会另写一篇单独记录网站的性能提升与优化的问题。</p>
+
+<pre><code class="bash">for i in ` find $PWD | grep -oE "(.)*\.css_$"` 
+do 
+
+    echo $i
+    yuicompressor.jar --type css -o $i"_" $i
+    mv $i `echo $i | tr -d "_"`
+done
+</code></pre>
+
+<p><code>find ./ -name "*.jpg" -print0 | xargs -0 jpegtran -copy none -optimize {} &gt; {}.jpg</code></p>
+
+<blockquote><p>对mp4文件压缩的时候依旧使用的是ffmpeg,又转了一份文件为webm格式的。</p>
+
+<blockquote><p>ffmpeg转换的时候，后来发现其实是有三种方法的。可以直接指定大小，可以指定优化帧率，还可以优化图像质量来减小体积。</p>
+
+<blockquote><p><code>ffmpeg -i index_1.mp4 -acodec mp2 --psnr 1 output1.mp4</code></p></blockquote></blockquote></blockquote>
+
+<p>4.添加白名单更安全</p>
+
+<p>5.cat {file1,file2} > file3</p>
+
+<blockquote><p>不要手残在file1,file2之间用了空格,其实是想说不要在shell里面手残乱敲空格，我完全是习惯性的敲空格，坑死了。</p></blockquote>
+
+<p>6.谷歌浏览器命令行开窗口</p>
+
+<blockquote><p>shell</p>
+
+<blockquote><ul>
+<li><code>chromium-browser --new-window "url"</code></li>
+</ul>
+</blockquote>
+
+<p>windows(应该也有其他方法)</p>
+
+<blockquote><ul>
+<li><code>start your/path/of/chrome "urllist1","urllist2"</code></li>
+</ul>
+</blockquote></blockquote>
+
+<p>7.<font color ="green">NodeJS debuging and Profiling </font></p>
+
+<ul>
+<li>Know the api docs</li>
+<li>Use strict mode</li>
+<li>Name your inline function</li>
+<li>Don't forget callbacks are error first</li>
+</ul>
+
+
+<blockquote><p>埋个关于调试的坑，还会单补一篇。</p></blockquote>
+
+<p>8.不要在属性值和单位之前留空格，否则不在IE6中有效。其实我是一点也不在乎IE6，。</p>
+
+<p>9.MVC只是手段，不是目的。不要把目的和手段搞反了。最终目的是模块分离和代码复用。</p>
+
+<p>10.不要使用grenn 和 red类的字符来设置颜色，使用#ffffff之类的进行设置。(其实这一点我有点不理解)</p>
+
+</section>
+<section align="right">
+<br/>
+<span>
+	<a  href="/first-codereview-in-tuicorn/" class="pageNav"  >上一篇</a>
+	&nbsp;&nbsp;&nbsp;
+	<a  href="/Take-Something-In-FFMPEG/" class="pageNav"  >下一篇</a>
+</span>
+</section>
+
+	
+	<div class="ds-thread" />
+		
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"lamour"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+
+
+				</article>
+			</div>
+
+			<footer>
+			<p><small>
+				<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/cn/" target="_blank" title="许可协议">©</a> 2014 - 2016 <a href="/about/">lamour</a>
+			</small></p>
+			</footer>
+
+		</div>
+	</body>
+</html>
