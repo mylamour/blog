@@ -4,7 +4,7 @@ title: sublime 快捷键以及其他
 categories: HowTo
 tags: 知识回顾
 ---
-###sublime使用
+### sublime使用
 
 * Ctrl+K+B：开关侧栏
 * Ctrl+Shift+P：打开命令面板
