@@ -10,8 +10,9 @@ tags: 知识回顾
 ## 一些库的简单使用
 1. urllib2(用来下载网页)
 三种下载网页的方法
->simply
+> simply
 
+```python
          import urllib2
         
         response = urllib2.urlopen('http://www.aol.com')         #直接请求
@@ -19,8 +20,10 @@ tags: 知识回顾
         print response.getcode()                              #看看状态码
 
         cont = response.read()                                #读取内容，可以在前面加个如果状态码有效
+```
 > Add Head, data
 
+```python
         import urllib2
         
         request = urllib2.Request(url)                  #创建request对象
@@ -30,9 +33,11 @@ tags: 知识回顾
         request.add_header('User-Agent', 'Mozilla/5.0')     #伪装成浏览器
         
         response = urllibe2.urlopen(request)            #发送请求
->advance
->>其实就是Cookie,Proxy,Redirect相关的,分别是HTTPCookieProcessor , ProxyHandler , HTTPRedirectHandler 
+```
+> advance
+>> 其实就是Cookie,Proxy,Redirect相关的,分别是HTTPCookieProcessor , ProxyHandler , HTTPRedirectHandler 
 
+```python
         import urllibe2, cookielib
         
         cj = cookielib.CookieJar()
@@ -42,24 +47,27 @@ tags: 知识回顾
         urllib2.install_opener(opener)
         
         response = urllib2.urlopen("http://www.google.com/")
+```
         
         
-        
-2. Beautifuk Soup (用来解析网页)      
+2. Beautifuk Soup (用来解析网页)
 >从一个Html网页创建一个Beautiful对象，然后可以搜索节点，find_all,find等可以访问节点的名称和属性。当然配合正则表达式更好
 
 >>```<a href='1111.html' class='article_link'> python </a> ```像这一个节点名称为a，属性href为1111.html，属性class为article_link，而节点内容为python
 >>>创建beautifulSoup对象
-        from bs4 import BeautifulSoup    
-        soup = BeautifulSoup( html_doc,  'html.parser', from_encoding='utf-8' )      
+        `from bs4 import BeautifulSoup`    
+        `soup = BeautifulSoup( html_doc,  'html.parser', from_encoding='utf-8' )`      
 >>>搜索节点
 >>>>
+
+```python
         find_all(nane, attrs, string)      
         node = soup.find_all('a')     
         soup.find_all('a', href='1111.html')
         soup.find_all('a', href= re.compile(r'/view/\d+\.htm'))     #正则匹配 
         soup.find_all ('div', class_= 'abc', string= 'Python')
-        
+```
+
 >>>访问节点信息
 >>>>
         node.naem
@@ -70,6 +78,7 @@ tags: 知识回顾
 3. 连接数据库(前提是要安装好数据库)
 >PostgreSQL
 
+```python
         import psycopg2  
         
         conn = psycopg2.connect("dbname='dbname' user='username' host='localhost' password='password'")  
@@ -83,8 +92,11 @@ tags: 知识回顾
              print row 
         
          conn.close() 
+```
+
 >ms sql
 
+```python
         import psmssql  
 
         conn = psmssql.connect(host='yourhost', user='loginname', password='password', database='dbname', charset='utf8')  
@@ -98,8 +110,11 @@ tags: 知识回顾
                 print row 
         
         conn.close() 
+```
+
 >mysql
 
+```python
         import MySQLdb
 
         conn= MySQLdb.connect( host='localhost', port = 3306, user='username', passwd='password', db ='dbname',)
@@ -113,6 +128,7 @@ tags: 知识回顾
         conn.commit()
         
         conn.close()
+```
         
 + 资料补充
 

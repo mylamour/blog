@@ -15,15 +15,16 @@ tags: 学习笔记 抓取数据
 
 ---
 
-<pre><code>
-<!-- lang: sh -->#!/bin/bash
+
+```bash
+#!/bin/bash
 for i in {1..800}
 do
   echo http://xxx.xxx.edu.cn:8081/KingoKJ/taglib/DataTable1.jsp?tableId=$i >>myurl
 done
   time cat myurl|while read line;do curl -l $line -m 5 --connect-timeout 5 -o /dev/null -s -w "$line "%{http_code}" "%{size_download}"\n" >>kb_TEST ; done
+```
 
-</code></pre>
 这一次测试出了有哪些空白页，没办法数据不是可用的，输出的都是这样的
 ![img](../image/crawl/1.png)
 
@@ -33,10 +34,9 @@ done
 然后就可以简单的抓下来网页，顺便截个图。
 截图是用的phantomjs ,当时怕要是自己分析不好，先拿个一眼能看的数据备份一份下来。
 在zsh中安装Phantom之后可能无法直接使用，要切换回bash才行
-<pre><code>
-
 1.截图的js代码，参考官网，不过当时测试时，怕截不完整，查了下资料
 
+```js
 var page = new WebPage(),
     address, output, size;
  
@@ -61,18 +61,19 @@ if (phantom.args.length < 2 || phantom.args.length > 3) {
     });
 }
 
-</code></pre>
+```
 
 然后就是配合一个极为简单的shell脚本，循环一下，wget到全部。
 
-<code><pre>
+```bash
 cat usefulurl | while read line
 do 
 echo $line 
 wget $line > $line
 phantomjs jietu.js $line $line.png
 done
-</code></pre>
+```
+
 这里发现如果你是url新建的是url类型的文件夹，他会建连续一串嵌套的文件，针对这里抓到的截图文件
 ![img3](../image/crawl/3.png)
 其他的则是正常的

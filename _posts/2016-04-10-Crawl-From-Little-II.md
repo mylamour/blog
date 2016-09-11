@@ -11,7 +11,8 @@ tags: 学习笔记 抓取数据
 在登陆进去，发现老师可以查询学生的信息（仅包含姓名学号，班级），看了看挺失望的，毕竟这些信息没什么鸟用，但是当我看网页源码的时候，发现这个系统的开发人员很不负责，只是把之前写的文本框给遮盖了，但是还是靠那个传数据。于是抓包分析，发现是post request payload，response的结果却是student的详细信息(一应俱全，应有尽有),好呗
 不得不说，很激动，抓呗。
 
-<pre><code>#-*-coding:utf-8-*-
+```python
+#-*-coding:utf-8-*-
 import requests
 import urllib2
 import urllib
@@ -42,18 +43,19 @@ for i in range(1,70):
 }
 xs(m_request_payload)
 	
-</code></pre>
-
+```
 当然这还没有解码，数据获取的类型是
 ![img5](../image/crawl/5.png)
-<pre><code>
+
+```python
 import  re
 pattern = r'"(.*?)"'
 with open('IDinfomation','r') as f:
     key = re.findall(pattern,f.read())
     for peopele in key:
     tt=peopele.decode('raw_unicode_escape').encode('utf-8')
-</code></pre>
+```
+
 最后稍微提取一下就能得到详细的信息了，全是你想要的，如果在内网中，还可以通过统一身份平台跳到教务系统，然后把这些人的图片爬下来，哈哈，想想都有点激动呢。
 
 然后晚上的时候，登一个账号发现里面的通讯录的response也是很奇怪，把老师的详细信息都response了，稍微改下post,于是所有的老师更加详细的信息到手。而且没事还挑了几个老师的学校邮箱看了看，不过并没有什么有用的。
