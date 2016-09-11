@@ -13,6 +13,7 @@ tags: 知识回顾
 
 # Step by Step 
 ## 1. 安装Jekyll
+
 ```bash
 * Install Ruby    
 > sudo apt-get install ruby
