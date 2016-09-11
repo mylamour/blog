@@ -4,7 +4,7 @@ layout: page
 comments: no
 ---
 
-###个人说明
+### 个人说明
 
 * 追求幸福和自由
 * 希望自己的一生活的精彩，精神世界须如是
@@ -12,7 +12,7 @@ comments: no
 * 慎独ing
  
 
-###欢迎交流
+### 欢迎交流
 
 * 网站：[{{ site.name }}]({{ site.url }})
 * 邮箱：[{{ site.email }}](mailto:{{ site.email }})

@@ -4,8 +4,11 @@ title: Not Only To Build Your Own Github Pages
 categories: HowTo
 tags: 知识回顾
 ---
+
 # 快速构造一个Github Pages
+
 #### 一. 使用Github账号新建一个Repository，名称随意，不必要一定是username.github.io
+
 #### 二. 进入Setting，选择自动launch 一个Github Pages，然后选择模板，最后生成直到结束。
 
 # Step by Step 
@@ -80,9 +83,13 @@ tags: 知识回顾
 现在你已经熟悉了基本的markdown语法，刚才也把Jekyll安装好了，So,Let's Try.
 
 ## 3. 使用Jekyll构建Github Pages
+
 ### 3.1 使用Git并将Repository克隆到本地
+
 #### 3.1.1 git clone
+
 `git clone https://github.com/username/username.github.io.git`
+
 #### 3.1.2 初始化一个工程并提交
 >git init
 
@@ -96,7 +103,9 @@ tags: 知识回顾
 
 前提是你已经将自己机器的ssh key添加进Github了，可以通过
 `cat ~/.ssh/id_rsa.pub` 查看本机的sshkey，如果没有，自己生成一个即可
+
 #### 3.1.3 checkout是什么鬼
+
 checkout可以供你操作分支，例如分支间切换，删除。
 创建新分支：git branch branchName
 
@@ -121,7 +130,7 @@ git checkout -b branchName
 				margin-bottom: 10px;
 			}
 <code>
-使用Sass可以变成这样：			
+使用Sass可以变成这样：
 <code>.center 
 {
              text-align: center;
@@ -138,6 +147,7 @@ Jekyll详细内容：[教程](http://jekyll.bootcss.com/)
 
 
 ### 3.3 本地预览及提交到Github
+
 预览直接在你的Jekyll文件目录内运行`Jekyll server`,然后访问[127.0.0.1:4000](http://127.0.0.1:4000)
 提交直接将修改过的目录push到github即可。
 > git add yourfile
@@ -145,6 +155,7 @@ Jekyll详细内容：[教程](http://jekyll.bootcss.com/)
 > git push
 
 ### 3.4 自定义域名
+
 在你的根目录下新建一个CNAME文件，并填入你的域名地址，然后去运营商那里解析你的域名即可，解析方式有两种。
 
 + 一是在新建一个CNAME解析指向当前的Github Pages地址，例如，我的就要指向mylamour.github.io。

@@ -5,7 +5,7 @@ categories: 全栈工程师
 tags: 学习笔记 数据存储
 ---
 ## 几个mongo的小问题
-###### 别人问的问题，还有自己遇到的问题。
+#### 别人问的问题，还有自己遇到的问题。
 
 #### 1.mongo bacthsize的问题(Assertion: 10334):
 >`mongorestore -d my-database --batchSize=100 ./database-dump-directory`
