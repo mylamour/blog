@@ -5,7 +5,7 @@ categories: 学习数据挖掘的路上
 tags: 学习笔记
 ---
 
-#Jeston TK1 Install Caffe
+# Jeston TK1 Install Caffe
 
 ``` bash
 #!/bin/bash

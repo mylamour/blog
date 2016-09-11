@@ -6,7 +6,7 @@ tags: 学习笔记 数据存储
 ---
 
 
-##汉庭csv
+## 汉庭csv
 汉庭的2000万数据，很老的裤子了，拿出来练练mongo
 > `find ./ -type f -name "*.csv"  -exec mongoimport -d hanting -c human --type csv --headerline {} \;`
 
@@ -26,7 +26,7 @@ csv 数据一共是 2.9G 导入到数据库中一共是 15.946GB，大概花费�
 
 导入的过程中出现的错误数据会自动跳过，这个好。
 
-#数据库
+# 数据库
 
 >  `db.account.aggregate([{ $group: {_id: {$month:"$createdAt"},all:{ $sum: 1 }}}]);`
 
@@ -44,7 +44,7 @@ csv 数据一共是 2.9G 导入到数据库中一共是 15.946GB，大概花费�
 
 
 突然想起网易50亿的裤子，从mega下了快30G还是放弃了。电脑开了两天，破宿舍晚上又断网。唉，无奈还是删了。我又想起来之前看f4vk写的搭建社工库的教程。无力。
-##Mongo Night
+## Mongo Night
 * 就像mongo in Action中的警告一样，对于大量数据，不要在部署之后再建立索引，而应该事先建立好索引。
 * 当时突然想到要是把Solr和Mongo结合到一起会是怎么样，发现网上已经有了这方面的资料。
 * 最好主从节点复制集至少三个
@@ -52,7 +52,7 @@ csv 数据一共是 2.9G 导入到数据库中一共是 15.946GB，大概花费�
 
 ps:本来打算的是写成mongo morning to night,把基础知识记下来，后来发现其实没有必要。基本的增删查改没必要写,其他的也不少，我自己就做了8张A4纸的笔记。所以还是自己看看附件吧，下载下来看一遍是比较有用的。
 
-##Resoures:	
+## Resoures:	
 
 *  [MongoDB in Action](../assets/MongoDB in Action.pdf)
 * [Ruby and MongoDB Web Development](../assets/Ruby and MongoDB Web Development.pdf)

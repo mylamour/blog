@@ -50,79 +50,91 @@
 
 </section>
 <section class="post">
-<h3>一些踩过的坑</h3>
+<h3 id="section">一些踩过的坑</h3>
 
 <p>1.不要jade中同时用Space和Tab，一不留神就使用了，全他妈是错误呀</p>
 
 <p>2.我记得之前有个E: Sub-process /usr/bin/dpkg returned an error code (1)</p>
 
-<blockquote><p>之前我的解决办法是按照网上来的，大概是大一的时候，
+<blockquote>
+  <p>之前我的解决办法是按照网上来的，大概是大一的时候，
 现在想想，当时完全没有动脑筋思考。</p>
+</blockquote>
 
-<blockquote><pre><code class="bash">sudo mv /var/lib/dpkg/info /var/lib/dpkg/info.bak 
+<blockquote>
+  <blockquote>
+
+    <p><code class="highlighter-rouge">bash
+sudo mv /var/lib/dpkg/info /var/lib/dpkg/info.bak 
 sudo mkdir /var/lib/dpkg/info
-</code></pre>
-
-<p>其实这种写法完全不如<code>killall aptd</code>,而且不需要去考虑是不是错杀其他进程，因为apt-get install 都是独占的。只允许一个存在。</p></blockquote></blockquote>
+</code>
+其实这种写法完全不如<code class="highlighter-rouge">killall aptd</code>,而且不需要去考虑是不是错杀其他进程，因为apt-get install 都是独占的。只允许一个存在。</p>
+  </blockquote>
+</blockquote>
 
 <p>3.网站优化压缩代码时使用的是YUICompressor，之后会另写一篇单独记录网站的性能提升与优化的问题。</p>
 
-<pre><code class="bash">for i in ` find $PWD | grep -oE "(.)*\.css_$"` 
-do 
+<p>```bash
+for i in ` find $PWD | grep -oE “(.)*.css_$”` 
+do</p>
 
-    echo $i
-    yuicompressor.jar --type css -o $i"_" $i
-    mv $i `echo $i | tr -d "_"`
-done
+<div class="highlighter-rouge"><pre class="highlight"><code>echo $i
+yuicompressor.jar --type css -o $i"_" $i
+mv $i `echo $i | tr -d "_"` done ```
 </code></pre>
+</div>
 
-<p><code>find ./ -name "*.jpg" -print0 | xargs -0 jpegtran -copy none -optimize {} &gt; {}.jpg</code></p>
+<p><code class="highlighter-rouge"> find ./ -name "*.jpg" -print0 | xargs -0 jpegtran -copy none -optimize {} &gt; {}.jpg</code></p>
 
-<blockquote><p>对mp4文件压缩的时候依旧使用的是ffmpeg,又转了一份文件为webm格式的。</p>
+<blockquote>
+  <p>对mp4文件压缩的时候依旧使用的是ffmpeg,又转了一份文件为webm格式的。
+&gt; ffmpeg转换的时候，后来发现其实是有三种方法的。可以直接指定大小，可以指定优化帧率，还可以优化图像质量来减小体积。</p>
+</blockquote>
 
-<blockquote><p>ffmpeg转换的时候，后来发现其实是有三种方法的。可以直接指定大小，可以指定优化帧率，还可以优化图像质量来减小体积。</p>
-
-<blockquote><p><code>ffmpeg -i index_1.mp4 -acodec mp2 --psnr 1 output1.mp4</code></p></blockquote></blockquote></blockquote>
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p><code class="highlighter-rouge">ffmpeg -i index_1.mp4 -acodec mp2 --psnr 1 output1.mp4</code></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
 
 <p>4.添加白名单更安全</p>
 
-<p>5.cat {file1,file2} > file3</p>
-
-<blockquote><p>不要手残在file1,file2之间用了空格,其实是想说不要在shell里面手残乱敲空格，我完全是习惯性的敲空格，坑死了。</p></blockquote>
+<p>5.cat {file1,file2} &gt; file3
+&gt;不要手残在file1,file2之间用了空格,其实是想说不要在shell里面手残乱敲空格，我完全是习惯性的敲空格，坑死了。</p>
 
 <p>6.谷歌浏览器命令行开窗口</p>
 
-<blockquote><p>shell</p>
-
-<blockquote><ul>
-<li><code>chromium-browser --new-window "url"</code></li>
-</ul>
+<blockquote>
+  <p>shell
+&gt;* <code class="highlighter-rouge">chromium-browser --new-window "url"</code></p>
 </blockquote>
 
-<p>windows(应该也有其他方法)</p>
+<blockquote>
+  <p>windows(应该也有其他方法)
+&gt;* <code class="highlighter-rouge">start your/path/of/chrome "urllist1","urllist2"</code></p>
+</blockquote>
 
-<blockquote><ul>
-<li><code>start your/path/of/chrome "urllist1","urllist2"</code></li>
-</ul>
-</blockquote></blockquote>
-
-<p>7.<font color ="green">NodeJS debuging and Profiling </font></p>
+<p>7.<font color="green">NodeJS debuging and Profiling </font></p>
 
 <ul>
-<li>Know the api docs</li>
-<li>Use strict mode</li>
-<li>Name your inline function</li>
-<li>Don't forget callbacks are error first</li>
+  <li>Know the api docs</li>
+  <li>Use strict mode</li>
+  <li>Name your inline function</li>
+  <li>Don’t forget callbacks are error first</li>
 </ul>
 
-
-<blockquote><p>埋个关于调试的坑，还会单补一篇。</p></blockquote>
+<blockquote>
+  <p>埋个关于调试的坑，还会单补一篇。</p>
+</blockquote>
 
 <p>8.不要在属性值和单位之前留空格，否则不在IE6中有效。其实我是一点也不在乎IE6，。</p>
 
 <p>9.MVC只是手段，不是目的。不要把目的和手段搞反了。最终目的是模块分离和代码复用。</p>
 
 <p>10.不要使用grenn 和 red类的字符来设置颜色，使用#ffffff之类的进行设置。(其实这一点我有点不理解)</p>
+
 
 </section>
 <section align="right">

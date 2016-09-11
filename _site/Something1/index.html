@@ -51,32 +51,50 @@
 </section>
 <section class="post">
 <ul>
-<li><p>下载东西老是显示文件有危害，无论是任何文件，
-怎么办呢。直接下载结束的时候改文件名就行了</p></li>
-<li><p>浏览器下载的时候网速很慢，那么复制下载链接到迅雷吧。</p></li>
-<li><p>记住用不同的搜索引擎搜不同的</p></li>
-<li><p>想我最开始接触Ubuntu之后，总是折腾，然后图形界面没了，最开始的解决办法是，操作回退，然而没卵用，
-可以安装其他桌面，重新安装桌面，其实最方便的就是apt-get install xorg-server</p></li>
-<li><p>网页中保存过密码，密码忘了，一是通过浏览器已保存的查看，另外就是直接查看源码，定位到password，把其type改为text即可，一下就能看见</p></li>
-<li><p>碰见收费软件，尤其是jetbrains系列的，哪个115的license server好像不能用了，不过没关系，在激活30天试用前，把电脑日期调到后几十年即可。当然我不提倡盗版，有钱的情况下我会尽量支持正版——————</p></li>
-<li><p>装完ubuntu,开机却是Grub Rescue,那么，首先确定的是已经装上去了，然后看看在哪个分区，设置引导。</p></li>
+  <li>
+    <p>下载东西老是显示文件有危害，无论是任何文件，
+怎么办呢。直接下载结束的时候改文件名就行了</p>
+  </li>
+  <li>
+    <p>浏览器下载的时候网速很慢，那么复制下载链接到迅雷吧。</p>
+  </li>
+  <li>
+    <p>记住用不同的搜索引擎搜不同的</p>
+  </li>
+  <li>
+    <p>想我最开始接触Ubuntu之后，总是折腾，然后图形界面没了，最开始的解决办法是，操作回退，然而没卵用，
+可以安装其他桌面，重新安装桌面，其实最方便的就是apt-get install xorg-server</p>
+  </li>
+  <li>
+    <p>网页中保存过密码，密码忘了，一是通过浏览器已保存的查看，另外就是直接查看源码，定位到password，把其type改为text即可，一下就能看见</p>
+  </li>
+  <li>
+    <p>碰见收费软件，尤其是jetbrains系列的，哪个115的license server好像不能用了，不过没关系，在激活30天试用前，把电脑日期调到后几十年即可。当然我不提倡盗版，有钱的情况下我会尽量支持正版——————</p>
+  </li>
+  <li>
+    <p>装完ubuntu,开机却是Grub Rescue,那么，首先确定的是已经装上去了，然后看看在哪个分区，设置引导。</p>
+  </li>
 </ul>
 
+<blockquote>
 
-<blockquote><ul>
-<li><p>set root = (hd0,msdos4)</p></li>
-<li><p>set prefix = (hd0, msdos4)/usr/grub</p></li>
-<li>insmod normal normal</li>
-<li>set cmdpath</li>
-</ul>
+  <ul>
+    <li>set root = (hd0,msdos4)</li>
+  </ul>
+</blockquote>
 
+<blockquote>
+  <ul>
+    <li>set prefix = (hd0, msdos4)/usr/grub</li>
+    <li>insmod normal normal</li>
+    <li>set cmdpath</li>
+  </ul>
 
-<p>等进去之后更新下GRUB即可。</p></blockquote>
+  <p>等进去之后更新下GRUB即可。</p>
+</blockquote>
 
 <hr />
-
 <hr />
-
 <p>就想起这么多</p>
 
 </section>

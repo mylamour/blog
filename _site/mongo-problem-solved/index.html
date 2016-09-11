@@ -52,53 +52,61 @@
 
 </section>
 <section class="post">
-<h2>几个mongo的小问题</h2>
+<h2 id="mongo">几个mongo的小问题</h2>
+<p>###### 别人问的问题，还有自己遇到的问题。</p>
 
-<h6>别人问的问题，还有自己遇到的问题。</h6>
+<h4 id="mongo-bacthsizeassertion-10334">1.mongo bacthsize的问题(Assertion: 10334):</h4>
+<blockquote>
+  <p><code class="highlighter-rouge">mongorestore -d my-database --batchSize=100 ./database-dump-directory</code>
+&gt;这个会使速度变慢，但是能解决，因为最开始我提出是<code class="highlighter-rouge">mongd --repair --dbpath="dbpath"</code>或者<code class="highlighter-rouge">db.runCommand({repairDatabase:1})</code>,然后再重新导出来，但是很不幸，不行。</p>
+</blockquote>
 
-<h4>1.mongo bacthsize的问题(Assertion: 10334):</h4>
+<h4 id="section">2.聚类查找，统计每月新增用户量:</h4>
+<blockquote>
+  <p><code class="highlighter-rouge">db.accounts.aggregate({$project:{month : {$month:"$createdAt"}}})</code> 
+&gt; 注： 你的$month对应的应该是你自己的用户注册时间。同样如果把$month替换成$year,$day，可以统计出当天或当年的。</p>
+</blockquote>
 
-<blockquote><p><code>mongorestore -d my-database --batchSize=100 ./database-dump-directory</code></p>
+<h4 id="bson">3.导入BSON格式</h4>
+<blockquote>
+  <p><code class="highlighter-rouge">mongorestore -d db_name -c collection_name path/file.bson</code></p>
+</blockquote>
 
-<blockquote><p>这个会使速度变慢，但是能解决，因为最开始我提出是<code>mongd --repair --dbpath="dbpath"</code>或者<code>db.runCommand({repairDatabase:1})</code>,然后再重新导出来，但是很不幸，不行。</p></blockquote></blockquote>
+<blockquote>
+  <p><code class="highlighter-rouge">mongorestore --drop -d db_name -c collection_name path/file.bson</code></p>
+</blockquote>
 
-<h4>2.聚类查找，统计每月新增用户量:</h4>
+<h4 id="mongo-1">4. 有人的mongo不能更换默认数据库:</h4>
+<blockquote>
+  <p>最后发现是权限的问题,因为他采用的方法又新建了一个mongo用户，所以导致权限问题，不能更改配置文件的默认数据库。</p>
+</blockquote>
 
-<blockquote><p><code>db.accounts.aggregate({$project:{month : {$month:"$createdAt"}}})</code></p>
+<h4 id="windowsmongo">5. Windows下启动Mongo</h4>
+<blockquote>
+  <p>虽然我把mongo的bin目录加了环境变量，但是每次还是要cd到特定目录，比较烦。于是建一个xx.cmd文件。经测试发现不能把该文件放在中文名称目录下，否则会报错。无法启动。</p>
 
-<blockquote><p>注： 你的$month对应的应该是你自己的用户注册时间。同样如果把$month替换成$year,$day，可以统计出当天或当年的。</p></blockquote></blockquote>
-
-<h4>3.导入BSON格式</h4>
-
-<blockquote><p><code>mongorestore -d db_name -c collection_name path/file.bson</code></p>
-
-<p><code>mongorestore --drop -d db_name -c collection_name path/file.bson</code></p></blockquote>
-
-<h4>4. 有人的mongo不能更换默认数据库:</h4>
-
-<blockquote><p>最后发现是权限的问题,因为他采用的方法又新建了一个mongo用户，所以导致权限问题，不能更改配置文件的默认数据库。</p></blockquote>
-
-<h4>5. Windows下启动Mongo</h4>
-
-<blockquote><p>虽然我把mongo的bin目录加了环境变量，但是每次还是要cd到特定目录，比较烦。于是建一个xx.cmd文件。经测试发现不能把该文件放在中文名称目录下，否则会报错。无法启动。</p>
-
-<pre><code class="bash ">E:
+  <p><code class="highlighter-rouge">bash 
+E:
 cd Mongodb
 echo "Now You In E:\Mongodb"
 start .\bin\mongod.exe --config .\data\mongo.config
 echo "You mongo server is running"
-</code></pre></blockquote>
+</code></p>
+</blockquote>
 
-<h4>6.删除小与特定日期的记录</h4>
+<h4 id="section-1">6.删除小与特定日期的记录</h4>
+<blockquote>
 
-<blockquote><p><code>db.logTemplate.remove({"operationTime":{$lt:ISODate("2016-07-01T16:00:00Z")}})</code></p></blockquote>
+  <p><code class="highlighter-rouge">db.logTemplate.remove({"operationTime":{$lt:ISODate("2016-07-01T16:00:00Z")}})</code></p>
+</blockquote>
 
-<h4>7.find与findone的区别</h4>
+<h4 id="findfindone">7.find与findone的区别</h4>
+<blockquote>
 
-<blockquote><ul>
-<li>findOne()只返回一个文档对象</li>
-<li>find()返回一个集合列表， 如果不指定过滤范围，它将返回整个集合，客户端中最多只显示前20个文档。</li>
-</ul>
+  <ul>
+    <li>findOne()只返回一个文档对象</li>
+    <li>find()返回一个集合列表， 如果不指定过滤范围，它将返回整个集合，客户端中最多只显示前20个文档。</li>
+  </ul>
 </blockquote>
 
 </section>

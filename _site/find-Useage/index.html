@@ -50,119 +50,111 @@
 
 </section>
 <section class="post">
-<h3>讲讲find，还有grep</h3>
-
+<h3 id="findgrep">讲讲find，还有grep</h3>
 <p>之前在stackoverflow看了<a href="http://stackoverflow.com/questions/16956810/how-to-find-all-files-containing-specific-text-on-linux">How to find all files containing specific text on Linux?</a></p>
 
-<h4>find的基本格式</h4>
+<h4 id="find">find的基本格式</h4>
 
 <ul>
-<li><code>find [path] [options] [tests] [actions]</code></li>
+  <li><code class="highlighter-rouge">find [path] [options] [tests] [actions]</code></li>
 </ul>
-
 
 <p>选项简介</p>
 
 <ul>
-<li><a href="#%E2%86%92.0">path</a> :没啥可说的，路径大家可以试试<code>find $pwd</code>和<code>find $PWD</code></li>
-<li><a href="#1.1">options</a></li>
-<li><a href="#2.2">tests</a></li>
-<li><a href="#-.-">actions</a>___________点我URL会卖萌</li>
+  <li><a href="#→.0">path</a> :没啥可说的，路径大家可以试试<code class="highlighter-rouge">find $pwd</code>和<code class="highlighter-rouge">find $PWD</code></li>
+  <li><a href="#1.1">options</a></li>
+  <li><a href="#2.2">tests</a></li>
+  <li><a href="#-.-">actions</a><strong>__</strong>_____点我URL会卖萌</li>
 </ul>
-
 
 <h3 id="1.1">options</h3>
-
-
 <ul>
-<li>-mount    #不要搜索其他挂载系统</li>
-<li>-name     查找什么</li>
-<li>-iname</li>
+  <li>-mount	#不要搜索其他挂载系统</li>
+  <li>-name		查找什么</li>
+  <li>-iname</li>
 </ul>
 
-
-<blockquote><p><code>$  find / -mount -name test print</code></p></blockquote>
+<blockquote>
+  <p><code class="highlighter-rouge">$  find / -mount -name test print</code></p>
+</blockquote>
 
 <h3 id="2.2">tests</h3>
-
-
 <ul>
-<li>newer otherfile  #比哪个文件新</li>
-<li>type f           #是文件</li>
-<li>type d           #是文件夹</li>
+  <li>newer otherfile  #比哪个文件新</li>
+  <li>type f			#是文件</li>
+  <li>type d			#是文件夹</li>
 </ul>
-
 
 <h3 id="-.-">actions</h3>
-
-
 <ul>
-<li>-exec command</li>
-<li>-ok command</li>
+  <li>-exec command</li>
+  <li>-ok command</li>
 </ul>
 
-
-<blockquote><p>图画的有点丑，哈哈</p></blockquote>
+<blockquote>
+  <p>图画的有点丑，哈哈</p>
+</blockquote>
 
 <ul>
-<li>-exec ls -l {} \;
+  <li>-exec ls -l {} \;
 <img src="../image/find-options.png" alt="img" /></li>
 </ul>
 
-
-<p><font color="red"> 有用的例子</font></p>
+<font color="red"> 有用的例子</font>
 
 <p>这个例子就是讲如何在当前文件夹下找出包含某个字符的文本。当然这是说明你知道这个字符在这个文件夹下。反过来我出个小问题，假如你想找出包含某个字符的文本，你不知道这个文本在哪，但你知道他包含什么。你知道这个文件里大概有个什么样的字符，你需要查找到他，该怎么办？</p>
 
-<pre><code class="bash">$ find / -type f -exec grep -H 'text-to-find-here' {} \;
+<p><code class="highlighter-rouge">bash
+$ find / -type f -exec grep -H 'text-to-find-here' {} \;
 $ grep -rnw '/path/to/somewhere/' -e "pattern"
-</code></pre>
-
-<p><img src="../image/grep.png" alt="img" /></p>
+</code>
+<img src="../image/grep.png" alt="img" /></p>
 
 <p>还有w是word-regexp,l是show filename not the result itself, grep其实没怎么讲，因为我都是常用的也就是-iroEn几个选项，其他的很少用，剩下的配合awk了</p>
 
-<blockquote><p>解密就是需要配合-l选项就行了，当时我是不知道shadowsocks在搬瓦工的位置在哪，但我知道配置文件的格式，显而易见。So easy.</p></blockquote>
+<blockquote>
+  <p>解密就是需要配合-l选项就行了，当时我是不知道shadowsocks在搬瓦工的位置在哪，但我知道配置文件的格式，显而易见。So easy.</p>
+</blockquote>
 
-<h3>最后，看看ls和phantomjs里面的列文件比较</h3>
-
+<h3 id="lsphantomjs">最后，看看ls和phantomjs里面的列文件比较</h3>
 <p>这个列文件比ls快了不少，刚才去找之前的测试记录，但是竟然没了。
 当然既然测试数据找不到了，那就说明这个不具有说服性。暂且列出，放于此处。</p>
 
-<pre><code class="js">// List all the files in a Tree of Directories
+<p>```js
+// List all the files in a Tree of Directories</p>
 
-"use strict";
-var system = require('system');
+<p>“use strict”;
+var system = require(‘system’);</p>
 
-if (system.args.length !== 2) {
-    console.log("Usage: phantomjs scandir.js DIRECTORY_TO_SCAN");
+<p>if (system.args.length !== 2) {
+    console.log(“Usage: phantomjs scandir.js DIRECTORY_TO_SCAN”);
     phantom.exit(1);                    //exit status mean 1 is wrong
-}
+}</p>
 
-var scanDirectory = function (path) {
-    var fs = require('fs');
+<p>var scanDirectory = function (path) {
+    var fs = require(‘fs’);
     if (fs.exists(path) &amp;&amp; fs.isFile(path)) {
         console.log(path);
     } else if (fs.isDirectory(path)) {
         fs.list(path).forEach(function (e) {
-            if ( e !== "." &amp;&amp; e !== ".." ) {    //&lt; Avoid loops
-                scanDirectory(path + '/' + e);
+            if ( e !== “.” &amp;&amp; e !== “..” ) {    //&lt; Avoid loops
+                scanDirectory(path + ‘/’ + e);
             }
         });
     }
-};
+};</p>
 
-scanDirectory(system.args[1]);
-phantom.exit();
-</code></pre>
+<p>scanDirectory(system.args[1]);
+phantom.exit();</p>
 
-<h2>Resources</h2>
+<p>```</p>
 
+<h2 id="resources">Resources</h2>
 <ul>
-<li><a href="https://help.ubuntu.com/community/find">find (Commuinty Help Wiki)</a></li>
-<li><a href="https://github.com/ariya/phantomjs/blob/master/examples/scandir.js">pantomjs scandir.js</a></li>
+  <li><a href="https://help.ubuntu.com/community/find">find (Commuinty Help Wiki)</a></li>
+  <li><a href="https://github.com/ariya/phantomjs/blob/master/examples/scandir.js">pantomjs scandir.js</a></li>
 </ul>
-
 
 </section>
 <section align="right">

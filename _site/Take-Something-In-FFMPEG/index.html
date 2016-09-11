@@ -50,48 +50,50 @@
 
 </section>
 <section class="post">
-<h3><font color="green">上午还在写单元测试，下午就干这件事：抽取一批视频抽取前面3秒，中间3秒，后面3秒的图片。一秒大概25帧</font></h3>
+<h3 id="font-colorgreen33325font"><font color="green">上午还在写单元测试，下午就干这件事：抽取一批视频抽取前面3秒，中间3秒，后面3秒的图片。一秒大概25帧</font></h3>
 
-<pre><code class="shell">#!/bin/bash
+<p>``` shell
+#!/bin/bash</p>
 
-#set -e 
-#去掉后脚本可跳过错误继续运行
-#ls *.mp4 &gt; filelist.txt
+<h1 id="set--e">set -e</h1>
+<p>#去掉后脚本可跳过错误继续运行
+#ls *.mp4 &gt; filelist.txt</p>
 
-#du -h *.mp4 | grep -v "4.0K" | awk '{print $2}' &gt; filelist.txt
-#由于后期发现有的监控视频很小，所以要改。还有不能先awk print需要先grep再进行print
+<h1 id="du--h-mp4--grep--v-40k--awk-print-2--filelisttxt">du -h *.mp4 | grep -v “4.0K” | awk ‘{print $2}’ &gt; filelist.txt</h1>
+<p>#由于后期发现有的监控视频很小，所以要改。还有不能先awk print需要先grep再进行print</p>
 
-mkdir imageCut
+<p>mkdir imageCut
 #cat filelist.txt | while read filename
 #此处属于莫名奇妙不能用while 
-for filename in `cat filelist.txt`
+for filename in <code class="highlighter-rouge">cat filelist.txt</code>
 do
-    pathname=$(echo $filename | cut -d "." -f1 )
-    echo $pathname
-    mkdir $PWD/imageCut/$pathname
-    echo "Process in $filename, and it will be set in $pathname"
-    sleep 1
-    time=`ffprobe -v error -show_entries stream=width,height,bit_rate,duration -of default=noprint_wrappers=1 $filename  | grep "duration" | cut -d "=" -f2 | cut -d "." -f1` #获取总的视频时长
+	pathname=$(echo $filename | cut -d “.” -f1 )
+	echo $pathname
+	mkdir $PWD/imageCut/$pathname
+	echo “Process in $filename, and it will be set in $pathname”
+	sleep 1
+	time=<code class="highlighter-rouge">ffprobe -v error -show_entries stream=width,height,bit_rate,duration -of default=noprint_wrappers=1 $filename  | grep "duration" | cut -d "=" -f2 | cut -d "." -f1</code> #获取总的视频时长</p>
 
-    middletime=`expr $time / 2 - 3`
-    endtime=`expr $time - 3`
-    echo $middletime
-    m_time=$middletime-3
-    ffmpeg -ss 00:00 -t 3 -i $filename -q:v 2 -f image2 $PWD/imageCut/$pathname/imagehead-%d.jpg　2&gt;&gt;log.err       #get the first 3 second image frames to des and log the err in current folder
-    ffmpeg -ss $middletime -t 3 -i $filename -q:v 2 -f image2 $PWD/imageCut/$pathname/imagmiddle-%d.jpg 2&gt;&gt;log.err  #get the middle 3 second image frames
-    ffmpeg -ss $endtime -t 3 -i $filename -q:v 2 -f image2 $PWD/imageCut/$pathname/simageend-%d.jpg 2&gt;&gt;log.err  #get the last 3 second image frames
+<div class="highlighter-rouge"><pre class="highlight"><code>middletime=`expr $time / 2 - 3`
+endtime=`expr $time - 3`
+echo $middletime
+m_time=$middletime-3
+ffmpeg -ss 00:00 -t 3 -i $filename -q:v 2 -f image2 $PWD/imageCut/$pathname/imagehead-%d.jpg　2&gt;&gt;log.err		#get the first 3 second image frames to des and log the err in current folder
+ffmpeg -ss $middletime -t 3 -i $filename -q:v 2 -f image2 $PWD/imageCut/$pathname/imagmiddle-%d.jpg 2&gt;&gt;log.err	#get the middle 3 second image frames
+ffmpeg -ss $endtime -t 3 -i $filename -q:v 2 -f image2 $PWD/imageCut/$pathname/simageend-%d.jpg 2&gt;&gt;log.err	#get the last 3 second image frames
 
-    #mv $(ls *.jpg) $PWD/imageCut/$pathname
-    #这样的写法不严谨，脚本通用率就低了，你也不知道该目录下有没有其他img文件。直接在输出时定位过去。
-
-
-done
-
-rm -f filelist.txt
+#mv $(ls *.jpg) $PWD/imageCut/$pathname
+#这样的写法不严谨，脚本通用率就低了，你也不知道该目录下有没有其他img文件。直接在输出时定位过去。
 </code></pre>
+</div>
 
-<h3>　</h3>
+<p>done</p>
 
+<p>rm -f filelist.txt</p>
+
+<p>```</p>
+
+<h3 id="section">　</h3>
 <p>后来又分析了下errlog，发现中间有一些视频是不能抽取的，但是呢，总的抽取过程中，所有视频基本上都是226张左右，也就是说是正常的，但是6万多张图片中，大概800张抽取错误。现在分析是视频不完整导致的。</p>
 
 </section>

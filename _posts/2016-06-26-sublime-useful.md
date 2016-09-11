@@ -4,7 +4,7 @@ title: sublime 快捷键以及其他
 categories: HowTo
 tags: 知识回顾
 ---
-###sublime使用
+### sublime使用
 
 * Ctrl+K+B：开关侧栏
 * Ctrl+Shift+P：打开命令面板
@@ -44,7 +44,7 @@ tags: 知识回顾
 * 按Ctrl，依次点击或选取，可需要编辑的多个位置
 * 按Ctrl+Shift+上下键，可替换行 
 
-###Resources
+### Resources
 
 [sublime 配置 Nodejs ](https://github.com/tanepiper/SublimeText-Nodejs)
 

@@ -54,7 +54,7 @@ $ grep -rnw '/path/to/somewhere/' -e "pattern"
 
 > 解密就是需要配合-l选项就行了，当时我是不知道shadowsocks在搬瓦工的位置在哪，但我知道配置文件的格式，显而易见。So easy.
 
-###最后，看看ls和phantomjs里面的列文件比较 
+### 最后，看看ls和phantomjs里面的列文件比较 
 这个列文件比ls快了不少，刚才去找之前的测试记录，但是竟然没了。
 当然既然测试数据找不到了，那就说明这个不具有说服性。暂且列出，放于此处。
 
@@ -88,6 +88,6 @@ phantom.exit();
 ```
 
 
-##Resources
+## Resources
 * [find (Commuinty Help Wiki)](https://help.ubuntu.com/community/find)
 * [pantomjs scandir.js](https://github.com/ariya/phantomjs/blob/master/examples/scandir.js)
