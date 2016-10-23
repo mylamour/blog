@@ -62,15 +62,15 @@
 
 <hr />
 
-<pre><code>
-<!-- lang: sh -->#!/bin/bash
+<p><code class="highlighter-rouge">bash
+#!/bin/bash
 for i in {1..800}
 do
   echo http://xxx.xxx.edu.cn:8081/KingoKJ/taglib/DataTable1.jsp?tableId=$i &gt;&gt;myurl
 done
   time cat myurl|while read line;do curl -l $line -m 5 --connect-timeout 5 -o /dev/null -s -w "$line "%{http_code}" "%{size_download}"\n" &gt;&gt;kb_TEST ; done
+</code></p>
 
-</code></pre>
 <p>这一次测试出了有哪些空白页，没办法数据不是可用的，输出的都是这样的
 <img src="../image/crawl/1.png" alt="img" /></p>
 
@@ -79,48 +79,49 @@ done
 
 <p>然后就可以简单的抓下来网页，顺便截个图。
 截图是用的phantomjs ,当时怕要是自己分析不好，先拿个一眼能看的数据备份一份下来。
-在zsh中安装Phantom之后可能无法直接使用，要切换回bash才行</p>
-<pre><code>
+在zsh中安装Phantom之后可能无法直接使用，要切换回bash才行
+1.截图的js代码，参考官网，不过当时测试时，怕截不完整，查了下资料</p>
 
-1.截图的js代码，参考官网，不过当时测试时，怕截不完整，查了下资料
-
+<p>```js
 var page = new WebPage(),
-    address, output, size;
- 
-if (phantom.args.length &lt; 2 || phantom.args.length &gt; 3) {
-    console.log('Usage: rasterize.js URL filename');
+    address, output, size;</p>
+
+<p>if (phantom.args.length &lt; 2 || phantom.args.length &gt; 3) {
+    console.log(‘Usage: rasterize.js URL filename’);
     phantom.exit();
 } else {
     address = phantom.args[0];
     output = phantom.args[1];
-    page.viewportSize = { width: 500, height:1000}
-    	
-    //如何滚动到页面底部，你可以设置显示器很大很大就行了
-    page.open(address, function (status) {
-        if (status !== 'success') {
-            console.log('Unable to load the address!');
-        } else {
-            window.setTimeout(function () {
-                page.render(output);
-                phantom.exit();
-            }, 200);
-        }
-    });
-}
+    page.viewportSize = { width: 500, height:1000}</p>
 
+<div class="highlighter-rouge"><pre class="highlight"><code>//如何滚动到页面底部，你可以设置显示器很大很大就行了
+page.open(address, function (status) {
+    if (status !== 'success') {
+        console.log('Unable to load the address!');
+    } else {
+        window.setTimeout(function () {
+            page.render(output);
+            phantom.exit();
+        }, 200);
+    }
+}); }
 </code></pre>
+</div>
+
+<p>```</p>
 
 <p>然后就是配合一个极为简单的shell脚本，循环一下，wget到全部。</p>
 
-<p><code>&lt;pre&gt;
+<p><code class="highlighter-rouge">bash
 cat usefulurl | while read line
 do 
 echo $line 
 wget $line &gt; $line
 phantomjs jietu.js $line $line.png
 done
-</code>&lt;/pre&gt;
-这里发现如果你是url新建的是url类型的文件夹，他会建连续一串嵌套的文件，针对这里抓到的截图文件
+</code></p>
+
+<p>这里发现如果你是url新建的是url类型的文件夹，他会建连续一串嵌套的文件，针对这里抓到的截图文件
 <img src="../image/crawl/3.png" alt="img3" />
 其他的则是正常的
 <img src="../image/crawl/4.png" alt="img4" /></p>

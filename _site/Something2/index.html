@@ -68,32 +68,37 @@
   </li>
   <li>
     <p>删除旧的内核 
-&gt; sudo aptitude purge ~ilinux-image-.*\(\!<code class="highlighter-rouge">uname -r</code>\)
+&gt; 
+<code class="highlighter-rouge">
+sudo aptitude purge ~ilinux-image-.*\(\!`uname -r`\)
+</code>
 &gt;</p>
   </li>
 </ul>
-<p>&lt;font color=red	&gt;这个记住写博客的时候要注意markdown中会对\进行转义&lt;/font&gt;
-按道理讲是没有问题的，但用这个删掉了我所有内核，启动项都没了。不过别怕，打开livecd搞个同版本的先拷进去就能用了。</p>
+<font color="red">这个记住写博客的时候要注意markdown中会对\进行转义</font>
+<p>按道理讲是没有问题的，但用这个删掉了我所有内核，启动项都没了。不过别怕，打开livecd搞个同版本的先拷进去就能用了。</p>
 
 <ul>
   <li>jekyll好像有问题了，需要在_config.yml中加入
-&gt;  &lt;pre&gt;<code> gems :
-      - jekyll-paginate</code></li>
+&gt;<br />
+<code class="highlighter-rouge">
+  gems :
+      - jekyll-paginate
+</code></li>
 </ul>
-<p>&lt;/pre&gt;&lt;/code&gt;
-&lt;font color=red	&gt;这个一定要注意格式&lt;/font&gt;</p>
+
+<font color="red"> 这个一定要注意格式 </font>
 
 <ul>
   <li>对了，有时候挂载不了盘，ntfs格式的用ntfsfix /dev/sda3(那个你挂载不了的设备)，
 但是ext格式的呢，可以先去media下面建个文件夹sda3（文件夹名字可以随意），然后mount即可
-&gt;  &lt;pre&gt;<code>
-mkdir /media/sda3
-mount /dev/sda3 /media/sda3</code></li>
+&gt; 
+<code class="highlighter-rouge">bash
+$ mkdir /media/sda3
+$ mount /dev/sda3 /media/sda3
+</code>
+再一次，只想到了这么多，有时间再加吧。</li>
 </ul>
-
-<p>&lt;/pre&gt;&lt;/code&gt;</p>
-
-<p>再一次，只想到了这么多，有时间再加吧。</p>
 
 
 </section>

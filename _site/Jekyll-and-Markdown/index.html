@@ -51,17 +51,22 @@
 </section>
 <section class="post">
 <h1 id="github-pages">快速构造一个Github Pages</h1>
-<p>#### 一. 使用Github账号新建一个Repository，名称随意，不必要一定是username.github.io
-#### 二. 进入Setting，选择自动launch 一个Github Pages，然后选择模板，最后生成直到结束。</p>
+
+<h4 id="githubrepositoryusernamegithubio">一. 使用Github账号新建一个Repository，名称随意，不必要一定是username.github.io</h4>
+
+<h4 id="settinglaunch-github-pages">二. 进入Setting，选择自动launch 一个Github Pages，然后选择模板，最后生成直到结束。</h4>
 
 <h1 id="step-by-step">Step by Step</h1>
-<p>## 1. 安装Jekyll
-1. &gt;Install Ruby  <br />
-             &gt;sudo apt-get install ruby
-2. &gt;Install Gem
-             &gt;sudo apt-get install rubygems
-3. &gt;Install Jekyll
-             &gt;gem install jekyll</p>
+<p>## 1. 安装Jekyll</p>
+
+<p><code class="highlighter-rouge">bash
+* Install Ruby    
+&gt; sudo apt-get install ruby
+* Install Gem
+&gt; sudo apt-get install rubygems
+* Install Jekyll
+&gt; gem install jekyll
+</code></p>
 
 <h2 id="markdownretext">2. 熟悉一下Markdown的语法（推荐ReText编辑器）</h2>
 
@@ -162,11 +167,17 @@
 <p>现在你已经熟悉了基本的markdown语法，刚才也把Jekyll安装好了，So,Let’s Try.</p>
 
 <h2 id="jekyllgithub-pages">3. 使用Jekyll构建Github Pages</h2>
-<p>### 3.1 使用Git并将Repository克隆到本地
-#### 3.1.1 git clone
-<code class="highlighter-rouge">git clone https://github.com/username/username.github.io.git</code>
-#### 3.1.2 初始化一个工程并提交
-&gt;git init</p>
+
+<h3 id="gitrepository">3.1 使用Git并将Repository克隆到本地</h3>
+
+<h4 id="git-clone">3.1.1 git clone</h4>
+
+<p><code class="highlighter-rouge">git clone https://github.com/username/username.github.io.git</code></p>
+
+<h4 id="section">3.1.2 初始化一个工程并提交</h4>
+<blockquote>
+  <p>git init</p>
+</blockquote>
 
 <blockquote>
   <p>git add -A</p>
@@ -185,9 +196,11 @@
 </blockquote>
 
 <p>前提是你已经将自己机器的ssh key添加进Github了，可以通过
-<code class="highlighter-rouge">cat ~/.ssh/id_rsa.pub</code> 查看本机的sshkey，如果没有，自己生成一个即可
-#### 3.1.3 checkout是什么鬼
-checkout可以供你操作分支，例如分支间切换，删除。
+<code class="highlighter-rouge">cat ~/.ssh/id_rsa.pub</code> 查看本机的sshkey，如果没有，自己生成一个即可</p>
+
+<h4 id="checkout">3.1.3 checkout是什么鬼</h4>
+
+<p>checkout可以供你操作分支，例如分支间切换，删除。
 创建新分支：git branch branchName</p>
 
 <p>切换到新分支：git checkout branchName</p>
@@ -212,7 +225,7 @@ git checkout -b branchName
 				margin-bottom: 10px;
 			}
 <code>
-使用Sass可以变成这样：			
+使用Sass可以变成这样：
 <code>.center 
 {
              text-align: center;
@@ -229,13 +242,15 @@ git checkout -b branchName
 <p>Jekyll详细内容：<a href="http://jekyll.bootcss.com/">教程</a></p>
 
 <h3 id="github">3.3 本地预览及提交到Github</h3>
+
 <p>预览直接在你的Jekyll文件目录内运行<code class="highlighter-rouge">Jekyll server</code>,然后访问<a href="http://127.0.0.1:4000">127.0.0.1:4000</a>
 提交直接将修改过的目录push到github即可。
-&gt; git add yourfile
-&gt; git commit -m “something”
-&gt; git push</p>
+&gt; <code class="highlighter-rouge">git add yourfile</code>
+&gt; <code class="highlighter-rouge">git commit -m "something"</code>
+&gt; <code class="highlighter-rouge">git push</code></p>
 
-<h3 id="section">3.4 自定义域名</h3>
+<h3 id="section-1">3.4 自定义域名</h3>
+
 <p>在你的根目录下新建一个CNAME文件，并填入你的域名地址，然后去运营商那里解析你的域名即可，解析方式有两种。</p>
 
 <ul>

@@ -54,62 +54,71 @@
 
 <h2 id="section">一些库的简单使用</h2>
 <ol>
-  <li>
-    <p>urllib2(用来下载网页)
+  <li>urllib2(用来下载网页)
 三种下载网页的方法
-&gt;simply</p>
+&gt; simply</li>
+</ol>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>  import urllib2
-    
- response = urllib2.urlopen('http://www.aol.com')         #直接请求
-    
- print response.getcode()                              #看看状态码
+<p>```python
+         import urllib2</p>
 
- cont = response.read()                                #读取内容，可以在前面加个如果状态码有效 &gt; Add Head, data
+<div class="highlighter-rouge"><pre class="highlight"><code>    response = urllib2.urlopen('http://www.aol.com')         #直接请求
+    
+    print response.getcode()                              #看看状态码
 
- import urllib2
-    
- request = urllib2.Request(url)                  #创建request对象
-    
- request.add_data('xxx','xxx')                   #增加数据
-    
- request.add_header('User-Agent', 'Mozilla/5.0')     #伪装成浏览器
-    
- response = urllibe2.urlopen(request)            #发送请求 &gt;advance &gt;&gt;其实就是Cookie,Proxy,Redirect相关的,分别是HTTPCookieProcessor , ProxyHandler , HTTPRedirectHandler 
-
- import urllibe2, cookielib
-    
- cj = cookielib.CookieJar()
-    
- opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
-    
- urllib2.install_opener(opener)
-    
- response = urllib2.urlopen("http://www.google.com/")
+    cont = response.read()                                #读取内容，可以在前面加个如果状态码有效 ``` &gt; Add Head, data
 </code></pre>
-    </div>
-  </li>
-  <li>
-    <p>Beautifuk Soup (用来解析网页)    <br />
-&gt;从一个Html网页创建一个Beautiful对象，然后可以搜索节点，find_all,find等可以访问节点的名称和属性。当然配合正则表达式更好</p>
-  </li>
+</div>
+
+<p>```python
+        import urllib2</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>    request = urllib2.Request(url)                  #创建request对象
+    
+    request.add_data('xxx','xxx')                   #增加数据
+    
+    request.add_header('User-Agent', 'Mozilla/5.0')     #伪装成浏览器
+    
+    response = urllibe2.urlopen(request)            #发送请求 ``` &gt; advance &gt;&gt; 其实就是Cookie,Proxy,Redirect相关的,分别是HTTPCookieProcessor , ProxyHandler , HTTPRedirectHandler 
+</code></pre>
+</div>
+
+<p>```python
+        import urllibe2, cookielib</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>    cj = cookielib.CookieJar()
+    
+    opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
+    
+    urllib2.install_opener(opener)
+    
+    response = urllib2.urlopen("http://www.google.com/") ```
+</code></pre>
+</div>
+
+<ol>
+  <li>Beautifuk Soup (用来解析网页)
+&gt;从一个Html网页创建一个Beautiful对象，然后可以搜索节点，find_all,find等可以访问节点的名称和属性。当然配合正则表达式更好</li>
 </ol>
 
 <blockquote>
   <blockquote>
     <p><code class="highlighter-rouge">&lt;a href='1111.html' class='article_link'&gt; python &lt;/a&gt;</code>像这一个节点名称为a，属性href为1111.html，属性class为article_link，而节点内容为python
 &gt;创建beautifulSoup对象
-        from bs4 import BeautifulSoup  <br />
-        soup = BeautifulSoup( html_doc,  ‘html.parser’, from_encoding=’utf-8’ )    <br />
+        <code class="highlighter-rouge">from bs4 import BeautifulSoup</code>  <br />
+        <code class="highlighter-rouge">soup = BeautifulSoup( html_doc,  'html.parser', from_encoding='utf-8' )</code>    <br />
 &gt;搜索节点
-»
-        find_all(nane, attrs, string)    <br />
-        node = soup.find_all(‘a’)   <br />
-        soup.find_all(‘a’, href=’1111.html’)
-        soup.find_all(‘a’, href= re.compile(r’/view/\d+.htm’))     #正则匹配 
-        soup.find_all (‘div’, class_= ‘abc’, string= ‘Python’)</p>
+»</p>
   </blockquote>
 </blockquote>
+
+<p><code class="highlighter-rouge">python
+        find_all(nane, attrs, string)      
+        node = soup.find_all('a')     
+        soup.find_all('a', href='1111.html')
+        soup.find_all('a', href= re.compile(r'/view/\d+\.htm'))     #正则匹配 
+        soup.find_all ('div', class_= 'abc', string= 'Python')
+</code></p>
 
 <blockquote>
   <blockquote>
@@ -124,55 +133,68 @@
 </blockquote>
 
 <ol>
-  <li>
-    <p>连接数据库(前提是要安装好数据库)
-&gt;PostgreSQL</p>
+  <li>连接数据库(前提是要安装好数据库)
+&gt;PostgreSQL</li>
+</ol>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code> import psycopg2  
-    
- conn = psycopg2.connect("dbname='dbname' user='username' host='localhost' password='password'")  
+<p>```python
+        import psycopg2</p>
 
- cur = conn.cursor()  
-    
- cur.execute("select * from dbtable")  
-    
- for row in cur:  
-    
-      print row 
-    
-  conn.close()  &gt;ms sql
+<div class="highlighter-rouge"><pre class="highlight"><code>    conn = psycopg2.connect("dbname='dbname' user='username' host='localhost' password='password'")  
 
- import psmssql  
-
- conn = psmssql.connect(host='yourhost', user='loginname', password='password', database='dbname', charset='utf8')  
+    cur = conn.cursor()  
     
- cur = conn.cursor()  
+    cur.execute("select * from dbtable")  
     
- cur.execute('select * from dbtable')  
+    for row in cur:  
     
- for row in cur:  
-
          print row 
     
- conn.close()  &gt;mysql
-
- import MySQLdb
-
- conn= MySQLdb.connect( host='localhost', port = 3306, user='username', passwd='password', db ='dbname',)
-    
- cur = conn.cursor()
-    
- cur.execute("delete from student where grade &gt; 30")
-    
- cur.close()
-
- conn.commit()
-    
- conn.close()
+     conn.close()  ```
 </code></pre>
-    </div>
-  </li>
-</ol>
+</div>
+
+<blockquote>
+  <p>ms sql</p>
+</blockquote>
+
+<p>```python
+        import psmssql</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>    conn = psmssql.connect(host='yourhost', user='loginname', password='password', database='dbname', charset='utf8')  
+    
+    cur = conn.cursor()  
+    
+    cur.execute('select * from dbtable')  
+    
+    for row in cur:  
+
+            print row 
+    
+    conn.close()  ```
+</code></pre>
+</div>
+
+<blockquote>
+  <p>mysql</p>
+</blockquote>
+
+<p>```python
+        import MySQLdb</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>    conn= MySQLdb.connect( host='localhost', port = 3306, user='username', passwd='password', db ='dbname',)
+    
+    cur = conn.cursor()
+    
+    cur.execute("delete from student where grade &gt; 30")
+    
+    cur.close()
+
+    conn.commit()
+    
+    conn.close() ```
+</code></pre>
+</div>
 
 <ul>
   <li>
