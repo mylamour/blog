@@ -37,7 +37,7 @@ You can see the above code in mongoosejs.com. And you should know, There is not 
 ```js
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/test');
-var animalSchema = { name: String };
+var animalSchema = mongoose.Schema{ name: String };
 var Cat = mongoose.model('Cat',animalSchema );
 
 var kitty = new Cat({ name: 'Zildjian' });
