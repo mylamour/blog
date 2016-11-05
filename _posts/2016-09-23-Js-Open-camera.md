@@ -5,9 +5,7 @@ categories: 全栈工程师
 tags: 学习笔记
 ---
 
-> 
 ```js
-
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
 
