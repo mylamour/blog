@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="author" content="lamour" />
+		<title>Crawl From Little IV</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link href="/feed/" rel="alternate" title="lamour" type="application/atom+xml" />
+		<link rel="stylesheet" href="/media/css/style.css" />
+		<link rel="stylesheet" href="/media/css/highlight.css" />
+		<script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="main" role="main">
+				<header>
+				<h1>Crawl From Little IV</h1>
+				</header>
+				<nav>
+				<span><a title="网站首页" class="" href="/">首页</a></span>
+				<span><a title="文章分类" class="" href="/categories/">分类</a></span>
+				<span><a title="标签索引" class="" href="/tags/">标签</a></span>
+				<!--<span><a title="友情链接" class="" href="/links/">链接</a></span>-->
+				<span><a title="留言交流" class="" href="/guestbook/">留言</a></span>
+                                <!--<span><a title="订阅本站" class="" href="/feed.xml">订阅</a></span>-->
+				<span><a title="关于站长" class="" href="/about/">关于</a></span>
+				</nav>
+				<article class="content">
+				<section class="meta">
+<span class="time">
+  <time datetime="2016-10-10">2016-10-10</time>
+</span>
+
+ | 
+<span class="categories">
+  分类
+  
+  <a href="/categories/#学习数据挖掘的路上" title="学习数据挖掘的路上">学习数据挖掘的路上</a>&nbsp;
+  
+</span>
+
+
+ | 
+<span class="tags">
+  标签
+  
+  <a href="/tags/#学习笔记" title="学习笔记">学习笔记</a>&nbsp;
+  
+  <a href="/tags/#抓取数据" title="抓取数据">抓取数据</a>&nbsp;
+  
+</span>
+
+</section>
+<section class="post">
+<h3 id="section">前言</h3>
+
+<p>一个月前的一次信息抓取，数据不多，信息是上海市的废品回收站。没什么可说的。代码也简单，不过问题还是在代码上。最开始用R，因为rvest包提取表格的效果很好。后来还是不行，就只有用python了。</p>
+
+<p><img src="../image/crawl/feipininfo.jpg" alt="feipin" /></p>
+
+<p>```R
+library(rvest)
+library(xml2)</p>
+
+<p>makeUrl &lt;- function(i) {
+  urllist = list()
+  parturl &lt;- “http://www.sh-recycle.org/hyshow.asp?id=”
+  initurl &lt;- paste(parturl,i,sep = ‘’)
+}
+webcontent = list()
+Origin_InfoData = data.frame(“详细”=c(“备 案 号”, “会 员 号” ,”企业名称” ,”单位地址” ,”联系电话”, “资质认定”))</p>
+
+<p>for (i in 1:1518)
+{
+  webcontent &lt;- read_html(makeUrl(i))
+  temp_Table &lt;- webcontent %&gt;% html_table(fill = TRUE)
+  if(length(temp_Table)==0){
+    print(paste(“企业不存在,ID:”,i))
+  }else{
+    temp_InfoData &lt;- data.frame(temp_Table[9][])
+    names(temp_InfoData) &lt;- c(“详细”, i)
+    Origin_InfoData &lt;- merge(Origin_InfoData,temp_InfoData,by = “详细”)
+  }
+}</p>
+
+<p>head(Origin_InfoData)
+```</p>
+
+<p>代码很简单，但是就是300条之后就不行了，报错不明显，查也查不到。怎么解决也解决不了，十分懊恼。最后直接去看那个ID的信息发现，在这个网站上的内容条目调换了，虽然都是这几样，但是新增了一个属性，并且把顺序改了。因此导致R的数据框合并不了。最后用python获取到。顺便吐槽这个网站的结构真差，全是table,tr,td嵌套。而且嵌套之深深似海。</p>
+
+<p>```python
+# -<em>- coding: UTF-8 -</em>-
+import requests
+from bs4 import BeautifulSoup</p>
+
+<p>for i in range(1,1518):   #,1518):
+	try:
+		url = “http://www.sh-recycle.org/hyshow.asp?id=”+str(i)
+		html_text = requests.get(url).text
+		# print html_text
+		soup = BeautifulSoup(html_text, ‘lxml’)
+		infotable = soup.findAll(‘table’)[8]
+		info = infotable.findAll(‘td’)
+		with open(‘./ssssss.txt’,’a’) as f:
+			for i in info:
+				f.write(i.text.encode(‘utf-8’)+”/”)
+			f.write(‘\n’)</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>except Exception as e:
+	pass
+finally:
+	pass			 ``` 清洗 `&lt; shanghaiss.txt | awk -F "/" '{for (i=1;i&lt;=NF;i+=2)printf $i "/" ;printf"\n"}'`
+</code></pre>
+</div>
+
+<h3 id="section-1">最后</h3>
+<p>不得不说异步之厉害。Node.js + Request抓拉勾，分分钟被禁。而且测了一下移动端，5300多条数据好像1秒还是2秒的样子就到手了。最后的最后，不要用公司的网去爬东西。╮(╯▽╰)╭再也不能肆无忌惮了。定个小目标，看看Python下的异步写法。-_-</p>
+
+</section>
+<section align="right">
+<br/>
+<span>
+	<a  href="/Jmeter-PostMan/" class="pageNav"  >上一篇</a>
+	&nbsp;&nbsp;&nbsp;
+	<a  href="/Image-Parse/" class="pageNav"  >下一篇</a>
+</span>
+</section>
+
+	
+	<div class="ds-thread" />
+		
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"lamour"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+
+
+				</article>
+			</div>
+
+			<footer>
+			<p><small>
+				<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/cn/" target="_blank" title="许可协议">©</a> 2014 - 2016 <a href="/about/">lamour</a>
+			</small></p>
+			</footer>
+
+		</div>
+	</body>
+</html>

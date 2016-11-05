@@ -93,7 +93,7 @@ kitty.save(function (err) {
 <p>```js
 var mongoose = require(‘mongoose’);
 mongoose.connect(‘mongodb://localhost/test’);
-var animalSchema = { name: String };
+var animalSchema = mongoose.Schema({ name: String });
 var Cat = mongoose.model(‘Cat’,animalSchema );</p>
 
 <p>var kitty = new Cat({ name: ‘Zildjian’ });
@@ -197,9 +197,9 @@ function(){
 <section align="right">
 <br/>
 <span>
-	<a  href="/Js-Open_camera/" class="pageNav"  >上一篇</a>
+	<a  href="/Js-Open-camera/" class="pageNav"  >上一篇</a>
 	&nbsp;&nbsp;&nbsp;
-	<a   class="pageNavInvalid"  >下一篇</a>
+	<a  href="/Jmeter-PostMan/" class="pageNav"  >下一篇</a>
 </span>
 </section>
 
