@@ -44,6 +44,15 @@ tags: 知识回顾
 * 按Ctrl，依次点击或选取，可需要编辑的多个位置
 * 按Ctrl+Shift+上下键，可替换行 
 
+
+### Other 
+
+* Sublime版本升级之后，Online Markdonw Preview不能使用的解决办法
+
+> 把属性扩展那一行替换为`"extensions": ["tables", "fenced_code", "codehilite"]`(中间有个插件忘了是什么了，要删除掉，删除后就是这样的了)
+
+* Sublime自动保存只需要配置文件中添加"save_on_focus_lost": true
+
 ### Resources
 
 [sublime 配置 Nodejs ](https://github.com/tanepiper/SublimeText-Nodejs)
