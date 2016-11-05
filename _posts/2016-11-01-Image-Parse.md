@@ -64,9 +64,11 @@ addImage.mp4
 > `ffmpeg -ss [start] -i in.mp4 -t [duration] -c copy out.mp4`
 
 ###Other
+
 下面链接所附，只做参考，部分命令不能使用。以上所有列出代码，均自己使用过的。PS:总是说有时间有时间，其实，我不知道啊。。啊，我的毕设毕设。还有我给你定的拖拉那么多的事情。
 
 ###Resources
+
 * [ffmpeg-compress-video](http://stackoverflow.com/questions/4010832/ffmpeg-compress-video)
 * [use-ffmpeg-to-add-text-subtitles](http://stackoverflow.com/questions/8672809/use-ffmpeg-to-add-text-subtitles)
 * [cut-part-from-video-file](http://superuser.com/questions/377343/cut-part-from-video-file-from-start-position-to-end-position-with-ffmpeg)
