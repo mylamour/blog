@@ -29,6 +29,7 @@ tags: 学习笔记　小手段
 ![旁注得到域名](../image/hackit/pangzhu_1.jpg)
 
 同时登录企业邮箱，邮箱中并无重要信息。但是Get到了部分通讯录。有了通讯录就方便了很多。通讯录是Json格式的，看起来很费事，所以转成csv好点。
+
 ```shell
 awk '{key = $1; $1 = ""; a[key] = a[key] $0} END { for (key in a) print key, a[key] }' <<< cat tt.txt  >tempfile		   #直接合并数据
 sed -n '2,6p' tempfile			#取第姓名行到第邮箱行
