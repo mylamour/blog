@@ -154,6 +154,7 @@ ok，s3创建完毕，我们看看最简单的选项 `--applications Name=Gangli
 		  [application-arguments]
 ```
 来提交，不过无论是哪种程序，都要顾及到代码本身的选项输入输出，然后写在`spark-submit`中，就像之前的这种
+
 ```bash
 {
             "Args": [
