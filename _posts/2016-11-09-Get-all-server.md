@@ -2,7 +2,7 @@
 layout: post
 title: 实习之登堂入室
 categories: HowTo
-tags: 学习笔记 小手段 
+tags: 实习笔记
 ---
 
 # 但行好事，莫问前程
