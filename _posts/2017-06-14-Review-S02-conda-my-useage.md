@@ -45,7 +45,6 @@ $ jupyter notebook --no-browser --port 6699
 ```
 
 * 集成`pyspark`
-
 ```bash
  #step 1 
  $ mv spark-1.2.0-bin-hadoop2.4 /opt/spark-1.2.0
@@ -60,7 +59,6 @@ $ jupyter notebook --no-browser --port 6699
 ```
 
 * 集成 `R`
-
 ```R
 > install.packages(c('repr', 'IRdisplay', 'evaluate', 'crayon', 'pbdZMQ', 'devtools', 'uuid', 'digest'))
 devtools::install_github('IRkernel/IRkernel')
