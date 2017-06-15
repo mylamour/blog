@@ -9,7 +9,6 @@ tags: 知识回顾 学习笔记
 无论是使用virtualenv还是conda，本意无非是使开发环境变得干净纯粹，当然我们还可以使用`vagrant`启动一个虚拟机，在虚拟机里操作，或者`docker`起一个`container`也一样。
 
 * 基础的用法
-
 ```bash
 $ conda info --env
 $ conda create -n testenv
