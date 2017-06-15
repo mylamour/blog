@@ -45,22 +45,22 @@ $ jupyter notebook --no-browser --port 6699
 ```
 
 * 集成`pyspark`
+
 ```bash
-#step 1 
+ #step 1 
  $ mv spark-1.2.0-bin-hadoop2.4 /opt/spark-1.2.0
  $ ln -s /opt/spark-1.2.0 /opt/spark
-#step 2 (长久生效应该将下列的语句写到bashrc文件里，或者zshrc里)
+ #step 2 (长久生效应该将下列的语句写到bashrc文件里，或者zshrc里)
  $ export SPARK_HOME=/opt/spark
  $ export PATH=$SPARK_HOME/bin:$PATH
  $ export PYSPARK_DRIVER_PYTHON=jupyter
  $ export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
-
-#step 3 
+ #step 3 
  $ pyspark
-
 ```
 
 * 集成 `R`
+
 ```R
 > install.packages(c('repr', 'IRdisplay', 'evaluate', 'crayon', 'pbdZMQ', 'devtools', 'uuid', 'digest'))
 devtools::install_github('IRkernel/IRkernel')
