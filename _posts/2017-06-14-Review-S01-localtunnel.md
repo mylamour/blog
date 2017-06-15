@@ -14,7 +14,6 @@ tags: 知识回顾 学习笔记
 只需要采用 `npm install -g localtunnel`进行安装，然后使用`lt --port 80`即可进行转发，运行命令后`localtunnel`服务器会返回一个网址的。可谓十分方便，当然我们不能只介绍这么一点玩法，下面看其他有趣的玩法(强行凑博客感)。
 
 * 搭建自己的`localtunnel`服务器，以便提升访问速度。
-
 ```bash
 $ git clone git://github.com/defunctzombie/localtunnel-server.git
 $ cd localtunnel-server
@@ -24,7 +23,6 @@ $ bin/server --port 1234
 ```
 
 * lt命令的其他用法
-
 ```bash
 $ lt --host http://yourserver:1234 --port 5000 -s prefix
 #这个就以为着转发本机5000端口到服务器yourserver上，然后获取域名为prefix.youserver:1234，可以通过该域名进行访问。
