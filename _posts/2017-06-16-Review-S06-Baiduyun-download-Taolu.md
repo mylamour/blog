@@ -5,7 +5,7 @@ categories: HowTo
 tags: 小手段
 ---
 
-####前言: 都是套路
+#### 前言: 都是套路
 你一定也是烦的不行不行的，下载百度云限速不说，还不能在linux服务器上搞，下面就介绍下如何在Linux服务器上下载文件，并能突破速度限制。
 
 
@@ -22,7 +22,7 @@ tags: 小手段
 
 ![get_link](../image/BaiduExport/02.png)
  
-*step3 
+* step3 
 
 ![download](../image/BaiduExport/03.png)
 

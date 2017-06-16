@@ -5,10 +5,10 @@ categories: HowTo
 tags: 知识回顾 学习笔记
 ---
 
-####前言:Tesseract
+#### 前言:Tesseract
 Tesseract 最新的版本4.0版本，新增了lstm训练方式。当时做毕设时经过一系列的其他挫折，刚好发现这个可以使用在嵌入式开发板上，因此去学习并使用了一下。
 
-####正文 一: OCR简介
+#### 正文 一: OCR简介
 主要有两种方法
 
 1. Segment-Based method
@@ -23,9 +23,9 @@ Tesseract 最新的版本4.0版本，新增了lstm训练方式。当时做毕设
 总的来讲就是两种方法，传统基于图像分割的方式进行文本识别，基本是采用模板匹配的方式。通过解压图片训练出一些特征后经过一个分类器使其和已知的进行比较，计算之间的相似度，有多大概率。但是分割有时不容易控制间隔，会导致图像过分割，从而使识别出来的字符变形。例如，m和n还有d,在过分割的情况下就会导致d识别为c和l。详细的例子可以参考上面那篇论文论文。而基于自由分割的OCR识别则不关心输入的长度，虽然他依旧使用分割后的图片作为输入。然后得到输出作为识别后的结果。这种方式通常使用隐马尔科夫模型和循环卷积神经网络。标准的模式识别中通常采用近邻算法，决策树，贝叶斯分类作为训练方法。在后面几章里在浅显讲讲对这些基础算法的学习情况。
 
 <font color="red">下面所有操作，假设你已经安装好了最新版本的Tesseract，并且`clone`了相应的`langdata`和`tessdata`，并且放置在同一目录下。</font>
-使用百度云下载详情参考`http://iami.xyz/Review-S05-Tesseract-lstm-traning-datafile/`
+使用百度云下载详情参考`http://iami.xyz/Review-S06-Baiduyun-download-Taolu/`
 
-####正文 二: Tesseract的普通训练方式
+#### 正文 二: Tesseract的普通训练方式
 想去ProcessON上下载原图的时候，才发现自己忘了账号是什么了...虽然当时只是作为临时存毕设的流程图用，但也是大意了。
 ![default_flow](../image/Tesseract/common_01.png)
 
@@ -40,7 +40,7 @@ Tesseract 最新的版本4.0版本，新增了lstm训练方式。当时做毕设
 * 自己由字体生成训练图片去训练的话，图片像素不宜过大。否则训练的时候，耗时不仅久，而且会占大量内存。
 * 普通训练只占用单核，所以非常慢。
 
-####正文 三: tesseract的LSTM训练方式
+#### 正文 三: tesseract的LSTM训练方式
 
 ![default_lstm](../image/Tesseract/default_lstm.png)
 
@@ -112,30 +112,30 @@ $ lstmeval --model ./chi_sim.lstm --eval_listfile ./tesseract-ocr/chieval/chi_si
 * 经过训练同一种字体的不同形态会产生明显的收敛效果，但是不是同一种的就不行，或者说效果不好。
 * 同样，你不再需要像传统训练时，添加自定义单词。在特定领域的话，也可以添加一下(哭笑不得)。因为训练的时候，有两种错误率，一种是单字错误率，一种是单词错误率。但也不是下降的越低越好。通常增加训练的迭代次数，会降低错误率。但是这个错误率下的模型可能在会将字体识别正确的同时，将标点识别错误了。
 * 合并后，后面带_tmp_的是原字库文件。我们可以把不同`checkpoint`下的`lstm`模型进行合并，类似于这样
+
 ```bash
-source ~/.profile
+	source ~/.profile
 
-for file in `ls ./lstmfile/*.lstm` 
-do
+	for file in `ls ./lstmfile/*.lstm` 
+	do
 
-	filename=`echo $file | awk -F '/' '{print $3}' | awk -F '_' '{print $1}'`
+		filename=`echo $file | awk -F '/' '{print $3}' | awk -F '_' '{print $1}'`
 
-	combine_tessdata -o ./chi_sim.traineddata \
-	  $file \
-	  ./chitrain/chi_sim.lstm-number-dawg \
-	  ./chitrain/chi_sim.lstm-punc-dawg \
-	  ./chitrain/chi_sim.lstm-word-dawg
+		combine_tessdata -o ./chi_sim.traineddata \
+		  $file \
+		  ./chitrain/chi_sim.lstm-number-dawg \
+		  ./chitrain/chi_sim.lstm-punc-dawg \
+		  ./chitrain/chi_sim.lstm-word-dawg
 
-mv chi_sim.traineddata $filename.traineddata
-mv chi_sim.traineddata.__tmp__ chi_sim.traineddata
+	mv chi_sim.traineddata $filename.traineddata
+	mv chi_sim.traineddata.__tmp__ chi_sim.traineddata
 
-done
+	done
 ```
 
 最后，这是我从服务器上下载下来的数据，选择了3个较低错误率的数据库下载了下来。前面的数字是错误率。
 ![lstm_result](../image/Tesseract/lstm_02.png)
 
-####Resources 
-
+#### Resources 
 * [Tesseract Documention](https://github.com/tesseract-ocr/tesseract/wiki/Technical-Documentation)
 * [Understanding LSTM ](http://colah.github.io/posts/2015-08-Understanding-LSTMs)
