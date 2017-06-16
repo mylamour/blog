@@ -83,7 +83,6 @@ $ lstmtraining -U ./chitrain/chi_sim.unicharset \
 $ lstmeval --model ./trainlayer/_checkpoint --eval_listfile ./chitrain/chi_sim.training_files.txt  
 $ lstmeval --model ./chi_sim.lstm --eval_listfile ./tesseract-ocr/chieval/chi_sim.training_files.txt
 #从这里看出来，既可以使用checkpoint也可以使用现有的lstm模型去验证
-
 ```
 
 * step 5: 合并新的字库
