@@ -63,6 +63,14 @@ addImage.mp4
 
 > `ffmpeg -ss [start] -i in.mp4 -t [duration] -c copy out.mp4`
 
+<font color="green"> Update:2017.06.16  </font>
+
+* 取3,5秒的视屏转化为gif图片
+
+> `ffmpeg -v warning -ss 3 -t 5 -i input.wmv -vf scale=3000:-1 -gifflags +transdiff -y sample.gif`
+
+
+
 ###Other
 
 下面链接所附，只做参考，部分命令不能使用。以上所有列出代码，均自己使用过的。PS:总是说有时间有时间，其实，我不知道啊。。啊，我的毕设毕设。还有我给你定的拖拉那么多的事情。
@@ -76,6 +84,6 @@ addImage.mp4
 * [encode-video-in-reverse](http://stackoverflow.com/questions/2553448/encode-video-in-reverse)
 * [reduce-frame](http://superuser.com/questions/849739/how-do-i-reduce-frame-rate-without-increasing-duration)
 * [image_sequence](https://en.wikibooks.org/wiki/FFMPEG_An_Intermediate_Guide/image_sequence)
-
+* [video_convert_image](http://blog.pkh.me/p/21-high-quality-gif-with-ffmpeg.html)
 
 
