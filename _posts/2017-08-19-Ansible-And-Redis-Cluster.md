@@ -19,34 +19,34 @@ tags: 学习笔记
 2.当你去连接slave节点时，由于需要ansible的密码，在第一次的时候，会要求验证ssh 指纹，方便起见，可以来一个`playbook`
 
 ```ansible
-		#!/usr/bin/env ansible-playbook
-		---
-		- name: accept ssh fingerprint automatically for the first time
-		  hosts: all
-		  connection: local
-		  gather_facts: False
+#!/usr/bin/env ansible-playbook
+---
+- name: accept ssh fingerprint automatically for the first time
+  hosts: all
+  connection: local
+  gather_facts: False
 
-		  tasks:
-		    - name: "check if known_hosts contains server's fingerprint"
-		      command: ssh-keygen -F {{ inventory_hostname }}
-		      register: keygen
-		      failed_when: keygen.stderr != ''
-		      changed_when: False
+  tasks:
+    - name: "check if known_hosts contains server's fingerprint"
+      command: ssh-keygen -F {{ inventory_hostname }}
+      register: keygen
+      failed_when: keygen.stderr != ''
+      changed_when: False
 
-		    - name: fetch remote ssh key
-		      command: ssh-keyscan -T5 {{ inventory_hostname }}
-		      register: keyscan
-		      failed_when: keyscan.rc != 0 or keyscan.stdout == ''
-		      changed_when: False
-		      when: keygen.rc == 1
+    - name: fetch remote ssh key
+      command: ssh-keyscan -T5 {{ inventory_hostname }}
+      register: keyscan
+      failed_when: keyscan.rc != 0 or keyscan.stdout == ''
+      changed_when: False
+      when: keygen.rc == 1
 
-		    - name: add ssh-key to local known_hosts
-		      lineinfile:
-		        name: ~/.ssh/known_hosts
-		        create: yes
-		        line: "{{ item }}"
-		      when: keygen.rc == 1
-		      with_items: '{{ keyscan.stdout_lines|default([]) }}'
+    - name: add ssh-key to local known_hosts
+      lineinfile:
+        name: ~/.ssh/known_hosts
+        create: yes
+        line: "{{ item }}"
+      when: keygen.rc == 1
+      with_items: '{{ keyscan.stdout_lines|default([]) }}'
 ```
 你可以看到，头是这样写的`#!/usr/bin/env ansible-playbook`，这意味着，上面一段可以保存着`shell`脚本，然后执行即可。当然你也可以保存成纯粹的文本文件，然后用`ansible-playbook`去执行。
 
