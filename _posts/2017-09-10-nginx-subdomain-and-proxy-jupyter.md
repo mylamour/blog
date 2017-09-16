@@ -12,7 +12,8 @@ Firstly, Parser a domain name to your vps, (add A record, also your subdomain). 
 for example , in my subdomain, i edit the file `/etc/nginx/conf.d/mldl.conf`, and change it to:
 
 > 
-```
+
+```bash
 server {
     listen 80;
     server_name irc.mldl.site;
