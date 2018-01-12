@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="author" content="lamour" />
+		<title>小技巧 III</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link href="/feed/" rel="alternate" title="lamour" type="application/atom+xml" />
+		<link rel="stylesheet" href="/media/css/style.css" />
+		<link rel="stylesheet" href="/media/css/highlight.css" />
+		<script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="main" role="main">
+				<header>
+				<h1>小技巧 III</h1>
+				</header>
+				<nav>
+				<span><a title="网站首页" class="" href="/">首页</a></span>
+				<span><a title="文章分类" class="" href="/categories/">分类</a></span>
+				<span><a title="标签索引" class="" href="/tags/">标签</a></span>
+				<!--<span><a title="友情链接" class="" href="/links/">链接</a></span>-->
+				<span><a title="留言交流" class="" href="/guestbook/">留言</a></span>
+                                <!--<span><a title="订阅本站" class="" href="/feed.xml">订阅</a></span>-->
+				<span><a title="关于站长" class="" href="/about/">关于</a></span>
+				</nav>
+				<article class="content">
+				<section class="meta">
+<span class="time">
+  <time datetime="2016-06-02">2016-06-02</time>
+</span>
+
+ | 
+<span class="categories">
+  分类
+  
+  <a href="/categories/#HowTo" title="HowTo">HowTo</a>&nbsp;
+  
+</span>
+
+
+ | 
+<span class="tags">
+  标签
+  
+  <a href="/tags/#小手段" title="小手段">小手段</a>&nbsp;
+  
+</span>
+
+</section>
+<section class="post">
+<ul>
+  <li>
+    <p>文件给别人看，最好&lt;font color=blue&gt;存储为pdf格式&lt;/font&gt;，你懂的。&lt;font color=blue&gt;做好的word啊ppt啊，保存时把字体等嵌入进去，这样换个电脑也能用&lt;/font&gt;。最好适当的保存一个低版本的。不用因为乱七八糟的原因重发一遍</p>
+  </li>
+  <li>删除恶意文件的方法和思路（朋友来拷权利的游戏S06给我的U盘中了快捷方式病毒）
+&gt;	1. 网上百度了个方法，清理，无果。不过隐藏文件夹已经恢复，但快捷方式无法删除，每次删除，必然恢复。
+    <ol>
+      <li>用everything找到了电脑中出现的所有fuck girl的vbs脚本，发现在local/tmp有一份，但删除不掉</li>
+      <li>vbs脚本已经加载到wscipt中了，所以结束这个进程，再去删除，搞定</li>
+    </ol>
+  </li>
+  <li>网页文件保存，
+&gt;	+ Ctrl+P打印–&gt;另存为pdf
+    <ul>
+      <li>Ctrl+S保存，但是保存时会有一个文件夹出现，所以保存时选择仅仅保存html</li>
+    </ul>
+  </li>
+  <li>
+    <p>发现一个好玩的linux工具叫做boxes,用来生成ASCll字符
+&gt; <img src="../image/boxes/boxes2.png" alt="dd" />
+  <img src="../image/boxes/boxes3.png" alt="dd" />
+&gt; 类似还有matrix,sl,等等 apt-get install 就可以玩了</p>
+  </li>
+  <li>
+    <p>善用Fiddler或者Wireshark抓包，分析一下(其实看一眼算不上分析)，就能找到真正的地址，通过Wireshark得到的数据可以导出所有数据为各种格式，也可以单独导出某段数据，还可以TCP FLLOW， 还可以过滤查询，这个过滤查询功能都有。Fiddler还可以作为同一局域网代理，抓流经手机的流量。</p>
+  </li>
+  <li>
+    <p>如果速度不佳，考虑换换源，包括但不限于ubuntu源，ruby源等</p>
+  </li>
+  <li>
+    <p>有时候windos配置开发环境很蛋疼，对于复杂的，linux也一样，这时候不如选择配置好的镜像，直接载入虚拟机，同时<a href="https://www.docker.com/">docker</a>的使用也节省了很多的时间。当然也可以考虑下云端环境的应用，像编程的<a href="https://c9.io/">Cloud9</a>,写latex去<a href="http://sharelatex.com">ShareLatex</a>,省的自己配置latex环境了，而且编译速度比自己电脑快多了。</p>
+  </li>
+  <li>
+    <p>shell换成zsh 并使用 oh-my-zsh</p>
+  </li>
+  <li>
+    <p>youtube 上下载东西，用那个savefrom.net上的插件下载的话，实在是慢，不能完全利用vpn,所以只使用其获取链接，然后交给迅雷来下。还可以用youtube-dl命令行工具。</p>
+  </li>
+  <li>
+    <p>有时候可以直接保存一个网页下来，然后nodepad++开始正则搜索，想要下载的链接全部到手。当然也可以直接在网页上搜索</p>
+  </li>
+  <li>不要局限于本地，找不到都可以去找云端资源，包括但不限与电影，pdf转换，正则匹配，加密解密，云端编辑器，开发环境，资源是种东西，跟着需求变得。哪里都可以有。</li>
+</ul>
+
+<blockquote>
+  <div class="highlighter-rouge"><pre class="highlight"><code>警示：  &gt;	* 对于有重要信息或敏感信息的电脑，请杜绝别人U盘插入。 &gt;	* 无论是什么错误，基本上只要思路对，抽丝剥茧，顺藤摸瓜，肯定搞定。 &gt; 	* 要记得自己的目的是什么，写代码，省时间，还是锻炼配置能力，然后选择
+</code></pre>
+  </div>
+</blockquote>
+
+<p>有的记不起来了，还有正则很有用，mongo不要在windows下用，太坑。</p>
+
+
+</section>
+<section align="right">
+<br/>
+<span>
+	<a  href="/Mongo-And-HanTing/" class="pageNav"  >上一篇</a>
+	&nbsp;&nbsp;&nbsp;
+	<a  href="/sublime-useful/" class="pageNav"  >下一篇</a>
+</span>
+</section>
+
+	
+	<div class="ds-thread" />
+		
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"lamour"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+
+
+				</article>
+			</div>
+
+			<footer>
+			<p><small>
+				<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/cn/" target="_blank" title="许可协议">©</a> 2014 - 2016 <a href="/about/">lamour</a>
+			</small></p>
+			</footer>
+
+		</div>
+	</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="author" content="lamour" />
+		<title>Jmeter And PostMan</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link href="/feed/" rel="alternate" title="lamour" type="application/atom+xml" />
+		<link rel="stylesheet" href="/media/css/style.css" />
+		<link rel="stylesheet" href="/media/css/highlight.css" />
+		<script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="main" role="main">
+				<header>
+				<h1>Jmeter And PostMan</h1>
+				</header>
+				<nav>
+				<span><a title="网站首页" class="" href="/">首页</a></span>
+				<span><a title="文章分类" class="" href="/categories/">分类</a></span>
+				<span><a title="标签索引" class="" href="/tags/">标签</a></span>
+				<!--<span><a title="友情链接" class="" href="/links/">链接</a></span>-->
+				<span><a title="留言交流" class="" href="/guestbook/">留言</a></span>
+                                <!--<span><a title="订阅本站" class="" href="/feed.xml">订阅</a></span>-->
+				<span><a title="关于站长" class="" href="/about/">关于</a></span>
+				</nav>
+				<article class="content">
+				<section class="meta">
+<span class="time">
+  <time datetime="2016-10-05">2016-10-05</time>
+</span>
+
+ | 
+<span class="categories">
+  分类
+  
+  <a href="/categories/#全栈工程师" title="全栈工程师">全栈工程师</a>&nbsp;
+  
+</span>
+
+
+ | 
+<span class="tags">
+  标签
+  
+  <a href="/tags/#知识回顾" title="知识回顾">知识回顾</a>&nbsp;
+  
+</span>
+
+</section>
+<section class="post">
+<h2 id="section">题记</h2>
+<p>学技术的时候没空，有空的时间不想写。也算是明白别人长期写一份博客是多么的有毅力。
+本来是打算写成两篇，但本来的本来觉得这个都没什么可写的。像一些软件这种东西都应该是上手。No matter what, 还是写了，算是有所记录吧。</p>
+
+<h2 id="section-1">前因</h2>
+<p>大概又是一个月前，参与到部分API的编写以及交叉测试。就刚好用到了最开始学习NodeJs时的一款调试工具:Postman,当时只是顺手玩了一下，并没有用来编写测试脚本等功能。因此当重新拿起Postman时就花了一点时间去写测API的脚本。现在才知道为什么课本中说应该是由测试工程师来设定编程规范，给出单个的编写用例。当然，我是指真正的工程师，不是只会用工具的测试人员。也算了解到软件工程的重要性和文档编写的重要性。以前自己写东西的时候，都是随便写，现在自己都是设计好规范：API格式，变量命名。请求方式，返回数据，传递参数等等都是先编写好文档，然后再去编写程序的。规范性的重要不言而喻。</p>
+
+<p><code class="highlighter-rouge">shell
+awk '{printf "%s %s \n","groupName",$1}' filename.txt &gt; testGroup.txt 增加一列
+</code></p>
+
+<ul>
+  <li>Postman</li>
+</ul>
+
+<blockquote>
+  <p><img src="../image/apiTest/Postman_1.jpg" alt="postman_1" />
+<img src="../image/apiTest/Postman_2.jpg" alt="postman_2" /></p>
+</blockquote>
+
+<ul>
+  <li>Jmeter</li>
+</ul>
+
+<blockquote>
+  <p><img src="../image/apiTest/Jmeter_1.jpg" alt="Jmeter_1" />
+<img src="../image/apiTest/Jmeter_2.jpg" alt="Jmeter_2" /></p>
+</blockquote>
+
+<ul>
+  <li>Web Test(本图来自网络，忘了是谁制作的了，谢谢。)</li>
+</ul>
+
+<blockquote>
+  <p><img src="../image/apiTest/web_test.jpg" alt="WebTest" /></p>
+</blockquote>
+
+<h3 id="section-2">后记</h3>
+<p>有时间补一章专门讲测试用例自动化生成。哦，对了，那个Jmeter脚本还可以用<font color="green">Badboy</font>录制自动导出。不过有时候效果并不太好，尤其是进行大批量图片上传的压力测试。哦，还有记得用<font color="green">Spotlight</font>进行服务器端的监控，这样就可以得到CPU/NET/IO/DISK/MEM等服务器上的一些关键信息，进行判断并预测真实负载。</p>
+
+<h3 id="section-3">其他补充</h3>
+<ul>
+  <li>记住你的目的。假如你是为了数据的准确性，精准性。就不要为了一些工具没有的功能模块而自己去劳神编写，以及也不需要花里胡哨的图表。尤其是在工作中，要注意的还有时效。某些功能就需要工具本身提供，没有，一是你没找到，二还是你没找到。三，赶紧换工具吧。</li>
+  <li>tcpcopy这款工具也是压测用的，不过是用于真实的线上环境，将tcp请求引流，copy or dump下来，用于分析。</li>
+  <li>后来，我说：还是去学下《周易》吧……</li>
+</ul>
+
+</section>
+<section align="right">
+<br/>
+<span>
+	<a  href="/mongoose-with-mongo/" class="pageNav"  >上一篇</a>
+	&nbsp;&nbsp;&nbsp;
+	<a  href="/feipin-info/" class="pageNav"  >下一篇</a>
+</span>
+</section>
+
+	
+	<div class="ds-thread" />
+		
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"lamour"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+
+
+				</article>
+			</div>
+
+			<footer>
+			<p><small>
+				<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/cn/" target="_blank" title="许可协议">©</a> 2014 - 2016 <a href="/about/">lamour</a>
+			</small></p>
+			</footer>
+
+		</div>
+	</body>
+</html>

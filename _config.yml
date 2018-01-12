@@ -1,0 +1,16 @@
+markdown: kramdown
+permalink: /:title/
+url: http://iami.xyz
+highlighter: rouge
+name: iami
+description: lamour | Life is Short, But Art is Long.
+author: lamour
+email: mylamour@163.com
+duoshuo: lamour
+weibo: 
+hub: mylamour
+safe: true
+paginate: 100
+about: "Never Stop。"
+gems :
+  - jekyll-paginate

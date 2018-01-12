@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="author" content="lamour" />
+		<title>小技巧 II</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link href="/feed/" rel="alternate" title="lamour" type="application/atom+xml" />
+		<link rel="stylesheet" href="/media/css/style.css" />
+		<link rel="stylesheet" href="/media/css/highlight.css" />
+		<script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="main" role="main">
+				<header>
+				<h1>小技巧 II</h1>
+				</header>
+				<nav>
+				<span><a title="网站首页" class="" href="/">首页</a></span>
+				<span><a title="文章分类" class="" href="/categories/">分类</a></span>
+				<span><a title="标签索引" class="" href="/tags/">标签</a></span>
+				<!--<span><a title="友情链接" class="" href="/links/">链接</a></span>-->
+				<span><a title="留言交流" class="" href="/guestbook/">留言</a></span>
+                                <!--<span><a title="订阅本站" class="" href="/feed.xml">订阅</a></span>-->
+				<span><a title="关于站长" class="" href="/about/">关于</a></span>
+				</nav>
+				<article class="content">
+				<section class="meta">
+<span class="time">
+  <time datetime="2016-05-16">2016-05-16</time>
+</span>
+
+ | 
+<span class="categories">
+  分类
+  
+  <a href="/categories/#HowTo" title="HowTo">HowTo</a>&nbsp;
+  
+</span>
+
+
+ | 
+<span class="tags">
+  标签
+  
+  <a href="/tags/#小手段" title="小手段">小手段</a>&nbsp;
+  
+</span>
+
+</section>
+<section class="post">
+<ul>
+  <li>
+    <p>window下在一个文件夹内，按住shift之后右键，可以看到在此处打开命令行。当然还有一种方法是直接把要执行的文件拖进来即可。不过还是比较喜欢右键终端的方式。</p>
+  </li>
+  <li>
+    <p>下载youtube视频，例如 www.youtube.com/sssdsdsds/ ，直接在youtube前加ss即可，即：www.ssyoutube.com/sssdsdsds</p>
+  </li>
+  <li>
+    <p>Mantra是个很好用的浏览器，其实就是firefox集成完一大堆的插件，对于我来说是比较方便的(此处有坏笑)。</p>
+  </li>
+  <li>
+    <p>mosh而不是ssh，是上次看到freemind的博客之后知道的，很方便，可以保存断网后的状态。很方便就能恢复工作空间，实乃手机远程服务器的必备物品。</p>
+  </li>
+  <li>
+    <p>shell命令之nautilus，这个命令好像都知道吧，就是打开个文件管理窗口，sudo 打开的具有所有权限，满足拖拽欲。</p>
+  </li>
+  <li>
+    <p>删除旧的内核 
+&gt; 
+<code class="highlighter-rouge">
+sudo aptitude purge ~ilinux-image-.*\(\!`uname -r`\)
+</code>
+&gt;</p>
+  </li>
+</ul>
+<font color="red">这个记住写博客的时候要注意markdown中会对\进行转义</font>
+<p>按道理讲是没有问题的，但用这个删掉了我所有内核，启动项都没了。不过别怕，打开livecd搞个同版本的先拷进去就能用了。</p>
+
+<ul>
+  <li>jekyll好像有问题了，需要在_config.yml中加入
+&gt;<br />
+<code class="highlighter-rouge">
+  gems :
+      - jekyll-paginate
+</code></li>
+</ul>
+
+<font color="red"> 这个一定要注意格式 </font>
+
+<ul>
+  <li>对了，有时候挂载不了盘，ntfs格式的用ntfsfix /dev/sda3(那个你挂载不了的设备)，
+但是ext格式的呢，可以先去media下面建个文件夹sda3（文件夹名字可以随意），然后mount即可
+&gt; 
+<code class="highlighter-rouge">bash
+$ mkdir /media/sda3
+$ mount /dev/sda3 /media/sda3
+</code>
+再一次，只想到了这么多，有时间再加吧。</li>
+</ul>
+
+
+</section>
+<section align="right">
+<br/>
+<span>
+	<a  href="/Crawl-Freom-Little-III/" class="pageNav"  >上一篇</a>
+	&nbsp;&nbsp;&nbsp;
+	<a  href="/Mongo-And-HanTing/" class="pageNav"  >下一篇</a>
+</span>
+</section>
+
+	
+	<div class="ds-thread" />
+		
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"lamour"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+
+
+				</article>
+			</div>
+
+			<footer>
+			<p><small>
+				<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/cn/" target="_blank" title="许可协议">©</a> 2014 - 2016 <a href="/about/">lamour</a>
+			</small></p>
+			</footer>
+
+		</div>
+	</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="author" content="lamour" />
+		<title>小技巧 I</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link href="/feed/" rel="alternate" title="lamour" type="application/atom+xml" />
+		<link rel="stylesheet" href="/media/css/style.css" />
+		<link rel="stylesheet" href="/media/css/highlight.css" />
+		<script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="main" role="main">
+				<header>
+				<h1>小技巧 I</h1>
+				</header>
+				<nav>
+				<span><a title="网站首页" class="" href="/">首页</a></span>
+				<span><a title="文章分类" class="" href="/categories/">分类</a></span>
+				<span><a title="标签索引" class="" href="/tags/">标签</a></span>
+				<!--<span><a title="友情链接" class="" href="/links/">链接</a></span>-->
+				<span><a title="留言交流" class="" href="/guestbook/">留言</a></span>
+                                <!--<span><a title="订阅本站" class="" href="/feed.xml">订阅</a></span>-->
+				<span><a title="关于站长" class="" href="/about/">关于</a></span>
+				</nav>
+				<article class="content">
+				<section class="meta">
+<span class="time">
+  <time datetime="2015-02-23">2015-02-23</time>
+</span>
+
+ | 
+<span class="categories">
+  分类
+  
+  <a href="/categories/#HowTo" title="HowTo">HowTo</a>&nbsp;
+  
+</span>
+
+
+ | 
+<span class="tags">
+  标签
+  
+  <a href="/tags/#小手段" title="小手段">小手段</a>&nbsp;
+  
+</span>
+
+</section>
+<section class="post">
+<ul>
+  <li>
+    <p>下载东西老是显示文件有危害，无论是任何文件，
+怎么办呢。直接下载结束的时候改文件名就行了</p>
+  </li>
+  <li>
+    <p>浏览器下载的时候网速很慢，那么复制下载链接到迅雷吧。</p>
+  </li>
+  <li>
+    <p>记住用不同的搜索引擎搜不同的</p>
+  </li>
+  <li>
+    <p>想我最开始接触Ubuntu之后，总是折腾，然后图形界面没了，最开始的解决办法是，操作回退，然而没卵用，
+可以安装其他桌面，重新安装桌面，其实最方便的就是apt-get install xorg-server</p>
+  </li>
+  <li>
+    <p>网页中保存过密码，密码忘了，一是通过浏览器已保存的查看，另外就是直接查看源码，定位到password，把其type改为text即可，一下就能看见</p>
+  </li>
+  <li>
+    <p>碰见收费软件，尤其是jetbrains系列的，哪个115的license server好像不能用了，不过没关系，在激活30天试用前，把电脑日期调到后几十年即可。当然我不提倡盗版，有钱的情况下我会尽量支持正版——————</p>
+  </li>
+  <li>
+    <p>装完ubuntu,开机却是Grub Rescue,那么，首先确定的是已经装上去了，然后看看在哪个分区，设置引导。</p>
+  </li>
+</ul>
+
+<blockquote>
+
+  <ul>
+    <li>set root = (hd0,msdos4)</li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li>set prefix = (hd0, msdos4)/usr/grub</li>
+    <li>insmod normal normal</li>
+    <li>set cmdpath</li>
+  </ul>
+
+  <p>等进去之后更新下GRUB即可。</p>
+</blockquote>
+
+<hr />
+<hr />
+<p>就想起这么多</p>
+
+</section>
+<section align="right">
+<br/>
+<span>
+	<a  href="/CrossGFW/" class="pageNav"  >上一篇</a>
+	&nbsp;&nbsp;&nbsp;
+	<a  href="/Jekyll-and-Markdown/" class="pageNav"  >下一篇</a>
+</span>
+</section>
+
+	
+	<div class="ds-thread" />
+		
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"lamour"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+
+
+				</article>
+			</div>
+
+			<footer>
+			<p><small>
+				<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/cn/" target="_blank" title="许可协议">©</a> 2014 - 2016 <a href="/about/">lamour</a>
+			</small></p>
+			</footer>
+
+		</div>
+	</body>
+</html>

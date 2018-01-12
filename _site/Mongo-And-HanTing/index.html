@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="author" content="lamour" />
+		<title>Mongo的故事</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link href="/feed/" rel="alternate" title="lamour" type="application/atom+xml" />
+		<link rel="stylesheet" href="/media/css/style.css" />
+		<link rel="stylesheet" href="/media/css/highlight.css" />
+		<script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="main" role="main">
+				<header>
+				<h1>Mongo的故事</h1>
+				</header>
+				<nav>
+				<span><a title="网站首页" class="" href="/">首页</a></span>
+				<span><a title="文章分类" class="" href="/categories/">分类</a></span>
+				<span><a title="标签索引" class="" href="/tags/">标签</a></span>
+				<!--<span><a title="友情链接" class="" href="/links/">链接</a></span>-->
+				<span><a title="留言交流" class="" href="/guestbook/">留言</a></span>
+                                <!--<span><a title="订阅本站" class="" href="/feed.xml">订阅</a></span>-->
+				<span><a title="关于站长" class="" href="/about/">关于</a></span>
+				</nav>
+				<article class="content">
+				<section class="meta">
+<span class="time">
+  <time datetime="2016-06-01">2016-06-01</time>
+</span>
+
+ | 
+<span class="categories">
+  分类
+  
+  <a href="/categories/#学习数据挖掘的路上" title="学习数据挖掘的路上">学习数据挖掘的路上</a>&nbsp;
+  
+</span>
+
+
+ | 
+<span class="tags">
+  标签
+  
+  <a href="/tags/#学习笔记" title="学习笔记">学习笔记</a>&nbsp;
+  
+  <a href="/tags/#数据存储" title="数据存储">数据存储</a>&nbsp;
+  
+</span>
+
+</section>
+<section class="post">
+<h2 id="csv">汉庭csv</h2>
+<p>汉庭的2000万数据，很老的裤子了，拿出来练练mongo
+&gt; <code class="highlighter-rouge">find ./ -type f -name "*.csv"  -exec mongoimport -d hanting -c human --type csv --headerline {} \;</code></p>
+
+<ul>
+  <li>关于导入导出
+&gt;<code class="highlighter-rouge">$mongoimport -d dbname -c collectionsname --type csv --headerline inputfilname.csv</code></li>
+  <li>
+    <p>很明显不用多说,headerline是看csv文件具不具有头字段
+&gt;<code class="highlighter-rouge">$mongoexport -d dbname -c collectionsname -o outputfilename.csv</code></p>
+  </li>
+  <li>关于备份和恢复
+&gt; <code class="highlighter-rouge">mongodump -h localhost --post 27017</code></li>
+  <li>数据库内容导出为BSON文件
+&gt; <code class="highlighter-rouge">mongorestore -h localhost --port 27017 dump</code></li>
+  <li>如果说是导入到一个已经存在数据库里，那么使用 <code class="highlighter-rouge">mongorestore -h localhost --port 271707 --drop /path/to/you/dump</code>, 还有一种是给予数据文件的备份，但是这种的话快虽快，但是却要锁定数据库。
+csv 数据一共是 2.9G 导入到数据库中一共是 15.946GB，大概花费了9分钟左右，而且数据一共是1400+万条左右，并没有宣称地2000万，也可能是下的不全。对于我这个临时装的系统，直接占去了将近1/3的空间，不过总体来讲还是比较满意。</li>
+</ul>
+
+<p>之前在windows下导入时，仅仅导入了200W不到的数据就花费了很长时间，最后由于没能跳过一个错误数据还终止了。不过对于错误数据，直接sed替换下就行了。windows肯定干不了吧。</p>
+
+<p>导入的过程中出现的错误数据会自动跳过，这个好。</p>
+
+<h1 id="section">数据库</h1>
+
+<blockquote>
+  <p><code class="highlighter-rouge">db.account.aggregate([{ $group: {_id: {$month:"$createdAt"},all:{ $sum: 1 }}}]);</code></p>
+</blockquote>
+
+<ul>
+  <li>在mongo里面，获取当月新注册的用户。关键字还可以是<code class="highlighter-rouge">$year,$day</code>等，$createdAt是你自己插入数据记录的标准时间</li>
+</ul>
+
+<blockquote>
+  <p><code class="highlighter-rouge"> $mongod --config /path/file/to/you/mongo.config	</code></p>
+</blockquote>
+
+<ul>
+  <li>mongo.config文件里面包含了log路径,db路径，还可以添加其他设置。之前win7升级win10，mongo的环境变量就没了。懒得添加，就写了批处理，要提的是，可以是.bat也可以.cmd,在脚本里面用start的话可以打开新的cmd界面。</li>
+</ul>
+
+<blockquote>
+  <p><code class="highlighter-rouge">mongod --auth</code></p>
+</blockquote>
+
+<ul>
+  <li>开启身份验证的前提是创建了管理员用户,然后use admin, db.addUser(‘username’,’password’),</li>
+</ul>
+
+<p>突然想起网易50亿的裤子，从mega下了快30G还是放弃了。电脑开了两天，破宿舍晚上又断网。唉，无奈还是删了。我又想起来之前看f4vk写的搭建社工库的教程。无力。
+## Mongo Night
+* 就像mongo in Action中的警告一样，对于大量数据，不要在部署之后再建立索引，而应该事先建立好索引。
+* 当时突然想到要是把Solr和Mongo结合到一起会是怎么样，发现网上已经有了这方面的资料。
+* 最好主从节点复制集至少三个
+* 正确的分片很重要(索引也是)</p>
+
+<p>ps:本来打算的是写成mongo morning to night,把基础知识记下来，后来发现其实没有必要。基本的增删查改没必要写,其他的也不少，我自己就做了8张A4纸的笔记。所以还是自己看看附件吧，下载下来看一遍是比较有用的。</p>
+
+<h2 id="resoures">Resoures:</h2>
+
+<ul>
+  <li><a href="../assets/MongoDB in Action.pdf">MongoDB in Action</a></li>
+  <li><a href="../assets/Ruby and MongoDB Web Development.pdf">Ruby and MongoDB Web Development</a></li>
+  <li><a href="https://docs.mongodb.com/">Mongo Doc</a></li>
+</ul>
+
+
+</section>
+<section align="right">
+<br/>
+<span>
+	<a  href="/Something2/" class="pageNav"  >上一篇</a>
+	&nbsp;&nbsp;&nbsp;
+	<a  href="/Something3/" class="pageNav"  >下一篇</a>
+</span>
+</section>
+
+	
+	<div class="ds-thread" />
+		
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"lamour"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+
+
+				</article>
+			</div>
+
+			<footer>
+			<p><small>
+				<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/cn/" target="_blank" title="许可协议">©</a> 2014 - 2016 <a href="/about/">lamour</a>
+			</small></p>
+			</footer>
+
+		</div>
+	</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="author" content="lamour" />
+		<title>find and grep</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link href="/feed/" rel="alternate" title="lamour" type="application/atom+xml" />
+		<link rel="stylesheet" href="/media/css/style.css" />
+		<link rel="stylesheet" href="/media/css/highlight.css" />
+		<script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="main" role="main">
+				<header>
+				<h1>find and grep</h1>
+				</header>
+				<nav>
+				<span><a title="网站首页" class="" href="/">首页</a></span>
+				<span><a title="文章分类" class="" href="/categories/">分类</a></span>
+				<span><a title="标签索引" class="" href="/tags/">标签</a></span>
+				<!--<span><a title="友情链接" class="" href="/links/">链接</a></span>-->
+				<span><a title="留言交流" class="" href="/guestbook/">留言</a></span>
+                                <!--<span><a title="订阅本站" class="" href="/feed.xml">订阅</a></span>-->
+				<span><a title="关于站长" class="" href="/about/">关于</a></span>
+				</nav>
+				<article class="content">
+				<section class="meta">
+<span class="time">
+  <time datetime="2016-09-10">2016-09-10</time>
+</span>
+
+ | 
+<span class="categories">
+  分类
+  
+  <a href="/categories/#全栈工程师" title="全栈工程师">全栈工程师</a>&nbsp;
+  
+</span>
+
+
+ | 
+<span class="tags">
+  标签
+  
+  <a href="/tags/#知识回顾" title="知识回顾">知识回顾</a>&nbsp;
+  
+</span>
+
+</section>
+<section class="post">
+<h3 id="findgrep">讲讲find，还有grep</h3>
+<p>之前在stackoverflow看了<a href="http://stackoverflow.com/questions/16956810/how-to-find-all-files-containing-specific-text-on-linux">How to find all files containing specific text on Linux?</a></p>
+
+<h4 id="find">find的基本格式</h4>
+
+<ul>
+  <li><code class="highlighter-rouge">find [path] [options] [tests] [actions]</code></li>
+</ul>
+
+<p>选项简介</p>
+
+<ul>
+  <li><a href="#→.0">path</a> :没啥可说的，路径大家可以试试<code class="highlighter-rouge">find $pwd</code>和<code class="highlighter-rouge">find $PWD</code></li>
+  <li><a href="#1.1">options</a></li>
+  <li><a href="#2.2">tests</a></li>
+  <li><a href="#-.-">actions</a><strong>__</strong>_____点我URL会卖萌</li>
+</ul>
+
+<h3 id="1.1">options</h3>
+<ul>
+  <li>-mount	#不要搜索其他挂载系统</li>
+  <li>-name		查找什么</li>
+  <li>-iname</li>
+</ul>
+
+<blockquote>
+  <p><code class="highlighter-rouge">$  find / -mount -name test print</code></p>
+</blockquote>
+
+<h3 id="2.2">tests</h3>
+<ul>
+  <li>newer otherfile  #比哪个文件新</li>
+  <li>type f			#是文件</li>
+  <li>type d			#是文件夹</li>
+</ul>
+
+<h3 id="-.-">actions</h3>
+<ul>
+  <li>-exec command</li>
+  <li>-ok command</li>
+</ul>
+
+<blockquote>
+  <p>图画的有点丑，哈哈</p>
+</blockquote>
+
+<ul>
+  <li>-exec ls -l {} \;
+<img src="../image/find-options.png" alt="img" /></li>
+</ul>
+
+<font color="red"> 有用的例子</font>
+
+<p>这个例子就是讲如何在当前文件夹下找出包含某个字符的文本。当然这是说明你知道这个字符在这个文件夹下。反过来我出个小问题，假如你想找出包含某个字符的文本，你不知道这个文本在哪，但你知道他包含什么。你知道这个文件里大概有个什么样的字符，你需要查找到他，该怎么办？</p>
+
+<p><code class="highlighter-rouge">bash
+$ find / -type f -exec grep -H 'text-to-find-here' {} \;
+$ grep -rnw '/path/to/somewhere/' -e "pattern"
+</code>
+<img src="../image/grep.png" alt="img" /></p>
+
+<p>还有w是word-regexp,l是show filename not the result itself, grep其实没怎么讲，因为我都是常用的也就是-iroEn几个选项，其他的很少用，剩下的配合awk了</p>
+
+<blockquote>
+  <p>解密就是需要配合-l选项就行了，当时我是不知道shadowsocks在搬瓦工的位置在哪，但我知道配置文件的格式，显而易见。So easy.</p>
+</blockquote>
+
+<h3 id="lsphantomjs">最后，看看ls和phantomjs里面的列文件比较</h3>
+<p>这个列文件比ls快了不少，刚才去找之前的测试记录，但是竟然没了。
+当然既然测试数据找不到了，那就说明这个不具有说服性。暂且列出，放于此处。</p>
+
+<p>```js
+// List all the files in a Tree of Directories</p>
+
+<p>“use strict”;
+var system = require(‘system’);</p>
+
+<p>if (system.args.length !== 2) {
+    console.log(“Usage: phantomjs scandir.js DIRECTORY_TO_SCAN”);
+    phantom.exit(1);                    //exit status mean 1 is wrong
+}</p>
+
+<p>var scanDirectory = function (path) {
+    var fs = require(‘fs’);
+    if (fs.exists(path) &amp;&amp; fs.isFile(path)) {
+        console.log(path);
+    } else if (fs.isDirectory(path)) {
+        fs.list(path).forEach(function (e) {
+            if ( e !== “.” &amp;&amp; e !== “..” ) {    //&lt; Avoid loops
+                scanDirectory(path + ‘/’ + e);
+            }
+        });
+    }
+};</p>
+
+<p>scanDirectory(system.args[1]);
+phantom.exit();</p>
+
+<p>```</p>
+
+<h2 id="resources">Resources</h2>
+<ul>
+  <li><a href="https://help.ubuntu.com/community/find">find (Commuinty Help Wiki)</a></li>
+  <li><a href="https://github.com/ariya/phantomjs/blob/master/examples/scandir.js">pantomjs scandir.js</a></li>
+</ul>
+
+</section>
+<section align="right">
+<br/>
+<span>
+	<a  href="/web-full-stack-think/" class="pageNav"  >上一篇</a>
+	&nbsp;&nbsp;&nbsp;
+	<a  href="/Little-Problem-solved/" class="pageNav"  >下一篇</a>
+</span>
+</section>
+
+	
+	<div class="ds-thread" />
+		
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"lamour"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+
+
+				</article>
+			</div>
+
+			<footer>
+			<p><small>
+				<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/cn/" target="_blank" title="许可协议">©</a> 2014 - 2016 <a href="/about/">lamour</a>
+			</small></p>
+			</footer>
+
+		</div>
+	</body>
+</html>

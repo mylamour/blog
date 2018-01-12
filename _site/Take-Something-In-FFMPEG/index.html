@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="author" content="lamour" />
+		<title>Use ffmpeg to capture video frames</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link href="/feed/" rel="alternate" title="lamour" type="application/atom+xml" />
+		<link rel="stylesheet" href="/media/css/style.css" />
+		<link rel="stylesheet" href="/media/css/highlight.css" />
+		<script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="main" role="main">
+				<header>
+				<h1>Use ffmpeg to capture video frames</h1>
+				</header>
+				<nav>
+				<span><a title="网站首页" class="" href="/">首页</a></span>
+				<span><a title="文章分类" class="" href="/categories/">分类</a></span>
+				<span><a title="标签索引" class="" href="/tags/">标签</a></span>
+				<!--<span><a title="友情链接" class="" href="/links/">链接</a></span>-->
+				<span><a title="留言交流" class="" href="/guestbook/">留言</a></span>
+                                <!--<span><a title="订阅本站" class="" href="/feed.xml">订阅</a></span>-->
+				<span><a title="关于站长" class="" href="/about/">关于</a></span>
+				</nav>
+				<article class="content">
+				<section class="meta">
+<span class="time">
+  <time datetime="2016-08-16">2016-08-16</time>
+</span>
+
+ | 
+<span class="categories">
+  分类
+  
+  <a href="/categories/#全栈工程师" title="全栈工程师">全栈工程师</a>&nbsp;
+  
+</span>
+
+
+ | 
+<span class="tags">
+  标签
+  
+  <a href="/tags/#实习笔记" title="实习笔记">实习笔记</a>&nbsp;
+  
+</span>
+
+</section>
+<section class="post">
+<h3 id="font-colorgreen33325font"><font color="green">上午还在写单元测试，下午就干这件事：抽取一批视频抽取前面3秒，中间3秒，后面3秒的图片。一秒大概25帧</font></h3>
+
+<p>``` shell
+#!/bin/bash</p>
+
+<h1 id="set--e">set -e</h1>
+<p>#去掉后脚本可跳过错误继续运行
+#ls *.mp4 &gt; filelist.txt</p>
+
+<h1 id="du--h-mp4--grep--v-40k--awk-print-2--filelisttxt">du -h *.mp4 | grep -v “4.0K” | awk ‘{print $2}’ &gt; filelist.txt</h1>
+<p>#由于后期发现有的监控视频很小，所以要改。还有不能先awk print需要先grep再进行print</p>
+
+<p>mkdir imageCut
+#cat filelist.txt | while read filename
+#此处属于莫名奇妙不能用while 
+for filename in <code class="highlighter-rouge">cat filelist.txt</code>
+do
+	pathname=$(echo $filename | cut -d “.” -f1 )
+	echo $pathname
+	mkdir $PWD/imageCut/$pathname
+	echo “Process in $filename, and it will be set in $pathname”
+	sleep 1
+	time=<code class="highlighter-rouge">ffprobe -v error -show_entries stream=width,height,bit_rate,duration -of default=noprint_wrappers=1 $filename  | grep "duration" | cut -d "=" -f2 | cut -d "." -f1</code> #获取总的视频时长</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>middletime=`expr $time / 2 - 3`
+endtime=`expr $time - 3`
+echo $middletime
+m_time=$middletime-3
+ffmpeg -ss 00:00 -t 3 -i $filename -q:v 2 -f image2 $PWD/imageCut/$pathname/imagehead-%d.jpg　2&gt;&gt;log.err		#get the first 3 second image frames to des and log the err in current folder
+ffmpeg -ss $middletime -t 3 -i $filename -q:v 2 -f image2 $PWD/imageCut/$pathname/imagmiddle-%d.jpg 2&gt;&gt;log.err	#get the middle 3 second image frames
+ffmpeg -ss $endtime -t 3 -i $filename -q:v 2 -f image2 $PWD/imageCut/$pathname/simageend-%d.jpg 2&gt;&gt;log.err	#get the last 3 second image frames
+
+#mv $(ls *.jpg) $PWD/imageCut/$pathname
+#这样的写法不严谨，脚本通用率就低了，你也不知道该目录下有没有其他img文件。直接在输出时定位过去。
+</code></pre>
+</div>
+
+<p>done</p>
+
+<p>rm -f filelist.txt</p>
+
+<p>```</p>
+
+<h3 id="section">　</h3>
+<p>后来又分析了下errlog，发现中间有一些视频是不能抽取的，但是呢，总的抽取过程中，所有视频基本上都是226张左右，也就是说是正常的，但是6万多张图片中，大概800张抽取错误。现在分析是视频不完整导致的。</p>
+
+</section>
+<section align="right">
+<br/>
+<span>
+	<a  href="/backup-when-learn-web/" class="pageNav"  >上一篇</a>
+	&nbsp;&nbsp;&nbsp;
+	<a  href="/uber-in-nodejs/" class="pageNav"  >下一篇</a>
+</span>
+</section>
+
+	
+	<div class="ds-thread" />
+		
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"lamour"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+
+
+				</article>
+			</div>
+
+			<footer>
+			<p><small>
+				<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/cn/" target="_blank" title="许可协议">©</a> 2014 - 2016 <a href="/about/">lamour</a>
+			</small></p>
+			</footer>
+
+		</div>
+	</body>
+</html>
