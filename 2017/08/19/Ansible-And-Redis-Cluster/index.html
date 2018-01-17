@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Ansible与Redis集群的搭建 | PY.AI</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="学习笔记," />
+  
+
+  <meta name="description" content="前言 : 就是废话啦之前为了给vultr写一篇文档how to build a redis cluster in vulter，后来由于语法问题没有通过，就搁置了。也没有翻译回来贴在自己的博客上。所以还是收拾一下吧。其实只是为了搭建pyspider分布式的。 正文 : 什么是什么东西用ansible，是latern哥推荐的，我呢是从vagrant过度过来的。他们都是基于ssh的。安装很简单pip">
+<meta name="keywords" content="学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ansible与Redis集群的搭建">
+<meta property="og:url" content="http://iami.xyz/2017/08/19/Ansible-And-Redis-Cluster/index.html">
+<meta property="og:site_name" content="PY.AI">
+<meta property="og:description" content="前言 : 就是废话啦之前为了给vultr写一篇文档how to build a redis cluster in vulter，后来由于语法问题没有通过，就搁置了。也没有翻译回来贴在自己的博客上。所以还是收拾一下吧。其实只是为了搭建pyspider分布式的。 正文 : 什么是什么东西用ansible，是latern哥推荐的，我呢是从vagrant过度过来的。他们都是基于ssh的。安装很简单pip">
+<meta property="og:updated_time" content="2018-01-17T05:11:33.280Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ansible与Redis集群的搭建">
+<meta name="twitter:description" content="前言 : 就是废话啦之前为了给vultr写一篇文档how to build a redis cluster in vulter，后来由于语法问题没有通过，就搁置了。也没有翻译回来贴在自己的博客上。所以还是收拾一下吧。其实只是为了搭建pyspider分布式的。 正文 : 什么是什么东西用ansible，是latern哥推荐的，我呢是从vagrant过度过来的。他们都是基于ssh的。安装很简单pip">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">慎独</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">慎独</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言-就是废话啦"><span class="toc-text">前言 : 就是废话啦</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#正文-什么是什么东西"><span class="toc-text">正文 : 什么是什么东西</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#后记-其他"><span class="toc-text">后记 : 其他</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Resources"><span class="toc-text">Resources:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-1-Install-Redis-In-Ubuntu-16-04"><span class="toc-text">Step 1: Install Redis In Ubuntu 16.04</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-2-Configure-your-private-network"><span class="toc-text">Step 2 :  Configure your private network</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step3-Configure-Redis-Cluster"><span class="toc-text">Step3 :  Configure  Redis Cluster</span></a>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Ansible-And-Redis-Cluster" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Ansible与Redis集群的搭建</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.08.19</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>mour</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/HowTo/">HowTo</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h4 id="前言-就是废话啦"><a href="#前言-就是废话啦" class="headerlink" title="前言 : 就是废话啦"></a>前言 : 就是废话啦</h4><p>之前为了给vultr写一篇文档<code>how to build a redis cluster in vulter</code>，后来由于语法问题没有通过，就搁置了。也没有翻译回来贴在自己的博客上。所以还是收拾一下吧。其实只是为了搭建<code>pyspider</code>分布式的。</p>
+<h4 id="正文-什么是什么东西"><a href="#正文-什么是什么东西" class="headerlink" title="正文 : 什么是什么东西"></a>正文 : 什么是什么东西</h4><p>用<code>ansible</code>，是latern哥推荐的，我呢是从<code>vagrant</code>过度过来的。他们都是基于<code>ssh</code>的。安装很简单<code>pip install ansible</code>就行了。<br><code>redis</code> 用过吧，缓存队列是最常用的功能。</p>
+<ol>
+<li>创建一个单独的<code>ansible</code>用户，但是记住，要在创建用户的同时创建主目录，负责就很蛋疼了。当时试了很久不行，权限拒绝，后来才发现我添加用户的时候没有创建主目录，因此导致了不能用。主机这一块暂时不讲了，使用<code>ssh</code>秘钥去创建批量机器，或者以一个为模板机器去创建。</li>
+</ol>
+<p>2.当你去连接slave节点时，由于需要ansible的密码，在第一次的时候，会要求验证ssh 指纹，方便起见，可以来一个<code>playbook</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env ansible-playbook</span><br><span class="line">---</span><br><span class="line">- name: accept ssh fingerprint automatically for the first time</span><br><span class="line">  hosts: all</span><br><span class="line">  connection: local</span><br><span class="line">  gather_facts: False</span><br><span class="line"></span><br><span class="line">  tasks:</span><br><span class="line">    - name: &quot;check if known_hosts contains server&apos;s fingerprint&quot;</span><br><span class="line">      command: ssh-keygen -F &#123;&#123; inventory_hostname &#125;&#125;</span><br><span class="line">      register: keygen</span><br><span class="line">      failed_when: keygen.stderr != &apos;&apos;</span><br><span class="line">      changed_when: False</span><br><span class="line"></span><br><span class="line">    - name: fetch remote ssh key</span><br><span class="line">      command: ssh-keyscan -T5 &#123;&#123; inventory_hostname &#125;&#125;</span><br><span class="line">      register: keyscan</span><br><span class="line">      failed_when: keyscan.rc != 0 or keyscan.stdout == &apos;&apos;</span><br><span class="line">      changed_when: False</span><br><span class="line">      when: keygen.rc == 1</span><br><span class="line"></span><br><span class="line">    - name: add ssh-key to local known_hosts</span><br><span class="line">      lineinfile:</span><br><span class="line">        name: ~/.ssh/known_hosts</span><br><span class="line">        create: yes</span><br><span class="line">        line: &quot;&#123;&#123; item &#125;&#125;&quot;</span><br><span class="line">      when: keygen.rc == 1</span><br><span class="line">      with_items: &apos;&#123;&#123; keyscan.stdout_lines|default([]) &#125;&#125;&apos;</span><br></pre></td></tr></table></figure>
+<p>你可以看到，头是这样写的<code>#!/usr/bin/env ansible-playbook</code>，这意味着，上面一段可以保存着<code>shell</code>脚本，然后执行即可。当然你也可以保存成纯粹的文本文件，然后用<code>ansible-playbook</code>去执行。</p>
+<p>执行过之后本机会添加所有指纹，主机配置在<code>/etc/ansible/hosts</code>,接着就可以执行相应的控制了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">root@master:~<span class="comment"># ansible -i /etc/ansible/hosts slave -m ping --ask-pass -u ansible</span></span><br><span class="line">SSH password: </span><br><span class="line">45.76.222.2xx | SUCCESS =&gt; &#123;</span><br><span class="line">    <span class="string">"changed"</span>: <span class="literal">false</span>, </span><br><span class="line">    <span class="string">"ping"</span>: <span class="string">"pong"</span></span><br><span class="line">&#125;</span><br><span class="line">45.76.197.1xx | SUCCESS =&gt; &#123;</span><br><span class="line">    <span class="string">"changed"</span>: <span class="literal">false</span>, </span><br><span class="line">    <span class="string">"ping"</span>: <span class="string">"pong"</span></span><br><span class="line">&#125;</span><br><span class="line">root@master:~<span class="comment"># ansible -i /etc/ansible/hosts slave -m shell -a 'date' --ask-pass -u ansible</span></span><br><span class="line">SSH password: </span><br><span class="line">45.76.197.1xx | SUCCESS | rc=0 &gt;&gt;</span><br><span class="line">Fri Aug 11 07:12:43 UTC 2017</span><br><span class="line"></span><br><span class="line">45.76.222.2xx | SUCCESS | rc=0 &gt;&gt;</span><br><span class="line">Fri Aug 11 07:12:43 UTC 2017</span><br></pre></td></tr></table></figure>
+<p>如果你在host里面写了用户名密码配置，就不再需要在命令行输入,配置文件里面这么写。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[defaults]</span><br><span class="line">host_key_checking=false</span><br><span class="line"></span><br><span class="line">[all:vars]</span><br><span class="line">ansible_connection=ssh</span><br><span class="line">ansible_ssh_user=ansible</span><br><span class="line">ansible_ssh_pass=test</span><br><span class="line"></span><br><span class="line">#hosts</span><br><span class="line">[slave]</span><br><span class="line">45.76.197.1xx</span><br><span class="line">45.76.222.2xx</span><br></pre></td></tr></table></figure>
+<p>至于通过<code>ansible</code>命令行执行，可以参考附属链接。网上的一些<code>ansible</code>教程都忽略了一些东西。自己实践的时候就知道了。</p>
+<p><code>ansible -i inventory/production web -m shell -a &#39;date&#39; --ask-pass -uuser</code></p>
+<h4 id="后记-其他"><a href="#后记-其他" class="headerlink" title="后记 : 其他"></a>后记 : 其他</h4><p>以我说对找房子没有要求，其实是要求的，要求一个正常的环境。干干净净，安安静静。室内空气正常，不是甲醛超标到刺鼻，声音吵到带耳塞睡觉。厕所和厨房脏到自己打理，然后还是会变脏。仅此而已。这是有多么正常的事情。原来那些看起来很正常的事情背后有着这么多的努力。技术分享会也一样。<br>以前说对找工作没有要求，其实还是有要求的，希望有所成长。哎，很多事情变得不可预料了。</p>
+<h4 id="Resources"><a href="#Resources" class="headerlink" title="Resources:"></a>Resources:</h4><ul>
+<li><a href="https://blog.goquxiao.com/posts/2015/09/01/ansible-simple-tutorial/" target="_blank" rel="noopener">Ansible Simple Tutorial</a></li>
+<li><a href="https://imlonghao.com/10.html" target="_blank" rel="noopener">pyspider集群部署</a></li>
+</ul>
+<p>原文扯淡如下:</p>
+<blockquote>
+<p>如果要搭建mongo集群也差不多，注意下写法就行了。例如mongo中的<code>bind = [127.0.0.1, 10.99.0.11]</code></p>
+</blockquote>
+<p>We use three machices, Two of them was be setting as slave. </p>
+<h3 id="Step-1-Install-Redis-In-Ubuntu-16-04"><a href="#Step-1-Install-Redis-In-Ubuntu-16-04" class="headerlink" title="Step 1: Install Redis In Ubuntu 16.04"></a>Step 1: Install Redis In Ubuntu 16.04</h3><p>It can be easily  install by <code>apt-get</code>, And In vultr , You can setting it into StartupScripts, Just add this line</p>
+<pre><code>#!bin/bash
+apt install -y redis-server
+</code></pre><p>Just directly deploy 3 instance , when server  was running , also redis-server was running. If you don’t know how to edit startup scripts,  you can just login into your instace , type <code>apt install -y redis-serve</code> , when installed was finished,<br>You would get  a redis server  instance.</p>
+<p>Note:</p>
+<ul>
+<li>For Security , You need enable the private network ,and shouldn’t expose it to public network.</li>
+</ul>
+<h3 id="Step-2-Configure-your-private-network"><a href="#Step-2-Configure-your-private-network" class="headerlink" title="Step 2 :  Configure your private network"></a>Step 2 :  Configure your private network</h3><p>When enable private network and deploy the instance, You would find the private network address from Instance  settings in the control  panel .But  private network  was not working before your configure. So we need edit the network interface, in ubuntu, you can do something like this:<br>       <code>vim /etc/network/interface</code></p>
+<p>Then add this line, In this example, my private network  address is <code>10.99.0.11</code>, you need chang it to your private  ip address . And same to another instance.</p>
+<pre><code>auto ens7
+iface ens7 inet static
+       address 10.99.0.11
+       netmask 255.255.0.0
+       mtu 1450
+</code></pre><p>After change the <code>/etc/network/interface</code> , we need  restart the network services.<br><code>ifup ens7</code></p>
+<p>Note :</p>
+<ul>
+<li>Use <code>service  ssh start</code>, and You can use ssh and private network address to connect  your slave machine.</li>
+</ul>
+<h3 id="Step3-Configure-Redis-Cluster"><a href="#Step3-Configure-Redis-Cluster" class="headerlink" title="Step3 :  Configure  Redis Cluster"></a>Step3 :  Configure  Redis Cluster</h3><p>After step 1 and step2 , we already have a private network and three redis server, Now we need to connect it as a distributed  cluster.<br>Now , we begin to configure our redis server.  conf file was placed in <code>/etc/redis/redis.conf</code>,  First,  we need change the  <code>redis bind</code>, So, You need  change them use the private network address  as their binds.   You need bind it in each<br>instance <code>bind 10.99.0.10</code> or <code>bind 10.99.0.11</code> or  <code>bind 10.99.0.12</code>.  In this example , <code>10.99.0.10</code> was be consider as master , <code>10.99.0.11</code> and <code>10.99.0.12</code> was setting as slave . Next step was important tell the slave redis the master  redis  address and port. So , we need edit the conf file:</p>
+<ul>
+<li><p>In 10.99.0.11 /etc/redis/redis.conf :</p>
+<pre><code>slaveof 10.99.0.10 6379
+</code></pre></li>
+<li><p>In 10.99.0.12 /etc/redis/redis.conf:</p>
+<pre><code>slaveof 10.99.0.10 6379
+</code></pre></li>
+</ul>
+<p>Barring accidents, when you finished this type, the redis server was configure finished . And  you  can get a simple redis cluster. When you restart  your service ,<code>service redis-server restart</code>, It would be working  correctly .</p>
+<p>And  In the slave machine , Use <code>redis-cli -h 10.99.0.10 -p 6379</code>， You would connect the master redis,  To get<br> more  info , just type <code>INFO</code>, And redis would tell you something more.</p>
+<p>Note :</p>
+<ul>
+<li>For Security, You need edit redis conf and enable  password authorization.  <code>requirepass yourpass</code> , Therefore  you need edit slave conf with <code>masterauth &lt;master-password&gt;</code></li>
+</ul>
+<blockquote>
+<ul>
+<li>In 10.99.0.10 /etc/redis/redis.conf :<pre><code>`requirepass wohaha`
+</code></pre></li>
+<li>In 10.99.0.11 /etc/redis/redis.conf : <pre><code>`masterauth wohaha`
+</code></pre></li>
+<li>In 10.99.0.12 /etc/redis/redis.conf:<pre><code>`masterauth wohaha`
+</code></pre></li>
+</ul>
+</blockquote>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">Coffe or tea ?</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/07/22/New-Begin-For-Nothing/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2017/08/25/Volatility-Memory-Analysis/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

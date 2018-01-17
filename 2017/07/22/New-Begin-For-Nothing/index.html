@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>新开始:webshell的检测 | PY.AI</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="学习笔记,机器学习," />
+  
+
+  <meta name="description" content="前言 : 新的开始6.25号开始新的工作，生活慢慢回到主旋律。Not bad,Not Good. 公司给配置了一台新的电脑，从抹上CPU的硅脂，到装上每一颗螺丝，再到刻盘和点亮操作系统。我想像着像一台新的机器一样，开始全速运转。填充自己。 正文 : 如何开始目前要做的软件包含一个模块，叫做webshell的检测。webshell的话就不用介绍了，日站的东西我的博客好像也从来没有介绍过。不跑题了。w">
+<meta name="keywords" content="学习笔记,机器学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="新开始:webshell的检测">
+<meta property="og:url" content="http://iami.xyz/2017/07/22/New-Begin-For-Nothing/index.html">
+<meta property="og:site_name" content="PY.AI">
+<meta property="og:description" content="前言 : 新的开始6.25号开始新的工作，生活慢慢回到主旋律。Not bad,Not Good. 公司给配置了一台新的电脑，从抹上CPU的硅脂，到装上每一颗螺丝，再到刻盘和点亮操作系统。我想像着像一台新的机器一样，开始全速运转。填充自己。 正文 : 如何开始目前要做的软件包含一个模块，叫做webshell的检测。webshell的话就不用介绍了，日站的东西我的博客好像也从来没有介绍过。不跑题了。w">
+<meta property="og:updated_time" content="2018-01-17T05:11:33.280Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="新开始:webshell的检测">
+<meta name="twitter:description" content="前言 : 新的开始6.25号开始新的工作，生活慢慢回到主旋律。Not bad,Not Good. 公司给配置了一台新的电脑，从抹上CPU的硅脂，到装上每一颗螺丝，再到刻盘和点亮操作系统。我想像着像一台新的机器一样，开始全速运转。填充自己。 正文 : 如何开始目前要做的软件包含一个模块，叫做webshell的检测。webshell的话就不用介绍了，日站的东西我的博客好像也从来没有介绍过。不跑题了。w">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">慎独</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">慎独</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言-新的开始"><span class="toc-text">前言 : 新的开始</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#正文-如何开始"><span class="toc-text">正文 : 如何开始</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#正文二-如何检测"><span class="toc-text">正文二 : 如何检测</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#后记"><span class="toc-text">后记</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#遇到以及需要的问题"><span class="toc-text">遇到以及需要的问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Resources"><span class="toc-text">Resources</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-New-Begin-For-Nothing" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">新开始:webshell的检测</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.07.22</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>mour</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/HowTo-学习数据挖掘的路上/">HowTo 学习数据挖掘的路上</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h4 id="前言-新的开始"><a href="#前言-新的开始" class="headerlink" title="前言 : 新的开始"></a>前言 : 新的开始</h4><p>6.25号开始新的工作，生活慢慢回到主旋律。Not bad,Not Good. 公司给配置了一台新的电脑，从抹上CPU的硅脂，到装上每一颗螺丝，再到<br>刻盘和点亮操作系统。我想像着像一台新的机器一样，开始全速运转。填充自己。</p>
+<h4 id="正文-如何开始"><a href="#正文-如何开始" class="headerlink" title="正文 : 如何开始"></a>正文 : 如何开始</h4><p>目前要做的软件包含一个模块，叫做webshell的检测。webshell的话就不用介绍了，日站的东西我的博客好像也从来没有介绍过。不跑题了。<br>webshell就暂且理解成恶意代码吧。实质上也就是恶意代码的检测。<br>针对不同的目标，出现了以下类别为代表的检测方法。</p>
+<ul>
+<li>基于日志的检测方法</li>
+<li>基于流量的检测方法</li>
+<li>基于行为的检测方法</li>
+</ul>
+<p>其实，我到网上看了看，真正有的并不多。一些少之又少的博客也只是大谈方法论和架构。而无论从方法还是架构上，都没有看到有较好的实现。当然，针对asp,jsp,php的可检测做的还是有一些做的蛮不错的。而从方法上划分上，我热为可以分为以下几种(记住，方法可以用在不同的目标上，流量监测可以用到这些方法，日志也可以用到这些方法。当然，理论上是看自己的设计了)</p>
+<ol>
+<li>基于文件相似度的(模糊hash计算)</li>
+<li>基于代码特征值(yara规则匹配)</li>
+<li>基于机器学习的方法(准确说是统计学的机器学习，不少人用朴素贝叶斯和SVM做恶意代码的分类，SVM作为工业级的算法产品，自然毋庸置疑，但是出于考虑到样本问题，还可能出现一些其他问题，例如特征选取，分词提取上的问题。)</li>
+</ol>
+<h5 id="正文二-如何检测"><a href="#正文二-如何检测" class="headerlink" title="正文二 : 如何检测"></a>正文二 : 如何检测</h5><p>下面就三种方法做一个简单</p>
+<ul>
+<li>基于文件相似度,采用<code>ssdeep</code></li>
+</ul>
+<p>基于文件相似度，实际即是考虑到<a href="http://blog.csdn.net/cwqbuptcwqbupt/article/details/7591818" target="_blank" rel="noopener">模糊hash算法</a></p>
+<blockquote>
+<p>一个弱哈希算法，以及一个分片值，用于分片。一个强哈希算法，用于计算每片的哈希。一个压缩映射算法，将每片的哈希值映射为一个更短的值<br>一个比较算法，用于对两个模糊哈希值计算相似程度</p>
+</blockquote>
+<p>简单的讲，就是分片求哈希，然后连接重新计算哈希值。给出的链接里已经比较详细的介绍了该算法的问题。具体可以参考。下面介绍下<code>ssdeep</code>的使用。想使用ssdeep检验文件的相似性，必须首先把已有文件的特征值导出来。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ find ./php -<span class="built_in">type</span> f -<span class="built_in">exec</span> ssdeep -t 80 -bm php.ssdeep &#123;&#125; \; </span><br><span class="line">$ ssdeep -bsm  php.ssdeep  -r ./php -t 80 -c</span><br><span class="line"><span class="comment">#这两种写法是一致的，都是对一个文件夹内的所有文件进行校验。</span></span><br><span class="line"></span><br><span class="line">$ ssdeep -r *  					</span><br><span class="line"><span class="comment"># 或者直接ssdeep * 即可将该文件夹下的所有特征值输出，如需保存，记得重定向到文件。</span></span><br></pre></td></tr></table></figure>
+<p>常用的就是这几个选项，其他的用法比较简单。</p>
+<ul>
+<li>基于代码特征值，采用<code>yara</code></li>
+</ul>
+<p>代码特征，主要是指恶意代码和正常代码由于目的性不同，可以通过文件内的代码类型来进行判断。例如，正常的php代码内是不会有大块的base64加密，也不会有大量的<code>eval</code>和<code>prg_replace</code>。因此，可以通过采用对已知危险的关键字进行匹配，语句进行匹配。从而来检测webshell，但是由于规则的通用性层面来讲，必然会出现不小的误报情况。Yara是谷歌开源的一款模式匹配引擎，可以对文本内容进行匹配，从而进行检测。当然，不止可以对于文本内容，还可以对二进制文件进行模式匹配，甚至还可以匹配内存中的某段值，来以此进行检验。是目前很屌的一款开源引擎。命令行使用的话，最简单的可以是 <code>yara -r ./xxx/rule/xxx.yar /target/directory</code>下面我们可以通过一段简单的针对php的yara规则进行分析。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">rule DangerousPhp</span><br><span class="line">&#123;</span><br><span class="line">    strings:</span><br><span class="line">        $system = &quot;system&quot; fullword nocase  // localroot bruteforcers have a lot of this</span><br><span class="line"></span><br><span class="line">        $ = &quot;array_filter&quot; fullword nocase</span><br><span class="line">        $ = &quot;assert&quot; fullword nocase</span><br><span class="line">        $ = &quot;backticks&quot; fullword nocase</span><br><span class="line">        $ = &quot;call_user_func&quot; fullword nocase</span><br><span class="line">        $ = &quot;eval&quot; fullword nocase</span><br><span class="line">        $ = &quot;exec&quot; fullword nocase</span><br><span class="line">        $ = &quot;fpassthru&quot; fullword nocase</span><br><span class="line">        $ = &quot;fsockopen&quot; fullword nocase</span><br><span class="line">        $ = &quot;function_exists&quot; fullword nocase</span><br><span class="line">        $ = &quot;getmygid&quot; fullword nocase</span><br><span class="line">        $ = &quot;shmop_open&quot; fullword nocase</span><br><span class="line">        $ = &quot;mb_ereg_replace_callback&quot; fullword nocase</span><br><span class="line">        $ = &quot;passthru&quot; fullword nocase</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从上面的规则(摘自<a href="https://github.com/nbs-system/php-malware-finder/blob/master/php-malware-finder/php.yar" target="_blank" rel="noopener">php-malware-finder</a>)中可以看出，是对<code>eval</code>,<code>exec</code>,<code>assert</code>等关键词进行无大小命中，即可判断为危险PHP文件，同样，这种方法会导致误判率较高，因此需要采用白名单过滤的方法。通过对文件的md5或者sha1进行校验，存在白名单中，即可进行一定的过滤。例如，wordpress,joomla，discuz等等。规则的编写方式要<a href="http://yara.readthedocs.io/en/v3.6.0/writingrules.html" target="_blank" rel="noopener">参考文档</a>，类C写法，还是比较简单易懂的。同时，我们可以利用已经公开的webshell的yara特征数据库进行检测，去提高正确率。yara还是需要详细的学习的。</p>
+<ul>
+<li>基于机器学习的方法</li>
+</ul>
+<p>当然，到最后。必不可少的要讲下机器学习的方法。目前主流是基于统计学的机器学习方法。此处，退一步讲，在文本分类上，采用朴素贝叶斯的较多，SVM也不乏有人在做。朴素贝叶斯是基于贝叶斯定理，计算先验概率和后验概率的。假设在事件A发生的情况下，事件B发生的概率。当然，算法理解后，工程实现一点也不难，因为有现成的库可以使用。但是此处，我们并没有采用朴素贝叶斯的方法。而是采用了一个<a href="https://github.com/dennybritz/cnn-text-classification-tf" target="_blank" rel="noopener">基于CNN的文本二分类模型</a>。具体的网络设计可以查看论文。该模型是将已标记的文本按行输入，预处理之后读入第一层网络，网络的大小是以该行最长单词长度作为宽度，以单词个数作为长度，将其映射为一个二维向量，然后再进行单行的特征提取，然后对每一行进行选取特征。这个其实是基于word2vec实现的。最开始的时候，我也是打算采用word2vec，进行处理。在学习了TF-IDF和n-gram之后，也是突发奇想搜索了一下有没有基于文本直接进行分类的。恰好发现了这个项目，感谢作者。中间其实还有一些问题，比如文本文件无法读取等。不过还好，最后采用这个输出了一个比较好的结果。但是由于这个二维向量作为一个大的输入，如果你的文本稍长一些，就会导致非常之吃内存。然后崩掉。我是拿到服务器上，把样本读进去之后大概用了40G的内存。在本机时候是崩溃掉了。</p>
+<p>相对来讲ssdeep，yara来讲，这个是精确度最高的，并且针对ssdeep无法检测的小文件，也可以用其进行正确的判断。</p>
+<h4 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h4><p>这三种方法可以被应用到不同的检测目标上去，采用基于流量拦截的话，就去采集一批恶意请求的样本，之后是进行相似度校验，还是规则命中，或者采用机器学习。都是可以的。如果需要实时检测的话，可以通过对web服务提供一个中间件，把上传文件的请求经过该webshell检测中间件即可。可以部署成单独的微服务。从垂直方向拆分业务，并且将可维护成本降到最低。<br>总体来讲，效果还是不错。但是Yara和ssdeep对平台有一定的依赖性，所以分离到windows下使用有一定的麻烦。</p>
+<h4 id="遇到以及需要的问题"><a href="#遇到以及需要的问题" class="headerlink" title="遇到以及需要的问题"></a>遇到以及需要的问题</h4><ul>
+<li>ssdeep针对较小的文件不能生成有效的特征值</li>
+<li>yara可以针对单个文件的多条规则进行命中</li>
+<li>机器学习过程中样本较少</li>
+<li>白名单和规则应该由专人维护</li>
+<li>是否可以通过GAN网络，自动学习到并生成攻击性代码？</li>
+</ul>
+<h4 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h4><ul>
+<li><a href="https://github.com/nbs-system/php-malware-finder" target="_blank" rel="noopener">php malware finder</a></li>
+<li><a href="https://github.com/VirusTotal/yara" target="_blank" rel="noopener">yara</a></li>
+<li><a href="https://github.com/Neo23x0/yarGen" target="_blank" rel="noopener">yarGen rule</a></li>
+<li><a href="https://github.com/emposha/Shell-Detector" target="_blank" rel="noopener">Shell-Detector</a></li>
+<li><a href="https://github.com/dennybritz/cnn-text-classification-tf" target="_blank" rel="noopener">CNN Text Classification</a></li>
+<li><a href="https://arxiv.org/abs/1408.5882v2" target="_blank" rel="noopener">CNN Text Classification论文</a></li>
+<li><a href="http://ssdeep.sourceforge.net/" target="_blank" rel="noopener">ssdeep</a></li>
+<li><a href="http://blog.csdn.net/cwqbuptcwqbupt/article/details/7591818" target="_blank" rel="noopener">模糊hash算法</a></li>
+<li><a href="https://github.com/tennc/webshell" target="_blank" rel="noopener">webshell</a></li>
+<li><a href="https://github.com/ysrc/webshell-sample" target="_blank" rel="noopener">webshell-sample</a></li>
+<li><a href="https://github.com/fuzzdb-project/fuzzdb" target="_blank" rel="noopener">fuzzdb</a></li>
+</ul>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">Coffe or tea ?</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/06/18/Review-S09-Simple-For-Mom/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2017/08/19/Ansible-And-Redis-Cluster/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

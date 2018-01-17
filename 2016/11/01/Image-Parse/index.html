@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>ffmpeg Simpley Useage | PY.AI</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="实习笔记," />
+  
+
+  <meta name="description" content="###前几天公司的人去北京参加一个视频搜索的比赛，然后发回来组委对数据处理的要求   画中画   123456789101112ffmpeg -y -i o_oC.mp4 -i y1.MP4 \-strict experimental \-filter_complex \&quot;[1:a] atrim=15:30,adelay=5000|5000 [a1]; \[0:a][a1] amix [outa]">
+<meta name="keywords" content="实习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ffmpeg Simpley Useage">
+<meta property="og:url" content="http://iami.xyz/2016/11/01/Image-Parse/index.html">
+<meta property="og:site_name" content="PY.AI">
+<meta property="og:description" content="###前几天公司的人去北京参加一个视频搜索的比赛，然后发回来组委对数据处理的要求   画中画   123456789101112ffmpeg -y -i o_oC.mp4 -i y1.MP4 \-strict experimental \-filter_complex \&quot;[1:a] atrim=15:30,adelay=5000|5000 [a1]; \[0:a][a1] amix [outa]">
+<meta property="og:image" content="http://iami.xyz/images//imageParser.jpg">
+<meta property="og:updated_time" content="2018-01-17T05:11:33.276Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ffmpeg Simpley Useage">
+<meta name="twitter:description" content="###前几天公司的人去北京参加一个视频搜索的比赛，然后发回来组委对数据处理的要求   画中画   123456789101112ffmpeg -y -i o_oC.mp4 -i y1.MP4 \-strict experimental \-filter_complex \&quot;[1:a] atrim=15:30,adelay=5000|5000 [a1]; \[0:a][a1] amix [outa]">
+<meta name="twitter:image" content="http://iami.xyz/images//imageParser.jpg">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">慎独</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">慎独</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Image-Parse" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">ffmpeg Simpley Useage</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.11.01</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>mour</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/全栈工程师/">全栈工程师</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>###前几天公司的人去北京参加一个视频搜索的比赛，然后发回来组委对数据处理的要求</p>
+<p><img src="/images//imageParser.jpg" alt="imageParser"></p>
+<ul>
+<li>画中画</li>
+</ul>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -y -i o_oC.mp4 -i y1.MP4 \</span><br><span class="line">-strict experimental \</span><br><span class="line">-filter_complex \</span><br><span class="line">"[1:a] atrim=15:30,adelay=5000|5000 [a1]; \</span><br><span class="line">[0:a][a1] amix [outa]; \</span><br><span class="line">[1:v] scale=120:-1,setpts=PTS-(10/TB) [1v]; \</span><br><span class="line">[0:v][1v] overlay=x=250:y=250:enable='between(t,5,200)'[outv]" \</span><br><span class="line">-map "[outv]" -map "[outa]" \</span><br><span class="line">-c:a aac -c:v libx264 \</span><br><span class="line">-b:v 1000k \</span><br><span class="line">-r 24 \</span><br><span class="line">output.mp4</span><br></pre></td></tr></table></figure>
+</blockquote>
+<ul>
+<li>视频增加中图片</li>
+</ul>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i y1.MP4 -i image.jpg \</span><br><span class="line">-filter_complex "[0:v][1:v] overlay=25:25:enable='between(t,0,2)'" \</span><br><span class="line">-pix_fmt yuv420p -c:a copy \</span><br><span class="line">addImage.mp4</span><br></pre></td></tr></table></figure>
+<p>可以通过修改between达到插入一段时间或者1秒,scale可以用来控制插入前后的比例。overlay的x,y分别是距离左上角的偏移量。-strict experimental和-strict -2的效果相同，但必须紧跟在-i选项之后，否则报错。</p>
+</blockquote>
+<ul>
+<li>视频压缩</li>
+</ul>
+<blockquote>
+<p><code>ffmpeg -i y2.MP4 -acodec mp2 --psnr 1 compress.mp4</code><br>之前对官网做性能优化的时候，把mp4转webm也能降低视频大小，但是视频压缩并不一定降低视频大小。</p>
+</blockquote>
+<ul>
+<li>Gamma变换</li>
+</ul>
+<blockquote>
+<p><code>ffmpeg -i y1.MP4 -strict -2 -vf &quot;eq=gamma=0.5&quot; gammaChange.mp4</code></p>
+</blockquote>
+<ul>
+<li>增加白噪音</li>
+</ul>
+<blockquote>
+<p><code>ffmpeg -i y7.MP4 -strict -2 -filter_complex &quot;aevalsrc=-2+random(0)&quot; noise.mp4</code></p>
+</blockquote>
+<ul>
+<li>丢帧</li>
+</ul>
+<blockquote>
+<p><code>avconv -r 24 -i src.mov -an -vf fps=fps=12 output.mov</code></p>
+</blockquote>
+<ul>
+<li>增加字幕</li>
+</ul>
+<blockquote>
+<p><code>ffmpeg -i y1.MP4 -f srt -i a.srt -c:v copy -c:a copy -c:s mov_text addSrt.mp4</code></p>
+</blockquote>
+<ul>
+<li>Reference Cut picture in Video</li>
+</ul>
+<blockquote>
+<p><code>ffmpeg -ss [start] -i in.mp4 -t [duration] -c copy out.mp4</code></p>
+</blockquote>
+<font color="green"> Update:2017.06.16  </font>
+
+<ul>
+<li>取3,5秒的视屏转化为gif图片</li>
+</ul>
+<blockquote>
+<p><code>ffmpeg -v warning -ss 3 -t 5 -i input.wmv -vf scale=3000:-1 -gifflags +transdiff -y sample.gif</code></p>
+</blockquote>
+<p>###Other</p>
+<p>下面链接所附，只做参考，部分命令不能使用。以上所有列出代码，均自己使用过的。PS:总是说有时间有时间，其实，我不知道啊。。啊，我的毕设毕设。还有我给你定的拖拉那么多的事情。</p>
+<p>###Resources</p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/4010832/ffmpeg-compress-video" target="_blank" rel="noopener">ffmpeg-compress-video</a></li>
+<li><a href="http://stackoverflow.com/questions/8672809/use-ffmpeg-to-add-text-subtitles" target="_blank" rel="noopener">use-ffmpeg-to-add-text-subtitles</a></li>
+<li><a href="http://superuser.com/questions/377343/cut-part-from-video-file-from-start-position-to-end-position-with-ffmpeg" target="_blank" rel="noopener">cut-part-from-video-file</a></li>
+<li><a href="http://stackoverflow.com/questions/15792105/simulating-tv-noise" target="_blank" rel="noopener">simulating-tv-noise</a></li>
+<li><a href="http://stackoverflow.com/questions/2553448/encode-video-in-reverse" target="_blank" rel="noopener">encode-video-in-reverse</a></li>
+<li><a href="http://superuser.com/questions/849739/how-do-i-reduce-frame-rate-without-increasing-duration" target="_blank" rel="noopener">reduce-frame</a></li>
+<li><a href="https://en.wikibooks.org/wiki/FFMPEG_An_Intermediate_Guide/image_sequence" target="_blank" rel="noopener">image_sequence</a></li>
+<li><a href="http://blog.pkh.me/p/21-high-quality-gif-with-ffmpeg.html" target="_blank" rel="noopener">video_convert_image</a></li>
+</ul>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">Coffe or tea ?</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2016/10/10/feipin-info/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2016/11/09/Get-all-server/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

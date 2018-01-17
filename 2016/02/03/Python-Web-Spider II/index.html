@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Talking about Web Spider II | PY.AI</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="知识回顾," />
+  
+
+  <meta name="description" content="我的零开始 一些库的简单使用 urllib2(用来下载网页)三种下载网页的方法 simply    1234567 import urllib2response = urllib2.urlopen(&apos;http://www.aol.com&apos;)         #直接请求print response.getcode()                              #看看状态码cont =">
+<meta name="keywords" content="知识回顾">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Talking about Web Spider II">
+<meta property="og:url" content="http://iami.xyz/2016/02/03/Python-Web-Spider II/index.html">
+<meta property="og:site_name" content="PY.AI">
+<meta property="og:description" content="我的零开始 一些库的简单使用 urllib2(用来下载网页)三种下载网页的方法 simply    1234567 import urllib2response = urllib2.urlopen(&apos;http://www.aol.com&apos;)         #直接请求print response.getcode()                              #看看状态码cont =">
+<meta property="og:updated_time" content="2018-01-17T05:11:33.276Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Talking about Web Spider II">
+<meta name="twitter:description" content="我的零开始 一些库的简单使用 urllib2(用来下载网页)三种下载网页的方法 simply    1234567 import urllib2response = urllib2.urlopen(&apos;http://www.aol.com&apos;)         #直接请求print response.getcode()                              #看看状态码cont =">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">慎独</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">慎独</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一些库的简单使用"><span class="toc-text">一些库的简单使用</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Python-Web-Spider II" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Talking about Web Spider II</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.02.03</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>mour</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/HowTo/">HowTo</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p><a href="http://iami.xyz/Python-Web-Spider-I">我的零开始</a></p>
+<h2 id="一些库的简单使用"><a href="#一些库的简单使用" class="headerlink" title="一些库的简单使用"></a>一些库的简单使用</h2><ol>
+<li>urllib2(用来下载网页)<br>三种下载网页的方法<blockquote>
+<p>simply</p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">import</span> urllib2</span><br><span class="line"></span><br><span class="line">response = urllib2.urlopen(<span class="string">'http://www.aol.com'</span>)         <span class="comment">#直接请求</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> response.getcode()                              <span class="comment">#看看状态码</span></span><br><span class="line"></span><br><span class="line">cont = response.read()                                <span class="comment">#读取内容，可以在前面加个如果状态码有效</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Add Head, data</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib2</span><br><span class="line"></span><br><span class="line">request = urllib2.Request(url)                  <span class="comment">#创建request对象</span></span><br><span class="line"></span><br><span class="line">request.add_data(<span class="string">'xxx'</span>,<span class="string">'xxx'</span>)                   <span class="comment">#增加数据</span></span><br><span class="line"></span><br><span class="line">request.add_header(<span class="string">'User-Agent'</span>, <span class="string">'Mozilla/5.0'</span>)     <span class="comment">#伪装成浏览器</span></span><br><span class="line"></span><br><span class="line">response = urllibe2.urlopen(request)            <span class="comment">#发送请求</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>advance</p>
+<blockquote>
+<p>其实就是Cookie,Proxy,Redirect相关的,分别是HTTPCookieProcessor , ProxyHandler , HTTPRedirectHandler </p>
+</blockquote>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllibe2, cookielib</span><br><span class="line"></span><br><span class="line">cj = cookielib.CookieJar()</span><br><span class="line"></span><br><span class="line">opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))</span><br><span class="line"></span><br><span class="line">urllib2.install_opener(opener)</span><br><span class="line"></span><br><span class="line">response = urllib2.urlopen(<span class="string">"http://www.google.com/"</span>)</span><br></pre></td></tr></table></figure>
+<ol>
+<li>Beautifuk Soup (用来解析网页)<blockquote>
+<p>从一个Html网页创建一个Beautiful对象，然后可以搜索节点，find_all,find等可以访问节点的名称和属性。当然配合正则表达式更好</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<blockquote>
+<figure class="highlight plain"><figcaption><span>href</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;创建beautifulSoup对象</span><br><span class="line">        `from bs4 import BeautifulSoup`    </span><br><span class="line">        `soup = BeautifulSoup( html_doc,  &apos;html.parser&apos;, from_encoding=&apos;utf-8&apos; )`      </span><br><span class="line">&gt;&gt;&gt;搜索节点</span><br><span class="line">&gt;&gt;&gt;&gt;</span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line">        find_all(nane, attrs, string)      </span><br><span class="line">        node = soup.find_all(&apos;a&apos;)     </span><br><span class="line">        soup.find_all(&apos;a&apos;, href=&apos;1111.html&apos;)</span><br><span class="line">        soup.find_all(&apos;a&apos;, href= re.compile(r&apos;/view/\d+\.htm&apos;))     #正则匹配 </span><br><span class="line">        soup.find_all (&apos;div&apos;, class_= &apos;abc&apos;, string= &apos;Python&apos;)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>访问节点信息<br>&gt;<br>        node.naem<br>        node[‘href’]<br>        node.get_text()</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<ol>
+<li>连接数据库(前提是要安装好数据库)<blockquote>
+<p>PostgreSQL</p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> psycopg2  </span><br><span class="line"></span><br><span class="line">conn = psycopg2.connect(<span class="string">"dbname='dbname' user='username' host='localhost' password='password'"</span>)  </span><br><span class="line"></span><br><span class="line">cur = conn.cursor()  </span><br><span class="line"></span><br><span class="line">cur.execute(<span class="string">"select * from dbtable"</span>)  </span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> cur:  </span><br><span class="line"></span><br><span class="line">     <span class="keyword">print</span> row </span><br><span class="line"></span><br><span class="line"> conn.close()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>ms sql</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> psmssql  </span><br><span class="line"></span><br><span class="line">conn = psmssql.connect(host=<span class="string">'yourhost'</span>, user=<span class="string">'loginname'</span>, password=<span class="string">'password'</span>, database=<span class="string">'dbname'</span>, charset=<span class="string">'utf8'</span>)  </span><br><span class="line"></span><br><span class="line">cur = conn.cursor()  </span><br><span class="line"></span><br><span class="line">cur.execute(<span class="string">'select * from dbtable'</span>)  </span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> cur:  </span><br><span class="line"></span><br><span class="line">        <span class="keyword">print</span> row </span><br><span class="line"></span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>mysql</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> MySQLdb</span><br><span class="line"></span><br><span class="line">conn= MySQLdb.connect( host=<span class="string">'localhost'</span>, port = <span class="number">3306</span>, user=<span class="string">'username'</span>, passwd=<span class="string">'password'</span>, db =<span class="string">'dbname'</span>,)</span><br><span class="line"></span><br><span class="line">cur = conn.cursor()</span><br><span class="line"></span><br><span class="line">cur.execute(<span class="string">"delete from student where grade &gt; 30"</span>)</span><br><span class="line"></span><br><span class="line">cur.close()</span><br><span class="line"></span><br><span class="line">conn.commit()</span><br><span class="line"></span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>资料补充</p>
+<p>  <a href="http://scrapy.org/" target="_blank" rel="noopener">Scrapy</a></p>
+<p>  <a href="http://www.python-requests.org/" target="_blank" rel="noopener">Requests</a></p>
+<p>  <a href="http://casperjs.org" target="_blank" rel="noopener">CasperJS/PhantomJS</a></p>
+<p>  <a href="https://docs.python.org/3/library/html.parser.html" target="_blank" rel="noopener">HtmlParser</a></p>
+<p>  <a href="http://www.zhihu.com/question/38192299" target="_blank" rel="noopener">你见过那些瞠目结舌的爬虫技巧-知乎</a></p>
+<p>  还可以使用一些web框架去写爬虫，例如flask，django（手撕包菜用的就是这个）,tornado</p>
+<p>  <a href="http://www.tornadoweb.org/en/stable/guide/queues.html" target="_blank" rel="noopener">Tornado框架的爬虫示例</a><br>  <a href="http://nutch.apache.org/" target="_blank" rel="noopener">Nutch</a></p>
+<p>  当然其他语言也可以写爬虫，java, ruby,php等，还有go啊，js啊</p>
+</li>
+</ul>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">Coffe or tea ?</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2016/02/02/Jekyll-and-Markdown/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2016/02/03/Python-Web-Spider-I/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

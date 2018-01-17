@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>百度云盘下载的套路 | PY.AI</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="小手段," />
+  
+
+  <meta name="description" content="前言: 都是套路你一定也是烦的不行不行的，下载百度云限速不说，还不能在linux服务器上搞，下面就介绍下如何在Linux服务器上下载文件，并能突破速度限制。  客户端bypy 链接导出助手  出于简便我选择了链接导出，下载下来之后加载插件到chrome，然后导出链接并使用aira2c下载。 aria2c还有web管理界面，使用起来更方便。而且其中一个是pyspider的作者开发的，binux简直太">
+<meta name="keywords" content="小手段">
+<meta property="og:type" content="article">
+<meta property="og:title" content="百度云盘下载的套路">
+<meta property="og:url" content="http://iami.xyz/2017/06/16/Review-S06-Baiduyun-download-Taolu/index.html">
+<meta property="og:site_name" content="PY.AI">
+<meta property="og:description" content="前言: 都是套路你一定也是烦的不行不行的，下载百度云限速不说，还不能在linux服务器上搞，下面就介绍下如何在Linux服务器上下载文件，并能突破速度限制。  客户端bypy 链接导出助手  出于简便我选择了链接导出，下载下来之后加载插件到chrome，然后导出链接并使用aira2c下载。 aria2c还有web管理界面，使用起来更方便。而且其中一个是pyspider的作者开发的，binux简直太">
+<meta property="og:image" content="http://iami.xyz/images//BaiduExport/01.png">
+<meta property="og:image" content="http://iami.xyz/images//BaiduExport/02.png">
+<meta property="og:image" content="http://iami.xyz/images//BaiduExport/03.png">
+<meta property="og:updated_time" content="2018-01-17T05:11:33.280Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="百度云盘下载的套路">
+<meta name="twitter:description" content="前言: 都是套路你一定也是烦的不行不行的，下载百度云限速不说，还不能在linux服务器上搞，下面就介绍下如何在Linux服务器上下载文件，并能突破速度限制。  客户端bypy 链接导出助手  出于简便我选择了链接导出，下载下来之后加载插件到chrome，然后导出链接并使用aira2c下载。 aria2c还有web管理界面，使用起来更方便。而且其中一个是pyspider的作者开发的，binux简直太">
+<meta name="twitter:image" content="http://iami.xyz/images//BaiduExport/01.png">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">慎独</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">慎独</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言-都是套路"><span class="toc-text">前言: 都是套路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Resources"><span class="toc-text">Resources</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Review-S06-Baiduyun-download-Taolu" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">百度云盘下载的套路</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.06.16</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>mour</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/HowTo/">HowTo</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h4 id="前言-都是套路"><a href="#前言-都是套路" class="headerlink" title="前言: 都是套路"></a>前言: 都是套路</h4><p>你一定也是烦的不行不行的，下载百度云限速不说，还不能在linux服务器上搞，下面就介绍下如何在Linux服务器上下载文件，并能突破速度限制。</p>
+<ul>
+<li><a href="https://github.com/houtianze/bypy" target="_blank" rel="noopener">客户端bypy</a></li>
+<li><a href="https://github.com/acgotaku/BaiduExporter" target="_blank" rel="noopener">链接导出助手</a></li>
+</ul>
+<p>出于简便我选择了链接导出，下载下来之后加载插件到<code>chrome</code>，然后导出链接并使用<code>aira2c</code>下载。 aria2c还有web管理界面，使用起来更方便。而且其中一个是<code>pyspider</code>的作者开发的，<code>binux</code>简直太厉害了。</p>
+<ul>
+<li>step1:</li>
+</ul>
+<p><img src="/images//BaiduExport/01.png" alt="export"></p>
+<ul>
+<li>step2</li>
+</ul>
+<p><img src="/images//BaiduExport/02.png" alt="get_link"></p>
+<ul>
+<li>step3 </li>
+</ul>
+<p><img src="/images//BaiduExport/03.png" alt="download"></p>
+<p>step1,2,3略显白痴，小技巧就是拿到链接放在aria2c时批量下载记得在每个下载后面加<code>&amp;</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#下载磁力链接</span></span><br><span class="line">$ aria2c <span class="string">"magnet:?xt=urn:btih:dhsudfhisudhfuidshfisdhfiusdhfsdhiufh&amp;dn=aria2"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#打印种子内的内容</span></span><br><span class="line">$ aria2c -S file.torrent</span><br><span class="line"></span><br><span class="line"><span class="comment">#使用代理</span></span><br><span class="line">$ aria2c --all-proxy=<span class="string">'http://127.0.0.1:8080'</span> http://host/file</span><br><span class="line"></span><br><span class="line"><span class="comment">#下载完成后执行某条命令。</span></span><br><span class="line">$ aria2c --on-download-complete=COMMAND http://example.org/file.iso</span><br></pre></td></tr></table></figure>
+<p>其实<code>aria2c</code>有许多高级的玩法，比<code>wget</code>快的多，多线程，可以直接解析磁力链和种子。可以根据官网的信息接着玩。有空接着补。</p>
+<h4 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h4><ul>
+<li><a href="https://aria2.github.io/" target="_blank" rel="noopener">Aria2c</a></li>
+<li><a href="http://sydi.org/posts/linux/aria2c-usage-sample-cns.html" target="_blank" rel="noopener">Aria2c使用举例</a></li>
+</ul>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">Coffe or tea ?</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/06/15/Review-S04-Interview-or-not/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2017/06/16/Review-S05-Tesseract-lstm-traning-datafile/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

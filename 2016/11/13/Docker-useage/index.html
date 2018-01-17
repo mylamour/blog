@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Docker for daily use | PY.AI</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="学习笔记," />
+  
+
+  <meta name="description" content="12$ docker run -i -t --name alias_container_name images_name $ docker attach container_id someUser don’t need rootsudo usermod -aG docker someUser stop docker container$ docker stop container_id expor">
+<meta name="keywords" content="学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker for daily use">
+<meta property="og:url" content="http://iami.xyz/2016/11/13/Docker-useage/index.html">
+<meta property="og:site_name" content="PY.AI">
+<meta property="og:description" content="12$ docker run -i -t --name alias_container_name images_name $ docker attach container_id someUser don’t need rootsudo usermod -aG docker someUser stop docker container$ docker stop container_id expor">
+<meta property="og:updated_time" content="2018-01-17T05:11:33.276Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Docker for daily use">
+<meta name="twitter:description" content="12$ docker run -i -t --name alias_container_name images_name $ docker attach container_id someUser don’t need rootsudo usermod -aG docker someUser stop docker container$ docker stop container_id expor">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">慎独</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">慎独</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#someUser-don’t-need-root"><span class="toc-text">someUser don’t need root</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#stop-docker-container"><span class="toc-text">stop docker container</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#export-single-file-from-runing-container"><span class="toc-text">export single file from runing container</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#delete-force-or-not"><span class="toc-text">delete force or not</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#remove-all-stoped-container"><span class="toc-text">remove all stoped container</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kill-containers-and-remove-them"><span class="toc-text">kill containers and remove them:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#remove-all-images"><span class="toc-text">remove all images</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mount-the-directory-to-docker"><span class="toc-text">mount the directory to docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#link-container"><span class="toc-text">link container</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker-expose-port"><span class="toc-text">docker expose  port</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Docker-useage" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Docker for daily use</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.11.13</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>mour</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/HowTo/">HowTo</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -i -t --name alias_container_name images_name </span><br><span class="line">$ docker attach container_id</span><br></pre></td></tr></table></figure>
+<h3 id="someUser-don’t-need-root"><a href="#someUser-don’t-need-root" class="headerlink" title="someUser don’t need root"></a>someUser don’t need root</h3><p><code>sudo usermod -aG docker someUser</code></p>
+<h3 id="stop-docker-container"><a href="#stop-docker-container" class="headerlink" title="stop docker container"></a>stop docker container</h3><p><code>$ docker stop container_id</code></p>
+<h3 id="export-single-file-from-runing-container"><a href="#export-single-file-from-runing-container" class="headerlink" title="export single file from runing container"></a>export single file from runing container</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker cp name.txt container_name:/name.txt</span><br><span class="line">$ docker cp container_name:/name.txt name.txt</span><br></pre></td></tr></table></figure>
+<h3 id="delete-force-or-not"><a href="#delete-force-or-not" class="headerlink" title="delete force or not"></a>delete force or not</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker rm container</span><br><span class="line">$ docker rmi images</span><br><span class="line">$ dcoker rmi -f images | docker rm -f container_id</span><br></pre></td></tr></table></figure>
+<h3 id="remove-all-stoped-container"><a href="#remove-all-stoped-container" class="headerlink" title="remove all stoped container"></a>remove all stoped container</h3><p><code>$ docker rm $(docker ps -a -q)</code></p>
+<h3 id="kill-containers-and-remove-them"><a href="#kill-containers-and-remove-them" class="headerlink" title="kill containers and remove them:"></a>kill containers and remove them:</h3><p><code>$ docker rm $(docker kill $(docker ps -aq))</code></p>
+<h3 id="remove-all-images"><a href="#remove-all-images" class="headerlink" title="remove all images"></a>remove all images</h3><p><code>$ docker rmi $(docker images -qf &quot;dangling=true&quot;)</code></p>
+<p><code>docker rmi $(docker images | grep -v &#39;ubuntu\|my-image&#39; | awk {&#39;print $3&#39;})</code></p>
+<h3 id="mount-the-directory-to-docker"><a href="#mount-the-directory-to-docker" class="headerlink" title="mount the directory to docker"></a>mount the directory to docker</h3><p><code>$ docker run -d P --name mnistDemo -v .:/mnistDemo caffe:latest /bin/bash</code></p>
+<h3 id="link-container"><a href="#link-container" class="headerlink" title="link container"></a>link container</h3><p><code>docker run -i -t --name container1 --net=my-network --net-alias=container1 ubuntu:trusty /bin/bash</code></p>
+<h3 id="docker-expose-port"><a href="#docker-expose-port" class="headerlink" title="docker expose  port"></a>docker expose  port</h3><p><code>$ docker run -d -p 80:80 my_image service nginx start</code></p>
+<p>References:</p>
+<ul>
+<li><p><a href="http://stackoverflow.com/questions/16047306/how-is-docker-different-from-a-normal-virtual-machine" target="_blank" rel="noopener">how-is-docker-different-from-a-normal-virtual-machine</a></p>
+</li>
+<li><p><a href="http://stackoverflow.com/questions/21871479/docker-cant-connect-to-docker-daemon" target="_blank" rel="noopener">docker-cant-connect-to-docker-daemon</a></p>
+</li>
+<li><p><a href="http://stackoverflow.com/questions/25324860/how-to-create-a-bidirectional-link-between-containers" target="_blank" rel="noopener">how-to-create-a-bidirectional-link-between-containers</a></p>
+</li>
+<li><p><a href="https://docs.docker.com/engine/reference/commandline/build/" target="_blank" rel="noopener">docker build</a></p>
+</li>
+<li><p><a href="https://docs.docker.com/engine/reference/commandline/commit/" target="_blank" rel="noopener">docker commit</a></p>
+</li>
+</ul>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">Coffe or tea ?</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2016/11/09/Get-all-server/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2016/11/22/Ocr-Jeston-Tk1-In/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

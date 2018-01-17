@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>conda in action | PY.AI</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="知识回顾,学习笔记," />
+  
+
+  <meta name="description" content="无论是使用virtualenv还是conda，本意无非是使开发环境变得干净纯粹，当然我们还可以使用vagrant启动一个虚拟机，在虚拟机里操作，或者docker起一个container也一样。  基础的用法 1234$ conda info --env$ conda create -n testenv$ activate testenv$ deactivate testenv  在linux下你可">
+<meta name="keywords" content="知识回顾,学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="conda in action">
+<meta property="og:url" content="http://iami.xyz/2017/06/14/Review-S02-conda-my-useage/index.html">
+<meta property="og:site_name" content="PY.AI">
+<meta property="og:description" content="无论是使用virtualenv还是conda，本意无非是使开发环境变得干净纯粹，当然我们还可以使用vagrant启动一个虚拟机，在虚拟机里操作，或者docker起一个container也一样。  基础的用法 1234$ conda info --env$ conda create -n testenv$ activate testenv$ deactivate testenv  在linux下你可">
+<meta property="og:updated_time" content="2018-01-17T05:11:33.276Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="conda in action">
+<meta name="twitter:description" content="无论是使用virtualenv还是conda，本意无非是使开发环境变得干净纯粹，当然我们还可以使用vagrant启动一个虚拟机，在虚拟机里操作，或者docker起一个container也一样。  基础的用法 1234$ conda info --env$ conda create -n testenv$ activate testenv$ deactivate testenv  在linux下你可">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">慎独</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">慎独</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Resources"><span class="toc-text">Resources</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Review-S02-conda-my-useage" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">conda in action</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.06.14</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>mour</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/HowTo/">HowTo</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>无论是使用virtualenv还是conda，本意无非是使开发环境变得干净纯粹，当然我们还可以使用<code>vagrant</code>启动一个虚拟机，在虚拟机里操作，或者<code>docker</code>起一个<code>container</code>也一样。</p>
+<ul>
+<li><p>基础的用法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ conda info --env</span><br><span class="line">$ conda create -n testenv</span><br><span class="line">$ activate testenv</span><br><span class="line">$ deactivate testenv</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>linux</code>下你可能需要这样</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">source</span> activate testenv</span><br><span class="line">$ <span class="built_in">source</span> deactivate testenv</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>指定<code>python</code>版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ conda create -n testenv python=27</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除某个虚拟环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ conda env remove --name tensorflow</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使<code>jupyter</code>使用某个虚拟环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">source</span> activate myenv</span><br><span class="line">$ python -m ipykernel install --user --name myenv --display-name <span class="string">"Python (myenv)"</span></span><br><span class="line">$ <span class="built_in">source</span> activate other-env</span><br><span class="line">$ python -m ipykernel install --user --name other-env --display-name <span class="string">"Python (other-env)"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在服务器上启动一个无浏览器的<code>jupyter notebook</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ jupyter notebook --no-browser</span><br><span class="line">$ jupyter notebook --no-browser --port 6699</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>集成<code>pyspark</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#step 1 </span></span><br><span class="line">$ mv spark-1.2.0-bin-hadoop2.4 /opt/spark-1.2.0</span><br><span class="line">$ ln -s /opt/spark-1.2.0 /opt/spark</span><br><span class="line"><span class="comment">#step 2 (长久生效应该将下列的语句写到bashrc文件里，或者zshrc里)</span></span><br><span class="line">$ <span class="built_in">export</span> SPARK_HOME=/opt/spark</span><br><span class="line">$ <span class="built_in">export</span> PATH=<span class="variable">$SPARK_HOME</span>/bin:<span class="variable">$PATH</span></span><br><span class="line">$ <span class="built_in">export</span> PYSPARK_DRIVER_PYTHON=jupyter</span><br><span class="line">$ <span class="built_in">export</span> PYSPARK_DRIVER_PYTHON_OPTS=<span class="string">'notebook'</span></span><br><span class="line"><span class="comment">#step 3 </span></span><br><span class="line">$ pyspark</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>集成 <code>R</code></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; install.packages(c(<span class="string">'repr'</span>, <span class="string">'IRdisplay'</span>, <span class="string">'evaluate'</span>, <span class="string">'crayon'</span>, <span class="string">'pbdZMQ'</span>, <span class="string">'devtools'</span>, <span class="string">'uuid'</span>, <span class="string">'digest'</span>))</span><br><span class="line">devtools::install_github(<span class="string">'IRkernel/IRkernel'</span>)</span><br><span class="line">&gt; IRkernel::installspec()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>当然，docker似乎已经成了更加方便的部署方法，可我觉得哪里缺了点什么。这些东西一定要自己先手动部署一次。之后再使用也知道是个怎么回事了。</p>
+</blockquote>
+<h4 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h4><ul>
+<li><a href="https://blog.sicara.com/get-started-pyspark-jupyter-guide-tutorial-ae2fe84f594f" target="_blank" rel="noopener">pyspark-with-jupyter</a></li>
+<li><a href="https://github.com/jupyter/docker-stacks/tree/master/pyspark-notebook" target="_blank" rel="noopener">docker-pyspakr-jupyter</a></li>
+<li><a href="https://github.com/IRkernel/IRkernel" target="_blank" rel="noopener">IRkernel</a></li>
+</ul>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">Coffe or tea ?</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2016/12/17/Just-Taking-about-code-security/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2017/06/14/Review-S01-localtunnel/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>The Basic Use Of R | PY.AI</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="知识回顾," />
+  
+
+  <meta name="description" content="有天想爬下拉勾的数据看看。而恰恰又在阿里买了9块9一个月的服务器(其实不咋样，安装R的一个包时就死机了)，好像不爬下都对不起这个价格。朋友说先直接在网上搜搜看看有没有现成的，结果就看到了别人用R和rvest去抓拉勾的数据。而之前恰恰买过《R语言实用数据分析和可视化技术》，所以今天就重记录一下学的一些R的基本知识，也好缓解缓解天天背单词的蛋疼生活。包的安装加载卸载 install.packages(">
+<meta name="keywords" content="知识回顾">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Basic Use Of R">
+<meta property="og:url" content="http://iami.xyz/2016/03/27/R-Basiclly Use/index.html">
+<meta property="og:site_name" content="PY.AI">
+<meta property="og:description" content="有天想爬下拉勾的数据看看。而恰恰又在阿里买了9块9一个月的服务器(其实不咋样，安装R的一个包时就死机了)，好像不爬下都对不起这个价格。朋友说先直接在网上搜搜看看有没有现成的，结果就看到了别人用R和rvest去抓拉勾的数据。而之前恰恰买过《R语言实用数据分析和可视化技术》，所以今天就重记录一下学的一些R的基本知识，也好缓解缓解天天背单词的蛋疼生活。包的安装加载卸载 install.packages(">
+<meta property="og:image" content="http://iami.xyz/images//R/Rdataframe.png">
+<meta property="og:image" content="http://iami.xyz/images//R/Rdataframe2.png">
+<meta property="og:updated_time" content="2018-01-17T05:11:33.276Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The Basic Use Of R">
+<meta name="twitter:description" content="有天想爬下拉勾的数据看看。而恰恰又在阿里买了9块9一个月的服务器(其实不咋样，安装R的一个包时就死机了)，好像不爬下都对不起这个价格。朋友说先直接在网上搜搜看看有没有现成的，结果就看到了别人用R和rvest去抓拉勾的数据。而之前恰恰买过《R语言实用数据分析和可视化技术》，所以今天就重记录一下学的一些R的基本知识，也好缓解缓解天天背单词的蛋疼生活。包的安装加载卸载 install.packages(">
+<meta name="twitter:image" content="http://iami.xyz/images//R/Rdataframe.png">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">慎独</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">慎独</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#有天想爬下拉勾的数据看看。而恰恰又在阿里买了9块9一个月的服务器-其实不咋样，安装R的一个包时就死机了-，好像不爬下都对不起这个价格。朋友说先直接在网上搜搜看看有没有现成的，结果就看到了别人用R和rvest去抓拉勾的数据。而之前恰恰买过《R语言实用数据分析和可视化技术》，所以今天就重记录一下学的一些R的基本知识，也好缓解缓解天天背单词的蛋疼生活。"><span class="toc-text">有天想爬下拉勾的数据看看。而恰恰又在阿里买了9块9一个月的服务器(其实不咋样，安装R的一个包时就死机了)，好像不爬下都对不起这个价格。朋友说先直接在网上搜搜看看有没有现成的，结果就看到了别人用R和rvest去抓拉勾的数据。而之前恰恰买过《R语言实用数据分析和可视化技术》，所以今天就重记录一下学的一些R的基本知识，也好缓解缓解天天背单词的蛋疼生活。</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#包的安装加载卸载"><span class="toc-text">包的安装加载卸载</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#R语言基础"><span class="toc-text">R语言基础</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#导入数据-（还可以直接读网络上的数据）"><span class="toc-text">导入数据 （还可以直接读网络上的数据）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#抓取数据"><span class="toc-text">抓取数据</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#后记"><span class="toc-text">后记</span></a>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-R-Basiclly Use" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">The Basic Use Of R</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.03.27</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>mour</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/学习数据挖掘的路上/">学习数据挖掘的路上</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h5 id="有天想爬下拉勾的数据看看。而恰恰又在阿里买了9块9一个月的服务器-其实不咋样，安装R的一个包时就死机了-，好像不爬下都对不起这个价格。朋友说先直接在网上搜搜看看有没有现成的，结果就看到了别人用R和rvest去抓拉勾的数据。而之前恰恰买过《R语言实用数据分析和可视化技术》，所以今天就重记录一下学的一些R的基本知识，也好缓解缓解天天背单词的蛋疼生活。"><a href="#有天想爬下拉勾的数据看看。而恰恰又在阿里买了9块9一个月的服务器-其实不咋样，安装R的一个包时就死机了-，好像不爬下都对不起这个价格。朋友说先直接在网上搜搜看看有没有现成的，结果就看到了别人用R和rvest去抓拉勾的数据。而之前恰恰买过《R语言实用数据分析和可视化技术》，所以今天就重记录一下学的一些R的基本知识，也好缓解缓解天天背单词的蛋疼生活。" class="headerlink" title="有天想爬下拉勾的数据看看。而恰恰又在阿里买了9块9一个月的服务器(其实不咋样，安装R的一个包时就死机了)，好像不爬下都对不起这个价格。朋友说先直接在网上搜搜看看有没有现成的，结果就看到了别人用R和rvest去抓拉勾的数据。而之前恰恰买过《R语言实用数据分析和可视化技术》，所以今天就重记录一下学的一些R的基本知识，也好缓解缓解天天背单词的蛋疼生活。"></a>有天想爬下拉勾的数据看看。而恰恰又在阿里买了9块9一个月的服务器(其实不咋样，安装R的一个包时就死机了)，好像不爬下都对不起这个价格。朋友说先直接在网上搜搜看看有没有现成的，结果就看到了别人用R和rvest去抓拉勾的数据。而之前恰恰买过《R语言实用数据分析和可视化技术》，所以今天就重记录一下学的一些R的基本知识，也好缓解缓解天天背单词的蛋疼生活。</h5><h1 id="包的安装加载卸载"><a href="#包的安装加载卸载" class="headerlink" title="包的安装加载卸载"></a>包的安装加载卸载</h1><blockquote>
+<pre><code>install.packages(&quot;rvest&quot;)           #安装
+require(rvest) 或 library(rvest)                    #加载,好像还有一个是用supremessage
+detach(&quot;package:rvest&quot;)           #卸载
+</code></pre></blockquote>
+<h1 id="R语言基础"><a href="#R语言基础" class="headerlink" title="R语言基础"></a>R语言基础</h1><ol>
+<li>基础之基础<blockquote>
+<ul>
+<li>基本的加减乘除，赋值可以用 &lt;- ，或assign(“s”,55)    删除变量直接rm(变量名).     判断什么类型：     is.numeric(x)  is.logical(k)   </li>
+<li>日期  data &lt;- as.Date(“2016-03-03”)  </li>
+<li>缺失数据用NA代替</li>
+<li>向量什么的可以直接加减乘除</li>
+<li>字符数据 t &lt;- “data” 和 t &lt;- factor(“data”)是不一样的 </li>
+</ul>
+</blockquote>
+</li>
+<li><p>数据框<br>&gt;<br><img src="/images//R/Rdataframe.png" alt="dataframe"><br>对于数据框可以通过</p>
+<blockquote>
+<ul>
+<li>ncol(DF), nrow(DF),dim(DF)分别得到列数，行数，和行列数。</li>
+<li>names(DF)得到数据框的列名</li>
+<li>names(DF)[1] 得到第一个元素</li>
+<li>rownames(DF)查看指定数据框的行名字</li>
+<li>head(DF , n = 8) 显示前面多少行的DF，也可以用 tail<br><img src="/images//R/Rdataframe2.png" alt="dataframe2"></li>
+</ul>
+<p>列表框的每一列都是一个独立的向量，即每一列都有自己的类 </p>
+</blockquote>
+</li>
+<li><p>列表<br>&gt;</p>
+<ul>
+<li>list(1,2,3,4)</li>
+<li>list(DF,1:10)</li>
+<li>(emptylist &lt;- vector(mode = “list”, length =4 ))      用vector创建一个具有一定长度的空列表</li>
+</ul>
+</li>
+<li><p>矩阵和数组</p>
+<blockquote>
+<ul>
+<li>A &lt;- matrix(1:10, nrow = 5)    </li>
+<li>colname(A), dim(A), ncol(A), nrow(A)</li>
+<li>B &lt;- array(1:11, dim = c(2,3,2)</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<h1 id="导入数据-（还可以直接读网络上的数据）"><a href="#导入数据-（还可以直接读网络上的数据）" class="headerlink" title="导入数据 （还可以直接读网络上的数据）"></a>导入数据 （还可以直接读网络上的数据）</h1><ol>
+<li><p>导入CSV(Excel数据要转换成CSV才能导入)</p>
+<blockquote>
+<p> url &lt;- “test.csv”<br>  t &lt;- read.table(file = url, header = TRUE, sep = “,” )</p>
+</blockquote>
+</li>
+<li><p>导入数据库</p>
+<blockquote>
+<pre><code>require(RODBC); 
+db &lt;- odbcConnect(&quot;mysql_data&quot;, uid=&quot;root&quot;, pwd=&quot;123&quot;); 
+sqlTables(channel #查看数据中的表    
+data&lt;-sqlFetch(channel,&quot;kk&quot;)
+</code></pre></blockquote>
+</li>
+<li><p>导入其他数据格式</p>
+<blockquote>
+<p>| R  | type|<br>| ——–| :———-:| ——:|<br>| read.spss | SPSS|<br>| read.dta   | Stata|<br>| read.ssd  | SAS   |<br>|read.octave|Octave|<br>|read.mtp| Minitab|<br>|read.systat|Systat|</p>
+</blockquote>
+</li>
+</ol>
+<h1 id="抓取数据"><a href="#抓取数据" class="headerlink" title="抓取数据"></a>抓取数据</h1><ol>
+<li><p>XML</p>
+<blockquote>
+<p>  require(XML)<br>  URL &lt;- “<a href="http://baidu.com" target="_blank" rel="noopener">http://baidu.com</a>“<br>  biubiu &lt;- readHTMLTable(URL,which = 1, header = FALSE, stringsAsFactors = FALSE)</p>
+</blockquote>
+</li>
+<li><p>rvest</p>
+<blockquote>
+<p>  直接来看看这个吧<br><a href="http://www.reed.edu/data-at-reed/resources/R/rvest.html" target="_blank" rel="noopener">rvest</a></p>
+<pre><code> 现在的t &lt;- html(url)已经不用的,转变为 t &lt;- read_html(url)
+主要的东西还是要看Demo和官网的doc
+</code></pre></blockquote>
+</li>
+</ol>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><blockquote>
+<ul>
+<li>想要获得一份好的数据，就要先学爬数据，然而数据的获取方式不止有爬虫，还有通过API来获取，甚至Excel自带的数据导入自网站用起来也不错<ul>
+<li>一份好的数据同样需要好的可视化技术才能看的出来</li>
+<li>想起来《数据之美》里面讲的不要太盲目相信数据，这是对的，就像人类制作超高精度的仪器，超高精度的仪器去制作高精度的，高精度的去制作普通经度的。</li>
+<li>数据对我，有很大的吸引力，很想从中一窥究竟。但是现在觉得更多的是通过数据训练出一个模型，然后再去分析。</li>
+<li>刚才看了厉哥的《我听过最好的评价》，写的真是很厉害啊，对于我现在这个时常迷茫的人大有帮助，谢谢。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">Coffe or tea ?</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2016/02/03/Python-Web-Spider-I/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2016/04/07/Crawl-From-Little/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

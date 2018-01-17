@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Crawl From Little IV | PY.AI</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="学习笔记,抓取数据," />
+  
+
+  <meta name="description" content="前言一个月前的一次信息抓取，数据不多，信息是上海市的废品回收站。没什么可说的。代码也简单，不过问题还是在代码上。最开始用R，因为rvest包提取表格的效果很好。后来还是不行，就只有用python了。  12345678910111213141516171819202122232425library(rvest)library(xml2)makeUrl &amp;lt;- function(i) &amp;#123">
+<meta name="keywords" content="学习笔记,抓取数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Crawl From Little IV">
+<meta property="og:url" content="http://iami.xyz/2016/10/10/feipin-info/index.html">
+<meta property="og:site_name" content="PY.AI">
+<meta property="og:description" content="前言一个月前的一次信息抓取，数据不多，信息是上海市的废品回收站。没什么可说的。代码也简单，不过问题还是在代码上。最开始用R，因为rvest包提取表格的效果很好。后来还是不行，就只有用python了。  12345678910111213141516171819202122232425library(rvest)library(xml2)makeUrl &amp;lt;- function(i) &amp;#123">
+<meta property="og:image" content="http://iami.xyz/images//crawl/feipininfo.jpg">
+<meta property="og:updated_time" content="2018-01-17T05:11:33.276Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Crawl From Little IV">
+<meta name="twitter:description" content="前言一个月前的一次信息抓取，数据不多，信息是上海市的废品回收站。没什么可说的。代码也简单，不过问题还是在代码上。最开始用R，因为rvest包提取表格的效果很好。后来还是不行，就只有用python了。  12345678910111213141516171819202122232425library(rvest)library(xml2)makeUrl &amp;lt;- function(i) &amp;#123">
+<meta name="twitter:image" content="http://iami.xyz/images//crawl/feipininfo.jpg">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">慎独</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">慎独</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最后"><span class="toc-text">最后</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-feipin-info" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Crawl From Little IV</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.10.10</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>mour</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/学习数据挖掘的路上/">学习数据挖掘的路上</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>一个月前的一次信息抓取，数据不多，信息是上海市的废品回收站。没什么可说的。代码也简单，不过问题还是在代码上。最开始用R，因为rvest包提取表格的效果很好。后来还是不行，就只有用python了。</p>
+<p><img src="/images//crawl/feipininfo.jpg" alt="feipin"></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">library</span>(rvest)</span><br><span class="line"><span class="keyword">library</span>(xml2)</span><br><span class="line"></span><br><span class="line">makeUrl &lt;- <span class="keyword">function</span>(i) &#123;</span><br><span class="line">  urllist = list()</span><br><span class="line">  parturl &lt;- <span class="string">"http://www.sh-recycle.org/hyshow.asp?id="</span></span><br><span class="line">  initurl &lt;- paste(parturl,i,sep = <span class="string">''</span>)</span><br><span class="line">&#125;</span><br><span class="line">webcontent = list()</span><br><span class="line">Origin_InfoData = data.frame(<span class="string">"详细"</span>=c(<span class="string">"备 案 号"</span>, <span class="string">"会 员 号"</span> ,<span class="string">"企业名称"</span> ,<span class="string">"单位地址"</span> ,<span class="string">"联系电话"</span>, <span class="string">"资质认定"</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1</span>:<span class="number">1518</span>)</span><br><span class="line">&#123;</span><br><span class="line">  webcontent &lt;- read_html(makeUrl(i))</span><br><span class="line">  temp_Table &lt;- webcontent %&gt;% html_table(fill = <span class="literal">TRUE</span>)</span><br><span class="line">  <span class="keyword">if</span>(length(temp_Table)==<span class="number">0</span>)&#123;</span><br><span class="line">    print(paste(<span class="string">"企业不存在,ID:"</span>,i))</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    temp_InfoData &lt;- data.frame(temp_Table[<span class="number">9</span>][])</span><br><span class="line">    names(temp_InfoData) &lt;- c(<span class="string">"详细"</span>, i)</span><br><span class="line">    Origin_InfoData &lt;- merge(Origin_InfoData,temp_InfoData,by = <span class="string">"详细"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">head(Origin_InfoData)</span><br></pre></td></tr></table></figure>
+<p>代码很简单，但是就是300条之后就不行了，报错不明显，查也查不到。怎么解决也解决不了，十分懊恼。最后直接去看那个ID的信息发现，在这个网站上的内容条目调换了，虽然都是这几样，但是新增了一个属性，并且把顺序改了。因此导致R的数据框合并不了。最后用python获取到。顺便吐槽这个网站的结构真差，全是table,tr,td嵌套。而且嵌套之深深似海。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">1518</span>):   <span class="comment">#,1518):</span></span><br><span class="line">	<span class="keyword">try</span>:</span><br><span class="line">		url = <span class="string">"http://www.sh-recycle.org/hyshow.asp?id="</span>+str(i)</span><br><span class="line">		html_text = requests.get(url).text</span><br><span class="line">		<span class="comment"># print html_text</span></span><br><span class="line">		soup = BeautifulSoup(html_text, <span class="string">'lxml'</span>)</span><br><span class="line">		infotable = soup.findAll(<span class="string">'table'</span>)[<span class="number">8</span>]</span><br><span class="line">		info = infotable.findAll(<span class="string">'td'</span>)</span><br><span class="line">		<span class="keyword">with</span> open(<span class="string">'./ssssss.txt'</span>,<span class="string">'a'</span>) <span class="keyword">as</span> f:</span><br><span class="line">			<span class="keyword">for</span> i <span class="keyword">in</span> info:</span><br><span class="line">				f.write(i.text.encode(<span class="string">'utf-8'</span>)+<span class="string">"/"</span>)</span><br><span class="line">			f.write(<span class="string">'\n'</span>)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">		<span class="keyword">pass</span></span><br><span class="line">	<span class="keyword">finally</span>:</span><br><span class="line">		<span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>清洗<br><code>&lt; shanghaiss.txt | awk -F &quot;/&quot; &#39;{for (i=1;i&lt;=NF;i+=2)printf $i &quot;/&quot; ;printf&quot;\n&quot;}&#39;</code></p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>不得不说异步之厉害。Node.js + Request抓拉勾，分分钟被禁。而且测了一下移动端，5300多条数据好像1秒还是2秒的样子就到手了。最后的最后，不要用公司的网去爬东西。╮(╯▽╰)╭再也不能肆无忌惮了。定个小目标，看看Python下的异步写法。-_-</p>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">Coffe or tea ?</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2016/10/05/Jmeter-PostMan/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2016/11/01/Image-Parse/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

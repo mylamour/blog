@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>locatunnel的使用回顾 | PY.AI</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="知识回顾,学习笔记," />
+  
+
+  <meta name="description" content="前言：很久没有更新技术了，主要是因为一直在学习新的知识吧。这边刚结束，那边又开始去搞毕业设计了。而出于个人感情原因，自己又从原公司离职了。虽然拿了一家研究院的安全offer，但是老妈觉得长沙太远。然后呢，问了10个朋友，8：2是不让去的，只有两个说让我去。没办法，先找找工作吧， 一边找工作，一边更新下这大半年的积累。边想边更，不一定是按照时间序列的。 正文：穿越内网的http服务当你在内网的时候想">
+<meta name="keywords" content="知识回顾,学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="locatunnel的使用回顾">
+<meta property="og:url" content="http://iami.xyz/2017/06/14/Review-S01-localtunnel/index.html">
+<meta property="og:site_name" content="PY.AI">
+<meta property="og:description" content="前言：很久没有更新技术了，主要是因为一直在学习新的知识吧。这边刚结束，那边又开始去搞毕业设计了。而出于个人感情原因，自己又从原公司离职了。虽然拿了一家研究院的安全offer，但是老妈觉得长沙太远。然后呢，问了10个朋友，8：2是不让去的，只有两个说让我去。没办法，先找找工作吧， 一边找工作，一边更新下这大半年的积累。边想边更，不一定是按照时间序列的。 正文：穿越内网的http服务当你在内网的时候想">
+<meta property="og:updated_time" content="2018-01-17T05:11:33.276Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="locatunnel的使用回顾">
+<meta name="twitter:description" content="前言：很久没有更新技术了，主要是因为一直在学习新的知识吧。这边刚结束，那边又开始去搞毕业设计了。而出于个人感情原因，自己又从原公司离职了。虽然拿了一家研究院的安全offer，但是老妈觉得长沙太远。然后呢，问了10个朋友，8：2是不让去的，只有两个说让我去。没办法，先找找工作吧， 一边找工作，一边更新下这大半年的积累。边想边更，不一定是按照时间序列的。 正文：穿越内网的http服务当你在内网的时候想">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">慎独</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">慎独</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言："><span class="toc-text">前言：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#正文：穿越内网的http服务"><span class="toc-text">正文：穿越内网的http服务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Resources"><span class="toc-text">Resources</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Review-S01-localtunnel" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">locatunnel的使用回顾</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.06.14</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>mour</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/HowTo/">HowTo</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h4 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h4><p>很久没有更新技术了，主要是因为一直在学习新的知识吧。这边刚结束，那边又开始去搞毕业设计了。而出于个人感情原因，自己又从原公司离职了。虽然拿了一家研究院的安全offer，但是老妈觉得长沙太远。然后呢，问了10个朋友，8：2是不让去的，只有两个说让我去。没办法，先找找工作吧， 一边找工作，一边更新下这大半年的积累。边想边更，不一定是按照时间序列的。</p>
+<h4 id="正文：穿越内网的http服务"><a href="#正文：穿越内网的http服务" class="headerlink" title="正文：穿越内网的http服务"></a>正文：穿越内网的http服务</h4><p>当你在内网的时候想把内网的一个web展示，或者说临时展示出去的时候，又不想那么麻烦的搭建一个web服务器之类的，而是希望直接在本机上展示出去，那么这个时候，就可以使用localtunnel了。(ps:前提是你已经安装了nodejs)</p>
+<p>只需要采用 <code>npm install -g localtunnel</code>进行安装，然后使用<code>lt --port 80</code>即可进行转发，运行命令后<code>localtunnel</code>服务器会返回一个网址的。可谓十分方便，当然我们不能只介绍这么一点玩法，下面看其他有趣的玩法(强行凑博客感)。</p>
+<ul>
+<li><p>搭建自己的<code>localtunnel</code>服务器，以便提升访问速度。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> git://github.com/defunctzombie/localtunnel-server.git</span><br><span class="line">$ <span class="built_in">cd</span> localtunnel-server</span><br><span class="line">$ npm install</span><br><span class="line"></span><br><span class="line">$ bin/server --port 1234</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>lt命令的其他用法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ lt --host http://yourserver:1234 --port 5000 -s prefix</span><br><span class="line"><span class="comment">#这个就以为着转发本机5000端口到服务器yourserver上，然后获取域名为prefix.youserver:1234，可以通过该域名进行访问。</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h4><ul>
+<li><a href="https://github.com/localtunnel/localtunnel" target="_blank" rel="noopener">localtunnel</a></li>
+<li><a href="https://github.com/localtunnel/server" target="_blank" rel="noopener">localtunnel-server</a></li>
+</ul>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">Coffe or tea ?</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/06/14/Review-S02-conda-my-useage/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2017/06/15/Review-S04-Interview-or-not/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

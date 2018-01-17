@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>find and grep | PY.AI</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="知识回顾," />
+  
+
+  <meta name="description" content="讲讲find，还有grep之前在stackoverflow看了How to find all files containing specific text on Linux? find的基本格式 find [path] [options] [tests] [actions]  选项简介  path :没啥可说的，路径大家可以试试find $pwd和find $PWD options tests a">
+<meta name="keywords" content="知识回顾">
+<meta property="og:type" content="article">
+<meta property="og:title" content="find and grep">
+<meta property="og:url" content="http://iami.xyz/2016/09/10/find-Useage/index.html">
+<meta property="og:site_name" content="PY.AI">
+<meta property="og:description" content="讲讲find，还有grep之前在stackoverflow看了How to find all files containing specific text on Linux? find的基本格式 find [path] [options] [tests] [actions]  选项简介  path :没啥可说的，路径大家可以试试find $pwd和find $PWD options tests a">
+<meta property="og:image" content="http://iami.xyz/images//find-options.png">
+<meta property="og:image" content="http://iami.xyz/images//grep.png">
+<meta property="og:updated_time" content="2018-01-17T05:11:33.276Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="find and grep">
+<meta name="twitter:description" content="讲讲find，还有grep之前在stackoverflow看了How to find all files containing specific text on Linux? find的基本格式 find [path] [options] [tests] [actions]  选项简介  path :没啥可说的，路径大家可以试试find $pwd和find $PWD options tests a">
+<meta name="twitter:image" content="http://iami.xyz/images//find-options.png">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">慎独</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">慎独</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#讲讲find，还有grep"><span class="toc-text">讲讲find，还有grep</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#find的基本格式"><span class="toc-text">find的基本格式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.1"><span class="toc-text">options</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2.2"><span class="toc-text">tests</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#-.-"><span class="toc-text">actions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最后，看看ls和phantomjs里面的列文件比较"><span class="toc-text">最后，看看ls和phantomjs里面的列文件比较</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Resources"><span class="toc-text">Resources</span></a>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-find-Useage" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">find and grep</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.09.10</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>mour</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/全栈工程师/">全栈工程师</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h3 id="讲讲find，还有grep"><a href="#讲讲find，还有grep" class="headerlink" title="讲讲find，还有grep"></a>讲讲find，还有grep</h3><p>之前在stackoverflow看了<a href="http://stackoverflow.com/questions/16956810/how-to-find-all-files-containing-specific-text-on-linux" target="_blank" rel="noopener">How to find all files containing specific text on Linux?</a></p>
+<h4 id="find的基本格式"><a href="#find的基本格式" class="headerlink" title="find的基本格式"></a>find的基本格式</h4><ul>
+<li><code>find [path] [options] [tests] [actions]</code></li>
+</ul>
+<p>选项简介</p>
+<ul>
+<li><a href="#→.0">path</a> :没啥可说的，路径大家可以试试<code>find $pwd</code>和<code>find $PWD</code></li>
+<li><a href="#1.1">options</a></li>
+<li><a href="#2.2">tests</a></li>
+<li><a href="#-.-">actions</a><strong><strong>___</strong></strong>点我URL会卖萌</li>
+</ul>
+<p></p><h3 id="1.1">options</h3><p></p>
+<ul>
+<li>-mount    #不要搜索其他挂载系统</li>
+<li>-name        查找什么</li>
+<li>-iname</li>
+</ul>
+<blockquote>
+<p><code>$  find / -mount -name test print</code></p>
+</blockquote>
+<p></p><h3 id="2.2">tests</h3><p></p>
+<ul>
+<li>newer otherfile  #比哪个文件新</li>
+<li>type f            #是文件</li>
+<li>type d            #是文件夹</li>
+</ul>
+<p></p><h3 id="-.-">actions</h3><p></p>
+<ul>
+<li>-exec command</li>
+<li>-ok command</li>
+</ul>
+<blockquote>
+<p>图画的有点丑，哈哈</p>
+</blockquote>
+<ul>
+<li>-exec ls -l {} \;<br><img src="/images//find-options.png" alt="img"></li>
+</ul>
+<font color="red"> 有用的例子</font>
+
+<p>这个例子就是讲如何在当前文件夹下找出包含某个字符的文本。当然这是说明你知道这个字符在这个文件夹下。反过来我出个小问题，假如你想找出包含某个字符的文本，你不知道这个文本在哪，但你知道他包含什么。你知道这个文件里大概有个什么样的字符，你需要查找到他，该怎么办？</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ find / -<span class="built_in">type</span> f -<span class="built_in">exec</span> grep -H <span class="string">'text-to-find-here'</span> &#123;&#125; \;</span><br><span class="line">$ grep -rnw <span class="string">'/path/to/somewhere/'</span> -e <span class="string">"pattern"</span></span><br></pre></td></tr></table></figure>
+<p><img src="/images//grep.png" alt="img"></p>
+<p>还有w是word-regexp,l是show filename not the result itself, grep其实没怎么讲，因为我都是常用的也就是-iroEn几个选项，其他的很少用，剩下的配合awk了</p>
+<blockquote>
+<p>解密就是需要配合-l选项就行了，当时我是不知道shadowsocks在搬瓦工的位置在哪，但我知道配置文件的格式，显而易见。So easy.</p>
+</blockquote>
+<h3 id="最后，看看ls和phantomjs里面的列文件比较"><a href="#最后，看看ls和phantomjs里面的列文件比较" class="headerlink" title="最后，看看ls和phantomjs里面的列文件比较"></a>最后，看看ls和phantomjs里面的列文件比较</h3><p>这个列文件比ls快了不少，刚才去找之前的测试记录，但是竟然没了。<br>当然既然测试数据找不到了，那就说明这个不具有说服性。暂且列出，放于此处。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// List all the files in a Tree of Directories</span></span><br><span class="line"></span><br><span class="line"><span class="meta">"use strict"</span>;</span><br><span class="line"><span class="keyword">var</span> system = <span class="built_in">require</span>(<span class="string">'system'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (system.args.length !== <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Usage: phantomjs scandir.js DIRECTORY_TO_SCAN"</span>);</span><br><span class="line">    phantom.exit(<span class="number">1</span>);                    <span class="comment">//exit status mean 1 is wrong</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> scanDirectory = <span class="function"><span class="keyword">function</span> (<span class="params">path</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line">    <span class="keyword">if</span> (fs.exists(path) &amp;&amp; fs.isFile(path)) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(path);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (fs.isDirectory(path)) &#123;</span><br><span class="line">        fs.list(path).forEach(<span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> ( e !== <span class="string">"."</span> &amp;&amp; e !== <span class="string">".."</span> ) &#123;    <span class="comment">//&lt; Avoid loops</span></span><br><span class="line">                scanDirectory(path + <span class="string">'/'</span> + e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">scanDirectory(system.args[<span class="number">1</span>]);</span><br><span class="line">phantom.exit();</span><br></pre></td></tr></table></figure>
+<h2 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h2><ul>
+<li><a href="https://help.ubuntu.com/community/find" target="_blank" rel="noopener">find (Commuinty Help Wiki)</a></li>
+<li><a href="https://github.com/ariya/phantomjs/blob/master/examples/scandir.js" target="_blank" rel="noopener">pantomjs scandir.js</a></li>
+</ul>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">Coffe or tea ?</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2016/09/04/web-full-stack-think/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2016/09/20/Little-Problem-solved/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

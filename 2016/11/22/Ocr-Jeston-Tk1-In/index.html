@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>浅谈OCR在Jeston TK1上的产品化两种解决方案 | PY.AI</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="学习笔记," />
+  
+
+  <meta name="description" content="一直关注Video++这家公司。自从看到了在招OCR算法工程师，并负责评估TK1上的产品化。恰好毕业设计在做Tk1上的文本识别(算是体会到水了)，就勉强写一下吧。我感觉这个做出来的东西肯定不太便宜，个人不一定玩的起。 如我所理解，机器学习只是数据挖掘的一种方法，而数据挖掘最终目的也是在某一个领域内或者多个领域内进行迁移，得到相应的解决方法。因此在在做Robocup 3d simulation 的">
+<meta name="keywords" content="学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈OCR在Jeston TK1上的产品化两种解决方案">
+<meta property="og:url" content="http://iami.xyz/2016/11/22/Ocr-Jeston-Tk1-In/index.html">
+<meta property="og:site_name" content="PY.AI">
+<meta property="og:description" content="一直关注Video++这家公司。自从看到了在招OCR算法工程师，并负责评估TK1上的产品化。恰好毕业设计在做Tk1上的文本识别(算是体会到水了)，就勉强写一下吧。我感觉这个做出来的东西肯定不太便宜，个人不一定玩的起。 如我所理解，机器学习只是数据挖掘的一种方法，而数据挖掘最终目的也是在某一个领域内或者多个领域内进行迁移，得到相应的解决方法。因此在在做Robocup 3d simulation 的">
+<meta property="og:image" content="http://iami.xyz/images//caffe-ocr.jpg">
+<meta property="og:updated_time" content="2018-01-17T05:11:33.276Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浅谈OCR在Jeston TK1上的产品化两种解决方案">
+<meta name="twitter:description" content="一直关注Video++这家公司。自从看到了在招OCR算法工程师，并负责评估TK1上的产品化。恰好毕业设计在做Tk1上的文本识别(算是体会到水了)，就勉强写一下吧。我感觉这个做出来的东西肯定不太便宜，个人不一定玩的起。 如我所理解，机器学习只是数据挖掘的一种方法，而数据挖掘最终目的也是在某一个领域内或者多个领域内进行迁移，得到相应的解决方法。因此在在做Robocup 3d simulation 的">
+<meta name="twitter:image" content="http://iami.xyz/images//caffe-ocr.jpg">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">慎独</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">慎独</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Ocr-Jeston-Tk1-In" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">浅谈OCR在Jeston TK1上的产品化两种解决方案</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.11.22</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>mour</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/HowTo/">HowTo</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <blockquote>
+<p>一直关注Video++这家公司。自从看到了在招OCR算法工程师，并负责评估TK1上的产品化。恰好毕业设计在做Tk1上的文本识别(算是体会到水了)，就勉强写一下吧。我感觉这个做出来的东西肯定不太便宜，个人不一定玩的起。</p>
+<p>如我所理解，机器学习只是数据挖掘的一种方法，而数据挖掘最终目的也是在某一个领域内或者多个领域内进行迁移，得到相应的解决方法。因此在在做Robocup 3d simulation 的时候就有意识的往上面应用一些方法，当然我最大的心愿就是Use ML With Penetration. 相信未来安全领域和AI领域以及各种机器人一定一片沃土。</p>
+</blockquote>
+<p>首先：拆掉风扇，风扇这个东西吧，噪音太大，必须拆掉。因为热的并不是很大到不可接受。</p>
+<p>两种方案</p>
+<ul>
+<li>A: Tesseract</li>
+</ul>
+<blockquote>
+<p> <a href="http://tesseract.projectnaptha.com/" target="_blank" rel="noopener">Tesseract.js</a> + <a href="http://gpu.rocks/" target="_blank" rel="noopener">gpu.js</a></p>
+<p>Tesseract是一款众所周知的开源OCR，但是Tesseract.js可能知道的就不多了，但是他的github的star数比Tesseract多了不少吧。纯浏览器端加载，也可以npm导入作为后端调用。使用简单，效率不凡。由于提到了说要利用GPU的计算能力，初步以为使用gpu.js重写数据结构和计算部分。</p>
+</blockquote>
+<ul>
+<li>B: DeepLearning with <a href="http://caffe.berkeleyvision.org/" target="_blank" rel="noopener">Caffe</a></li>
+</ul>
+<blockquote>
+<p> 这个思路简单，类似交叉编译。就是在自己的机器上把模型训练好，<font color="green">安装GPU模式的caffe到Jeston Tk1 </font>, 然后写代码<font color="green">调用训练好模型</font>处理现在的数据进行OCR即可。</p>
+<blockquote>
+<ul>
+<li>问题1: Jeston Tk1上的caffe安装耗时耗利，且cudnn的版本会导致不能启用GPU模式。<br>解决方案: docker 部署，直接pull下来docker hub上封装好的GPU模式的caffe。这样对产品化，量产有了一定的保障。但其实Tk1的刷机也比较麻烦，对网络环境的要求是自由的，安装过程中，出现依赖有时候还需要手动安装。</li>
+</ul>
+<ul>
+<li>问题2：Jeston Tk1上的docker安装(docker.io ,docker-engine)，docker安装成功之后daemon进程无法启动，始终无法启动。<br>解决方案:未知，issued(目前由于信息不完善被关闭了，等在这边安定之后，try again)</li>
+</ul>
+<ul>
+<li>问题3：汉字不同英文，需要收集的数据集太大。而且数据有需要精准标注，耗费人力物力巨大。且由于不同的书法体，楷体，行楷，隶书等”规矩”的字体还好说，但是向草书，笔走龙蛇之势，普通人都难以辨别，尚需书法家，何况机器。<br>解决: 未知，不过这个属于算法部分。</li>
+</ul>
+</blockquote>
+</blockquote>
+<p>最后的最后， 回家三天停电两天，不得不服。另相遇海知，十分开心。</p>
+<p>综上:不敢妄下断言。可行度大概七八成。但是考虑到部署和板子本身的成本问题批量生产其实并不乐观。一块板子一千六左右。</p>
+<font color="red">update 2016/12/12:</font>
+
+<p>从github上跑的一个<a href="https://github.com/pannous/caffe-ocr" target="_blank" rel="noopener">caffe-ocr</a>，其中会有一部分是不存在的文件，只要删除掉，基本就行了。<br>可行性还是很高的。印刷体的话基本上是没什么挑战性的。中文的有一个数据集 CAISA-HWDB。来上海的这些天，突然觉得上海的消费水平，相对于这里的生活水平其实这个板子也是便宜的可以了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#delete TimesNewRoman-10-4.png TimesNewRoman-10-3.png imesNewRoman-10-1.png TimesNewRoman-10-5.png TimesNewRoman-10-2 TimesNewRoman-6-1.png</span></span><br><span class="line">$   sed -i <span class="string">'/TimesNewRoman-10-5.png/d'</span> `ls | grep _index`</span><br><span class="line">$ 	sed -i <span class="string">'s/GPU/CPU/g'</span> alpha_solver.prototxt 	<span class="comment">#我的是CPU模式的，看你自己的情况</span></span><br><span class="line">$   caffe train -solver alpha_solver.prototxt</span><br></pre></td></tr></table></figure>
+<p><img src="/images//caffe-ocr.jpg" alt="caffe-ocr"> </p>
+<p>other: Docker说是不支持armhf的，所以如果安装caffe的话还是需要手动安装。<br>但是不一定局限于caffe，可以安装Tensorflow，Theano.</p>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">Coffe or tea ?</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2016/11/13/Docker-useage/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2016/12/01/QiChaChaAnd-WeiXin/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>AWS EC2 and AWS EMR and AWS RDS | PY.AI</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="实习笔记," />
+  
+
+  <meta name="description" content="近些天来，一直使用AWS的相关产品，从最开始用EC2，后来到EMR，也遇到一些坑，整理下，作为记录。最开始的aws配置就不讲了。 不会的话就   aws help aws ec2 help aws emr ls help  首先下面这段代码终端里肯定是不能跑的，我只是为了好看，才这样放的。而且不一定要从终端的方式，python可以用boto3, 其他编程语言也提供了相应的SDK，可以操作。 123">
+<meta name="keywords" content="实习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AWS EC2 and AWS EMR and AWS RDS">
+<meta property="og:url" content="http://iami.xyz/2016/12/12/How-to-AWS-EMR/index.html">
+<meta property="og:site_name" content="PY.AI">
+<meta property="og:description" content="近些天来，一直使用AWS的相关产品，从最开始用EC2，后来到EMR，也遇到一些坑，整理下，作为记录。最开始的aws配置就不讲了。 不会的话就   aws help aws ec2 help aws emr ls help  首先下面这段代码终端里肯定是不能跑的，我只是为了好看，才这样放的。而且不一定要从终端的方式，python可以用boto3, 其他编程语言也提供了相应的SDK，可以操作。 123">
+<meta property="og:updated_time" content="2018-01-17T05:11:33.276Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AWS EC2 and AWS EMR and AWS RDS">
+<meta name="twitter:description" content="近些天来，一直使用AWS的相关产品，从最开始用EC2，后来到EMR，也遇到一些坑，整理下，作为记录。最开始的aws配置就不讲了。 不会的话就   aws help aws ec2 help aws emr ls help  首先下面这段代码终端里肯定是不能跑的，我只是为了好看，才这样放的。而且不一定要从终端的方式，python可以用boto3, 其他编程语言也提供了相应的SDK，可以操作。 123">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">慎独</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">慎独</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-How-to-AWS-EMR" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">AWS EC2 and AWS EMR and AWS RDS</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.12.12</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>mour</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/学习数据挖掘的路上/">学习数据挖掘的路上</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>近些天来，一直使用AWS的相关产品，从最开始用EC2，后来到EMR，也遇到一些坑，整理下，作为记录。<br>最开始的aws配置就不讲了。 不会的话就 </p>
+<ul>
+<li><code>aws help</code></li>
+<li><code>aws ec2 help</code></li>
+<li><code>aws emr ls help</code></li>
+</ul>
+<p>首先下面这段代码终端里肯定是不能跑的，我只是为了好看，才这样放的。而且不一定要从终端的方式，<code>python</code>可以用<code>boto3</code>, 其他编程语言也提供了相应的SDK，可以操作。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">$ aws emr create-cluster </span><br><span class="line"> 	 --applications Name=Ganglia Name=Spark Name=Zeppelin </span><br><span class="line">	 --ec2-attributes </span><br><span class="line">							<span class="string">'&#123;</span></span><br><span class="line"><span class="string">								"KeyName": "crawl-beijing",</span></span><br><span class="line"><span class="string">								"InstanceProfile": "EMR_EC2_DefaultRole",</span></span><br><span class="line"><span class="string">								"SubnetId": "subnet-61528516",</span></span><br><span class="line"><span class="string">								"EmrManagedSlaveSecurityGroup":  "sg-ee6e828a",</span></span><br><span class="line"><span class="string">								"EmrManagedMasterSecurityGroup": "sg-ed6e8289"</span></span><br><span class="line"><span class="string">							&#125;'</span> </span><br><span class="line">	 --service-role EMR_DefaultRole </span><br><span class="line">	 --<span class="built_in">enable</span>-debugging </span><br><span class="line">	 --release-label emr-5.2.0 </span><br><span class="line">	 --<span class="built_in">log</span>-uri 			<span class="string">'s3n://aws-logs-243495284874-cn-north-1/elasticmapreduce/'</span> </span><br><span class="line">	 --steps </span><br><span class="line">			 			<span class="string">'[</span></span><br><span class="line"><span class="string">			 				&#123;</span></span><br><span class="line"><span class="string">								"Args": [</span></span><br><span class="line"><span class="string">												"spark-submit", </span></span><br><span class="line"><span class="string">												"--deploy-mode", "cluster", </span></span><br><span class="line"><span class="string">												"--master", "yarn", </span></span><br><span class="line"><span class="string">												"--conf", "spark.yarn.submit.waitAppCompletion=false", </span></span><br><span class="line"><span class="string">												"--num-executors", "5", </span></span><br><span class="line"><span class="string">												"--executor-cores", "5", </span></span><br><span class="line"><span class="string">												"--executor-memory", "20g", "s3://zero2hadoop-jobs-mour/part1/wordcount.py", </span></span><br><span class="line"><span class="string">																			"s3://zero2hadoop-in-mour/part1/hello.txt", </span></span><br><span class="line"><span class="string">																			"s3://zero2hadoop-in-mour/part1/wordcount_spark.txt"</span></span><br><span class="line"><span class="string">												],</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">								"Type": "CUSTOM_JAR",</span></span><br><span class="line"><span class="string">								"ActionOnFailure": "CONTINUE",</span></span><br><span class="line"><span class="string">								"Jar": "command-runner.jar",</span></span><br><span class="line"><span class="string">								"Properties": "",</span></span><br><span class="line"><span class="string">								"Name": "SparkWordCountApp"</span></span><br><span class="line"><span class="string">							&#125;,</span></span><br><span class="line"><span class="string">						</span></span><br><span class="line"><span class="string">							&#123;</span></span><br><span class="line"><span class="string">								"Args": [</span></span><br><span class="line"><span class="string">												"spark-submit", "s3://zero2hadoop-jobs-mour/part1/wordcount.py", </span></span><br><span class="line"><span class="string">																"s3://zero2hadoop-in-mour/part1/hello.txt", </span></span><br><span class="line"><span class="string">																"s3://zero2hadoop-in-mour/part1/wordcount_spark.txt"</span></span><br><span class="line"><span class="string">												],</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">								"Type": "CUSTOM_JAR",</span></span><br><span class="line"><span class="string">								"ActionOnFailure": "CONTINUE",</span></span><br><span class="line"><span class="string">								"Jar": "command-runner.jar",</span></span><br><span class="line"><span class="string">								"Properties": "",</span></span><br><span class="line"><span class="string">								"Name": "SparkWordCountApp"</span></span><br><span class="line"><span class="string">							&#125;</span></span><br><span class="line"><span class="string">						]'</span> </span><br><span class="line">	 --name 	<span class="string">'My cluster'</span> </span><br><span class="line">	 --instance-groups </span><br><span class="line">	 					<span class="string">'[</span></span><br><span class="line"><span class="string">	 						&#123;</span></span><br><span class="line"><span class="string">								"InstanceCount": 1,</span></span><br><span class="line"><span class="string">								"InstanceGroupType": "MASTER",</span></span><br><span class="line"><span class="string">								"InstanceType": "m3.xlarge",</span></span><br><span class="line"><span class="string">								"Name": "Master Instance Group"</span></span><br><span class="line"><span class="string">							&#125;,</span></span><br><span class="line"><span class="string">							&#123;</span></span><br><span class="line"><span class="string">								"InstanceCount": 1,</span></span><br><span class="line"><span class="string">								"InstanceGroupType": "CORE",</span></span><br><span class="line"><span class="string">								"InstanceType": "m3.xlarge",</span></span><br><span class="line"><span class="string">								"Name": "Core Instance Group"</span></span><br><span class="line"><span class="string">							&#125;</span></span><br><span class="line"><span class="string">						]'</span> </span><br><span class="line"></span><br><span class="line">	 --configurations   <span class="string">'[</span></span><br><span class="line"><span class="string">	 						&#123;</span></span><br><span class="line"><span class="string">	 							"Classification":"spark",</span></span><br><span class="line"><span class="string">	 							"Properties":</span></span><br><span class="line"><span class="string">	 									&#123;"maximizeResourceAllocation":"true"&#125;,</span></span><br><span class="line"><span class="string">	 							"Configurations":[]</span></span><br><span class="line"><span class="string">	 						&#125;</span></span><br><span class="line"><span class="string">	 					]'</span> </span><br><span class="line"></span><br><span class="line">	 --region cn-north-1</span><br></pre></td></tr></table></figure>
+<p>这基本是一份完整的配置，可以从命令行直接启动(去除里面的换行符)，现在只是为了有个全局观，然后来分析一下相关的知识。</p>
+<p>最简单的我们可以看到，存储使用的是aws s3,那么ok,我们来看下s3的相关操作吧(当然一切的前提都是在你配置好<code>aws configure</code>之后,输入你的id, key,region之后)，配置好之后就可以操作ec2,emr所有的aws相关的产品。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ aws s3 mb s3://mybuckets 			<span class="comment">#create a s3 bucket</span></span><br><span class="line">$ aws s3 ls</span><br><span class="line">$ aws s3 cp --recursive /mylocal/path/ s3://s3uriname/yourdir  <span class="comment"># just use for directories</span></span><br><span class="line">$ aws s3 ls s3://mybucket					<span class="comment"># also you can use ls --recursive</span></span><br></pre></td></tr></table></figure>
+<p>ok，s3创建完毕，我们看看最简单的选项 <code>--applications Name=Ganglia Name=Spark Name=Zeppelin</code> 当然其实很明显了，就是你创建的EMR里面需要包括什么组件，直接写到Name里面就行了(前提是aws有的才行)。<br>下面接着分析选项；</p>
+<ul>
+<li><p><code>--service-role EMR_DefaultRole</code>  对应的Role有对应的安全组规则</p>
+</li>
+<li><p>EMR是在运行在EC2实例上的，所以可以看到下面对应的属性，需要设置EC2的相关信息。， 而<code>KeyName</code>则是代表了日后你ssh进去的时候后所需的pem文件名，例如我是crawl-beijing，那我就应该用<code>ssh -i ~/crawl-beijing.pem aws-ec2.publicip.com</code> ,当然<code>awscli</code>里面自带的也有ssh工具，<code>aws emr ssh --cluster-id j-3NJ4N3NZCMMT4 --key-pair-file ./crawl-beijing.pem</code>,cluster-id是通过<code>aws emr --listculsters</code>来查看的。</p>
+</li>
+</ul>
+<blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">--ec2-attributes </span><br><span class="line">                            <span class="string">'&#123;</span></span><br><span class="line"><span class="string">                                "KeyName": "crawl-beijing",</span></span><br><span class="line"><span class="string">                                "InstanceProfile": "EMR_EC2_DefaultRole",</span></span><br><span class="line"><span class="string">                                "SubnetId": "subnet-61528516",</span></span><br><span class="line"><span class="string">                                "EmrManagedSlaveSecurityGroup":  "sg-ee6e828a",</span></span><br><span class="line"><span class="string">                                "EmrManagedMasterSecurityGroup": "sg-ed6e8289"</span></span><br><span class="line"><span class="string">                &#125;'</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<ul>
+<li>–steps 里面是可以设置相应的操作步骤，步骤完成之后，自动终止EMR集群，不过要加 <code>--auto-terminate</code>选项，这样的话就会在执行完成之后终止集群，并将相应的数据保存到之前设定的S3数据桶中。而在step中的操作，则要涉及到对应程序的使用了，例如我用spark跑一个wordcount,如果是pig程序，那就是类似这样的</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">--steps Type=PIG,Name=<span class="string">"Pig Program"</span>,ActionOnFailure=CONTINUE,</span><br><span class="line">		Args=[</span><br><span class="line">				-f,s3://mybucket/scripts/pigscript.pig,</span><br><span class="line">				-p,INPUT=s3://mybucket/inputdata/,</span><br><span class="line">				-p,OUTPUT=s3://mybucket/outputdata/,</span><br><span class="line">				<span class="variable">$INPUT</span>=s3://mybucket/inputdata/,</span><br><span class="line">				<span class="variable">$OUTPUT</span>=s3://mybucket/outputdata/]</span><br></pre></td></tr></table></figure>
+<p>如果我跑的是个python代码或者java代码，又有不同的方式，需要用<code>spark-submit</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">./bin/spark-submit \</span><br><span class="line">	  --class &lt;main-class&gt; \</span><br><span class="line">	  --master &lt;master-url&gt; \</span><br><span class="line">	  --deploy-mode &lt;deploy-mode&gt; \</span><br><span class="line">	  --conf &lt;key&gt;=&lt;value&gt; \</span><br><span class="line">	  ... <span class="comment"># other options</span></span><br><span class="line">	  &lt;application-jar&gt; \</span><br><span class="line">	  [application-arguments]</span><br></pre></td></tr></table></figure>
+<p>来提交，不过无论是哪种程序，都要顾及到代码本身的选项输入输出，然后写在<code>spark-submit</code>中，就像之前的这种</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">            <span class="string">"Args"</span>: [</span><br><span class="line">                            <span class="string">"spark-submit"</span>, </span><br><span class="line">                            <span class="string">"--deploy-mode"</span>, <span class="string">"cluster"</span>, </span><br><span class="line">                            <span class="string">"--master"</span>, <span class="string">"yarn"</span>, </span><br><span class="line">                            <span class="string">"--conf"</span>, <span class="string">"spark.yarn.submit.waitAppCompletion=false"</span>, </span><br><span class="line">                            <span class="string">"--num-executors"</span>, <span class="string">"5"</span>, </span><br><span class="line">                            <span class="string">"--executor-cores"</span>, <span class="string">"5"</span>, </span><br><span class="line">                            <span class="string">"--executor-memory"</span>, <span class="string">"20g"</span>, <span class="string">"s3://zero2hadoop-jobs-mour/part1/wordcount.py"</span>, </span><br><span class="line">                                                        </span><br><span class="line">                                                        <span class="string">"s3://zero2hadoop-in-mour/part1/wordcount_spark.txt"</span></span><br><span class="line">                            ],</span><br><span class="line"></span><br><span class="line">                                <span class="string">"Type"</span>: <span class="string">"CUSTOM_JAR"</span>,</span><br><span class="line">                                <span class="string">"ActionOnFailure"</span>: <span class="string">"CONTINUE"</span>,</span><br><span class="line">                                <span class="string">"Jar"</span>: <span class="string">"command-runner.jar"</span>,</span><br><span class="line">                                <span class="string">"Properties"</span>: <span class="string">""</span>,</span><br><span class="line">                                <span class="string">"Name"</span>: <span class="string">"SparkWordCountApp"</span></span><br><span class="line">                            &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>--instance-groups</code> 很明显这是为了EMR做EC2初始化类型和数目的限定</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"InstanceCount"</span>: 1,</span><br><span class="line">            <span class="string">"InstanceGroupType"</span>: <span class="string">"MASTER"</span>,</span><br><span class="line">            <span class="string">"InstanceType"</span>: <span class="string">"m3.xlarge"</span>,</span><br><span class="line">            <span class="string">"Name"</span>: <span class="string">"Master Instance Group"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"InstanceCount"</span>: 2,</span><br><span class="line">            <span class="string">"InstanceGroupType"</span>: <span class="string">"CORE"</span>,</span><br><span class="line">            <span class="string">"InstanceType"</span>: <span class="string">"m3.xlarge"</span>,</span><br><span class="line">            <span class="string">"Name"</span>: <span class="string">"Core Instance Group"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br></pre></td></tr></table></figure>
+<p>让我们把他变得简单点，起码看着简单点。<br>我们可以把相应的配置参数放在文件中，然后通过<code>file://</code>来读取</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$	aws emr create-cluster </span><br><span class="line">	 	 --applications Name=Ganglia Name=Spark Name=Zeppelin </span><br><span class="line">		 --ec2-attributes file://ec2-attributes.json </span><br><span class="line">		 --service-role EMR_DefaultRole </span><br><span class="line">		 --<span class="built_in">enable</span>-debugging </span><br><span class="line">		 --release-label emr-5.2.0 </span><br><span class="line">		 --<span class="built_in">log</span>-uri 	<span class="string">'s3n://aws-logs-243495284874-cn-north-1/elasticmapreduce/'</span> </span><br><span class="line">		 --steps 	file://spark-submit-step.json </span><br><span class="line">		 --name 	<span class="string">'My cluster'</span> </span><br><span class="line">		 --instance-groups file://spark-master-slave.json </span><br><span class="line">		 --configurations   <span class="string">'[</span></span><br><span class="line"><span class="string">		 						&#123;</span></span><br><span class="line"><span class="string">		 							"Classification":"spark",</span></span><br><span class="line"><span class="string">		 							"Properties":</span></span><br><span class="line"><span class="string">		 									&#123;"maximizeResourceAllocation":"true"&#125;,</span></span><br><span class="line"><span class="string">		 							"Configurations":[]</span></span><br><span class="line"><span class="string">		 						&#125;</span></span><br><span class="line"><span class="string">		 					]'</span> </span><br><span class="line">		 --region cn-north-1</span><br></pre></td></tr></table></figure>
+<p>Other:<br>基本上就是这样，详细了解的话。AWS EMR的文档要看。相关还有hadoop和spark相关。</p>
+<ul>
+<li>windows/mac 下有个s3 brower程序可以用</li>
+<li>应该在本地做好实验，然后再放在aws上跑</li>
+<li>多使用help命令，然后阅读文档的时候，有pdf格式的，多语言里面选择中文，即可。</li>
+<li>启动之后是不能直接访问的，需要手动配置对应安全组的出入站协议，不开相应端口(选择相应的协议)的话是不能访问的，当初用EMR的时候就是这样的，惨痛的教训，根本连接不到主节点。 </li>
+</ul>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">Coffe or tea ?</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2016/12/05/ssh-reverse-tunnle/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2016/12/17/Just-Taking-about-code-security/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Talking about Web Spider I | PY.AI</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="知识回顾," />
+  
+
+  <meta name="description" content="前言&amp;emsp;&amp;emsp;闲来无事，总结一下自己对爬虫和搜索引擎的认识。作为一个知识回顾，顺便再理一理思路。最开始的时候之所以想使用爬虫，是因为下载东西不方便，后来呢又想自己写一个小型的搜索引擎作为尝试。开始去接触相关的知识，学习python，也逐渐认识到一些库。 我的零开始基础知识访问一个网址，经由DNS服务器解析之后得到相应的ip地址，额，好像没什么关系。但是搜索引擎其实就是将整个互联网上的">
+<meta name="keywords" content="知识回顾">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Talking about Web Spider I">
+<meta property="og:url" content="http://iami.xyz/2016/02/03/Python-Web-Spider-I/index.html">
+<meta property="og:site_name" content="PY.AI">
+<meta property="og:description" content="前言&amp;emsp;&amp;emsp;闲来无事，总结一下自己对爬虫和搜索引擎的认识。作为一个知识回顾，顺便再理一理思路。最开始的时候之所以想使用爬虫，是因为下载东西不方便，后来呢又想自己写一个小型的搜索引擎作为尝试。开始去接触相关的知识，学习python，也逐渐认识到一些库。 我的零开始基础知识访问一个网址，经由DNS服务器解析之后得到相应的ip地址，额，好像没什么关系。但是搜索引擎其实就是将整个互联网上的">
+<meta property="og:updated_time" content="2018-01-17T05:11:33.276Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Talking about Web Spider I">
+<meta name="twitter:description" content="前言&amp;emsp;&amp;emsp;闲来无事，总结一下自己对爬虫和搜索引擎的认识。作为一个知识回顾，顺便再理一理思路。最开始的时候之所以想使用爬虫，是因为下载东西不方便，后来呢又想自己写一个小型的搜索引擎作为尝试。开始去接触相关的知识，学习python，也逐渐认识到一些库。 我的零开始基础知识访问一个网址，经由DNS服务器解析之后得到相应的ip地址，额，好像没什么关系。但是搜索引擎其实就是将整个互联网上的">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">慎独</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">慎独</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#我的零开始"><span class="toc-text">我的零开始</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基础知识"><span class="toc-text">基础知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设计一个容器"><span class="toc-text">设计一个容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据的存储和索引"><span class="toc-text">数据的存储和索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#爬虫和反爬虫技术"><span class="toc-text">爬虫和反爬虫技术</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Python-Web-Spider-I" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Talking about Web Spider I</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.02.03</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>mour</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/HowTo/">HowTo</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&emsp;&emsp;闲来无事，总结一下自己对爬虫和搜索引擎的认识。作为一个知识回顾，顺便再理一理思路。最开始的时候之所以想使用爬虫，是因为下载东西不方便，后来呢又想自己写一个小型的搜索引擎作为尝试。开始去接触相关的知识，学习python，也逐渐认识到一些库。</p>
+<h2 id="我的零开始"><a href="#我的零开始" class="headerlink" title="我的零开始"></a>我的零开始</h2><h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><p>访问一个网址，经由DNS服务器解析之后得到相应的ip地址，额，好像没什么关系。但是搜索引擎其实就是将整个互联网上的URL集合进行存储，建立索引。本质也就是一个大的爬虫而已。采取分布式的抓取，定期的更新索引，应该还是多线程的。</p>
+<p> 在访问URL的过程中，你需要先知道 一些HTTP状态码，这些状态码告诉你这些URL代表的页面是否存在，或者已被迁移。常见的有404,200等，当你抓取到不存在的页面时，你需要判断将这个URL放入到哪个序列，未抓取，已抓取，已抓取但未找到（或者是失效的队列），当然往常只有两个队列就是已抓取和未抓取两个队列。</p>
+<h3 id="设计一个容器"><a href="#设计一个容器" class="headerlink" title="设计一个容器"></a>设计一个容器</h3><p> 或者说有一个设计好的代码框架，有入口有出口。入口可以是单个的URL，也可以是一堆的URL，然后分别去下载这些URL对应的页面。当然在你下载了这个页面之后，这才仅仅只是开始了一小步，因为你要做的是获取其中的数据。而不仅仅是下载下来。这时候你需要设计一个解析器，说白了也就是一个函数。想好它将会接收那些参数，又需要返回什么样的结果。我记得之前有次和老师聊天，老师说要学会面向接口编程，上网上查了半天资料也没有找到有用的，当时也没有明白。之后逐渐明白了接口的重要性，你需要设计好一个别人拿来就能用的函数。解析器就应该是这样的。<br>但不仅仅是至进行解析的处理，还应该将异常情况考虑好，怎么抛出怎么处理。</p>
+<p>解析的时候，可以从文件里面进行解析，也可以直接读取保存的字符串变量。解析的时候可以使用正则表达式匹配，这样就很高级了。当然也可以用相应的库来完成这个工作。</p>
+<p>反正我是认为设计模式这个是十分重要的，无论写什么代码，只有将条理理得清清楚楚，知道怎么写，流程往哪里走才行。这样写出来的代码会很少bug。</p>
+<h3 id="数据的存储和索引"><a href="#数据的存储和索引" class="headerlink" title="数据的存储和索引"></a>数据的存储和索引</h3><p>这时候你已经解析好了文件，应该将所需的结果存储起来。其实这里再一步体现了设计的重要性。如果你将这些数据放到文本里就先不说了，但是如果放到数据库中，数据库中的表的设计不也需要仔细想想。假如你爬到的是一些财经的数据，你就按照XX指标，XX点，XX涨幅等等等建个表，那么你的数据库是不是也要考虑一下写上新的事务。</p>
+<p>到了全部存储好了，你需要快速的去查找到这些数据，难道每次都要<code>SELECT * FROM x_TABLE WHERE X_NAME = &#39;$_INPUT&#39;</code>,这样的效率要慢的多，之前没事的时候浅浅的用过solr，虽然只是按着doc玩了一会，但是可以明显的看出来，人家支持各种格式的导入，什么csv,yml,xml,json的，都能直接导进去建立索引，搜索的时候也是很快（当然也可能因为是示例数据少吧，大的数据没试过，好伤心）。期间还学到了其他的好玩的，例如awk,grep，不过sed还是不会用。又蛮开心的。</p>
+<p>写到这的时候突然想，像我这种渣渣，算法菜得一逼，真待补补了。越发觉得算法的重要性，真的是十分重要。算法是魂，绝对是。当然我写的小爬虫可能没有用到，但是但是，TMD算法是真的重要啊。</p>
+<h3 id="爬虫和反爬虫技术"><a href="#爬虫和反爬虫技术" class="headerlink" title="爬虫和反爬虫技术"></a>爬虫和反爬虫技术</h3><p>有人玩爬虫，就有人反爬虫。你一个爬虫请求的速度那么快，假如好多爬虫都去访问人家的网址，那不是坑比了。不过我这种菜菜还领悟不到这种深奥，只说一下知道的最浅薄的吧。</p>
+<blockquote>
+<p>常见的反邮件爬虫的方法就是将邮件地址写成 someaddress AT gmail.com 将@写成AT即可。</p>
+<p>禁止一定时间段内的IP访问次数</p>
+<p>听说还有的是进行大数据建模，分析出是否是人类行为，感觉是十分高大上的。不知道新浪的清理死粉是不是这样做的</p>
+</blockquote>
+<p>至于登陆的时候千奇百怪的验证码技术，也是一个十分好的防爬虫技术。就拿12306的登陆验证码，我相信现在的图片识别技术应该难识别的。</p>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">Coffe or tea ?</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2016/02/03/Python-Web-Spider II/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2016/03/27/R-Basiclly Use/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

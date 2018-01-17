@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Crawl From QiChaCha | PY.AI</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="抓取数据,实习笔记," />
+  
+
+  <meta name="description" content="企查查相关来这里的第一份小任务是获取自动登录企查查后的cookie,本来是打算 12345wget --save-cookies cookies.txt \     --keep-session-cookies \     --post-data &apos;user=username&amp;amp;password=password&apos; \     --delete-after \     http://serv">
+<meta name="keywords" content="抓取数据,实习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Crawl From QiChaCha">
+<meta property="og:url" content="http://iami.xyz/2016/12/01/QiChaChaAnd-WeiXin/index.html">
+<meta property="og:site_name" content="PY.AI">
+<meta property="og:description" content="企查查相关来这里的第一份小任务是获取自动登录企查查后的cookie,本来是打算 12345wget --save-cookies cookies.txt \     --keep-session-cookies \     --post-data &apos;user=username&amp;amp;password=password&apos; \     --delete-after \     http://serv">
+<meta property="og:image" content="http://iami.xyz/images//user-Agent.jpg">
+<meta property="og:updated_time" content="2018-01-17T05:11:33.276Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Crawl From QiChaCha">
+<meta name="twitter:description" content="企查查相关来这里的第一份小任务是获取自动登录企查查后的cookie,本来是打算 12345wget --save-cookies cookies.txt \     --keep-session-cookies \     --post-data &apos;user=username&amp;amp;password=password&apos; \     --delete-after \     http://serv">
+<meta name="twitter:image" content="http://iami.xyz/images//user-Agent.jpg">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">慎独</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">慎独</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#企查查相关"><span class="toc-text">企查查相关</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-QiChaChaAnd-WeiXin" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Crawl From QiChaCha</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.12.01</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>mour</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/HowTo/">HowTo</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h3 id="企查查相关"><a href="#企查查相关" class="headerlink" title="企查查相关"></a>企查查相关</h3><p>来这里的第一份小任务是获取自动登录企查查后的cookie,本来是打算</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wget --save-cookies cookies.txt \</span><br><span class="line">     --keep-session-cookies \</span><br><span class="line">     --post-data <span class="string">'user=username&amp;password=password'</span> \</span><br><span class="line">     --delete-after \</span><br><span class="line">     http://server.com/auth.php</span><br></pre></td></tr></table></figure>
+<p>但是企查查的三方登录根本行不通，那些账号都是异常的，还需要验证码。后来去抓企查查公众号的包，得到了想要的。走了一条新的获取数据方式的道路。</p>
+<ul>
+<li>step1 : get token</li>
+<li>step2 : get company name, In teh same time , you can get the keyno</li>
+<li>step3 : get company details</li>
+</ul>
+<p>其实这里面是有个漏洞的，就是正常情况下请求一次网页，会生成一个code,然后拿着这个code才能去请求查询服务。但是你把code置空也能获取token…..</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> request = <span class="built_in">require</span>(<span class="string">"request"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> options = &#123; <span class="attr">method</span>: <span class="string">'GET'</span>,</span><br><span class="line">  url: <span class="string">'http://wxapi.qichacha.com/wechat/v1/base/advancedSearch'</span>,</span><br><span class="line">  qs: </span><br><span class="line">   &#123; <span class="attr">cityCode</span>: <span class="string">''</span>,</span><br><span class="line">     industryCode: <span class="string">''</span>,</span><br><span class="line">     isSortAsc: <span class="string">''</span>,</span><br><span class="line">     pageIndex: <span class="string">'1'</span>,</span><br><span class="line">     pageSize: <span class="string">'200'</span>,</span><br><span class="line">     province: <span class="string">''</span>,</span><br><span class="line">     registCapiBegin: <span class="string">''</span>,</span><br><span class="line">     registCapiEnd: <span class="string">''</span>,</span><br><span class="line">     searchIndex: <span class="string">''</span>,</span><br><span class="line">     searchKey: <span class="string">'al'</span>,</span><br><span class="line">     sortField: <span class="string">''</span>,</span><br><span class="line">     startDateBegin: <span class="string">''</span>,</span><br><span class="line">     startDateEnd: <span class="string">''</span>,</span><br><span class="line">     subIndustryCode: <span class="string">''</span>,</span><br><span class="line">     token: <span class="string">'9ae78b92b16d04173d8caffbd7cf3c30'</span> &#125;,</span><br><span class="line">  headers: </span><br><span class="line">   &#123; <span class="string">'cache-control'</span>: <span class="string">'no-cache'</span>,</span><br><span class="line">     <span class="string">'x-requested-with'</span>: <span class="string">'com.tencent.mm'</span>,</span><br><span class="line">     <span class="string">'accept-language'</span>: <span class="string">'zh-CN,en-US;q=0.8'</span>,</span><br><span class="line">     <span class="string">'accept-encoding'</span>: <span class="string">'gzip, deflate'</span>,</span><br><span class="line">     referer: <span class="string">'http://mob.qichacha.com/weixin-app/?code=&amp;state=123'</span>,</span><br><span class="line">     <span class="string">'user-agent'</span>: <span class="string">'Mozilla/5.0 (Linux; Android 5.1; MX5 Build/LMY47I) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile MQQBrowser/6.8 TBS/036872 Safari/537.36 MicroMessenger/6.3.31.940 NetType/WIFI Language/zh_CN'</span>,</span><br><span class="line">     origin: <span class="string">'http://mob.qichacha.com'</span>,</span><br><span class="line">     accept: <span class="string">'application/json, text/plain, */*'</span>,</span><br><span class="line">     connection: <span class="string">'keep-alive'</span>,</span><br><span class="line">     host: <span class="string">'wxapi.qichacha.com'</span> &#125; &#125;;</span><br><span class="line"></span><br><span class="line">request(options, <span class="function"><span class="keyword">function</span> (<span class="params">error, response, body</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (error) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(error);</span><br><span class="line">  <span class="built_in">console</span>.log(body);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>不过可以从这里面看出来一个东西，就是模拟微信只需要在<code>user-Agent</code>里面加上<code>MicroMessenger</code> </p>
+<p><img src="/images//user-Agent.jpg" alt="User-agent"></p>
+<p>其实呢，你可以看到，里面之所以加了不同的浏览器版本，其实就是为了兼容(图片来自第一次在这里的技术分享%&gt;_&lt;%)。</p>
+<p>Other:</p>
+<p>后来，在尝试在hadoop上跑爬虫，又想到了一种的途径去获得连接并且去重，类似这样。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">lynx --dump -listonly http://qichahca.com | grep "[http|https]://" | awk '!a[$2]++'</span><br></pre></td></tr></table></figure>
+<p>也可以grep的时候，只匹配特定域名下的东西。</p>
+<p>后记:</p>
+<p>突然发现自己写的爬虫，可能算不上爬虫，我是习惯性的找到数据接口，API也好，找到规律也好，然后获取所有数据。这样的缺点是需要前面投入一些时间去分析。然后就简单了。 而我通过近期对公司分布式爬虫代码的阅读来看，或者说平常的代码来看，一旦页面变化，就需要修改对应的代码，一直都需要人来维护。但是API的就不会。同时，同样的请求，不需要请求其他无用的html内容。</p>
+<p>虽然自己也能写正常的爬虫，但是对于分布式爬虫还是有点不行。最近在看本司分布式爬虫的代码。设计什么的还好理解，架构也好理解。但是吧，代码没文档，真是丑。决定试试分布式爬虫框架以及大型爬虫在hadoop上怎么搞的。</p>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">Coffe or tea ?</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2016/11/22/Ocr-Jeston-Tk1-In/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2016/12/05/ssh-reverse-tunnle/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

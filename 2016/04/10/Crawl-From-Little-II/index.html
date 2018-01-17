@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Crawl From Little II | PY.AI</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="学习笔记,抓取数据," />
+  
+
+  <meta name="description" content="接上回那个勉强算得上或算不上抓取的回忆，但是那些数据之中有一些很敏感的信息，包括教师的详细信息，利用这个信息登陆统一身份验证平台，想必又会有收货呢登陆统一身份验证平台在登陆的过程中，发现女老师对密码安全基本是没什么意识的，虽然你们也是计算机学院的，但是你们真的好意思说你们是计算机学员的吗？在登陆进去，发现老师可以查询学生的信息（仅包含姓名学号，班级），看了看挺失望的，毕竟这些信息没什么鸟用，但是当">
+<meta name="keywords" content="学习笔记,抓取数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Crawl From Little II">
+<meta property="og:url" content="http://iami.xyz/2016/04/10/Crawl-From-Little-II/index.html">
+<meta property="og:site_name" content="PY.AI">
+<meta property="og:description" content="接上回那个勉强算得上或算不上抓取的回忆，但是那些数据之中有一些很敏感的信息，包括教师的详细信息，利用这个信息登陆统一身份验证平台，想必又会有收货呢登陆统一身份验证平台在登陆的过程中，发现女老师对密码安全基本是没什么意识的，虽然你们也是计算机学院的，但是你们真的好意思说你们是计算机学员的吗？在登陆进去，发现老师可以查询学生的信息（仅包含姓名学号，班级），看了看挺失望的，毕竟这些信息没什么鸟用，但是当">
+<meta property="og:image" content="http://iami.xyz/images//crawl/5.png">
+<meta property="og:updated_time" content="2018-01-17T05:11:33.276Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Crawl From Little II">
+<meta name="twitter:description" content="接上回那个勉强算得上或算不上抓取的回忆，但是那些数据之中有一些很敏感的信息，包括教师的详细信息，利用这个信息登陆统一身份验证平台，想必又会有收货呢登陆统一身份验证平台在登陆的过程中，发现女老师对密码安全基本是没什么意识的，虽然你们也是计算机学院的，但是你们真的好意思说你们是计算机学员的吗？在登陆进去，发现老师可以查询学生的信息（仅包含姓名学号，班级），看了看挺失望的，毕竟这些信息没什么鸟用，但是当">
+<meta name="twitter:image" content="http://iami.xyz/images//crawl/5.png">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">慎独</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">慎独</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#接上回那个勉强算得上或算不上抓取的回忆，但是那些数据之中有一些很敏感的信息，包括教师的详细信息，利用这个信息登陆统一身份验证平台，想必又会有收货呢"><span class="toc-text">接上回那个勉强算得上或算不上抓取的回忆，但是那些数据之中有一些很敏感的信息，包括教师的详细信息，利用这个信息登陆统一身份验证平台，想必又会有收货呢</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#登陆统一身份验证平台"><span class="toc-text">登陆统一身份验证平台</span></a>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Crawl-From-Little-II" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Crawl From Little II</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.04.10</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>mour</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/学习数据挖掘的路上/">学习数据挖掘的路上</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h4 id="接上回那个勉强算得上或算不上抓取的回忆，但是那些数据之中有一些很敏感的信息，包括教师的详细信息，利用这个信息登陆统一身份验证平台，想必又会有收货呢"><a href="#接上回那个勉强算得上或算不上抓取的回忆，但是那些数据之中有一些很敏感的信息，包括教师的详细信息，利用这个信息登陆统一身份验证平台，想必又会有收货呢" class="headerlink" title="接上回那个勉强算得上或算不上抓取的回忆，但是那些数据之中有一些很敏感的信息，包括教师的详细信息，利用这个信息登陆统一身份验证平台，想必又会有收货呢"></a>接上回那个勉强算得上或算不上抓取的回忆，但是那些数据之中有一些很敏感的信息，包括教师的详细信息，利用这个信息登陆统一身份验证平台，想必又会有收货呢</h4><h3 id="登陆统一身份验证平台"><a href="#登陆统一身份验证平台" class="headerlink" title="登陆统一身份验证平台"></a>登陆统一身份验证平台</h3><p>在登陆的过程中，发现女老师对密码安全基本是没什么意识的，虽然你们也是计算机学院的，但是你们真的好意思说你们是计算机学员的吗？<br>在登陆进去，发现老师可以查询学生的信息（仅包含姓名学号，班级），看了看挺失望的，毕竟这些信息没什么鸟用，但是当我看网页源码的时候，发现这个系统的开发人员很不负责，只是把之前写的文本框给遮盖了，但是还是靠那个传数据。于是抓包分析，发现是post request payload，response的结果却是student的详细信息(一应俱全，应有尽有),好呗<br>不得不说，很激动，抓呗。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-*-coding:utf-8-*-</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> urllib2</span><br><span class="line"><span class="keyword">import</span> urllib</span><br><span class="line"><span class="keyword">import</span> encodings</span><br><span class="line"></span><br><span class="line">url = <span class="string">""</span></span><br><span class="line">header=&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">xs</span><span class="params">(request_payload)</span>:</span></span><br><span class="line">	request = urllib2.Request(url, headers=headers, data=urllib.urlencode(request_payload))</span><br><span class="line">	response = urllib2.urlopen(request, timeout=<span class="number">5</span>)</span><br><span class="line">	content = response.read()</span><br><span class="line">	print(content)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">70</span>):</span><br><span class="line">	m_request_payload = &#123;</span><br><span class="line">	<span class="string">'callCount'</span>:<span class="string">'1'</span>,</span><br><span class="line">	<span class="string">'httpSessionId'</span>:<span class="string">'ssssssssssssssssssssssssss'</span>,</span><br><span class="line">	<span class="string">'scriptSessionId'</span>:<span class="string">'sssssssssssssssssssssssss'</span>,</span><br><span class="line">	<span class="string">'page'</span>:<span class="string">'/xxxxx/xxxxx/171'</span>,</span><br><span class="line">	<span class="string">'c0-scriptName'</span>:<span class="string">'XSXXDwrAction'</span>,</span><br><span class="line">	<span class="string">'c0-methodName'</span>:<span class="string">'getList'</span>,</span><br><span class="line">	<span class="string">'c0-id'</span>:<span class="string">'165116513216516'</span>,</span><br><span class="line">	<span class="string">'c0-param0'</span>:<span class="string">'number:'</span>+ str(i),</span><br><span class="line">	<span class="string">'c0-param1'</span>:<span class="string">'null:null'</span>,</span><br><span class="line">	<span class="string">'c0-param2'</span>:<span class="string">'null:null'</span>,</span><br><span class="line">	<span class="string">'c0-param3'</span>:<span class="string">'string:'</span>,</span><br><span class="line">	<span class="string">'c0-param4'</span>:<span class="string">'number:15'</span></span><br><span class="line">&#125;</span><br><span class="line">xs(m_request_payload)</span><br></pre></td></tr></table></figure>
+<p>当然这还没有解码，数据获取的类型是<br><img src="/images//crawl/5.png" alt="img5"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span>  re</span><br><span class="line">pattern = <span class="string">r'"(.*?)"'</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'IDinfomation'</span>,<span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    key = re.findall(pattern,f.read())</span><br><span class="line">    <span class="keyword">for</span> peopele <span class="keyword">in</span> key:</span><br><span class="line">    tt=peopele.decode(<span class="string">'raw_unicode_escape'</span>).encode(<span class="string">'utf-8'</span>)</span><br></pre></td></tr></table></figure>
+<p>最后稍微提取一下就能得到详细的信息了，全是你想要的，如果在内网中，还可以通过统一身份平台跳到教务系统，然后把这些人的图片爬下来，哈哈，想想都有点激动呢。</p>
+<p>然后晚上的时候，登一个账号发现里面的通讯录的response也是很奇怪，把老师的详细信息都response了，稍微改下post,于是所有的老师更加详细的信息到手。而且没事还挑了几个老师的学校邮箱看了看，不过并没有什么有用的。<br>本来想做个统计，绘个图表，结果发现统一信息门户里面都已经给了可视化的图，虽然很丑。不过我现在数据并未完全组织好，也没插入到数据库，电脑估计是要重装了。之前折腾的有问题了。</p>
+<p>最后，老师来查mac地址，希望没事吧。虽然这个没有什么技术含量，但是还是很有动力的。</p>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">Coffe or tea ?</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2016/04/07/Crawl-From-Little/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2016/05/09/Crawl-Freom-Little-III/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

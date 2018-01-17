@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>浅谈代码安全及安全 | PY.AI</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="实习笔记," />
+  
+
+  <meta name="description" content="题记：写在浅谈代码安全之前业余看代码之前，对公司的一些产品进行了简单的安全测试。其实那些真正牛逼的人都是脾气好又低调的很啊，佩服佩服，努力学习，向你们看齐↖(^ω^)↗ 。别人送了一张FIT的票，好开心啊，谢谢Black_hole大表哥。现在终于理解别人去看演唱会的那种激动了，小菜鸟成长ING 正文：浅谈代码安全以及其他代码安全毋庸置疑是什么重要的，从安全角度来说，如果说除了安全问题。运维之外，那">
+<meta name="keywords" content="实习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈代码安全及安全">
+<meta property="og:url" content="http://iami.xyz/2016/12/17/Just-Taking-about-code-security/index.html">
+<meta property="og:site_name" content="PY.AI">
+<meta property="og:description" content="题记：写在浅谈代码安全之前业余看代码之前，对公司的一些产品进行了简单的安全测试。其实那些真正牛逼的人都是脾气好又低调的很啊，佩服佩服，努力学习，向你们看齐↖(^ω^)↗ 。别人送了一张FIT的票，好开心啊，谢谢Black_hole大表哥。现在终于理解别人去看演唱会的那种激动了，小菜鸟成长ING 正文：浅谈代码安全以及其他代码安全毋庸置疑是什么重要的，从安全角度来说，如果说除了安全问题。运维之外，那">
+<meta property="og:updated_time" content="2018-01-17T05:11:33.276Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浅谈代码安全及安全">
+<meta name="twitter:description" content="题记：写在浅谈代码安全之前业余看代码之前，对公司的一些产品进行了简单的安全测试。其实那些真正牛逼的人都是脾气好又低调的很啊，佩服佩服，努力学习，向你们看齐↖(^ω^)↗ 。别人送了一张FIT的票，好开心啊，谢谢Black_hole大表哥。现在终于理解别人去看演唱会的那种激动了，小菜鸟成长ING 正文：浅谈代码安全以及其他代码安全毋庸置疑是什么重要的，从安全角度来说，如果说除了安全问题。运维之外，那">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">慎独</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">慎独</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#题记：写在浅谈代码安全之前"><span class="toc-text">题记：写在浅谈代码安全之前</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#正文：浅谈代码安全以及其他"><span class="toc-text">正文：浅谈代码安全以及其他</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#后记：写在浅谈代码安全之后"><span class="toc-text">后记：写在浅谈代码安全之后</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Just-Taking-about-code-security" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">浅谈代码安全及安全</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.12.17</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>mour</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/HowTo/">HowTo</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h4 id="题记：写在浅谈代码安全之前"><a href="#题记：写在浅谈代码安全之前" class="headerlink" title="题记：写在浅谈代码安全之前"></a>题记：写在浅谈代码安全之前</h4><p>业余看代码之前，对公司的一些产品进行了简单的安全测试。其实那些真正牛逼的人都是脾气好又低调的很啊，佩服佩服，努力学习，向你们看齐↖(^ω^)↗ 。别人送了一张FIT的票，好开心啊，谢谢Black_hole大表哥。现在终于理解别人去看演唱会的那种激动了，小菜鸟成长ING</p>
+<h4 id="正文：浅谈代码安全以及其他"><a href="#正文：浅谈代码安全以及其他" class="headerlink" title="正文：浅谈代码安全以及其他"></a>正文：浅谈代码安全以及其他</h4><p>代码安全毋庸置疑是什么重要的，从安全角度来说，如果说除了安全问题。运维之外，那么首个应该负责的人就是主程。再假如一个主程没有丝毫的安全概念，那写出来的代码健壮性可想而知。这样下去，在我看来，10年8年的成长也不过仅仅是一些经验的积累，或许还有一些其他的东西，不过我是看不到了。</p>
+<p>首先:</p>
+<ol>
+<li><p>意识很重要 x 1</p>
+</li>
+<li><p>安全知识很重要 x 2</p>
+</li>
+<li><p>代码规范很重要 x 3</p>
+</li>
+<li><p>架构设计和代码审查很重要 x4</p>
+</li>
+</ol>
+<p>其次:</p>
+<ul>
+<li>不只是密码，不要CTO的重点是放在密码爆破，密码泄露上面，密码复杂度上。道理上讲是对的，但是也是不对的，要考虑全。</li>
+</ul>
+<ul>
+<li>不仅要知道怎么发现还要知道怎么避免和怎么修复。</li>
+</ul>
+<p>没了,安全一旦出问题，结果显而易见。包括不限于，代码安全，运维安全，逻辑安全，产品安全，设计上的安全，以及依托于第三方工具的安全性。</p>
+<ul>
+<li><p>拿一个例子来说：本司有个前端，听说是跟着老板一起打天下的人。另，本人所在的公司没有一个人对安全有任何概念。运维混乱，没有架构，没有任何安全体系，然而我只是个爬虫实习生。。。。所以可想而知，当时我猜前端哥的代码肯定有漏洞，果不其然，CSRF，把一个构造好的链接用短网址处理下丢过去(因为有个上班的时候所有人都会开看板网页的，而且这个产品还是线上的，哭瞎在厕所)。立马把测试的文章删除了，同时cookie也到手了。报给CTO，CTO表示知道了，可能由于我表述不精，不会吹牛，看来这件事情没有引起太大的重视。同时API的接口设计根本没有做任何过滤，一开始timestap是需要在脚本里面构造好，后来直接给URL里面放上一个Date.now()传过去，竟然也行。也就是说API接口里面根本没有转义或者转成字符串。。。。</p>
+</li>
+<li><p>再拿一个例子说: 本司有个自然语言处理的大哥，开发者后台也是他们组写的。什么是懵逼，这就是懵逼，当时是让我体验产品呢，出于强迫症开始进行测试。我了草，推广链接居然把APPKEY都分享出去了。我了草，为什么，why?? </p>
+</li>
+<li><p>再拿一个例子说: 我在的这个组，为什么，为什么可以直接到发送对数据库的查询。为什么我Mongo本身数据不多，我还要交给ES查询，再从ES拿。</p>
+</li>
+<li><p>还有一个例子：是关于官网的，官网有个博客的连接，wordpress的，然而这个有xmlrpc的漏洞，报给他们说修复，修复竟然是从官网把链接去掉了，我去，好神奇啊，那看来我就没办法直接访问blog.xxx.xxx了吗？？？</p>
+</li>
+<li><p>我去，我突然又发现这个cookie好像没有有效时间的限制。</p>
+</li>
+</ul>
+<h4 id="后记：写在浅谈代码安全之后"><a href="#后记：写在浅谈代码安全之后" class="headerlink" title="后记：写在浅谈代码安全之后"></a>后记：写在浅谈代码安全之后</h4><ol>
+<li><p>能进这家公司，很大一部分的程度上是因为谈的来，还有我比较喜欢贤二，所以才有一种非常想来的感觉。之前友情提示了一下他们的安全体系十分的不安全，导致我轻松地就能接触到了他们所有的数据库，还有代码。当时其实是不报什么希望了，缘法自然，如是而已。然而因缘际会总是十分巧妙，最后还是来了。听说当时一面的爬虫工程师，对我不是很满意。</p>
+</li>
+<li><p>如果说你做了八九年，也不过就现在这个水平，你肯定有过人之处，但你有什么值得对我这个还没出道一年，还没毕业的人骄傲呢。问你问题你不愿意，那我还怎么接手你的代码，写的乱七八糟，连个文档都没有，又有什么值得了不起呢？ 讲信修睦，选贤与能，难否?</p>
+</li>
+<li><p>表示再也不会对任何人说，这个很简单很简单。我不关心什么什么，我只要他实现就行了。这是不负责任的表现。想起以前对实验室的学弟这样说，这个算法很简单，你只要加进去就行了。 (原来人会变得温柔，是透彻的懂了，哈哈)以后有人这样再对我这样说，我肯定是拒绝的。</p>
+</li>
+<li><p>没有什么是绝对安全的</p>
+</li>
+</ol>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">Coffe or tea ?</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2016/12/12/How-to-AWS-EMR/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2017/06/14/Review-S02-conda-my-useage/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

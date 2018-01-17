@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>内存取证,密码提取以及Volatility的使用 | PY.AI</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="学习笔记," />
+  
+
+  <meta name="description" content="前言 : 简介这个月开始使用Volatility进行内存取证，以及密码提取相关。还顺带玩了把 Lan Turtle以及Leonarde。 Leonarde只是用来模拟键盘，算是比较限制吧。Lan Turtle则功能十分强大。 Volatility可谓享有盛名，在我使用的过程中，越发佩服作者。厉害了。 Step 1 : 获取内存镜像要想对镜像进行分析，首先肯定是要获取到内存镜像  windows">
+<meta name="keywords" content="学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="内存取证,密码提取以及Volatility的使用">
+<meta property="og:url" content="http://iami.xyz/2017/08/25/Volatility-Memory-Analysis/index.html">
+<meta property="og:site_name" content="PY.AI">
+<meta property="og:description" content="前言 : 简介这个月开始使用Volatility进行内存取证，以及密码提取相关。还顺带玩了把 Lan Turtle以及Leonarde。 Leonarde只是用来模拟键盘，算是比较限制吧。Lan Turtle则功能十分强大。 Volatility可谓享有盛名，在我使用的过程中，越发佩服作者。厉害了。 Step 1 : 获取内存镜像要想对镜像进行分析，首先肯定是要获取到内存镜像  windows">
+<meta property="og:image" content="http://iami.xyz/images//volatility/0814jietu2.png">
+<meta property="og:image" content="http://iami.xyz/images//volatility/0814jietu1.png">
+<meta property="og:image" content="http://iami.xyz/images//volatility/0817jietu.png">
+<meta property="og:image" content="http://iami.xyz/images//volatility/0818jietu.png">
+<meta property="og:updated_time" content="2018-01-17T05:11:33.280Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="内存取证,密码提取以及Volatility的使用">
+<meta name="twitter:description" content="前言 : 简介这个月开始使用Volatility进行内存取证，以及密码提取相关。还顺带玩了把 Lan Turtle以及Leonarde。 Leonarde只是用来模拟键盘，算是比较限制吧。Lan Turtle则功能十分强大。 Volatility可谓享有盛名，在我使用的过程中，越发佩服作者。厉害了。 Step 1 : 获取内存镜像要想对镜像进行分析，首先肯定是要获取到内存镜像  windows">
+<meta name="twitter:image" content="http://iami.xyz/images//volatility/0814jietu2.png">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">慎独</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">慎独</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言-简介"><span class="toc-text">前言 : 简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Step-1-获取内存镜像"><span class="toc-text">Step 1 : 获取内存镜像</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Step-2-分析的前提条件，要有个profile"><span class="toc-text">Step 2 : 分析的前提条件，要有个profile</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Step-3-自古深情留不住-总是套路得人心"><span class="toc-text">Step 3 : 自古深情留不住,总是套路得人心</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Step-4-提取密码和一些好玩的套路"><span class="toc-text">Step 4 : 提取密码和一些好玩的套路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Step-5-病毒分析与重建二进制"><span class="toc-text">Step 5 : 病毒分析与重建二进制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Not-FAQ"><span class="toc-text">Not FAQ</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Conclusion："><span class="toc-text">Conclusion：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Resources"><span class="toc-text">Resources</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Volatility-Memory-Analysis" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">内存取证,密码提取以及Volatility的使用</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.08.25</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>mour</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/HowTo/">HowTo</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h4 id="前言-简介"><a href="#前言-简介" class="headerlink" title="前言 : 简介"></a>前言 : 简介</h4><p>这个月开始使用<code>Volatility</code>进行内存取证，以及密码提取相关。还顺带玩了把 <code>Lan Turtle</code>以及<code>Leonarde</code>。 <code>Leonarde</code>只是用来模拟键盘，算是比较限制吧。<code>Lan Turtle</code>则功能十分强大。</p>
+<p><code>Volatility</code>可谓享有盛名，在我使用的过程中，越发佩服作者。厉害了。</p>
+<h4 id="Step-1-获取内存镜像"><a href="#Step-1-获取内存镜像" class="headerlink" title="Step 1 : 获取内存镜像"></a>Step 1 : 获取内存镜像</h4><p>要想对镜像进行分析，首先肯定是要获取到内存镜像</p>
+<ul>
+<li>windows </li>
+</ul>
+<blockquote>
+<p>非常简单,直接使用<a href="https://github.com/mylamour/-_--Forensics-Tools/raw/master/utils/DumpIt.exe" target="_blank" rel="noopener">dumpit.exe</a>即可,对远程的话可以采用<code>F-Response</code>. <code>Windows</code>下其实有很多的工具可以进行内存镜像。这里就不一一介绍了。</p>
+</blockquote>
+<ul>
+<li>linux<blockquote>
+<p>稍微复杂一点需要使用到<code>LIME</code>,之前还可以用<code>dd</code>,但是现在<code>linux</code>不允许<code>dd</code>读取超过<code>1M</code>的空间。</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/limetext/lime</span><br><span class="line">$ <span class="built_in">cd</span> src</span><br><span class="line">$ make</span><br><span class="line">....</span><br><span class="line">  CC [M]  /home/mhl/Downloads/src/tcp.o</span><br><span class="line">  CC [M]  /home/mhl/Downloads/src/disk.o</span><br><span class="line">....</span><br><span class="line">$ sudo insmod lime-4.10.0-30-generic.ko <span class="string">"path=/home/mour/ubuntu_test1704.lime format=lime"</span></span><br></pre></td></tr></table></figure>
+<h4 id="Step-2-分析的前提条件，要有个profile"><a href="#Step-2-分析的前提条件，要有个profile" class="headerlink" title="Step 2 : 分析的前提条件，要有个profile"></a>Step 2 : 分析的前提条件，要有个<code>profile</code></h4><p>得到内存镜像之后，可以准备进行分析了。而进行分析的前提的条件是根据<code>profile</code>文件。<code>profile</code>文件其实就是将内存映射文件和调试信息压缩放在一起，由<code>volatility</code>然后框架进行读取。<code>Windows</code>和<code>Linux</code>有一点不一样，就是<code>Windows</code>下的<code>profile</code>的可以迁移使用，所以有时候也会建议好几种版本。但是<code>Linux</code>下的则不一样，必须是要求：</p>
+<ul>
+<li>CPU架构一致</li>
+<li>内核版本一致</li>
+<li>发行版本一致</li>
+</ul>
+<p>官网给出的<a href="https://github.com/volatilityfoundation/volatility/wiki/Linux" target="_blank" rel="noopener">制作教程</a>在这里，但是已经有些不适用了。目前已经有更加方便的方法了。</p>
+<ol>
+<li>查看内核版本，安装下相应的<code>Header</code>文件</li>
+</ol>
+<blockquote>
+<p><img src="/images//volatility/0814jietu2.png" alt="image"> </p>
+</blockquote>
+<ol>
+<li>制作<code>dwarf</code>文件</li>
+</ol>
+<blockquote>
+<p>这一步在原始教程里十分的繁复，其实新版本的<code>volatility</code>早已经写好了一个<code>makefile</code>脚本进行整个套路。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> volatility/tools/linux</span><br><span class="line">$ make</span><br></pre></td></tr></table></figure>
+<ol>
+<li>合并<code>System Map</code>文件和<code>dwarf</code>文件</li>
+</ol>
+<p><img src="/images//volatility/0814jietu1.png" alt="image"></p>
+<ol>
+<li>将<code>profile</code>放置在对应的文件夹下<code>volatility/volatility/plugins/overlays/</code>,但是记住，千万不要一次性加载<code>profile</code>文件，需要什么加载什么。因为<code>volatility</code>会加载所有插件，所以导致十分慢。</li>
+</ol>
+<h4 id="Step-3-自古深情留不住-总是套路得人心"><a href="#Step-3-自古深情留不住-总是套路得人心" class="headerlink" title="Step 3 : 自古深情留不住,总是套路得人心"></a>Step 3 : 自古深情留不住,总是套路得人心</h4><p>常规套路:扫描得到内存镜像信息(已经知道就不需要了，可以直接指定<code>profile</code>了)。</p>
+<p>然后使用对应的<code>profile</code>进行分析。还可以加载不同的插件进行相应的分析。</p>
+<ul>
+<li>查看支持的Profile</li>
+</ul>
+<blockquote>
+<p><code>python vol.py --info | grep Linux</code></p>
+</blockquote>
+<p>可以将自制的<code>profile</code>放置在<code>volatility/plugins/overlays/</code>下面，然后使用命令查看<code>profile</code>名称并进行使用</p>
+<p>1.Windows 平台</p>
+<ul>
+<li>Dump 内存中的所有dll, 到本机</li>
+</ul>
+<blockquote>
+<p><code>python vol.py -f win7.vmem --profile=Win7SP1x64 dlldump -D dlls/</code></p>
+</blockquote>
+<ul>
+<li>查看Windows的进程</li>
+</ul>
+<blockquote>
+<p><code>python vol.py -f win7.vmem --profile=Win7SP1x64 pslist</code></p>
+</blockquote>
+<ul>
+<li>查看所有的网络通信</li>
+</ul>
+<blockquote>
+<p><code>python vol.py -f win7.vmem --profile=Win7SP1x64 netscan</code></p>
+</blockquote>
+<ul>
+<li>查看所有的句柄</li>
+</ul>
+<blockquote>
+<p><code>python vol.py -f win7.vmem --profile=Win7SP1x64 handles</code></p>
+</blockquote>
+<ul>
+<li>查看命令行历史</li>
+<li>查看注册表，等等等等</li>
+</ul>
+<p>其实我们从<code>wiki</code>里就可以看到，volatility支持的操作，主要感兴趣的在(以下为<code>windows</code>下)</p>
+<ul>
+<li>Image Identification</li>
+<li>Processes and DLLs</li>
+<li>Process Memory</li>
+<li>Kernel Memory and Objects</li>
+<li>Networking</li>
+<li>Registry</li>
+<li>Crash Dumps, Hibernation, and Conversion</li>
+<li>File System</li>
+<li>Miscellaneous</li>
+</ul>
+<p>一个个列举也没什么意思，还有就是<code>Volshell</code>比较有用，当然配合<code>yara</code>还可以检查内存是否存在病毒。</p>
+<p><code>volshell</code>可以对内存镜像进行交互式的操作，命令行能干的<br>shell里都能够干。<a href="https://github.com/volatilityfoundation/volatility/wiki/Command-Reference#volshell" target="_blank" rel="noopener">原文</a>照抄一下：</p>
+<ul>
+<li>List processes</li>
+<li>Switch into a process’s context</li>
+<li>Display types of structures/objects</li>
+<li>Overlay a type over a given address</li>
+<li>Walk linked lists</li>
+<li>Disassemble code at a given address</li>
+</ul>
+<h4 id="Step-4-提取密码和一些好玩的套路"><a href="#Step-4-提取密码和一些好玩的套路" class="headerlink" title="Step 4 : 提取密码和一些好玩的套路"></a>Step 4 : 提取密码和一些好玩的套路</h4><p>提取系统密码，是最基本的啦，Windows的登录密码加密方式有<code>NTLMV1</code>和<code>NTLMv2</code>。<code>Windows 7</code>及以前的是<code>NTLMV1</code>实现的，<code>python</code>中可以利用这样的代码生成</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib,binascii</span><br><span class="line">hash = hashlib.new(<span class="string">'md4'</span>, <span class="string">"sad"</span>.encode(<span class="string">'utf-16le'</span>)).digest()</span><br><span class="line"><span class="keyword">print</span> (binascii.hexlify(hash))</span><br></pre></td></tr></table></figure>
+<p>提取方式:<br><code>$ python -f xxxx.vmem --profile=Win7SP1x64 hashdump</code><br>之前文档里面一直提到需要首先找到基地址，然后找到偏移地址才可以进行。实践发现并不需要。</p>
+<p>当然在有管理员权限的情况下，可以直接使用<code>mimikatz</code>(<code>windows</code>)提取。即可以交互进行，也可以一行命令行提取(这个是使用了<code>log</code>选项)。<br><code>mimikatz logs &quot;privilege::debug&quot;;sekurlsa::logonpasswords</code> 想想使用<code>Leonarde</code>加在一起是不是猥琐的不行，不过<code>leonarde</code>模拟虚拟键盘也有一大堆的问题。我是参考的<a href="http://www.freebuf.com/sectool/107242.html" target="_blank" rel="noopener">这篇文章</a>,对我来说还好吧，改了改代码能用。不知道为什么评论区有那么多问题。不过确实不少问题，还好都解决掉了。</p>
+<p>提取浏览器密码:</p>
+<blockquote>
+<p>得到浏览器进程，使用<code>vad</code>插件<code>dump</code>出整个进程空间，然后分析<code>grep</code>搜索关键字。</p>
+</blockquote>
+<p>其实最简单的就是使用<code>WinHex</code>直接搜索内存镜像，使用<code>grep</code>也一样。</p>
+<p>过锁屏提取密码:</p>
+<p>使用<code>Lan turtle</code>,这个是真邪恶，同时还可以用来过锁屏，利用的是<code>Responder</code>认证机制漏洞。不过呢,利用条件也很苛刻，起码在win7上，不能有选择网络位置，否则不行。只有无线的话，插上去也不行。但是<code>hak5</code>上演示的时候有的是可以的。<br>这个我觉得<code>Lan Turtle</code>的好处就是隐藏自己，探视内网。我不建议直接启用<code>Quick Cred</code>,应该只反向一个<code>ssh</code>或者<code>meterpreter</code>,然后再去启用<code>Reponder</code>    去投毒。<br>避免被发现。挑一个时间去执行。当然这个对<code>linux</code>没有用。我也只在一台<code>win10</code>上测试成功了。</p>
+<h4 id="Step-5-病毒分析与重建二进制"><a href="#Step-5-病毒分析与重建二进制" class="headerlink" title="Step 5 : 病毒分析与重建二进制"></a>Step 5 : 病毒分析与重建二进制</h4><p>VAD(Virtual Address Descriptor)是内存取证中的重要参考。</p>
+<ul>
+<li><a href="https://github.com/volatilityfoundation/volatility/wiki/Command-Reference-Mal" target="_blank" rel="noopener">病毒分析</a>:</li>
+</ul>
+<ol>
+<li>命令行配合<code>yara</code>去扫描规则</li>
+<li>主要进程分析，多余dll分析，以及其他。进程注入分析，网络行为，等等吧。手动。。。。还可以绘制出<code>vadmap</code>的图，可以用<code>graphviz</code>打开的。</li>
+</ol>
+<ul>
+<li>创建二进制<br>其实不应该单独拿出来了讲，听着名字很牛逼的感觉，其实就是抽取进程，和前面的一样的。使用<code>vaddump</code></li>
+</ul>
+<h4 id="Not-FAQ"><a href="#Not-FAQ" class="headerlink" title="Not FAQ"></a>Not FAQ</h4><ul>
+<li>内存镜像时会捕捉到宿主机的整个镜像，如果宿主机中有虚拟机正在运行，同样也会被捕捉到。现实中也常常是这样，那么此时应该怎么办?</li>
+</ul>
+<blockquote>
+<p>可以先解压出<code>vmware</code>进程的地址空间，然后再去用对应<code>profile</code>分析对应的<code>Vmware</code>内的操作系统。</p>
+</blockquote>
+<p><img src="/images//volatility/0817jietu.png" alt="image"></p>
+<ul>
+<li><code>Linux Kernel 4.8</code>以上的内核采用了随机内存地址，此时该怎么办？</li>
+</ul>
+<p><img src="/images//volatility/0818jietu.png" alt="image"></p>
+<ul>
+<li><p>文件分散存储在磁盘上，运行时读取到一段连续的内存中。但是<code>PE</code>文件是由操作系统读取到内存中，所以内存映射稍有不同，具体哪里不同，我也没看到资料。</p>
+</li>
+<li><p><code>raw</code> 与 <code>dmp</code> 与 <code>vmem</code></p>
+</li>
+<li><p>注意看一下，<code>profile</code>压缩包里面是否需要有目录结构。我之前没有加也可以用，但是自带的<code>profile</code>里有的。</p>
+</li>
+<li><p><code>powershell.exe -command start-process powershell -verb runAs</code></p>
+</li>
+<li><p><code>Rekall</code>也是很不错的内存取证框架。</p>
+</li>
+</ul>
+<h4 id="Conclusion："><a href="#Conclusion：" class="headerlink" title="Conclusion："></a>Conclusion：</h4><ul>
+<li><a href="https://github.com/iAbadia/Volatility-Plugin-Tutorial" target="_blank" rel="noopener">如何编写<code>volatility</code>插件</a></li>
+</ul>
+<p>今天试用期结束，又要开始新的项目了<code>windows木马检测</code>。逐渐发现了公司的一些问题。公司比较缺乏技术交流的氛围。自己便和另外一个同事组织了一下搞起了这个。这其实从另一个方向说明了越是那些正常的，越是难以实现。必须是经历过许多的坎坷(或者不需要)才能建立出一个给人感觉自然的，方便的，正常的。自己以前一直觉得很正常的东西，推行起来还是有问题的。<br>唉，东西一段时间不用就会忘掉。其他几门语言忘掉了许多了。</p>
+<p>公司里面有个大神每周来着分享，据说有20年互联网的经验，是老板请的贵客。之前还在启明星辰带过团队，履历挺牛逼的，大家也都觉得很牛逼的。我也觉得他<code>C++</code>和<code>Python</code>很牛逼。盛名之下，其实难副。也是一言难尽吧。人倒还是不错。</p>
+<h4 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h4><ul>
+<li><a href="https://github.com/504ensicsLabs/LiME" target="_blank" rel="noopener">LIME</a></li>
+<li><a href="https://www.f-response.com/software/ee" target="_blank" rel="noopener">F-Response</a></li>
+<li><a href="https://github.com/volatilityfoundation/volatility/wiki/" target="_blank" rel="noopener">Volatility Wiki</a></li>
+<li><a href="https://github.com/volatilityfoundation/volatility/wiki/Command-Reference-Mal" target="_blank" rel="noopener">Volatility Malware Find</a></li>
+<li><a href="http://www.hackingarticles.in/volatility-an-advanced-memory-forensics-framework/" target="_blank" rel="noopener">volatility simple tutorial</a></li>
+<li><a href="https://github.com/volatilityfoundation/volatility/wiki/Linux#creating-a-new-profile" target="_blank" rel="noopener">Creating a profile</a></li>
+<li><a href="">PEB</a></li>
+<li><a href="http://lilxam.tuxfamily.org/blog/?p=326&amp;lang=en" target="_blank" rel="noopener">VAD: Understanding Virtual Address Descriptors</a></li>
+<li><a href="https://msdn.microsoft.com/en-us/library/ms810627.aspx" target="_blank" rel="noopener">Managing Virtual Memory</a></li>
+<li><a href="http://project-rainbowcrack.com/" target="_blank" rel="noopener">rainbow crack</a></li>
+<li><a href="https://bneuburg.github.io/volatility/kaslr/2017/04/26/KASLR1.html" target="_blank" rel="noopener">Kernel Address Space Randomization in Linux or how I made Volatility bruteforce the page tables</a></li>
+<li><a href="http://wiki.dwarfstd.org/index.php?title=Libdwarf_And_Dwarfdump#What_is_dwarfdump" target="_blank" rel="noopener">What is dwarfdump</a></li>
+<li><a href="https://lanturtle.com/" target="_blank" rel="noopener">LAN Turtle</a></li>
+<li><a href="https://github.com/mylamour/-_--Forensics-Tools/" target="_blank" rel="noopener">-_–Forensics-Tools</a></li>
+<li><a href="https://github.com/gentilkiwi/mimikatz" target="_blank" rel="noopener">mimikatz</a></li>
+<li><a href="http://carnal0wnage.attackresearch.com/2014/05/mimikatz-against-virtual-machine-memory.html" target="_blank" rel="noopener">mimikatz取虚拟机内存镜像</a></li>
+<li><a href="https://github.com/SpiderLabs/Responder" target="_blank" rel="noopener">Responder</a></li>
+<li><a href="https://room362.com/post/2016/snagging-creds-from-locked-machines/" target="_blank" rel="noopener">snagging-creds-from-locked-machines</a></li>
+</ul>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">Coffe or tea ?</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/08/19/Ansible-And-Redis-Cluster/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2017/09/10/nginx-subdomain-and-proxy-jupyter/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

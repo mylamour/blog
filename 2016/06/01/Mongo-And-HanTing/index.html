@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Mongo的故事 | PY.AI</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="学习笔记,数据存储," />
+  
+
+  <meta name="description" content="汉庭csv汉庭的2000万数据，很老的裤子了，拿出来练练mongo  find ./ -type f -name &amp;quot;*.csv&amp;quot;  -exec mongoimport -d hanting -c human --type csv --headerline {} \;   关于导入导出 $mongoimport -d dbname -c collectionsname --typ">
+<meta name="keywords" content="学习笔记,数据存储">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mongo的故事">
+<meta property="og:url" content="http://iami.xyz/2016/06/01/Mongo-And-HanTing/index.html">
+<meta property="og:site_name" content="PY.AI">
+<meta property="og:description" content="汉庭csv汉庭的2000万数据，很老的裤子了，拿出来练练mongo  find ./ -type f -name &amp;quot;*.csv&amp;quot;  -exec mongoimport -d hanting -c human --type csv --headerline {} \;   关于导入导出 $mongoimport -d dbname -c collectionsname --typ">
+<meta property="og:updated_time" content="2018-01-17T05:11:33.276Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mongo的故事">
+<meta name="twitter:description" content="汉庭csv汉庭的2000万数据，很老的裤子了，拿出来练练mongo  find ./ -type f -name &amp;quot;*.csv&amp;quot;  -exec mongoimport -d hanting -c human --type csv --headerline {} \;   关于导入导出 $mongoimport -d dbname -c collectionsname --typ">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">慎独</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">慎独</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#汉庭csv"><span class="toc-text">汉庭csv</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库"><span class="toc-text">数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Mongo-Night"><span class="toc-text">Mongo Night</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Resoures"><span class="toc-text">Resoures:</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Mongo-And-HanTing" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Mongo的故事</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.06.01</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>mour</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/学习数据挖掘的路上/">学习数据挖掘的路上</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="汉庭csv"><a href="#汉庭csv" class="headerlink" title="汉庭csv"></a>汉庭csv</h2><p>汉庭的2000万数据，很老的裤子了，拿出来练练mongo</p>
+<blockquote>
+<p><code>find ./ -type f -name &quot;*.csv&quot;  -exec mongoimport -d hanting -c human --type csv --headerline {} \;</code></p>
+</blockquote>
+<ul>
+<li>关于导入导出<blockquote>
+<p><code>$mongoimport -d dbname -c collectionsname --type csv --headerline inputfilname.csv</code>    </p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>很明显不用多说,headerline是看csv文件具不具有头字段<blockquote>
+<p><code>$mongoexport -d dbname -c collectionsname -o outputfilename.csv</code></p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>关于备份和恢复<blockquote>
+<p><code>mongodump -h localhost --post 27017</code></p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>数据库内容导出为BSON文件<blockquote>
+<p><code>mongorestore -h localhost --port 27017 dump</code></p>
+</blockquote>
+</li>
+<li>如果说是导入到一个已经存在数据库里，那么使用 <code>mongorestore -h localhost --port 271707 --drop /path/to/you/dump</code>, 还有一种是给予数据文件的备份，但是这种的话快虽快，但是却要锁定数据库。<br>csv 数据一共是 2.9G 导入到数据库中一共是 15.946GB，大概花费了9分钟左右，而且数据一共是1400+万条左右，并没有宣称地2000万，也可能是下的不全。对于我这个临时装的系统，直接占去了将近1/3的空间，不过总体来讲还是比较满意。</li>
+</ul>
+<p>之前在windows下导入时，仅仅导入了200W不到的数据就花费了很长时间，最后由于没能跳过一个错误数据还终止了。不过对于错误数据，直接sed替换下就行了。windows肯定干不了吧。</p>
+<p>导入的过程中出现的错误数据会自动跳过，这个好。</p>
+<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><blockquote>
+<p> <code>db.account.aggregate([{ $group: {_id: {$month:&quot;$createdAt&quot;},all:{ $sum: 1 }}}]);</code></p>
+</blockquote>
+<ul>
+<li>在mongo里面，获取当月新注册的用户。关键字还可以是<code>$year,$day</code>等，$createdAt是你自己插入数据记录的标准时间</li>
+</ul>
+<blockquote>
+<p><code>$mongod --config /path/file/to/you/mongo.config</code></p>
+</blockquote>
+<ul>
+<li>mongo.config文件里面包含了log路径,db路径，还可以添加其他设置。之前win7升级win10，mongo的环境变量就没了。懒得添加，就写了批处理，要提的是，可以是.bat也可以.cmd,在脚本里面用start的话可以打开新的cmd界面。</li>
+</ul>
+<blockquote>
+<p><code>mongod --auth</code></p>
+</blockquote>
+<ul>
+<li>开启身份验证的前提是创建了管理员用户,然后use admin, db.addUser(‘username’,’password’),</li>
+</ul>
+<p>突然想起网易50亿的裤子，从mega下了快30G还是放弃了。电脑开了两天，破宿舍晚上又断网。唉，无奈还是删了。我又想起来之前看f4vk写的搭建社工库的教程。无力。</p>
+<h2 id="Mongo-Night"><a href="#Mongo-Night" class="headerlink" title="Mongo Night"></a>Mongo Night</h2><ul>
+<li>就像mongo in Action中的警告一样，对于大量数据，不要在部署之后再建立索引，而应该事先建立好索引。</li>
+<li>当时突然想到要是把Solr和Mongo结合到一起会是怎么样，发现网上已经有了这方面的资料。</li>
+<li>最好主从节点复制集至少三个</li>
+<li>正确的分片很重要(索引也是)</li>
+</ul>
+<p>ps:本来打算的是写成mongo morning to night,把基础知识记下来，后来发现其实没有必要。基本的增删查改没必要写,其他的也不少，我自己就做了8张A4纸的笔记。所以还是自己看看附件吧，下载下来看一遍是比较有用的。</p>
+<h2 id="Resoures"><a href="#Resoures" class="headerlink" title="Resoures:"></a>Resoures:</h2><ul>
+<li><a href="/assets/MongoDB in Action.pdf">MongoDB in Action</a></li>
+<li><a href="/assets/Ruby and MongoDB Web Development.pdf">Ruby and MongoDB Web Development</a></li>
+<li><a href="https://docs.mongodb.com/" target="_blank" rel="noopener">Mongo Doc</a></li>
+</ul>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">Coffe or tea ?</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2016/05/16/Something2/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2016/06/02/-Something3/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

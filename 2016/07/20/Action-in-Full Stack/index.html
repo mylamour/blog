@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>全栈工程师的第一篇修炼记录 | PY.AI</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="实习笔记," />
+  
+
+  <meta name="description" content="本篇多吐槽，属于Take is cheap 全炸工程师的前言　从德回来之后，本以为这家公司应该已经招满了，后来老师碰见，问我去了没。才打电话问了问，最后应聘做了测试的实习。公司小，所以现在做的就更像是全栈开发，网页也有，后端也有，偶尔还帮别人装下caffe,看看python脚本。总之地方虽小，却像实验室一样，对我而言，心里还是蛮喜欢的。起码最初是比较喜欢的。但有时候也会觉得像炸了一样，因为不想跑偏">
+<meta name="keywords" content="实习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="全栈工程师的第一篇修炼记录">
+<meta property="og:url" content="http://iami.xyz/2016/07/20/Action-in-Full Stack/index.html">
+<meta property="og:site_name" content="PY.AI">
+<meta property="og:description" content="本篇多吐槽，属于Take is cheap 全炸工程师的前言　从德回来之后，本以为这家公司应该已经招满了，后来老师碰见，问我去了没。才打电话问了问，最后应聘做了测试的实习。公司小，所以现在做的就更像是全栈开发，网页也有，后端也有，偶尔还帮别人装下caffe,看看python脚本。总之地方虽小，却像实验室一样，对我而言，心里还是蛮喜欢的。起码最初是比较喜欢的。但有时候也会觉得像炸了一样，因为不想跑偏">
+<meta property="og:updated_time" content="2018-01-17T05:11:33.276Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="全栈工程师的第一篇修炼记录">
+<meta name="twitter:description" content="本篇多吐槽，属于Take is cheap 全炸工程师的前言　从德回来之后，本以为这家公司应该已经招满了，后来老师碰见，问我去了没。才打电话问了问，最后应聘做了测试的实习。公司小，所以现在做的就更像是全栈开发，网页也有，后端也有，偶尔还帮别人装下caffe,看看python脚本。总之地方虽小，却像实验室一样，对我而言，心里还是蛮喜欢的。起码最初是比较喜欢的。但有时候也会觉得像炸了一样，因为不想跑偏">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">慎独</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">慎独</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#本篇多吐槽，属于Take-is-cheap"><span class="toc-text">本篇多吐槽，属于Take is cheap</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#面试篇"><span class="toc-text">面试篇 </span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#入职篇"><span class="toc-text">入职篇 </span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#面试之前"><span class="toc-text"> 面试之前　</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Action-in-Full Stack" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">全栈工程师的第一篇修炼记录</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.07.20</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>mour</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/全栈工程师/">全栈工程师</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="本篇多吐槽，属于Take-is-cheap"><a href="#本篇多吐槽，属于Take-is-cheap" class="headerlink" title="本篇多吐槽，属于Take is cheap"></a>本篇多吐槽，属于Take is cheap</h1><ul>
+<li><font color="green">全炸工程师的前言　从德回来之后，本以为这家公司应该已经招满了，后来老师碰见，问我去了没。才打电话问了问，最后应聘做了测试的实习。公司小，所以现在做的就更像是全栈开发，网页也有，后端也有，偶尔还帮别人装下caffe,看看python脚本。总之地方虽小，却像实验室一样，对我而言，心里还是蛮喜欢的。起码最初是比较喜欢的。但有时候也会觉得像炸了一样，因为不想跑偏太远。毕竟我打心里还是想做数据分析数据挖掘这一块的。然而抱怨是没有用的，我还是希望靠自己的努力来搞定这一切。以后这个系列，将记载一下我对全栈的认识(成为真正的全栈)，和在实习期间的一些思考。这可是我第一份技术相关的无关技术的实习。啊啊啊啊</font>
+
+</li>
+</ul>
+<h3 id="面试篇"><a href="#面试篇" class="headerlink" title="面试篇 "></a><font color="red ">面试篇 </font></h3><ul>
+<li>由于是应的是测试，又是实习，所以只有一面，也只问了简单的一些问题用过哪些语言，给自己掌握的不同语言打个分。 </li>
+<li>问对算法能力的掌握程度</li>
+<li>你为什么选择我们，给我一个选你的理由</li>
+<li>从上大学到现在代码量有多少</li>
+<li>自己做过什么项目，项目介绍，评价</li>
+</ul>
+<blockquote>
+<font color="blue ">　只想说大家一定要自信，谦虚可以，别太谦虚，否则别人会以为你不行。而且到时候也没资本去给人家谈工资了。总之呢，我的面试没有什么精彩，自己也不该太谦虚，一定不要妄自菲薄，面试的时候就是表现自己的时候 </font>
+
+
+</blockquote>
+<h3 id="入职篇"><a href="#入职篇" class="headerlink" title="入职篇 "></a><font color="red ">入职篇 </font></h3><ul>
+<li>经历了工资的尴尬，下面是自己的入职第一周。开始了测试和全栈的生涯。每天都是第一个去，不卑不亢。大家人都很好，但一脚踏入社会，就需要时间去融入。<br>JavaScript之前略有接触，而现在做的东西都是以JS为主，nodejs做后端，前端自然就是那一套了。<br>然后大概花了一周时间熟悉了下javascript和nodejs，CSS的流式布局，js和css通过V8对DOM的不同操作方式。就开始配着项目写业务代码了。先是最基本的modal，然后写数据库里面取数据写数据。<br>不知道写什么了，基础的代码不具有什么太深的意义。更多的更像脚代码一样。是没有算法涉及其中的。<br>但是你必须在很短的时间内跟的上步伐，然后超过去。这两周给我的感觉就是在短时间内扩充了大量的知识，但是在应用上还是有问题，也就是说，看得懂不一定写的出来。中间还多亏了带我的晓伍哥的帮忙。多谢了。</li>
+</ul>
+<h3 id="面试之前"><a href="#面试之前" class="headerlink" title=" 面试之前　"></a><font color="green "> 面试之前　</font></h3><p>我相信一切都会好起来的。所谓此心安处即吾乡。然浮萍在世，所见着少，所知者就更少了。</p>
+<p>不希望给自己找借口，never, take is cheap.</p>
+<p>最后，剩下几张整理下资源和实习过程中遇到的问题以及解决办法。。</p>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">Coffe or tea ?</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2016/06/26/sublime-useful/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2016/07/29/first-codereview-in-tuicorn/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

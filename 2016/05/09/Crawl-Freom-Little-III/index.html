@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Crawl From Little III | PY.AI</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="学习笔记,抓取数据," />
+  
+
+  <meta name="description" content="这篇文章应该是几个星期前就该记录下来的。但世上哪得双全法，不负如来不负卿。当成故事来看，未尝不可，但是真的好爽啊事情的起因很简单，就是上周上周上周的上周要进行全校本届毕业生彩像，然后过了大概一周，突然通知说让我们关注一个公众号，输入一串数字+学号+xl去验证是不是自己的照片。然后故事开始了。还有由于是几周之前的事情了，所以就不能在重现截图了。 First：手机wifi连接到我的笔记本，笔记本fid">
+<meta name="keywords" content="学习笔记,抓取数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Crawl From Little III">
+<meta property="og:url" content="http://iami.xyz/2016/05/09/Crawl-Freom-Little-III/index.html">
+<meta property="og:site_name" content="PY.AI">
+<meta property="og:description" content="这篇文章应该是几个星期前就该记录下来的。但世上哪得双全法，不负如来不负卿。当成故事来看，未尝不可，但是真的好爽啊事情的起因很简单，就是上周上周上周的上周要进行全校本届毕业生彩像，然后过了大概一周，突然通知说让我们关注一个公众号，输入一串数字+学号+xl去验证是不是自己的照片。然后故事开始了。还有由于是几周之前的事情了，所以就不能在重现截图了。 First：手机wifi连接到我的笔记本，笔记本fid">
+<meta property="og:image" content="http://iami.xyz/images//crawl/allimg.png">
+<meta property="og:image" content="http://iami.xyz/images//crawl/wenjianjia.png">
+<meta property="og:image" content="http://iami.xyz/images//crawl/22222.png">
+<meta property="og:image" content="http://iami.xyz/images//crawl/normalimg.png">
+<meta property="og:image" content="http://iami.xyz/images//crawl/rename.png">
+<meta property="og:updated_time" content="2018-01-17T05:11:33.276Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Crawl From Little III">
+<meta name="twitter:description" content="这篇文章应该是几个星期前就该记录下来的。但世上哪得双全法，不负如来不负卿。当成故事来看，未尝不可，但是真的好爽啊事情的起因很简单，就是上周上周上周的上周要进行全校本届毕业生彩像，然后过了大概一周，突然通知说让我们关注一个公众号，输入一串数字+学号+xl去验证是不是自己的照片。然后故事开始了。还有由于是几周之前的事情了，所以就不能在重现截图了。 First：手机wifi连接到我的笔记本，笔记本fid">
+<meta name="twitter:image" content="http://iami.xyz/images//crawl/allimg.png">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">慎独</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">慎独</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#这篇文章应该是几个星期前就该记录下来的。但世上哪得双全法，不负如来不负卿。"><span class="toc-text">这篇文章应该是几个星期前就该记录下来的。但世上哪得双全法，不负如来不负卿。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#当成故事来看，未尝不可，但是真的好爽啊"><span class="toc-text">当成故事来看，未尝不可，但是真的好爽啊</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#First："><span class="toc-text">First：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Second："><span class="toc-text">Second：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Third："><span class="toc-text">Third：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Finally"><span class="toc-text">Finally:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#End"><span class="toc-text">End</span></a>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Crawl-Freom-Little-III" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Crawl From Little III</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.05.09</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>mour</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/学习数据挖掘的路上/">学习数据挖掘的路上</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h3 id="这篇文章应该是几个星期前就该记录下来的。但世上哪得双全法，不负如来不负卿。"><a href="#这篇文章应该是几个星期前就该记录下来的。但世上哪得双全法，不负如来不负卿。" class="headerlink" title="这篇文章应该是几个星期前就该记录下来的。但世上哪得双全法，不负如来不负卿。"></a>这篇文章应该是几个星期前就该记录下来的。但<font color="green">世上哪得双全法，不负如来不负卿</font>。</h3><h1 id="当成故事来看，未尝不可，但是真的好爽啊"><a href="#当成故事来看，未尝不可，但是真的好爽啊" class="headerlink" title="当成故事来看，未尝不可，但是真的好爽啊"></a>当成故事来看，未尝不可，但是真的好爽啊</h1><p>事情的起因很简单，就是上周上周上周的上周要进行全校本届毕业生彩像，然后过了大概一周，突然通知说让我们关注一个公众号，输入一串数字+学号+xl去验证是不是自己的照片。然后故事开始了。还有由于是几周之前的事情了，所以就不能在重现截图了。</p>
+<h2 id="First："><a href="#First：" class="headerlink" title="First："></a>First：</h2><p>手机wifi连接到我的笔记本，笔记本fiddler开代理。这样所有数据流向将十分清楚。所以很方便的找到了目的ip。然后burp suit拿出来，看看什么什么的，随便猜了下目录，竟然成了。服务器有目录遍历的漏洞，于是就直接写个小脚本wget去了，其实这样的话，并不是太完美，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">cat schoolname | <span class="keyword">while</span> <span class="built_in">read</span> line</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">	<span class="keyword">for</span> ((i=0;i&lt;8;i++));</span><br><span class="line">	<span class="keyword">do</span></span><br><span class="line">	&#123;</span><br><span class="line">		sleep 2;			</span><br><span class="line">		wget -r -c -np -L http://xxxxip/wwtstudentcard/Web/public/appupload/<span class="variable">$line</span>/</span><br><span class="line">	&#125;&amp;</span><br><span class="line">	<span class="keyword">done</span>	 </span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>就这样，扔服务器后台跑了一夜(谁让宿舍断网的，大爷的)，12G数据到手，总共27万张左右的图片（筛选之后乱七八糟的文件之后）。上面一个准确讲没什么技术含量，如果思路加小技巧算的话。</p>
+<h2 id="Second："><a href="#Second：" class="headerlink" title="Second："></a>Second：</h2><p>拿到数据，有点多，但是有的目录是空的，有的还有html后缀的文件，还有的是学校的校徽，但是校徽的图片命名很规律，xiaohui.png .于是最后花了两天把所有空白文件删除，各种无关文件删除，并重命名图片文件名为学校代码+学号，并把大图和小图分别打包压缩，放到不同的文件夹中。当时发现一个很重要的事，就是一定要判断是不是文件，当时判断的时候默认是进入每个文件夹操作，结果有一个是文件，cd不了，肯定有错误，虽然是循环来处理，这个错误即使出现也不影响后面的操作，但还是值得注意，绝对。毕竟设计的脚本思路是进入文件夹，那么就应该判断是不是文件夹（只怪当时清理文件忘了清理校徽文件）。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">cat hhhh | <span class="keyword">while</span> <span class="built_in">read</span> line</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">	<span class="built_in">cd</span> <span class="variable">$line</span></span><br><span class="line">	ls | <span class="keyword">while</span> <span class="built_in">read</span> dirtype</span><br><span class="line">	<span class="keyword">do</span></span><br><span class="line">		<span class="comment">#cd $dirtype</span></span><br><span class="line">		<span class="comment">#echo "Now I'm in:"  &gt;&gt; ../log</span></span><br><span class="line">		<span class="comment">#echo pwd  	    &gt;&gt; ../log</span></span><br><span class="line">		<span class="built_in">cd</span> <span class="variable">$dirtype</span></span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span> fn <span class="keyword">in</span> *.jpg</span><br><span class="line">		<span class="keyword">do</span></span><br><span class="line">			mv <span class="variable">$fn</span> $(<span class="built_in">pwd</span> | grep -E <span class="string">"[0-9]"</span> | awk -F <span class="string">"/"</span> <span class="string">'&#123;print $4&#125;'</span></span><br><span class="line">)<span class="variable">$fn</span></span><br><span class="line">		<span class="keyword">done</span></span><br><span class="line">		<span class="built_in">cd</span> ..</span><br><span class="line">		<span class="comment">#tar -cvzf $line.tar.gz $line</span></span><br><span class="line">		<span class="comment">#cd ..</span></span><br><span class="line">	<span class="keyword">done</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">#echo "Job Done "    &gt;&gt; log</span></span><br><span class="line">	<span class="built_in">cd</span> ..</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<h2 id="Third："><a href="#Third：" class="headerlink" title="Third："></a>Third：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ find -<span class="built_in">type</span> d -empty	<span class="comment">#找出所有的空文件夹</span></span><br><span class="line">$ find <span class="variable">$PWD</span> <span class="comment">#得到的是绝对路径 $pwd（小写的得到相对路径）</span></span><br></pre></td></tr></table></figure>
+<p>当时移除所有数据之后，准备</p>
+<p>ls -aR | sed “s:^:<code>pwd</code>/:” &gt; listto_mongo<br>cat listto_mongo | grep -v “.jpg” &gt; temp<br>cat temp | while read line<br>do<br>    sed ‘s/$line//‘ listto_mongo</p>
+<p>done</p>
+<h1 id="Finally"><a href="#Finally" class="headerlink" title="Finally:"></a>Finally:</h1><p><img src="/images//crawl/allimg.png" alt="tupian1"><br>这是最后清洗完成后的数据，<br>最开始是这个样子的：<br><img src="/images//crawl/wenjianjia.png" alt="tupian2"><br>后来处理并整理，可以从下面看出来虽然没考虑xiaohui.png这个问题，虽然有错误，但是但是竟然把xiaohui.png也打包了。<br><img src="/images//crawl/22222.png" alt="tupian3"></p>
+<p><img src="/images//crawl/normalimg.png" alt="tupian4"><br>最后这个是准备重命名，并得到所有的绝对路径之后，导入到mongo中去，但是现在我觉得这不是一个好主意，虽然GridFs设计的就是为这种不大不小的文件而生，而且放入数据库便于携带，但是还是不得不说，速度并不快。<br><img src="/images//crawl/rename.png" alt="tupian5"><br>一开始是打算用python+pymongo获取所有的文件并插入进去，但是后来发现mongofiles -d images put xxxx.png就可以实现，这样的话一个几行的shell就能搞定了，直接读取所有保存文件路径名的文本，多个线程插入即可。但是其实这也不好。因为我的照片即使是大的也没有256k,那么就不会把一个照片分块存储，而且每次存取将十分麻烦。虽然mongo可以访问远程mongo服务器，但总的来讲，对我并不是一个好主意。但是出于各种原因还是存了(哭笑不得)。<br>顺便，和好朋友一起，告诉他这个东西之后，他也在他的服务器上抓了所有的，而且直接保存到sqlite了，虽然我觉的这种东西都不应该放到数据库，但是一切为了备份～_～</p>
+<h1 id="End"><a href="#End" class="headerlink" title="End"></a>End</h1><p>最后作为一个小菜鸟，路还很长，这是我习惯说的一句话，虽然有点啰嗦。还有一些小脚本，去服务器看时，发现已经没了，所以贴不来了。</p>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">Coffe or tea ?</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2016/04/10/Crawl-From-Little-II/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2016/05/16/Something2/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

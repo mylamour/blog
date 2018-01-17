@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>PPT and CodeReview from a new beginner | PY.AI</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="实习笔记," />
+  
+
+  <meta name="description" content="第一次在公司里参加code review,当然除了检查代码，还有一部分是对我基础知识的检查。毕竟我之前不是做web的，也没有怎么接触过js，当然，觉得还行吧。马马虎虎。 当时还临时让解释了cookie和session的不同，还临时让讲了下为什么把css放上面，js放下面，dom树的渲染步骤等乱七八糟的。  这篇是在windwos下写的，链接图片的时候是小写的.jpg后缀(虽然文件本身后缀是大写的)">
+<meta name="keywords" content="实习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PPT and CodeReview from a new beginner">
+<meta property="og:url" content="http://iami.xyz/2016/07/29/first-codereview-in-tuicorn/index.html">
+<meta property="og:site_name" content="PY.AI">
+<meta property="og:description" content="第一次在公司里参加code review,当然除了检查代码，还有一部分是对我基础知识的检查。毕竟我之前不是做web的，也没有怎么接触过js，当然，觉得还行吧。马马虎虎。 当时还临时让解释了cookie和session的不同，还临时让讲了下为什么把css放上面，js放下面，dom树的渲染步骤等乱七八糟的。  这篇是在windwos下写的，链接图片的时候是小写的.jpg后缀(虽然文件本身后缀是大写的)">
+<meta property="og:image" content="http://iami.xyz/images//fc-first/fc-01.JPG">
+<meta property="og:image" content="http://iami.xyz/images//fc-first/fc-02.JPG">
+<meta property="og:image" content="http://iami.xyz/images//fc-first/fc-03.JPG">
+<meta property="og:image" content="http://iami.xyz/images//fc-first/fc-04.JPG">
+<meta property="og:image" content="http://iami.xyz/images//fc-first/fc-05.JPG">
+<meta property="og:image" content="http://iami.xyz/images//fc-first/fc-06.JPG">
+<meta property="og:image" content="http://iami.xyz/images//fc-first/fc-07.JPG">
+<meta property="og:image" content="http://iami.xyz/images//fc-first/fc-08.JPG">
+<meta property="og:image" content="http://iami.xyz/images//fc-first/fc-09.JPG">
+<meta property="og:updated_time" content="2018-01-17T05:11:33.276Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PPT and CodeReview from a new beginner">
+<meta name="twitter:description" content="第一次在公司里参加code review,当然除了检查代码，还有一部分是对我基础知识的检查。毕竟我之前不是做web的，也没有怎么接触过js，当然，觉得还行吧。马马虎虎。 当时还临时让解释了cookie和session的不同，还临时让讲了下为什么把css放上面，js放下面，dom树的渲染步骤等乱七八糟的。  这篇是在windwos下写的，链接图片的时候是小写的.jpg后缀(虽然文件本身后缀是大写的)">
+<meta name="twitter:image" content="http://iami.xyz/images//fc-first/fc-01.JPG">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">慎独</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">慎独</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#第一次在公司里参加code-review-当然除了检查代码，还有一部分是对我基础知识的检查。毕竟我之前不是做web的，也没有怎么接触过js，当然，觉得还行吧。马马虎虎。"><span class="toc-text">第一次在公司里参加code review,当然除了检查代码，还有一部分是对我基础知识的检查。毕竟我之前不是做web的，也没有怎么接触过js，当然，觉得还行吧。马马虎虎。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Resources"><span class="toc-text">Resources</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-first-codereview-in-tuicorn" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">PPT and CodeReview from a new beginner</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.07.29</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>mour</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/全栈工程师/">全栈工程师</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h4 id="第一次在公司里参加code-review-当然除了检查代码，还有一部分是对我基础知识的检查。毕竟我之前不是做web的，也没有怎么接触过js，当然，觉得还行吧。马马虎虎。"><a href="#第一次在公司里参加code-review-当然除了检查代码，还有一部分是对我基础知识的检查。毕竟我之前不是做web的，也没有怎么接触过js，当然，觉得还行吧。马马虎虎。" class="headerlink" title="第一次在公司里参加code review,当然除了检查代码，还有一部分是对我基础知识的检查。毕竟我之前不是做web的，也没有怎么接触过js，当然，觉得还行吧。马马虎虎。"></a>第一次在公司里参加code review,当然除了检查代码，还有一部分是对我基础知识的检查。毕竟我之前不是做web的，也没有怎么接触过js，当然，觉得还行吧。马马虎虎。</h4><p><img src="/images//fc-first/fc-01.JPG" alt="img1"><br><img src="/images//fc-first/fc-02.JPG" alt="img2"><br><img src="/images//fc-first/fc-03.JPG" alt="img"><br><img src="/images//fc-first/fc-04.JPG" alt="img"><br><img src="/images//fc-first/fc-05.JPG" alt="img"><br><img src="/images//fc-first/fc-06.JPG" alt="img"><br><img src="/images//fc-first/fc-07.JPG" alt="img"><br><img src="/images//fc-first/fc-08.JPG" alt="img"><br><img src="/images//fc-first/fc-09.JPG" alt="img"></p>
+<p><font color="green">当时还临时让解释了cookie和session的不同，还临时让讲了下为什么把css放上面，js放下面，dom树的渲染步骤等乱七八糟的。</font></p>
+<blockquote>
+<p>这篇是在windwos下写的，链接图片的时候是小写的.jpg后缀(虽然文件本身后缀是大写的)，能用。但是不知道为什么到了LINUX下，不能发现，还要把后缀改为JPG.而且文件夹名中的横杠存不存在，都能被查找到，这又是什么个情况。</p>
+</blockquote>
+<h4 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h4><p><a href="/images//fc-first/firstime.pptx">Little PPT</a></p>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">Coffe or tea ?</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2016/07/20/Action-in-Full Stack/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2016/08/08/backup-when-learn-web/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

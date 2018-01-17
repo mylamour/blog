@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>OCR和用Tesseract训练chi_sim.traineddata | PY.AI</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="知识回顾,学习笔记," />
+  
+
+  <meta name="description" content="前言:TesseractTesseract 最新的版本4.0版本，新增了lstm训练方式。当时做毕设时经过一系列的其他挫折，刚好发现这个可以使用在嵌入式开发板上，因此去学习并使用了一下。 正文 一: OCR简介主要有两种方法  Segment-Based method   Template Matching for OCR Over-Segmentation    Segmentation-Fre">
+<meta name="keywords" content="知识回顾,学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OCR和用Tesseract训练chi_sim.traineddata">
+<meta property="og:url" content="http://iami.xyz/2017/06/16/Review-S05-Tesseract-lstm-traning-datafile/index.html">
+<meta property="og:site_name" content="PY.AI">
+<meta property="og:description" content="前言:TesseractTesseract 最新的版本4.0版本，新增了lstm训练方式。当时做毕设时经过一系列的其他挫折，刚好发现这个可以使用在嵌入式开发板上，因此去学习并使用了一下。 正文 一: OCR简介主要有两种方法  Segment-Based method   Template Matching for OCR Over-Segmentation    Segmentation-Fre">
+<meta property="og:image" content="http://iami.xyz/images//Tesseract/common_01.png">
+<meta property="og:image" content="http://iami.xyz/images//Tesseract/common_02.png">
+<meta property="og:image" content="http://iami.xyz/images//Tesseract/default_lstm.png">
+<meta property="og:image" content="http://iami.xyz/images//Tesseract/lstm_01.gif">
+<meta property="og:image" content="http://iami.xyz/images//Tesseract/lstm_02.png">
+<meta property="og:updated_time" content="2018-01-17T05:11:33.280Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OCR和用Tesseract训练chi_sim.traineddata">
+<meta name="twitter:description" content="前言:TesseractTesseract 最新的版本4.0版本，新增了lstm训练方式。当时做毕设时经过一系列的其他挫折，刚好发现这个可以使用在嵌入式开发板上，因此去学习并使用了一下。 正文 一: OCR简介主要有两种方法  Segment-Based method   Template Matching for OCR Over-Segmentation    Segmentation-Fre">
+<meta name="twitter:image" content="http://iami.xyz/images//Tesseract/common_01.png">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">慎独</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">慎独</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言-Tesseract"><span class="toc-text">前言:Tesseract</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#正文-一-OCR简介"><span class="toc-text">正文 一: OCR简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#正文-三-tesseract的LSTM训练方式"><span class="toc-text">正文 三: tesseract的LSTM训练方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Resources"><span class="toc-text">Resources</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Review-S05-Tesseract-lstm-traning-datafile" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">OCR和用Tesseract训练chi_sim.traineddata</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.06.16</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>mour</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/HowTo/">HowTo</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h4 id="前言-Tesseract"><a href="#前言-Tesseract" class="headerlink" title="前言:Tesseract"></a>前言:Tesseract</h4><p>Tesseract 最新的版本4.0版本，新增了lstm训练方式。当时做毕设时经过一系列的其他挫折，刚好发现这个可以使用在嵌入式开发板上，因此去学习并使用了一下。</p>
+<h4 id="正文-一-OCR简介"><a href="#正文-一-OCR简介" class="headerlink" title="正文 一: OCR简介"></a>正文 一: OCR简介</h4><p>主要有两种方法</p>
+<ol>
+<li><p>Segment-Based method</p>
+<blockquote>
+<ul>
+<li>Template Matching for OCR</li>
+<li>Over-Segmentation</li>
+</ul>
+</blockquote>
+</li>
+<li><p>Segmentation-Free OCR</p>
+<blockquote>
+<ul>
+<li>Based On HMM</li>
+<li>Sequence Learning Approach</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<p>具体参考 <a href="https://kluedo.ub.uni-kl.de/files/4353/PhD_Thesis_Ul-Hasan.pdf" target="_blank" rel="noopener">这篇论文</a>，我也是读了之后，才觉得更加清晰了。<br>总的来讲就是两种方法，传统基于图像分割的方式进行文本识别，基本是采用模板匹配的方式。通过解压图片训练出一些特征后经过一个分类器使其和已知的进行比较，计算之间的相似度，有多大概率。但是分割有时不容易控制间隔，会导致图像过分割，从而使识别出来的字符变形。例如，m和n还有d,在过分割的情况下就会导致d识别为c和l。详细的例子可以参考上面那篇论文论文。而基于自由分割的OCR识别则不关心输入的长度，虽然他依旧使用分割后的图片作为输入。然后得到输出作为识别后的结果。这种方式通常使用隐马尔科夫模型和循环卷积神经网络。标准的模式识别中通常采用近邻算法，决策树，贝叶斯分类作为训练方法。在后面几章里在浅显讲讲对这些基础算法的学习情况。</p>
+<font color="red">下面所有操作，假设你已经安装好了最新版本的Tesseract，并且<code>clone</code>了相应的<code>langdata</code>和<code>tessdata</code>，并且放置在同一目录下。</font><br>使用百度云下载详情参考<code>http://iami.xyz/Review-S06-Baiduyun-download-Taolu/</code><br><br>#### 正文 二: Tesseract的普通训练方式<br>想去ProcessON上下载原图的时候，才发现自己忘了账号是什么了…虽然当时只是作为临时存毕设的流程图用，但也是大意了。<br><img src="/images//Tesseract/common_01.png" alt="default_flow"><br><br>这就是默认的训练的流程，具体的也已经在流程图绘制的比较详细了。同样下图是每一步对应的操作。相关代码我已经放在了<code>gist</code>上，可以自行查看，包括生成图片和普通的训练链接为<code>https://gist.github.com/mylamour/e4f116e64d690c366715f67fefc8357f</code><br><br><img src="/images//Tesseract/common_02.png" alt="default_flow_code"><br><br><br><font color="red"> 注意事项 </font>
+
+<ul>
+<li>最后合并时要和之前训练好的文件放置在同一文件夹 </li>
+<li>自己由字体生成训练图片去训练的话，图片像素不宜过大。否则训练的时候，耗时不仅久，而且会占大量内存。</li>
+<li>普通训练只占用单核，所以非常慢。</li>
+</ul>
+<h4 id="正文-三-tesseract的LSTM训练方式"><a href="#正文-三-tesseract的LSTM训练方式" class="headerlink" title="正文 三: tesseract的LSTM训练方式"></a>正文 三: tesseract的LSTM训练方式</h4><p><img src="/images//Tesseract/default_lstm.png" alt="default_lstm"></p>
+<p>这张图是按照官网给出的vgslspecs的语法，并结合官方文档介绍，自己推测画出来的。可能有错误，需要大牛指正。下面这张图展示了LSTM的cell的变化，LSTM是RNN的一种，更详细的需要参考后面的附录。我只能做个简单的介绍放在上面，数学功底有限，不宜妄言。只有理解了之后，才能重新设计一个新的网络去使用。</p>
+<ul>
+<li>LSTM的训练方式也有两种，一种是从头开始，自己设计一个网络。一种是从现有的字库种提取出lstm模型，然后进行修改，重新训练，合并出新的字体。此处我们选用第二种。之所以没有选用第一种，是因为从scratch训练需要运行scrollView.jar包，而这个包运行时必须需要物理显示器，也就是<code>0</code>位置的，像vnc之类的都是<code>0:1</code>或者<code>0:2</code>之类的，是不可以的。而我的服务器不仅没有物理显示器，而且我的真个环境是在自己的<code>docker</code>里面运行的。出于一系列问题，只能选第二种。</li>
+</ul>
+<p><img src="/images//Tesseract/lstm_01.gif" alt="lstm"></p>
+<p>下面介绍如何进行训练。首先你需要生成一个训练集和一个测试集，下面的部分截图来自我论文里。</p>
+<ul>
+<li><p>step 1: 生成训练集和测试集</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ tesstrain.sh --fonts_dir /usr/share/fonts/ch_2000/ --lang chi_sim --linedata_only   --noextract_font_properties --langdata_dir /home/langdata   --tessdata_dir ./tessdata --output_dir /home/lstmtest/400type/chitrain</span><br><span class="line">$ tesstrain.sh --fonts_dir /usr/share/fonts/ch_2000/ --lang chi_sim --linedata_only   --noextract_font_properties --langdata_dir /home/langdata   --tessdata_dir ./tessdata --font-list <span class="string">"STXinwei"</span> --output_dir /home/lstmtest/400type/chitrain</span><br><span class="line"><span class="comment">#从这里就可以很明细的看出，如果不指定特定的字体的话，就会直接生成整个字体文件下的所有字体。</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>step 2: 从已有的字库数据里提取模型</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ combine_tessdata -e \</span><br><span class="line">		/usr/<span class="built_in">local</span>/share/tessdata/chi_sim.traineddata \</span><br><span class="line">		./chi_sim.lstm</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>step 3: 从已有模型开始训练</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ lstmtraining -U ./chitrain/chi_sim.unicharset \</span><br><span class="line">	  --script_dir ../langdata --debug_interval 0 \</span><br><span class="line">	  --continue_from ./tranlayer/chi_sim.lstm \</span><br><span class="line">	  --append_index 5 --net_spec <span class="string">'[Lfx256 O1c105]'</span> \</span><br><span class="line">	  --model_output ./ \</span><br><span class="line">	  --train_listfile ./chitrain/chi_sim.training_files.txt\</span><br><span class="line">	  --max_iterations 500000</span><br><span class="line"><span class="comment">#明显看出要比传统训练少了不少步骤(自己操作的步骤)，其实脚本帮你做了。其中根据vgslspec语法，你可以修改网络层。训练的时候，会自动保存许多不同错误率的lstm文件，然后留待下一步选择一个合并就行了。</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>step 4: 评估你训练的模型</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ lstmeval --model ./trainlayer/_checkpoint --eval_listfile ./chitrain/chi_sim.training_files.txt  </span><br><span class="line">$ lstmeval --model ./chi_sim.lstm --eval_listfile ./tesseract-ocr/chieval/chi_sim.training_files.txt</span><br><span class="line"><span class="comment">#从这里看出来，既可以使用checkpoint也可以使用现有的lstm模型去验证</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>step 5: 合并新的字库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">combine_tessdata -o ./chi_sim.traineddata \</span><br><span class="line">  xxxx.lstm \</span><br><span class="line">  ./chitrain/chi_sim.lstm-number-dawg \</span><br><span class="line">  ./chitrain/chi_sim.lstm-punc-dawg \</span><br><span class="line">  ./chitrain/chi_sim.lstm-word-dawg</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>合并后的字库后将其移动到tesseract的默认字库文件夹，便可以使用其进行识别了。</p>
+<font color="red"> 注意事项 </font>
+
+<ul>
+<li>获取字体名称 ，可以通过 <code>fc-list :lang=zh</code> 来查找/usr/share/fonts/下面的字体,然后经过一些列<code>awk,sed</code>得到需要的字体名，将其添加到<code>tesseract/training/languange-specific.sh</code>里</li>
+<li>更好的方式是使用 <code>text2image --fonts_dir /usr/share/fonts/ch_2000/ --list_available_fonts</code>，这样就可以直接列出所有该目录下的字体文件名，但是需要注意的是依旧有不存在的，结果并不是完全正确的。</li>
+<li>在<code>languange-specific</code>中更改时一定要注意<code>&quot;\</code>是不对的，应该是<code>&quot; \</code></li>
+<li>生成训练数据时一旦有一个错误出现就不会输出到相应的文件夹，但是可以根据记录到<code>/tmp/tmp.</code>下找到临时生成的文件，如果你不想或者不需要那么多，可以直接拷贝这些文件即可。但是这些文件时不完整的，所以你必须删除这些不存在的字体，使用<code>tesstrain.sh --fonts_dir /usr/share/fonts/ch_2000/ --lang chi_sim --linedata_only   --noextract_font_properties --langdata_dir /home/langdata --output_dir /home/lstmtest/400type/chitrain | grep &quot;ERROR&quot;</code>找到Error的字体，多运行几次删除干净即可。注意我这句没有指定<code>tessdata_dir</code>,是因为我把他放在了系统变量。你也可以使用<code>export TESSDATA_PREFIX=/home/lstmtest/tessdata</code>进行指定自己的位置</li>
+</ul>
+<font color="green"> 补充 </font>
+
+<ul>
+<li>至于不像普通训练那么费事，是因为封装到脚本里了，可以自己看下。同时之所以不需要自己生成训练图片是因为在<code>tessdata</code>里提供了一个中文的字体和单词列表，通过字体文件直接进行生成，详细阅读相应的<code>shell</code>脚本</li>
+<li>经过训练同一种字体的不同形态会产生明显的收敛效果，但是不是同一种的就不行，或者说效果不好。</li>
+<li>同样，你不再需要像传统训练时，添加自定义单词。在特定领域的话，也可以添加一下(哭笑不得)。因为训练的时候，有两种错误率，一种是单字错误率，一种是单词错误率。但也不是下降的越低越好。通常增加训练的迭代次数，会降低错误率。但是这个错误率下的模型可能在会将字体识别正确的同时，将标点识别错误了。</li>
+<li>合并后，后面带<em>tmp</em>的是原字库文件。我们可以把不同<code>checkpoint</code>下的<code>lstm</code>模型进行合并，类似于这样</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.profile</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> `ls ./lstmfile/*.lstm` </span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"></span><br><span class="line">	filename=`<span class="built_in">echo</span> <span class="variable">$file</span> | awk -F <span class="string">'/'</span> <span class="string">'&#123;print $3&#125;'</span> | awk -F <span class="string">'_'</span> <span class="string">'&#123;print $1&#125;'</span>`</span><br><span class="line"></span><br><span class="line">	combine_tessdata -o ./chi_sim.traineddata \</span><br><span class="line">	  <span class="variable">$file</span> \</span><br><span class="line">	  ./chitrain/chi_sim.lstm-number-dawg \</span><br><span class="line">	  ./chitrain/chi_sim.lstm-punc-dawg \</span><br><span class="line">	  ./chitrain/chi_sim.lstm-word-dawg</span><br><span class="line"></span><br><span class="line">mv chi_sim.traineddata <span class="variable">$filename</span>.traineddata</span><br><span class="line">mv chi_sim.traineddata.__tmp__ chi_sim.traineddata</span><br><span class="line"></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>最后，这是我从服务器上下载下来的数据，选择了3个较低错误率的数据库下载了下来。前面的数字是错误率。<br><img src="/images//Tesseract/lstm_02.png" alt="lstm_result"></p>
+<h4 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h4><ul>
+<li><a href="https://github.com/tesseract-ocr/tesseract/wiki/Technical-Documentation" target="_blank" rel="noopener">Tesseract Documention</a></li>
+<li><a href="http://colah.github.io/posts/2015-08-Understanding-LSTMs" target="_blank" rel="noopener">Understanding LSTM </a></li>
+</ul>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">Coffe or tea ?</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/06/16/Review-S06-Baiduyun-download-Taolu/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2017/06/18/Review-S09-Simple-For-Mom/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

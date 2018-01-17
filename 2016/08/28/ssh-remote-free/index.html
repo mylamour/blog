@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>SSH的免密码登陆 | PY.AI</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="知识回顾," />
+  
+
+  <meta name="description" content="SSH 相关  SSH Introduction SSH协议中主要为三个部分：   传输层   用户认证协议 连接协议    验证主要为两种安全验证   基于密码的安全验证(顾名思义，知道账户名和密码进行登录) 基于密钥的安全验证(通过验证密钥进行登录)     OpenSSH是提供ssh相关服务的经典工具   远程操作 ssh, scp, and sftp. 密钥管理  ssh-add, ss">
+<meta name="keywords" content="知识回顾">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSH的免密码登陆">
+<meta property="og:url" content="http://iami.xyz/2016/08/28/ssh-remote-free/index.html">
+<meta property="og:site_name" content="PY.AI">
+<meta property="og:description" content="SSH 相关  SSH Introduction SSH协议中主要为三个部分：   传输层   用户认证协议 连接协议    验证主要为两种安全验证   基于密码的安全验证(顾名思义，知道账户名和密码进行登录) 基于密钥的安全验证(通过验证密钥进行登录)     OpenSSH是提供ssh相关服务的经典工具   远程操作 ssh, scp, and sftp. 密钥管理  ssh-add, ss">
+<meta property="og:updated_time" content="2018-01-17T05:11:33.276Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SSH的免密码登陆">
+<meta name="twitter:description" content="SSH 相关  SSH Introduction SSH协议中主要为三个部分：   传输层   用户认证协议 连接协议    验证主要为两种安全验证   基于密码的安全验证(顾名思义，知道账户名和密码进行登录) 基于密钥的安全验证(通过验证密钥进行登录)     OpenSSH是提供ssh相关服务的经典工具   远程操作 ssh, scp, and sftp. 密钥管理  ssh-add, ss">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">慎独</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">慎独</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SSH-相关"><span class="toc-text"> SSH 相关  </span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SSH-Introduction"><span class="toc-text">SSH Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SSH-Basic-Useage"><span class="toc-text">SSH Basic Useage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#How-to-install-SSH"><span class="toc-text">How to install SSH</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#传输数据-基本上是单个文件传输"><span class="toc-text">传输数据(基本上是单个文件传输)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#免密码登录远程服务器"><span class="toc-text">免密码登录远程服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不相关的周末"><span class="toc-text">不相关的周末</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#相关资源"><span class="toc-text">相关资源</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-ssh-remote-free" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">SSH的免密码登陆</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.08.28</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>mour</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/全栈工程师/">全栈工程师</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="SSH-相关"><a href="#SSH-相关" class="headerlink" title=" SSH 相关  "></a><font color="green"> SSH 相关  </font></h2><h3 id="SSH-Introduction"><a href="#SSH-Introduction" class="headerlink" title="SSH Introduction"></a>SSH Introduction</h3><blockquote>
+<p>SSH协议中主要为三个部分：</p>
+<blockquote>
+<ol>
+<li>传输层</li>
+</ol>
+<ul>
+<li>用户认证协议</li>
+<li>连接协议</li>
+</ul>
+</blockquote>
+<p> 验证主要为两种安全验证</p>
+<blockquote>
+<ol>
+<li>基于密码的安全验证(顾名思义，知道账户名和密码进行登录)<ul>
+<li>基于密钥的安全验证(通过验证密钥进行登录)</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<p>OpenSSH是提供ssh相关服务的经典工具</p>
+<blockquote>
+<ul>
+<li>远程操作 ssh, scp, and sftp.</li>
+<li>密钥管理  ssh-add, ssh-keysign, ssh-keyscan,  ssh-keygen.</li>
+<li>服务端 sshd, sftp-server,  ssh-agent.</li>
+</ul>
+</blockquote>
+</blockquote>
+<h3 id="SSH-Basic-Useage"><a href="#SSH-Basic-Useage" class="headerlink" title="SSH Basic Useage"></a>SSH Basic Useage</h3><ul>
+<li><code>$ ssh remotehost</code></li>
+<li><code>$ ssh username@remotehost</code></li>
+<li><code>$ ssh username@remotehost -p 23456</code></li>
+<li><code>$ ssh -p 23456 username@remotehost</code></li>
+</ul>
+<h3 id="How-to-install-SSH"><a href="#How-to-install-SSH" class="headerlink" title="How to install SSH"></a>How to install SSH</h3><blockquote>
+<p>ubuntu</p>
+<blockquote>
+<p>   <code>$ sudo apt-get install openssh-server</code> # ssh服务</p>
+<p>   <code>$ service ssh start</code>  #一般安装之后，服务就自动开启了，如果没有的话可以手动开启下。</p>
+</blockquote>
+<p>windows</p>
+<blockquote>
+<p>ssh服务可以安装cygwin,具体参考下相关资源里的openssh-rsa-authentication-for-windows-and-linux，客户端的话可以安装Xshell, putty,MobaXterm.</p>
+</blockquote>
+<p>android</p>
+<blockquote>
+<p>ssh服务用SSHDroid，客户端用connect-ssh,Juice-ssh,super terminal去连接远程服务器。</p>
+<h3 id="传输数据-基本上是单个文件传输"><a href="#传输数据-基本上是单个文件传输" class="headerlink" title="传输数据(基本上是单个文件传输)"></a>传输数据(基本上是单个文件传输)</h3><ul>
+<li><code>$　scp user@destip:/path/to/your/dest</code></li>
+<li><code>$　scp -P yourPort user@destip:/path/ /local/path/</code></li>
+<li><code>$　scp -P yourPort sourceip:/path/ user@destip:/path/</code></li>
+</ul>
+</blockquote>
+<p>其他</p>
+<blockquote>
+<ul>
+<li><font color="red">rsync(服务器之间同步数据，极好的，适用于文件夹之类的都可以,apt-get install rsync(ubuntu) yum install rsync(Centos),当然这些服务器之间的备份最好配合crontab定时使用),</font></li>
+<li>sz(windwos下xshell配合sz极好的，这个要源码安装，google下就行了)</li>
+</ul>
+</blockquote>
+</blockquote>
+<h3 id="免密码登录远程服务器"><a href="#免密码登录远程服务器" class="headerlink" title="免密码登录远程服务器"></a>免密码登录远程服务器</h3><blockquote>
+<p>就是你把你的公钥放到远程服务器上。登录的时候，服务器会向用户发送一段随机字符串，用户用自己的私钥加密后，再发回来。服务器用事先储存的公钥进行解密，如果成功，就允许登录shell。记得之前看过一个案例，有一个把私钥放到了服务器，被人家攻克之后，盗了密钥又把其他服务器给干了。</p>
+<p>&gt;</p>
+<ul>
+<li><code>$ ssh-keygen</code></li>
+<li><code>$ ssh-copy-id -i ~/.ssh/id_rsa.pub remoteip</code></li>
+<li><code>$ service ssh restart</code></li>
+<li><code>$ chmod 700 ~/.ssh</code></li>
+<li><code>$ chmod 600 ~/.ssh/authorized_keys</code></li>
+<li><code>$ ssh user@host &#39;mkdir -p .ssh &amp;&amp; cat &gt;&gt; .ssh/authorized_keys&#39; &lt; ~/.ssh/id_rsa.pub</code></li>
+</ul>
+<font color="red">不知道大家有没有发现权限设置有个很好玩的东西，就是父目录假如是只有roto可访问，但你给下面的子目录设置成了777之类的，那么只可以直接访问者个字目录下的东西，是不是又想到了什么邪恶的东西，哈哈</font>
+
+</blockquote>
+<h3 id="不相关的周末"><a href="#不相关的周末" class="headerlink" title="不相关的周末"></a>不相关的周末</h3><p>以前想写个ssh防爆破脚本，当时是想grep下log,然后触发相应的iptables规则，后来发现了防爆破工具fail2ban，原理应该也差不多。<br>突然看到很多少在网上说markdown转pdf怎么转，什么什么收费软件怎么怎么样，卧槽，难道不能chrom上ctrl+p打印吗？？</p>
+<p>扎着冰糖杨梅，边吃边写markdown，想起来的都写一写。查着写着，吐槽着。昨天的书展真是不咋滴啊。还有前天被一巴基斯坦王八蛋放了鸽子，艹，明明9pm跑步，没见到人。艹艹。<br>还有别忘了，不如用mosh</p>
+<h4 id="相关资源"><a href="#相关资源" class="headerlink" title="相关资源"></a>相关资源</h4><ul>
+<li><a href="https://zh.wikipedia.org/wiki/Secure_Shell" target="_blank" rel="noopener">SSH 维基百科</a></li>
+<li><a href="http://www.openssh.org/" target="_blank" rel="noopener">OpenSSH</a> </li>
+<li><a href="http://cects.com/openssh-rsa-authentication-for-windows-and-linux/" target="_blank" rel="noopener">openssh-rsa-authentication-for-windows-and-linux</a></li>
+<li><a href="https://rsync.samba.org/examples.html" target="_blank" rel="noopener">rsync example</a></li>
+<li><a href="http://www.cnblogs.com/peida/archive/2013/01/08/2850483.html" target="_blank" rel="noopener">corntab</a></li>
+</ul>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">Coffe or tea ?</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2016/08/28/cafeeinstall/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2016/08/31/mongo-problem-solved/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
