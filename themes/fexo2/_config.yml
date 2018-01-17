@@ -1,0 +1,190 @@
+# Blog info
+blog_name: mour
+slogan: 见贤思齐焉,见不贤而内自省也
+url: http://iami.xyz
+
+# Set avatar (Absolute url and relative url)
+avatar: /images/avatar.jpg
+
+# Set favicon
+favicon: /favicon.ico
+
+# For seo
+keywords: Machine Learning, Web Security Research, Full Stack, Shell, PowerShell, Ubuntu,爬虫,机器学习,网络安全
+
+home_nav:
+
+  - name: Gist
+    url: https://gist.github.com/mylamour
+    target_blank: true
+  - name: Blog
+    url: /archives
+    target_blank: false #不在新页面打开
+  - name: Project
+    url: /project/
+    target_blank: true #在新页面打开
+  - name: Github
+    url: https://github.com/mylamour
+    target_blank: true
+  - name: Twitter
+    url: https://twitter.com/kkmy_sad
+    target_blank: true
+
+# config page nav
+page_nav:
+  - name: 博客
+    url: /archives/
+    target_blank: false # 不在新页面打开
+  - name: 分类
+    url: /category/
+    target_blank: false
+  - name: 标签
+    url: /tag/
+    target_blank: false
+
+  - name: 关于
+    url: /about/
+    target_blank: falsez
+  - name: RSS
+    url: /atom.xml
+    target_blank: true # 在新页面打开
+  - name: 搜索
+    url: /search/
+    target_blank: false # 在新页面打开
+
+page_nav_style: CIRCLE  # CIRCLE|ROUND_RECT
+
+# 面包屑
+breadcrumb:
+  isShow: true # true|fase
+
+# 盒子
+toolbox:
+  isShow: true # true|fase
+  text: 慎独
+
+search_slogan:
+  isShow: true # true|fase
+  text: I am here, where you are?
+
+# link_slogan:
+#   isShow: true # true|fase
+#   text: 交换友链可以邮件 forsigner@gmail.com
+
+
+# set backtop show or hide
+backtop:
+  home: false
+  archive: false
+  category: true
+  tag: true
+  post: true
+  link: false
+  about: false
+
+donation:
+  show: true
+  btn_text: 支持一下
+  tip: Coffe or tea ?
+  items:
+    - type: 微信
+      text: 微信扫一扫
+      imgUrl: /images/qr-wechat.png
+    - type: 支付宝
+      text: 支付宝扫一扫
+      imgUrl: /images/qr-alipay.jpg
+
+
+post:
+  header_align: CENTER # LEFT|CENTER
+  showToc: true # true|false
+  showComments: true
+  open_in_new_window: false
+  show_prev_next: true
+
+# =========================================================
+# 个性化设置
+# =========================================================
+
+# Custom CSS style, 推荐把样式文件放在blog源码文件夹，而不是主题里面
+personal_style: /css/personal-style.css
+
+# 这个值取决于你得背景图片是深色还是浅色，深色用dark，浅色用light
+home_background_scheme: light # dark、light
+
+# custom font-family 暂时只支持这3种英文字体，你可以完全自定义字体(看文档)
+blog_name_font_familiy: calligraffittiregular
+# blog_name_font_familiy: Lobster-Regular
+# blog_name_font_familiy: PoiretOne-Regular
+
+init_page_content: HOME_NAV  # HOME_NAV | POST
+
+
+# =========================================================
+# 第三方服务
+# =========================================================
+# Stats
+google_analytics:
+baidu_analytics: 
+
+# Comment service
+disqus_shortname: 
+# hypercomments_id: 89821
+# gentie_key: d16a7241e7cd4b389584ed8db2a4e8bc
+
+# Valine comment system  https://valine.js.org
+valine:
+  enable: false # 如果使用valine，请设置改之为true
+  appid:  # your leancloud application appid
+  appkey:  # your leancloud application appkey
+  notify: false # mail notifier , https://github.com/xCss/Valine/wiki
+  verify: false # Verification code
+  placeholder: Just go go # comment box placeholder
+  avatar: mm # gravatar style
+  guest_info: nick,mail,link # custom comment header
+  pageSize: 10 # pagination size
+
+# 注意，多说即将关闭，建议选用上面四个评论系统
+# duoshuo_shortname: forsigner
+
+
+
+# 不算子,文章访问量统计和显示
+busuanzi: true
+
+# =========================================================
+# 页面内容设置
+# =========================================================
+
+
+link:
+  - name:  
+    info:  
+    url: 
+    avatar: 
+
+
+project:
+  - type: personal
+    name: machine learning for security
+    url: https://github.com/mylamour/machine-learning-for-security
+
+
+  - type: personal
+    name: flask ocr
+    url: https://github.com/mylamour/flask-ocr
+
+    
+  - type: personal
+    name: python 2 pythonic
+    url: https://github.com/mylamour/python-and-pythonic
+    
+
+  - type: personal
+    name: Forensic Tools
+    url: https://github.com/mylamour/-_--Forensics-Tools
+
+
+  - type: personal
+    name: Pastebin Spider
+    url: https://github.com/mylamour/pastebin-Spider

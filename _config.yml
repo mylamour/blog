@@ -82,7 +82,7 @@ type: atom
 path: atom.xml
 limit: 20
 ## Themes: https://hexo.io/themes/
-theme: fexo
+theme: fexo2
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
