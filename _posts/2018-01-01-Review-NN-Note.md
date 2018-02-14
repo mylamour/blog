@@ -7,7 +7,7 @@ tags: 学习笔记 机器学习
 
 # FAQ
 
-* [Maxpooling 的作用](https://www.quora.com/What-is-max-pooling-in-convolutional-neural-networks)
+[Maxpooling 的作用](https://www.quora.com/What-is-max-pooling-in-convolutional-neural-networks)
 > 1. 不变性，更关注是否存在某些特征而不是特征具体的位置。可以看作加了一个很强的先验，让学到的特征要能容忍一些的变化。
 > 2. 减小下一层输入大小(减少冗余)，减小计算量和参数个数。
 > 3. 获得定长输出。（文本分类的时候输入是不定长的，可以通过池化获得定长输出）
@@ -16,6 +16,7 @@ tags: 学习笔记 机器学习
 
 怎么设计一个好的神经网络
 > 还不知道, 不过参数初始化的可以直接采用`tensorflow`给的,例如:
+
 ```python
 W1 = tf.Variable(tf.random_normal([784,256]))
 b1 = tf.Variable(tf.random_normal([256]))
@@ -66,10 +67,6 @@ b1 = tf.Variable(tf.random_normal([256]))
 > * 强制resize,但是要细分到图像内的物体就不适用了.会导致变形.
 > * 人工标注, 推荐用[lableimage](https://github.com/tzutalin/labelImg)
 
-
-
-
-
 # Resources
 
 * [如何理解反向传播](https://www.zhihu.com/question/27239198?rf=24827633)
@@ -77,8 +74,6 @@ b1 = tf.Variable(tf.random_normal([256]))
 * [禅与奶罩识别技术](https://zhuanlan.zhihu.com/p/25774111)
 * [神经网络知乎话题精华](https://www.zhihu.com/topic/20043586/top-answers)
 * [卷积神经网络直观解释](https://www.zhihu.com/question/39022858/answer/81026163)
-
-
 * [Dropout的作用](https://yq.aliyun.com/articles/68901) 
 * [机器学习的数学基础](https://zhuanlan.zhihu.com/p/25197792)
 * [有没有必要把机器学习算法自己实现一遍？](https://www.zhihu.com/question/36768514/answer/81937823)
@@ -86,7 +81,6 @@ b1 = tf.Variable(tf.random_normal([256]))
 
 * [深度学习面试经典题目](https://zhuanlan.zhihu.com/p/25005808)
 * [Tensorflow的55个经典案例](https://zhuanlan.zhihu.com/p/27577246)
-
 * [有哪些LSTM/RNN的教程](https://www.zhihu.com/question/29411132/answer/51515231)
 * [变形卷积核、可分离卷积？卷积神经网络中十大拍案叫绝的操作](https://zhuanlan.zhihu.com/p/28749411)
 
