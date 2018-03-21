@@ -15,7 +15,7 @@ comments: no
 
 * 主要关注 Web Security 和 Machine Learning
 * 运维，爬虫，前后端都会一些,前端框架不太熟
-* Python,Shell常用, 相比nodejs更喜欢写coffescript,不过也好久没写了。不怎么想想写C/C++
+* Python,Shell常用, 相比nodejs更喜欢写coffescript,不过也好久没写了。不怎么想写C/C++
 
 
 ### 打草稿的地方
