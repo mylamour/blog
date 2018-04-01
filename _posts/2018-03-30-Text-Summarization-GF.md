@@ -249,9 +249,8 @@ output_dict = r.output_to_dict(output)
 
 # References
 * [Text Summarization Techniques: A Brief Survey](https://arxiv.org/pdf/1707.02268.pdf)
-* [A Survey of Text Summarization Extractive Techniques ](https://pdfs.semanticscholar.org/7e30/d0c7aaaed7fa2d04fc8cc0fd3af8e24ca385.pdf)
+* [A Survey of Text Summarization Extractive Techniques](https://pdfs.semanticscholar.org/7e30/d0c7aaaed7fa2d04fc8cc0fd3af8e24ca385.pdf)
 * [文本摘要自动生成综述](https://juejin.im/post/5a2e1840f265da43062ab69f)
-(https://pdfs.semanticscholar.org/7e30/d0c7aaaed7fa2d04fc8cc0fd3af8e24ca385.pdf)
 * [fasttext](https://github.com/facebookresearch/fastText)
 * [fasttext python library document](https://pypi.python.org/pypi/fasttext)
 * [fasttext Word representations](https://fasttext.cc/docs/en/unsupervised-tutorial.html)
