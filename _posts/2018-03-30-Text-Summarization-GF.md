@@ -57,6 +57,7 @@ tfidf_matrix =  tf.fit_transform(corpus)
 # Word2vec, Doc2Vec, Sentence2Vec
 
 ## [Word Embedding](https://en.wikipedia.org/wiki/Word_embedding)
+
 这个来看下知乎上的解释吧
 > word embedding，就是找到一个映射或者函数，生成在一个新的空间上的表达，该表达就是word representation。通俗的翻译可以认为是单词嵌入，就是把X所属空间的单词映射为到Y空间的多维向量，那么该多维向量相当于嵌入到Y所属空间中，一个萝卜一个坑。
 作为一个比较重要的知识点，不是一两句介绍的，看参考链接详细学习。
@@ -87,6 +88,7 @@ PageRank很著名，从写爬虫的时候知道的，但是应用到文本摘要
 ## Cosine similarity Or NN
 
 余弦相似性，word or sentences or doc 已经转换成向量了，自然可以用测量向量间的夹角余弦值计算其相似度了。不过在fasttext的使用过程中还发现了可以采用knn去计算其相似性。
+
 ## PageRank And TextRank 
 
 因为这次是中文文本摘要，所以采用TextRank的算法库用的是[TextRank4ZH](https://github.com/letiantian/TextRank4ZH)。textrank只是随手测了一下，主要的还是用pagerank,具体的论文暂时没找到先不补充链接了。![learn-note](../image/NLP/pg-note.jpg)
@@ -150,8 +152,10 @@ with open(trainfilepath,encoding="utf-8") as f:
 ```
 
 # In Action: FastText
+
 ## FastText Basic Useage
-> 安装很简单，只要`make`一下，所有的命令行基本都有python接口
+
+安装很简单，只要`make`一下，所有的命令行基本都有python接口
 
 * 训练模型(支持skipgram或者cbow方式,无监督学习,Word Representations)
 > 
@@ -159,13 +163,12 @@ with open(trainfilepath,encoding="utf-8") as f:
 fasttext skipgram -input traningText -ouput trainedModel
 fasttext cbow -input traningText -ouput trainedModel
 ```
+
 ```python
 import fasttext
 model = fasttext.skipgram('data.txt', 'model')
 model = fasttext.cbow('data.txt', 'model')
-
 ```
-
 
 * 输出向量(输出word vec 或者sentences vec)
 > 
@@ -184,7 +187,7 @@ fasttext predict model.bin test.txt k
 fasttext predict-prob model.bin test.txt k  # probability for each label
 ```
 
-> Sample Data
+
 ```
 Envy➜  data : master ✘ :✭ ᐅ  head amazon_review_polarity.train 
 __label__2 , black lawn mower cover , been searching for ever to get suitable cover and this is just perfect . did try making my own cover but was not successful . 
@@ -194,7 +197,8 @@ __label__1 , miata mx5 covercraft cover , the quality was fine however , it did 
 ```
 
 ## FastText Pybinding
-> 不要`pip install fasttext`(这个是想当然安装了，而且还需要预先安装`Cython`,需要`pip install Cython`), 而且pip install的无法load fasttext 训练出来的模型文件(modle.bin),需要从源码安装,在fasttext的文件夹下`pip install .`(才发现官网有指南)
+
+不要`pip install fasttext`(这个是想当然安装了，而且还需要预先安装`Cython`,需要`pip install Cython`), 而且pip install的无法load fasttext 训练出来的模型文件(modle.bin),需要从源码安装,在fasttext的文件夹下`pip install .`(才发现官网有指南)
 
 ```python
 
@@ -214,15 +218,16 @@ def sen2vec_by_fasttext(sentences,model=load_model('./oh_no.bin')):
 ```
 
 # Rouge And Automatic Evaluation of Summaries 
+
 Rouge是一种用来评估自动摘要，评估方法不涉及，具体原理不讨论，附有了论文链接。用perl编写，除了安装不好安装，其他还好。
-> cpan install XML::DOM
-> export ROUGE_EVAL_HOME=/usr/local/ROUGE-1.5.4/data
+> `cpan install XML::DOM`
+> `export ROUGE_EVAL_HOME=/usr/local/ROUGE-1.5.4/data`
 安装之后，运行下test文件，然后安装python binding `pip install pyrouge`
 将生成的摘要和原摘要写到对应的指定文件中，然后用写测试代码。
+
 ```python
 # coding:utf-8
 from pyrouge import Rouge155
-
 r = Rouge155('/home/angela/ROUGE')
 r.system_dir = '../docs/system'
 r.model_dir = '../docs/gold'
