@@ -9,25 +9,21 @@ tags: 学习笔记 机器学习
 
 
 * `from keras.utils.visualize_util import plot` api upgrade
->
+> 
+
 ```python 
+
 from keras.utils.vis_utils import plot_model
 from IPython.display import Image
 
 plot_model(model, to_file="model.png", show_shapes=True)
 Image('model.png')
+
 ```
 
 * ["Merge" versus "merge", what is the difference?](https://github.com/keras-team/keras/issues/3921)
 
->   Merge is a layer.
-    Merge takes layers as input
-    Merge is usually used with Sequential models
-    merge is a function.
-    merge takes tensors as input.
-    merge is a wrapper around Merge.
-    merge is used in Functional API
-    Using Merge:
+>   Merge is a layer. Merge takes layers as input.Merge is usually used with Sequential models,merge is a function.merge takes tensors as input.merge is a wrapper around Merge. merge is used in Functional API. Using Merge:
 
 ```python
     left = Sequential()
@@ -59,6 +55,7 @@ Image('model.png')
 * Save whole model(architecture + weights + optimizer state) or just save weights
  
 > 
+
 ```python
 
 from keras.models import load_model
@@ -73,6 +70,7 @@ model = load_model('my_model.h5')
 ```
 
 ```python
+
 json_string = model.to_json()
 
 # save as YAML
@@ -85,12 +83,12 @@ model = model_from_json(json_string)
 # model reconstruction from YAML
 from keras.models import model_from_yaml
 model = model_from_yaml(yaml_string)
+
 ```
 
 * Vairble-Size Image As Input
 
 > https://github.com/keras-team/keras/issues/1920
-
 
 * Numpy remove scientific notation
 
@@ -103,18 +101,21 @@ model = model_from_yaml(yaml_string)
 * How get most common value in passed array?
 
 > 
+
 ```python
+
 from scipy.stats import mode
 mode(array)
+
 ```
 
 * What is val_loss and val_acc? what is different between acc and val_acc
-
 > val_loss and val_acc is meaning your model accuracy in valdation datasets
 
 * how to tell which keras model is better, Do I use the "acc" (from the training data?) one or the "val acc" (from the validation data?) one?
 
 > 
+
 ```
 Model1: 
     loss: 0.1884 - acc: 0.8062 - val_loss: 0.2542 - val_acc: 0.7449
@@ -122,14 +123,13 @@ Model2:
     loss: 0.1905 - acc: 0.8062 - val_loss: 0.2460 - val_acc: 0.7531
 ```
 
-* [StackOverFlow Answer](https://stackoverflow.com/questions/34702041/how-to-tell-which-keras-model-is-better?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)
+> [StackOverFlow Answer](https://stackoverflow.com/questions/34702041/how-to-tell-which-keras-model-is-better?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)
 
 > If you want to estimate the ability of your model to generalize to new data (which is probably what you want to do), then you look at the validation accuracy, because the validation split contains only data that the model never sees during the training and therefor cannot just memorize.
 
 > If your training data accuracy ("acc") keeps improving while your validation data accuracy ("val_acc") gets worse, you are likely in an overfitting situation, i.e. your model starts to basically just memorize the data.
 
 * `fit` difference with `fit_transform`
-
 > https://datascience.stackexchange.com/questions/12321/difference-between-fit-and-fit-transform-in-scikit-learn-models
 
 * 随机森林等于决策树加Bagging,Bagging原理是什么?
@@ -146,7 +146,6 @@ Model2:
 4. 随机采样，使模型方差小，泛化能力强
 5. 比Boosting简单
 6. 对部分特征缺失不反感 然而感觉并不是
-
 > 缺点:
 1. 噪音比较大的样本，容易过拟合
 2. 取值划分比较多的特征容易对RF的决策产生更大的影响，从而影响你和的模型的效果
