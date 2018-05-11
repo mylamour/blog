@@ -3,7 +3,7 @@ layout: post
 title: Text Classification With Keras And CNN
 categories: 学习数据挖掘的路上
 keywords: Text Classification, Keras, CNN, 文本分类
-tags: 学习笔记 知识回顾 机器学习
+tags: 学习笔记 知识回顾 机器学习 NLP
 ---
 
 以下原为工作时编写的文档，现在进行重新整理
