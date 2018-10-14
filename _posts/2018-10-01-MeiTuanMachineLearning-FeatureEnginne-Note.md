@@ -102,4 +102,4 @@ tags: 学习笔记 机器学习
 # 资源
 
 * [sklearn和特征工程](https://github.com/mylamour/blog/issues/23)
-* [机器学习中的数据清洗与特征处理综述](https://tech.meituan.com/machinelearning_data_feature_process.html
+* [机器学习中的数据清洗与特征处理综述](https://tech.meituan.com/machinelearning_data_feature_process.html)
