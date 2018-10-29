@@ -25,5 +25,6 @@ tags: 学习笔记 机器学习
 就算大部分人知道正确的价值观，也不代表他们会做价值观正确的事情。更何况其他心怀不轨的呢。而且事事上升到价值观并不是个好事。
 
 # 资源
-[DGADomain](https://github.com/mylamour/DGADomain)
-[fasttext text classification](https://fasttext.cc/docs/en/supervised-tutorial.html)
+
+* [DGADomain](https://github.com/mylamour/DGADomain)
+* [fasttext text classification](https://fasttext.cc/docs/en/supervised-tutorial.html)
