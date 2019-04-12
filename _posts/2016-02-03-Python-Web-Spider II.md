@@ -5,7 +5,7 @@ categories: HowTo
 tags: 知识回顾
 ---
 
-[我的零开始](http://iami.xyz/Python-Web-Spider-I)
+[我的零开始](https://iami.xyz/Python-Web-Spider-I)
 
 ## 一些库的简单使用
 1. urllib2(用来下载网页)

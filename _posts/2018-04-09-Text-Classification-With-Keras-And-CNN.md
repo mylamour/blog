@@ -33,7 +33,7 @@ tags: 学习笔记 知识回顾 机器学习 NLP
 
 ## TF-IDF
 
-用于从文本中提取特征，之前[文本摘要](http://iami.xyz/Text-Summarization-GF/)的博客中已经介绍过了，此处不再介绍。可以结合`sklearn pipline`一起做预处理的工作。
+用于从文本中提取特征，之前[文本摘要](https://iami.xyz/Text-Summarization-GF/)的博客中已经介绍过了，此处不再介绍。可以结合`sklearn pipline`一起做预处理的工作。
 
 ```python
 
@@ -244,5 +244,5 @@ sudo apt-get -y install cuda-drivers cuda
 * [cudnn install guide](http://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html) -->
 * [数据挖掘算法中分类算法的优劣](https://www.zhihu.com/question/24169940)
 * [使用sklearn做单机特征工程](https://www.cnblogs.com/jasonfreak/p/5448385.html)
-* [CNN 笔记整理](http://iami.xyz/Review-NN-Note/)
+* [CNN 笔记整理](https://iami.xyz/Review-NN-Note/)
 * [Keras中文文档](https://keras-cn.readthedocs.io/en/latest/)
