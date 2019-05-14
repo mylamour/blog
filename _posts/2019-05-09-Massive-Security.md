@@ -8,15 +8,18 @@ tags: 知识回顾
 
 今天一个运维和我讨论什么是反入侵，简直是对牛弹琴，味同嚼蜡。考虑到近些天一直在思考如何做好反入侵。故做此篇。其实是上午梳理出了一个PPT，抛砖引玉，贴于此处（这也应该是做好企业安全所需要的）。
 
-嘿嘿，感觉最近瓶颈期终于突破了(似乎？)。顺便想创造一个新词叫做混沌安全。或者Massive Security.注意不是Chaos Security.似乎叫混沌安全也不是很贴切。后面想想再说吧。
+感觉最近瓶颈期终于突破了(似乎？)，意味着近期之内又将陷于新的瓶颈期。顺便想创造一个新词叫做混沌安全。或者Massive Security.注意不是Chaos Security.似乎叫混沌安全也不是很贴切。后面想想再说吧。
 
-![image](https://user-images.githubusercontent.com/12653147/57447080-c81d6880-7288-11e9-9edd-1ac26afcf483.png)
-![image](https://user-images.githubusercontent.com/12653147/57447103-d2d7fd80-7288-11e9-8ce5-98f666c07625.png)
-![image](https://user-images.githubusercontent.com/12653147/57447142-e5eacd80-7288-11e9-999c-6271b62f8204.png)
-![image](https://user-images.githubusercontent.com/12653147/57447151-f00ccc00-7288-11e9-98c6-08b9071e2e30.png)
-![image](https://user-images.githubusercontent.com/12653147/57447177-fc912480-7288-11e9-8720-d9a123a531c1.png)
-![image](https://user-images.githubusercontent.com/12653147/57447192-087ce680-7289-11e9-80af-b5a7c59dc512.png)
-![image](https://user-images.githubusercontent.com/12653147/57447237-2cd8c300-7289-11e9-8dc9-c57aeb11bff7.png)
-![image](https://user-images.githubusercontent.com/12653147/57447249-34986780-7289-11e9-8872-7302a136ccac.png)
-![image](https://user-images.githubusercontent.com/12653147/57447260-3f52fc80-7289-11e9-8a81-6670a0f908c5.png)
-
+![幻灯片2](https://user-images.githubusercontent.com/12653147/57699592-ac500300-768a-11e9-9d1b-c67cf9bbe352.PNG)
+![幻灯片3](https://user-images.githubusercontent.com/12653147/57699594-ace89980-768a-11e9-9442-2f9e9b06edd7.PNG)
+![幻灯片4](https://user-images.githubusercontent.com/12653147/57699595-ad813000-768a-11e9-9ca9-0e3b11a43b1a.PNG)
+![幻灯片5](https://user-images.githubusercontent.com/12653147/57699598-ae19c680-768a-11e9-99e6-870f9acdbf60.PNG)
+![幻灯片6](https://user-images.githubusercontent.com/12653147/57699599-aeb25d00-768a-11e9-9546-2d571218f97b.PNG)
+![幻灯片7](https://user-images.githubusercontent.com/12653147/57699600-aeb25d00-768a-11e9-9d0c-ae9edb8a1ca3.PNG)
+![幻灯片8](https://user-images.githubusercontent.com/12653147/57699601-af4af380-768a-11e9-9be5-1f4ea274b4be.PNG)
+![幻灯片9](https://user-images.githubusercontent.com/12653147/57699602-af4af380-768a-11e9-965f-24369ab63610.PNG)
+![幻灯片10](https://user-images.githubusercontent.com/12653147/57699603-afe38a00-768a-11e9-8846-fbba7f79725c.PNG)
+![幻灯片11](https://user-images.githubusercontent.com/12653147/57699605-b07c2080-768a-11e9-8f73-5b58f24699d8.PNG)
+![幻灯片12](https://user-images.githubusercontent.com/12653147/57699607-b07c2080-768a-11e9-8ac6-99da9039c772.PNG)
+![幻灯片13](https://user-images.githubusercontent.com/12653147/57699610-b114b700-768a-11e9-8240-aa58c88711bf.PNG)
+![幻灯片14](https://user-images.githubusercontent.com/12653147/57699612-b245e400-768a-11e9-8671-6fc8c6221563.PNG)
