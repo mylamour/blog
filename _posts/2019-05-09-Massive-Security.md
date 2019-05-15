@@ -23,3 +23,6 @@ tags: 知识回顾
 ![幻灯片12](https://user-images.githubusercontent.com/12653147/57699607-b07c2080-768a-11e9-8ac6-99da9039c772.PNG)
 ![幻灯片13](https://user-images.githubusercontent.com/12653147/57699610-b114b700-768a-11e9-8240-aa58c88711bf.PNG)
 ![幻灯片14](https://user-images.githubusercontent.com/12653147/57699612-b245e400-768a-11e9-8671-6fc8c6221563.PNG)
+
+update 20190515:
+昨晚和小飞侠师傅讨论了一下，我在图中说的”输出以产品为核心“不是指安全产品，指的是围绕业务产品去输出安全能力。没有写清楚，是个问题。顺便讨论了管理模型，如何以目标导向，KPI，OKR， SMART，6Sigma。不得不说，每次和小飞侠师傅交流都能学到不少东西，哈哈，感谢。
