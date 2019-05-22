@@ -75,6 +75,7 @@
 * [教你翻个墙](https://iami.xyz/CrossGFW)
 
 ## ON Github Issues
+* [In my way: how can we communicate better?](https://github.com/mylamour/blog/issues/57)
 * [How about write a chrome extension?](https://github.com/mylamour/blog/issues/56)
 * [[leetcode][23] Merge k Sorted Lists](https://github.com/mylamour/blog/issues/55)
 * [一图了解解决方案设计](https://github.com/mylamour/blog/issues/54)
