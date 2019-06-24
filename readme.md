@@ -3,6 +3,7 @@
 
 
 ## ON _posts
+* [浅谈反入侵](https://iami.xyz/Anti-Intrusions/)
 * [“混沌安全”与反入侵](https://iami.xyz/Massive-Security/)
 * [DSMM第四期与我的数据安全观](https://iami.xyz/DSMM-Date-Security)
 * [走出反爬困境](https://iami.xyz/Anti-Spider)
@@ -75,6 +76,7 @@
 * [教你翻个墙](https://iami.xyz/CrossGFW)
 
 ## ON Github Issues
+* [与雨天无关的事](https://github.com/mylamour/blog/issues/58)
 * [In my way: how can we communicate better?](https://github.com/mylamour/blog/issues/57)
 * [How about write a chrome extension?](https://github.com/mylamour/blog/issues/56)
 * [[leetcode][23] Merge k Sorted Lists](https://github.com/mylamour/blog/issues/55)
