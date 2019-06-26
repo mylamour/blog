@@ -3,6 +3,7 @@
 
 
 ## ON _posts
+
 * [浅谈反入侵](https://iami.xyz/Anti-Intrusions/)
 * [“混沌安全”与反入侵](https://iami.xyz/Massive-Security/)
 * [DSMM第四期与我的数据安全观](https://iami.xyz/DSMM-Date-Security)
@@ -76,6 +77,8 @@
 * [教你翻个墙](https://iami.xyz/CrossGFW)
 
 ## ON Github Issues
+
+* [玩转阿里云的ODPS](https://github.com/mylamour/blog/issues/59)
 * [与雨天无关的事](https://github.com/mylamour/blog/issues/58)
 * [In my way: how can we communicate better?](https://github.com/mylamour/blog/issues/57)
 * [How about write a chrome extension?](https://github.com/mylamour/blog/issues/56)
@@ -137,4 +140,7 @@
 Not sync
 
 ## On Telegraph
+Not sync
+
+## On Gitbook
 Not sync
