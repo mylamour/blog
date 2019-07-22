@@ -4,6 +4,7 @@
 
 ## ON _posts
 
+* [从HW看入侵](https://iami.xyz/HW-And-Pentest/)
 * [浅谈反入侵](https://iami.xyz/Anti-Intrusions/)
 * [“混沌安全”与反入侵](https://iami.xyz/Massive-Security/)
 * [DSMM第四期与我的数据安全观](https://iami.xyz/DSMM-Date-Security)
@@ -78,6 +79,9 @@
 
 ## ON Github Issues
 
+* [使用SLS做实时数据分析](https://github.com/mylamour/blog/issues/62)
+* [微服务架构下的安全治理](https://github.com/mylamour/blog/issues/61)
+* [one line code to download AWS whitepapers](https://github.com/mylamour/blog/issues/60)
 * [玩转阿里云的ODPS](https://github.com/mylamour/blog/issues/59)
 * [与雨天无关的事](https://github.com/mylamour/blog/issues/58)
 * [In my way: how can we communicate better?](https://github.com/mylamour/blog/issues/57)
