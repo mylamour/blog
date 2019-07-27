@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Fuzzing 学习笔记之 AFL入门 
+title: Fuzzing学习笔记之AFL入门 
 categories: HowTo
 kerywords: Fuzzing, tutorial 
 tags: 知识回顾 学习笔记
@@ -14,18 +14,18 @@ Fuzzing就是模糊测试，简单来说就是产生各种变异输入源进行�
 
 radamsa用于生成随机的fuzz向量(不用在意这些名词),当然你也可以直接写代码自己生产不同的变异输入。
 
-1. 克隆代码并编译
+1.克隆代码并编译
 `git clone https://gitlab.com/akihe/radamsa.git && cd radamsa && make && sudo make install`
 
 ![image](https://user-images.githubusercontent.com/12653147/44978555-99cee700-af9d-11e8-8e9e-0a3111de5bdd.png)
 
-2. 使用：`echo 随便什么 | radamsa` 生成攻击载荷
+2.使用：`echo 随便什么 | radamsa` 生成攻击载荷
 
 ![image](https://user-images.githubusercontent.com/12653147/44978666-d995ce80-af9d-11e8-8e7e-76ebead99717.png)
 
 ![image](https://user-images.githubusercontent.com/12653147/44978719-f205e900-af9d-11e8-813a-3b95d57eaf1a.png)
 
-3. 其他用法
+3.其他用法
 * 生成多个testcase
 `echo "岁月神偷"| radamsa -d 2 -n 10`
 生成10个，每2毫秒一次，可以调整一下。比如说`-d 600` ，随意喽。
@@ -34,13 +34,17 @@ radamsa用于生成随机的fuzz向量(不用在意这些名词),当然你也可
 
 * 针对文件生成testcase
 `radamsa -r guest.jpg -o ./1.png`
+
 <img align="right"  src="https://user-images.githubusercontent.com/12653147/44980007-35158b80-afa1-11e8-8846-8679c5ddd47c.png" width="200" height="200" />
 <img  align="right"  src="https://user-images.githubusercontent.com/12653147/44980200-bec55900-afa1-11e8-969f-7dc891246279.png" width="200" height="200" />
 <img  align="right" src="https://user-images.githubusercontent.com/12653147/44980207-c38a0d00-afa1-11e8-8a4c-a816fc5dbaab.png" width="200" height="200" />
 <img  align="right" src="https://user-images.githubusercontent.com/12653147/44980216-c97fee00-afa1-11e8-9a6f-3cec98afb8c3.png" width="200" height="200" />
 
+
+
 以上为对原图的改变
  针对文件的缩放和同一行排版在markdown中可以使用如下的操作。
+
 ```javascript 
 <img  align="right" src="https://xxx.png" width="200" height="200" />
 ```
@@ -52,7 +56,7 @@ radamsa用于生成随机的fuzz向量(不用在意这些名词),当然你也可
 ## AFL
 不建议mac下使用，因为mac os的fork比较慢。建议
 
-### *Nix
+1.*Nix
 
 这个教程是在Ubuntu下作的
 ```shell
@@ -103,13 +107,14 @@ afl-fuzz -i- -o fuzz_output -S slave3 ./test @@
 不过这些你都能在afl的readme里面看到。
 
 
-### Windows
-# WinAFL fuzzing VLC with DynamoIRO
+2.Windows： WinAFL fuzzing VLC with DynamoIRO
+
 windows下的神器自然是winafl了，看神器吧（不过我感觉可能是我电脑太差劲了？用不好。。。感觉没啥效果）
 
 ```cmd
 afl-fuzz.exe -i C:\Users\i\Desktop\Fuzzing\db -o C:\Users\i\Desktop\Fuzzing\results -D C:\Users\i\Desktop\Fuzzing\DynamoRIO\bin64 -t 20000 -- -fuzz_iterations 5000 -target_module "D:\Program Files (x86)\VideoLAN\VLC\vlc.exe" -target_offset 0x532a0 -nargs 2 -m 1024 -- "D:\Program Files (x86)\VideoLAN\VLC\vlc.exe" @@
 ```
+
 ![image](https://user-images.githubusercontent.com/12653147/45439093-7f0e1800-b6eb-11e8-901e-29e5ebc0db16.png)
 ![image](https://user-images.githubusercontent.com/12653147/45439106-86352600-b6eb-11e8-9103-353f56f5bb0b.png)
 ![image](https://user-images.githubusercontent.com/12653147/45438403-a7951280-b6e9-11e8-8f38-fbadc416ad08.png)

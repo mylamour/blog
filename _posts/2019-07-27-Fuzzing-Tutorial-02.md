@@ -41,6 +41,7 @@ autoninja -C out/Default chrome
 8核8G的机器，前面的基本上一秒编译一个，看来可能要9个小时后才能编译完。运气好的话
 
 ![image](https://user-images.githubusercontent.com/12653147/44888428-c4057800-ad03-11e8-9494-1e1afa1e865a.png)
+
 编译结束,大小也变成了49G
 
 ![image](https://user-images.githubusercontent.com/12653147/44888721-30cd4200-ad05-11e8-8b3e-b926f5db6d3d.png)
@@ -58,16 +59,6 @@ $ ./out/libfuzzer/v8_json_parser_fuzzer ~/chromium/testcases/json_parser_corpus/
 ```
 ![image](https://user-images.githubusercontent.com/12653147/44891509-4e54d880-ad12-11e8-848d-5418dcbfb95c.png)
 
-
-* 采用`AFL-fuzz` 的`QEMU`进行`fuzzing`
-
-`~/afl-2.52b/afl-fuzz -i ~/fuzzdb/attack/all-attacks -o ./hehehehe -m 1024 -Q ./chrome --no-sandbox`
-![image](https://user-images.githubusercontent.com/12653147/45400627-88fa3180-b67f-11e8-9a74-6311629df585.png)
-
-为毛，内心崩溃。不科学 `-t 100`也不行
-
-
-![image](https://user-images.githubusercontent.com/12653147/45400136-88609b80-b67d-11e8-8aa5-78d2c8d9914c.png)
 
 # ToDo
 

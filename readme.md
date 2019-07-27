@@ -3,7 +3,9 @@
 
 
 ## ON _posts
-
+* [Linux Kernel Fuzzing With QEMU And AFL](https://iami.xyz/Fuzzing-Tutorial-03/)
+* [Chromium Fuzzing with libfuzzer](https://iami.xyz/Fuzzing-Tutorial-02/)
+* [Fuzzing 学习笔记之 AFL入门](https://iami.xyz/Fuzzing-Tutorial-01/)
 * [从HW看入侵](https://iami.xyz/HW-And-Pentest/)
 * [浅谈反入侵](https://iami.xyz/Anti-Intrusions/)
 * [“混沌安全”与反入侵](https://iami.xyz/Massive-Security/)

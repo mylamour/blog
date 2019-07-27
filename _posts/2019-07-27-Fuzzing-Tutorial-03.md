@@ -10,13 +10,13 @@ tags: 知识回顾 学习笔记
 
 (本教程主要在cnetos完成,工具主要为triforceAFL)
 
-* 安装QEMU依赖
-
+## 安装triforceAFL及QEMU以及编译内核
+1.安装QEMU依赖
 ```shell
 yum install git glib2-devel libfdt-devel pixman-devel zlib-devel  qemu-kvm libvirt libvirt-python libguestfs-tools virt-install
 ```
 
-* clone并编译TriforceAFL
+2.安装TriforceAFL
 ```
 git clone https://github.com/nccgroup/TriforceAFL
 cd TriforceAFL
@@ -32,46 +32,45 @@ make
 
 下面跟着TriforceLinuxSyscallFuzzer去做内核fuzz的教程，注意TriforceLinuxSyscallFuzzer和TriforceAFL在同一目录。
 
-1. 下载示例项目
 ```shell
 git clone https://github.com/nccgroup/TriforceLinuxSyscallFuzzer
 yum install glibc-static
 cd TriforceLinuxSyscallFuzzer
 make
+
 ```
-2. 编译内核
+
+3.编译内核
 
 步骤基本如下：
 * 下载代码 `wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.2.2.tar.xz`
 * 安装依赖(如果还缺少其他依赖的话继续安装) 
 > `yum install ncurses-devel elfutils-libelf-devel` 
 `yum install -y ncurses-devel make gcc bc bison flex elfutils-libelf-devel openssl-devel grub2`
-
 * 编译 
-
 ```
 tar -xf linux-5.2.2.tar.xz && cd linux-5.2.2
 cp /boot/config-$(uname -r) .config  # 使用这个你需要一路回车很久，不如用make menuconfig吧，更方便
 make
 ```
-
 此处本来尝试了采用afl-gcc和afl-g++去编译，但是没有成功。
-更改install的路径`vim Makefile`在大概919行的位置，更改目录为自己的。此处为``
-
+更改install的路径`vim Makefile`在大概919行的位置，更改目录为自己的。此处为
 ![image](https://user-images.githubusercontent.com/12653147/61921831-00f6e080-af4e-11e9-80e1-3fd165101c0a.png)
-
 然后运行`make install`
 就可以看到对应的文件已经在目录下了
-然后查看`ls /proc/kallsyms` 。这个文件包含了kernel image和动态加载模块的符号表。 如果没有该文件，可以通过`sudo sh -c "echo 0  > /proc/sys/kernel/kptr_restrict"`进行开启。
+然后查看`ls /proc/kallsyms` 。这个文件包含了kernel image和动态加载模块的符号表。 如果没有该文件，可以通过下面命令开启:
 
-把对应的文件拷贝到你的kern目录下
+`sudo sh -c "echo 0  > /proc/sys/kernel/kptr_restrict"`
+
+然后把对应的文件拷贝到你的kern目录下
 ```shell
 cp /proc/kallsyms  .
 cp arch/x86/boot/bzImage /home/ops/fuzz_learning/tools/kern
 ```
 ![image](https://user-images.githubusercontent.com/12653147/61921855-1966fb00-af4e-11e9-9f6b-c79953f57de0.png)
 
-内核编译就绪，接下来开始运行
+由上图看内核编译就绪，接下来开始运行
+
 ```
 make inputs
 ./runFuzz -M 10
