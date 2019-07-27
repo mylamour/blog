@@ -35,11 +35,10 @@ radamsa用于生成随机的fuzz向量(不用在意这些名词),当然你也可
 * 针对文件生成testcase
 `radamsa -r guest.jpg -o ./1.png`
 
-<img align="right"  src="https://user-images.githubusercontent.com/12653147/44980007-35158b80-afa1-11e8-8846-8679c5ddd47c.png" width="200" height="200" />
-<img  align="right"  src="https://user-images.githubusercontent.com/12653147/44980200-bec55900-afa1-11e8-969f-7dc891246279.png" width="200" height="200" />
-<img  align="right" src="https://user-images.githubusercontent.com/12653147/44980207-c38a0d00-afa1-11e8-8a4c-a816fc5dbaab.png" width="200" height="200" />
-<img  align="right" src="https://user-images.githubusercontent.com/12653147/44980216-c97fee00-afa1-11e8-9a6f-3cec98afb8c3.png" width="200" height="200" />
-
+<img src="https://user-images.githubusercontent.com/12653147/44980007-35158b80-afa1-11e8-8846-8679c5ddd47c.png" width="200" height="200" />
+<img  src="https://user-images.githubusercontent.com/12653147/44980200-bec55900-afa1-11e8-969f-7dc891246279.png" width="200" height="200" />
+<img src="https://user-images.githubusercontent.com/12653147/44980207-c38a0d00-afa1-11e8-8a4c-a816fc5dbaab.png" width="200" height="200" />
+<img src="https://user-images.githubusercontent.com/12653147/44980216-c97fee00-afa1-11e8-9a6f-3cec98afb8c3.png" width="200" height="200" />
 
 
 以上为对原图的改变
