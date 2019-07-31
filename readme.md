@@ -80,7 +80,10 @@
 * [教你翻个墙](https://iami.xyz/CrossGFW)
 
 ## ON Github Issues
-
+* [Let's get start to fuzzing firefox browser with grizzly](https://github.com/mylamour/blog/issues/66)
+* [Let's get start to fuzzing binutils with AFL](https://github.com/mylamour/blog/issues/65)
+* [Let's get start to fuzzing libssh latest with fuzzer-test-suite](https://github.com/mylamour/blog/issues/64)
+* [Let's get start to fuzzing sqlite3 latest with fuzzer-test-suite](https://github.com/mylamour/blog/issues/63)
 * [使用SLS做实时数据分析](https://github.com/mylamour/blog/issues/62)
 * [微服务架构下的安全治理](https://github.com/mylamour/blog/issues/61)
 * [one line code to download AWS whitepapers](https://github.com/mylamour/blog/issues/60)
