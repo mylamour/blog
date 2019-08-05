@@ -3,6 +3,7 @@
 
 
 ## ON _posts
+* [日志收集解决方案概览](https://iami.xyz/Anit-Intrusion-With-Data-Collection-Solutions/)
 * [Linux Kernel Fuzzing With QEMU And AFL](https://iami.xyz/Fuzzing-Tutorial-03/)
 * [Chromium Fuzzing with libfuzzer](https://iami.xyz/Fuzzing-Tutorial-02/)
 * [Fuzzing 学习笔记之 AFL入门](https://iami.xyz/Fuzzing-Tutorial-01/)

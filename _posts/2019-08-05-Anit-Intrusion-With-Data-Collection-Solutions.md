@@ -37,3 +37,8 @@ tags: 知识回顾 学习笔记
 踩一个坑，填一个坑，锅不是目的，解决问题才是。后面再写个关于规则编写的吧。
 
 落笔已是接近凌晨一点。
+
+# Resources
+
+* [Splunk CIM](https://docs.splunk.com/Documentation/CIM/4.13.0/User/Overview)
+* [不同云服务商的日志收集服务对比](https://docs.google.com/spreadsheets/d/1Ee4TJyeaxRhEAlxQCoeuB0TZryv5HjoaCDiVq4a5_78/edit?usp=sharing)
