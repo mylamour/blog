@@ -2,7 +2,7 @@
 layout: post
 title: Fuzzing学习笔记之AFL入门 
 categories: HowTo
-kerywords: Fuzzing, tutorial 
+kerywords: Fuzzing tutorial 
 tags: 知识回顾 学习笔记
 ---
 
