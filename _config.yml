@@ -10,7 +10,7 @@ duoshuo: lamour
 weibo: 
 hub: mylamour
 safe: true
-paginate: 100
+paginate: 33
 about: "Never Stop。"
 gems :
   - jekyll-paginate
