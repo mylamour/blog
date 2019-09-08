@@ -14,7 +14,7 @@ tags: 安全架构
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/12653147/46213961-87618680-c36c-11e8-8886-d3ddfe0dc447.png" />
-p>
+</p>
 
 然后了解一下买了WAF，但是没有CDN所以，所以先对设计基础架构，然后做其检测。因为时间原因，都是先从基础的来。至于办公内网的安全，运营这些肯定不是当务之急。 暂时列出来下面这些条目，同步进行。
 

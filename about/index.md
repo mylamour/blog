@@ -18,28 +18,26 @@ comments: no
 * 企业安全解决方案输出，安全架构及安全治理相关。
 
 
-### Experience
+### [Experience]("https://i.iami.xyz")
 
-目前在阿里本地生活服务从事安全工作，主要负责饿了么以及星选的基础安全治理。
+目前主要负责阿里本地生活的生产网反入侵体系建设。
 
 * 比特币中国: 交易所安全负责人
 * 弘连网络: 安全研发
 
-### Projects
-
+<!-- 
 * [autoclf](https://github.com/mylamour/autoclf):机器学习算法批量训练
 * [machine learning for security](https://github.com/mylamour/machine-learning-for-security): 安全与机器学习paper
 * [flask ocr](https://github.com/mylamour/flask-ocr): 基于tesseract和flask的OCR识别
 * [boomb](https://github.com/mylamour/boomb): 学习golang时写的爆破工具，插件式。
-* [iresume](https://github.com/mylamour/iresume): 终端风格的简历, [效果](https://resume.iami.xyz/)
+* [iresume](https://github.com/mylamour/iresume): 终端风格的简历, [效果]
 * [boomb](https://github.com/mylamour/boomb): 学习golang过程中写的一个爆破框架
 * [tlsh](https://github.com/mylamour/tlsh): 编译standalone版tlsh
 * [Oops Webshell](https://github.com/mylamour/Oops-Webshell): Webshell检测(部分)
 * [HackFlow](https://github.com/mylamour/IlI/tree/master/hackflow): 模拟入侵的攻击流
 * [DevOPS-note](https://github.com/mylamour/devops-note): devops笔记，关于aws，terraform, k8s, helm等
-* [SdlChina 彩蛋](https://bitbucket.org/lamour/sdlchina): 为SDLChina写的彩蛋页，[演示](https://sdlchina.iami.xyz/)
 * [pastbin Spider](https://github.com/mylamour/pastebin-Spider): 基于yara扫描的pastbin敏感信息扫描工具
-
+* [w2vcluster](https://github.com/mylamour/w2vcluster):  Word to vector -->
 <!-- 其他:
 * 智子自动规则转换
 * STC扫描
@@ -49,13 +47,6 @@ comments: no
 * raspberry 监控识别 
 * 。。。
 -->
-
-
-### 随笔
-
-* [Gist](https://gist.github.com/mylamour)
-* [Github Issues](https://github.com/mylamour/blog/issues/)
-
 
 ### 欢迎交流
 
