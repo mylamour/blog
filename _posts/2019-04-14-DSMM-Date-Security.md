@@ -1,9 +1,9 @@
 ---
 layout: post
 title: DSMM第四期与我的数据安全观
-categories: HowTo
+categories: 安全工程师
 kerywords: 思考 反思 问题 工作经验 总结
-tags: 知识回顾
+tags: 数据安全
 ---
 
 有幸参加了集团的DSMM第四期的培训，这次培训也的确对我的安全观产生了一些影响和改变。因此予以纪录写下该篇文章。

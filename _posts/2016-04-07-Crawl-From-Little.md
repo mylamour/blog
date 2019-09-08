@@ -1,8 +1,9 @@
 ---
 layout: post
 title: Crawl From Little I
-categories: 学习数据挖掘的路上
-tags: 学习笔记 抓取数据
+categories: 安全工程师
+kerywords: Spider Web Crawler
+tags: 抓取数据
 ---
 
 #### 找到最适合自己的抓取方式，不论是Python, wget,curl, NodeJs, R ，随便你，开心就好(抓取的数据要有效率)

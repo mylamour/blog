@@ -1,8 +1,9 @@
 ---
 layout: post
 title: OCR和用Tesseract训练chi_sim.traineddata
-categories: HowTo
-tags: 知识回顾 学习笔记
+categories: OCR
+keywords: Tesseract OCR Docker
+tags: Tesseract
 ---
 
 #### 前言:Tesseract

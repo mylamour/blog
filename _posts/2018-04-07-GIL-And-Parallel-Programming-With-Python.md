@@ -1,9 +1,9 @@
 ---
 layout: post
 title: GIL And Python Parallel Programing (I)
-categories: HowTo 
+categories: 全栈工程师 
 keywords: GIL, mutliprocessing, threading, python, parallerl programing
-tags: 学习笔记 知识回顾
+tags: Python
 ---
 
 

@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Talking about Web Spider II
-categories: HowTo
+categories: 全栈工程师
+kerywords: Spider Web Crawler
 tags: 知识回顾
 ---
 

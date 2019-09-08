@@ -1,8 +1,9 @@
 ---
 layout: post
 title: Crawl From Little III 
-categories: 学习数据挖掘的路上
-tags: 学习笔记 抓取数据
+categories: 安全工程师
+kerywords: Spider Web Crawler
+tags: 抓取数据
 ---
 
 ### 这篇文章应该是几个星期前就该记录下来的。但<font color="green">世上哪得双全法，不负如来不负卿</font>。

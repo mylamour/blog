@@ -2,7 +2,7 @@
 layout: post
 title: CNN笔记整理
 categories: 学习数据挖掘的路上
-tags: 学习笔记 机器学习
+tags: 深度学习 机器学习
 ---
 
 # FAQ

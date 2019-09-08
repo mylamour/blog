@@ -1,8 +1,9 @@
 ---
 layout: post
 title: Ansible与Redis集群的搭建
-categories: HowTo
-tags: 学习笔记
+categories: Devops
+keywords: Ansible Redis DigitalOcean
+tags: Linux
 ---
 
 #### 前言 : 就是废话啦

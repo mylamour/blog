@@ -1,8 +1,8 @@
 ---
 layout: post
 title: 不算问题的问题
-categories: 全栈工程师
-tags: 学习笔记
+categories: 小技巧
+tags: 实习笔记
 ---
 
 #### Enviroment Configure

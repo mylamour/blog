@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 百度云盘下载的套路
-categories: HowTo
+categories: 小技巧
 tags: 小手段
 ---
 

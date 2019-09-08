@@ -1,8 +1,9 @@
 ---
 layout: post
 title: locatunnel的使用回顾 
-categories: HowTo
-tags: 知识回顾 学习笔记
+categories: Devops
+keywords: Localtunnel Reverse
+tags: Linux
 ---
 
 #### 前言：

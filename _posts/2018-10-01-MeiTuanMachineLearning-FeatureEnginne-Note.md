@@ -3,7 +3,7 @@ layout: post
 title: 特征工程笔记《下篇》
 categories: 学习数据挖掘的路上
 kerywords: 特征工程 美团机器学习实践 机器学习
-tags: 学习笔记 机器学习
+tags: 机器学习
 ---
 
 # 前言

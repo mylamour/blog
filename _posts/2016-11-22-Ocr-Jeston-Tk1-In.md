@@ -1,8 +1,8 @@
 ---
 layout: post
 title: 浅谈OCR在Jeston TK1上的产品化两种解决方案
-categories: HowTo
-tags: 学习笔记
+categories: OCR
+tags: Tesseract
 ---
 
 

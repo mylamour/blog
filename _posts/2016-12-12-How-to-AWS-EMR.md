@@ -1,8 +1,9 @@
 ---
 layout: post
 title: AWS EC2 and AWS EMR and AWS RDS
-categories: 学习数据挖掘的路上
-tags:  实习笔记
+categories: Devops
+keywords: AWS EC2 EMR
+tags:  AWS
 ---
   
 近些天来，一直使用AWS的相关产品，从最开始用EC2，后来到EMR，也遇到一些坑，整理下，作为记录。

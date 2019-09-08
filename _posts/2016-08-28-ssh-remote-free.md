@@ -1,8 +1,9 @@
 ---
 layout: post
 title: SSH的免密码登陆
-categories: 全栈工程师
-tags: 知识回顾
+categories: Devops
+kerywords: SSH 
+tags: Linux
 ---
 ## <font color="green"> SSH 相关  </font>
 

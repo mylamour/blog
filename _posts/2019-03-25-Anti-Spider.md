@@ -1,9 +1,9 @@
 ---
 layout: post
 title: 走出反爬困境
-categories: HowTo
+categories: 安全工程师
 kerywords: 思考 反思 问题 工作经验 总结 反爬 爬虫 Spider Anti-Spider
-tags: 知识回顾
+tags: 反爬
 ---
 
 # 前言

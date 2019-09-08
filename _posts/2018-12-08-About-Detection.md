@@ -1,9 +1,9 @@
 ---
 layout: post
 title: 计算机威胁检测综述
-categories: HowTo
+categories: 安全工程师
 kerywords: 机器学习 入侵检测 Webshell检测 恶意病毒软件检测 Malware Detection APT检测 威胁检测
-tags: 漫漫人生路 知识回顾
+tags: 威胁检测
 ---
 
 # 前言

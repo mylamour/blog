@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Crawl From QiChaCha
-categories: HowTo
-tags:  实习笔记 抓取数据
+categories: 安全工程师
+tags: 抓取数据
 ---
 ### 企查查相关
 

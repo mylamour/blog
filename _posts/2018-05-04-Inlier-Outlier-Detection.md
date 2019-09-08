@@ -2,8 +2,8 @@
 layout: post
 title: 异常检测初尝试
 categories: 学习数据挖掘的路上
-kerywords: 
-tags: 学习笔记 机器学习
+kerywords: 学习笔记 机器学习 异常检测
+tags: 学习笔记 机器学习 异常检测
 ---
 
 # 常见异常检测算法

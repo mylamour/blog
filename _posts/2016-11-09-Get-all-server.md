@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 实习之登堂入室
-categories: HowTo
+categories: 安全工程师
 tags: 实习笔记
 ---
 

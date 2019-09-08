@@ -1,9 +1,9 @@
 ---
 layout: post
 title: Linux Kernel Fuzzing With QEMU And AFL
-categories: HowTo
+categories: 安全工程师
 kerywords: Fuzzing tutorial 
-tags: 知识回顾 学习笔记
+tags: Fuzzing
 ---
 
 (本教程主要在cnetos完成,工具主要为triforceAFL)

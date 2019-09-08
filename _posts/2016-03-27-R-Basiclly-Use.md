@@ -2,6 +2,7 @@
 layout: post
 title: The Basic Use Of R
 categories: 学习数据挖掘的路上
+kerywords: R programing
 tags: 知识回顾
 ---
 

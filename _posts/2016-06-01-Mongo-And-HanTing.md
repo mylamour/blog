@@ -2,7 +2,7 @@
 layout: post
 title: Mongo的故事 
 categories: 学习数据挖掘的路上
-tags: 学习笔记 数据存储
+tags: 数据存储
 ---
 
 

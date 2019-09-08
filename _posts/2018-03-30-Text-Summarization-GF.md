@@ -3,7 +3,7 @@ layout: post
 title: Text Summarization 
 categories: 学习数据挖掘的路上
 keywords: Extraction Summariztation, FastText, PageRank, Rouge, NLP
-tags: 学习笔记 机器学习 NLP
+tags: NLP 机器学习 深度学习
 ---
 
 # 前言

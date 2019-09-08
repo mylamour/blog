@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Not Only To Build Your Own Github Pages
-categories: HowTo
+categories: 全栈工程师
+kerywords: Jekyll Markdown Github_Pages
 tags: 知识回顾
 ---
 

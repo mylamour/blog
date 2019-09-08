@@ -1,8 +1,9 @@
 ---
 layout: post
 title: 内存取证,密码提取以及Volatility的使用
-categories: HowTo
-tags: 学习笔记
+categories: 安全工程师
+keywords: 内存取证 密码提取 Volatility
+tags: Volatility
 ---
 
 #### 前言 : 简介

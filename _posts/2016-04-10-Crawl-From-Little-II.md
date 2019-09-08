@@ -1,8 +1,9 @@
 ---
 layout: post
 title: Crawl From Little II
-categories: 学习数据挖掘的路上
-tags: 学习笔记 抓取数据
+categories: 安全工程师
+kerywords: Spider Web Crawler
+tags: 抓取数据
 ---
 #### 接上回那个勉强算得上或算不上抓取的回忆，但是那些数据之中有一些很敏感的信息，包括教师的详细信息，利用这个信息登陆统一身份验证平台，想必又会有收货呢
 

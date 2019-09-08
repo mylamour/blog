@@ -1,8 +1,9 @@
 ---
 layout: post
 title: sublime 快捷键以及其他
-categories: HowTo
-tags: 知识回顾
+categories: 小技巧
+kerywords: Sublime shortcut
+tags: Sublime
 ---
 ### sublime使用
 

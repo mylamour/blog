@@ -2,7 +2,7 @@
 layout: post
 title: Crawl From Little IV
 categories: 学习数据挖掘的路上
-tags: 学习笔记 抓取数据
+tags: 抓取数据
 ---
 
 ### 前言

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 浅谈面试官与面试观
-categories: HowTo
+categories: Howto
 kerywords: 思考 反思 问题 经验 教训 总结
 tags: 漫漫人生路
 ---

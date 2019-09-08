@@ -1,8 +1,9 @@
 ---
 layout: post
 title: 浅谈代码安全及安全
-categories: HowTo
-tags: 实习笔记
+categories: 安全工程师
+keywords: 代码审计 安全意识
+tags: 代码审计
 ---
 
 #### 题记：写在浅谈代码安全之前

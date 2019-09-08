@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 纯属折腾之——旧电脑折腾日记
-categories: HowTo
+categories: 小技巧
 tags: 小手段
 ---
 

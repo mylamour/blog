@@ -2,7 +2,8 @@
 layout: post
 title: 几个mongo的小问题
 categories: 全栈工程师
-tags: 学习笔记 数据存储
+kerywords: Mongo Nodejs
+tags: 实习笔记
 ---
 ## 几个mongo的小问题
 #### 别人问的问题，还有自己遇到的问题。

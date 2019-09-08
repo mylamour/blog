@@ -1,9 +1,9 @@
 ---
 layout: post
 title: 使用fasttext进行DGA检测
-categories: 学习数据挖掘的路上
+categories: 安全工程师
 kerywords: 机器学习 DGA检测
-tags: 学习笔记 机器学习
+tags: 机器学习 威胁检测
 ---
 
 # 正文

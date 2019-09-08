@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 写在数据泄露之前
-categories: HowTo
+categories: 安全工程师
 tags: 小手段
 ---
 

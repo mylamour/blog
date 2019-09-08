@@ -3,7 +3,7 @@ layout: post
 title: golang也要耍一耍
 categories: 全栈工程师
 kerywords: golang 教程  golang tour burpforce demo project
-tags: 学习笔记
+tags: Golang
 ---
 
 # 前言

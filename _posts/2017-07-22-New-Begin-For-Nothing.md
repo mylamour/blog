@@ -1,8 +1,9 @@
 ---
 layout: post
 title: 新开始:webshell的检测
-categories: HowTo 学习数据挖掘的路上
-tags: 机器学习 学习笔记
+categories: 安全工程师
+keywords: Webshell 检测 机器学习
+tags: 机器学习 Webshell检测
 ---
 
 #### 前言 : 新的开始
