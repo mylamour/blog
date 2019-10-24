@@ -16,7 +16,7 @@
 
 ## 安全架构
 
-* [《互联网企业安全高级指南》阅读笔记](http://iami.xyz/zhaoyan-books-read-note/)
+* [《互联网企业安全高级指南》阅读笔记](https://iami.xyz/zhaoyan-books-read-note/)
 * [关于重保这件事](https://github.com/mylamour/blog/issues/68)
 * [浅谈反入侵](https://iami.xyz/Anti-Intrusions/)
 * [从HW看入侵](https://iami.xyz/HW-And-Pentest/)
