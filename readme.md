@@ -16,6 +16,7 @@
 
 ## 安全架构
 
+* [What is "Big security" ?](https://github.com/mylamour/blog/issues/69)
 * [《互联网企业安全高级指南》阅读笔记](https://iami.xyz/zhaoyan-books-read-note/)
 * [关于重保这件事](https://github.com/mylamour/blog/issues/68)
 * [浅谈反入侵](https://iami.xyz/Anti-Intrusions/)
@@ -46,6 +47,7 @@
 
 ## 安全技术
 
+* [堡垒机的一点收益](https://iami.xyz/What-Hells-In-JumpServer/)
 * [ATT&CK与入侵检测](https://iami.xyz/Mitre-ATT-CK-With-Intrusion-Detection/)
 * [从阿里第三届云安全算法比赛看检测模型的绕过方式](https://github.com/mylamour/blog/issues/38)
 * [异常检测算法之IsolationForest](https://github.com/mylamour/blog/issues/27)
