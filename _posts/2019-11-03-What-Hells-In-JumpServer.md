@@ -2,7 +2,7 @@
 layout: post
 title:  堡垒机的一点收益
 categories: 安全工程师
-kerywords:  企业安全 互联网企业安全 学习 阅读笔记 
+kerywords:  企业安全 互联网企业安全 堡垒机
 tags:  安全运维 知识回顾
 ---
 

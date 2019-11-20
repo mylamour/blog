@@ -16,6 +16,7 @@
 
 ## 安全架构
 
+* [再谈安全架构评审](https://iami.xyz/Security-Architecture-Review/)
 * [What is "Big security" ?](https://github.com/mylamour/blog/issues/69)
 * [《互联网企业安全高级指南》阅读笔记](https://iami.xyz/zhaoyan-books-read-note/)
 * [关于重保这件事](https://github.com/mylamour/blog/issues/68)
