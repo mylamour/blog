@@ -2,7 +2,7 @@
 layout: post
 title:  再谈安全架构评审
 categories: 安全工程师
-kerywords:  企业安全 互联网企业安全 学习 阅读笔记 架构评审
+kerywords:  企业安全 互联网企业安全 架构评审
 tags:  安全架构
 ---
 
