@@ -13,7 +13,7 @@ comments: no
 
 ### Skill
 
-* 企业安全,基础安全,入侵检测,解决方案,安全架构,Web Security,Machine Learnin. 
+* 企业安全,基础安全,入侵检测,解决方案,安全架构,Web Security,Machine Learning. 
 * Python开发, Shell常用, 相比nodejs更喜欢写coffescript, 如今倒是先又学了golang
 * 企业安全解决方案输出,安全架构及安全治理相关。
 
