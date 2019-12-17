@@ -5,7 +5,7 @@
 * [怎么设计你的反入侵KPI](https://iami.xyz/How-To-Design-Your-KPI-Of-Anti-Intrusions/)
 * [PL的项目反思](https://iami.xyz/Project-Manager)
 * [浅谈面试官与面试观](https://iami.xyz/Thinking-about-Interview)
-* ["如何进行管理](https://iami.xyz/Thinking-Doing)
+* [如何进行管理](https://iami.xyz/Thinking-Doing)
 * [In my way: how can we communicate better?](https://github.com/mylamour/blog/issues/57)
 * [敏捷开发流程与跨团队沟通](https://github.com/mylamour/blog/issues/35)
 * [How To Get Real ?](https://github.com/mylamour/blog/issues/11)
