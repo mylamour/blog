@@ -12,6 +12,7 @@
 * [如是我狗屁不通](https://iami.xyz/New-Year)
 * [死亡诗社与博尔赫斯口述](https://iami.xyz/Life-me-up)
 * [与雨天无关的事](https://github.com/mylamour/blog/issues/58)
+* [写于二零二零元旦前](https://iami.xyz/Before-New-Year/)
 
 
 ## 安全架构
