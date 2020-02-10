@@ -50,6 +50,7 @@
 
 ## 安全技术
 
+* [关于水印这件“小事”](https://github.com/mylamour/blog/issues/71)
 * [堡垒机的一点收益](https://iami.xyz/What-Hells-In-JumpServer/)
 * [ATT&CK与入侵检测](https://iami.xyz/Mitre-ATT-CK-With-Intrusion-Detection/)
 * [从阿里第三届云安全算法比赛看检测模型的绕过方式](https://github.com/mylamour/blog/issues/38)
