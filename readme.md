@@ -18,6 +18,7 @@
 
 ## 安全架构
 
+* [Talking About K8S Secret Manager](http://iami.xyz/Manage-Secret-In-K8S/)
 * [什么是安全架构](https://iami.xyz/Security-Architecture-Review/)
 * [What is "Big security" ?](https://github.com/mylamour/blog/issues/69)
 * [《互联网企业安全高级指南》阅读笔记](https://iami.xyz/zhaoyan-books-read-note/)

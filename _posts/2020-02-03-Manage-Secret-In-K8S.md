@@ -7,7 +7,6 @@ tags: 安全架构
 ---
 
 # Intro
-
 In the last two weeks, i was trying to found a new way to save the secret securely. as you know, k8s is an open-source system for automating deployment, scaling, and management of containerized applications. As part of CNCF. it's necessary to put some energy into security design. In fact, k8s's security defend  is not good enough. For example. k8s only encode  the secret as base64. And In the early days, etcd's security was not valued.  When we get back to k8s's secret management solution. After a period of research,  i found some different ways to build the secret manager solutions. And after reselection, we choice the following four kinds type:
 
 1. vault on k8s  (Already experimented)
@@ -114,14 +113,23 @@ Checkout this image
 Step1: install
 
 * with kubectl in k8s
- `kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v0.13.0/cert-manager.yaml`
+
+```bash
+
+kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v0.13.0/cert-manager.yaml
+
+```
 
 * with helm in k8s
+
 ```bash
+
 helm repo add jetstack https://charts.jetstack.io
 helm repo update
 helm install --name cert-manager --namespace cert-manager --version v0.13.0 jetstack/cert-manager
+
 ```
+
 Please noticed: Official demo was Outdated。
 
 Step2:  Issuers with selfsigned
