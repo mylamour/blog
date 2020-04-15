@@ -5,6 +5,7 @@
 * [怎么设计你的反入侵KPI](https://iami.xyz/How-To-Design-Your-KPI-Of-Anti-Intrusions/)
 * [PL的项目反思](https://iami.xyz/Project-Manager)
 * [浅谈面试官与面试观](https://iami.xyz/Thinking-about-Interview)
+* [再谈谈面试官与面试观](https://iami.xyz/Thinking-about-Interview-II/)
 * [如何进行管理](https://iami.xyz/Thinking-Doing)
 * [In my way: how can we communicate better?](https://github.com/mylamour/blog/issues/57)
 * [敏捷开发流程与跨团队沟通](https://github.com/mylamour/blog/issues/35)
@@ -18,6 +19,8 @@
 
 ## 安全架构
 
+* [浅谈Imperva WAF 的部署方案](https://github.com/mylamour/blog/issues/76)
+* [KMS/HSM的一点收益](https://iami.xyz/What-Hells-In-HSM/)
 * [Talking About K8S Secret Manager](http://iami.xyz/Manage-Secret-In-K8S/)
 * [什么是安全架构](https://iami.xyz/Security-Architecture-Review/)
 * [What is "Big security" ?](https://github.com/mylamour/blog/issues/69)
@@ -51,6 +54,10 @@
 
 ## 安全技术
 
+* [【CA】How to install root CA in your server?](https://github.com/mylamour/blog/issues/75)
+* [【CA】How to build your own Certificate Authority](https://github.com/mylamour/blog/issues/74)
+* [【CA】Overview of Certificate Filetype & How to covert it with Openssl](https://github.com/mylamour/blog/issues/73)
+* [【CA】Generate CA with mkcert](https://github.com/mylamour/blog/issues/72)
 * [关于水印这件“小事”](https://github.com/mylamour/blog/issues/71)
 * [堡垒机的一点收益](https://iami.xyz/What-Hells-In-JumpServer/)
 * [ATT&CK与入侵检测](https://iami.xyz/Mitre-ATT-CK-With-Intrusion-Detection/)
