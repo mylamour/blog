@@ -32,5 +32,14 @@ tags:  安全运维 安全架构 DEV 数据安全
 * 在使用场景中，DB用的，web服务器用的，以及不同的格式对应应该怎么去做。是否存在浏览器访问场景，公签证书怎么去做？
 * 全站HTTPS之外，日志收集是不是需要enable certificate传输，加签验签还是加密解密？ 
 * 网联证书这种每天的自动更新证书又该怎么设计获取流程和存储方案？
+* 如何使不同的终端信任，比如说生产网linux server, docker, k8, 办公网mac, windows等等，如何有效的管理和联动呢？
 
 除了部署架构，流程管理，模板设计以及使用场景之外，在目前就职公司的工作经历中，由于很大一部分的基础设施来自于采购。也就导致了工作模式的一个差距，比如采购的A企业的证书系统，B企业的加密机，同时当证书系统需要整合加密机时，这种事情即便是作为甲方，跨企业的去沟通相关细节也是比较麻烦的。所以项目管理也占了一部分，既要把控质量，也要把控进度。还不能使不同方面觉得你盛气凌人。都是学问。
+
+# Resources 
+
+* [【CA】How to install root CA in your server?](https://github.com/mylamour/blog/issues/75)
+* [【CA】How to build your own Certificate Authority](https://github.com/mylamour/blog/issues/74)
+* [【CA】Overview of Certificate Filetype & How to covert it with Openssl](https://github.com/mylamour/blog/issues/73)
+* [【CA】Generate CA with mkcert](https://github.com/mylamour/blog/issues/72)
+
