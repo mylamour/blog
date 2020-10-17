@@ -19,6 +19,7 @@
 
 ## 安全架构
 
+* [浅谈数据安全](https://iami.xyz/Talk-about-data-security/)
 * [什么是安全架构《二》](https://iami.xyz/Security-Architecture-Review-II/)
 * [浅谈Imperva WAF 的部署方案](https://github.com/mylamour/blog/issues/76)
 * [KMS/HSM的一点收益](https://iami.xyz/What-Hells-In-HSM/)
