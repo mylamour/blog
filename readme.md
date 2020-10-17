@@ -15,14 +15,12 @@
 * [与雨天无关的事](https://github.com/mylamour/blog/issues/58)
 * [写于二零二零元旦前](https://iami.xyz/Before-New-Year/)
 * [说说疫情](https://iami.xyz/WTF-WH/)
-
+* [半年度个人总结](https://iami.xyz/Recent-Time/)
 
 ## 安全架构
 
 * [浅谈数据安全](https://iami.xyz/Talk-about-data-security/)
 * [什么是安全架构《二》](https://iami.xyz/Security-Architecture-Review-II/)
-* [浅谈Imperva WAF 的部署方案](https://github.com/mylamour/blog/issues/76)
-* [KMS/HSM的一点收益](https://iami.xyz/What-Hells-In-HSM/)
 * [Talking About K8S Secret Manager](http://iami.xyz/Manage-Secret-In-K8S/)
 * [什么是安全架构](https://iami.xyz/Security-Architecture-Review/)
 * [What is "Big security" ?](https://github.com/mylamour/blog/issues/69)
@@ -56,13 +54,17 @@
 
 ## 安全技术
 
+* [企业中里证书碎碎念](https://iami.xyz/Cert-OpenSSL/)
+* [商业设备的使用心得](https://iami.xyz/OpenSource-VS-Business/)
+* [KMS/HSM的一点收益](https://iami.xyz/What-Hells-In-HSM/)
 * [CA/RA的一些收益](https://iami.xyz/What-Hells-In-CA-And-RA/)
+* [堡垒机的一点收益](https://iami.xyz/What-Hells-In-JumpServer/)
+* [浅谈Imperva WAF 的部署方案](https://github.com/mylamour/blog/issues/76)
 * [【CA】How to install root CA in your server?](https://github.com/mylamour/blog/issues/75)
 * [【CA】How to build your own Certificate Authority](https://github.com/mylamour/blog/issues/74)
 * [【CA】Overview of Certificate Filetype & How to covert it with Openssl](https://github.com/mylamour/blog/issues/73)
 * [【CA】Generate CA with mkcert](https://github.com/mylamour/blog/issues/72)
 * [关于水印这件“小事”](https://github.com/mylamour/blog/issues/71)
-* [堡垒机的一点收益](https://iami.xyz/What-Hells-In-JumpServer/)
 * [ATT&CK与入侵检测](https://iami.xyz/Mitre-ATT-CK-With-Intrusion-Detection/)
 * [从阿里第三届云安全算法比赛看检测模型的绕过方式](https://github.com/mylamour/blog/issues/38)
 * [异常检测算法之IsolationForest](https://github.com/mylamour/blog/issues/27)
