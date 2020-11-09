@@ -21,8 +21,8 @@
 
 * [浅谈数据安全](https://iami.xyz/Talk-about-data-security/)
 * [什么是安全架构《二》](https://iami.xyz/Security-Architecture-Review-II/)
-* [Talking About K8S Secret Manager](http://iami.xyz/Manage-Secret-In-K8S/)
 * [什么是安全架构](https://iami.xyz/Security-Architecture-Review/)
+* [Talking About K8S Secret Manager](http://iami.xyz/Manage-Secret-In-K8S/)
 * [What is "Big security" ?](https://github.com/mylamour/blog/issues/69)
 * [《互联网企业安全高级指南》阅读笔记](https://iami.xyz/zhaoyan-books-read-note/)
 * [关于重保这件事](https://github.com/mylamour/blog/issues/68)

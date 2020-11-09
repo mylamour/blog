@@ -120,3 +120,5 @@ pass ，请参考之前的文章。
 看了下，又是拖拖拉拉，修修补补写了2周 
 <img width="149" alt="Screen Shot 2020-05-04 at 11 37 17 PM" src="https://user-images.githubusercontent.com/12653147/80984301-41ca4100-8e60-11ea-861b-e6a4f3e03936.png">
 
+
+2020/11/07 update： 这是第一篇 [什么是安全架构](https://iami.xyz/Security-Architecture-Review/)
