@@ -54,6 +54,7 @@
 
 ## 安全技术
 
+* [【Vault KMS】How to initialized hashicorp vault safely](https://github.com/mylamour/blog/issues/78)
 * [企业中里证书碎碎念](https://iami.xyz/Cert-OpenSSL/)
 * [商业设备的使用心得](https://iami.xyz/OpenSource-VS-Business/)
 * [KMS/HSM的一点收益](https://iami.xyz/What-Hells-In-HSM/)
