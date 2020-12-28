@@ -19,6 +19,7 @@
 
 ## 安全架构
 
+* [什么是安全架构《三》](https://iami.xyz/Security-Architecture-Review-III/)
 * [浅谈数据安全](https://iami.xyz/Talk-about-data-security/)
 * [什么是安全架构《二》](https://iami.xyz/Security-Architecture-Review-II/)
 * [什么是安全架构](https://iami.xyz/Security-Architecture-Review/)
@@ -54,6 +55,10 @@
 
 ## 安全技术
 
+* [let's write a ftp services with Data At Rest Encryption](https://github.com/mylamour/blog/issues/82)
+* [Let's write a simple encryption services with softhsm2 and flask](https://github.com/mylamour/blog/issues/81)
+* [【CA】Build a internal CA with Openssl and SoftHsm2](https://github.com/mylamour/blog/issues/80)
+* [Thoughts on Fast Incident Response(FIR) ](https://github.com/mylamour/blog/issues/79)
 * [【Vault KMS】How to initialized hashicorp vault safely](https://github.com/mylamour/blog/issues/78)
 * [企业中里证书碎碎念](https://iami.xyz/Cert-OpenSSL/)
 * [商业设备的使用心得](https://iami.xyz/OpenSource-VS-Business/)
