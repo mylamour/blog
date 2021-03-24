@@ -55,6 +55,7 @@
 
 ## 安全技术
 
+* [Hashicorp Vault Advanced Tutorial For Enterprise](https://github.com/mylamour/blog/issues/83)
 * [let's write a ftp services with Data At Rest Encryption](https://github.com/mylamour/blog/issues/82)
 * [Let's write a simple encryption services with softhsm2 and flask](https://github.com/mylamour/blog/issues/81)
 * [【CA】Build a internal CA with Openssl and SoftHsm2](https://github.com/mylamour/blog/issues/80)
