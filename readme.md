@@ -167,6 +167,7 @@
 
 ## 其他
 
+* [致虚极守静笃](http://iami.xyz/Recent-Time-II/)
 * [由甲醛引起的屁话一二三](https://iami.xyz/Oh-No-I-Can't-Breath)
 * [阿里三面的一些问题](https://github.com/mylamour/blog/issues/24)
 * [同程面试题](https://github.com/mylamour/blog/issues/21)
