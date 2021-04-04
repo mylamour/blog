@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 半年度个人总结
-categories: HOWTO
+categories: HowTo
 kerywords: 总结
 tags: 漫漫人生路 
 ---
