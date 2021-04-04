@@ -122,13 +122,12 @@ labels = model.fit_predict(X)
 # Save
 joblib.dump(model, 'spectral_clusering_webshell.pkl')
 
-```
 
-```python
 for i,x in enumerate(labels):
     if x == 1:
        print(i)
 ```
+
 然后重新读一下文件，随便挑出来几个属于一类的看了下，效果还行。但是数据缺乏标签，如果有所有的数据都打了标签，想必能够得到一个更加精确的结果，更好的测试。
 ![a](https://user-images.githubusercontent.com/12653147/38570572-bf352aee-3d20-11e8-846f-89907ed9f3dc.png)
 
