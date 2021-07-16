@@ -10,7 +10,7 @@ avatar: /images/avatar.png
 favicon: /favicon.ico
 
 # For seo
-keywords: Machine Learning, Web Security Research, Full Stack, Shell, PowerShell, Ubuntu,爬虫,机器学习,网络安全
+keywords: Machine Learning, Web Security Research, Full Stack, Shell, 爬虫, 机器学习, 网络安全, 数据安全, 企业安全, 安全架构, 金融安全, 应用安全
 
 home_nav:
 
@@ -26,9 +26,9 @@ home_nav:
   - name: Github
     url: https://github.com/mylamour
     target_blank: true
-  # - name: Twitter
-  #   url: https://twitter.com/kkmy_sad
-  #   target_blank: true
+  - name: Linkedin
+    url: https://www.linkedin.com/in/zhaokunpeng
+    target_blank: true
 
 # config page nav
 page_nav:
@@ -83,16 +83,16 @@ backtop:
   about: false
 
 donation:
-  show: false
+  show: true
   btn_text: 支持一下
-  tip: Coffe or tea ?
+  tip: Coffe or Tea ?
   items:
     - type: 微信
       text: 微信扫一扫
       imgUrl: /images/qr-wechat.png
-    - type: 支付宝
-      text: 支付宝扫一扫
-      imgUrl: /images/qr-alipay.jpg
+    # - type: 支付宝
+    #   text: 支付宝扫一扫
+    #   imgUrl: /images/qr-alipay.jpg
 
 
 post:
