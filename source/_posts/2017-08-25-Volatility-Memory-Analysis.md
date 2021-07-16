@@ -1,8 +1,9 @@
 ---
 layout: post
 title: 内存取证,密码提取以及Volatility的使用
-categories: HowTo
-tags: 学习笔记
+categories: 安全工程师
+keywords: 内存取证 密码提取 Volatility
+tags: Volatility
 ---
 
 #### 前言 : 简介
@@ -45,7 +46,7 @@ $ sudo insmod lime-4.10.0-30-generic.ko "path=/home/mour/ubuntu_test1704.lime fo
 
 1. 查看内核版本，安装下相应的`Header`文件
 
-> ![image](/images//volatility/0814jietu2.png) 
+> ![image](../image/volatility/0814jietu2.png) 
 
 2. 制作`dwarf`文件
 
@@ -58,7 +59,7 @@ $ make
 ```
 3. 合并`System Map`文件和`dwarf`文件
 
-![image](/images//volatility/0814jietu1.png)
+![image](../image/volatility/0814jietu1.png)
 
 4. 将`profile`放置在对应的文件夹下`volatility/volatility/plugins/overlays/`,但是记住，千万不要一次性加载`profile`文件，需要什么加载什么。因为`volatility`会加载所有插件，所以导致十分慢。
 
@@ -165,11 +166,11 @@ VAD(Virtual Address Descriptor)是内存取证中的重要参考。
 
 > 可以先解压出`vmware`进程的地址空间，然后再去用对应`profile`分析对应的`Vmware`内的操作系统。
 
-![image](/images//volatility/0817jietu.png)
+![image](../image/volatility/0817jietu.png)
 
 * `Linux Kernel 4.8`以上的内核采用了随机内存地址，此时该怎么办？
 
-![image](/images//volatility/0818jietu.png)
+![image](../image/volatility/0818jietu.png)
 
 * 文件分散存储在磁盘上，运行时读取到一段连续的内存中。但是`PE`文件是由操作系统读取到内存中，所以内存映射稍有不同，具体哪里不同，我也没看到资料。
 

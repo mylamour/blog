@@ -7,7 +7,7 @@ tags: 实习笔记
 
 ###前几天公司的人去北京参加一个视频搜索的比赛，然后发回来组委对数据处理的要求
 
-![imageParser](/images//imageParser.jpg)
+![imageParser](../image/imageParser.jpg)
 
 * 画中画
 

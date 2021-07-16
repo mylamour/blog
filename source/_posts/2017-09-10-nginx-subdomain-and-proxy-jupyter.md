@@ -1,8 +1,9 @@
 ---
 layout: post
 title: Nginx SubDomain and Proxypass Jupyter notebook
-categories: HowTo
-tags: 小手段
+categories: Devops
+keywords: Jupyter Nginx Proxy
+tags: Linux Jupyter
 ---
 
 It was being executed it in my DigitOcean Machine Learning AI Droplet.

@@ -2,7 +2,8 @@
 layout: post
 title: How to Install Caffe in Jeston TK1 
 categories: 学习数据挖掘的路上
-tags: 学习笔记
+keywords: Caffe Jeston Tk1 OCR
+tags: 实习笔记
 ---
 
 # Jeston TK1 Install Caffe

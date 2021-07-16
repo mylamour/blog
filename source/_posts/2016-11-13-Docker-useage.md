@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Docker for daily use
-categories: HowTo
-tags: 学习笔记
+categories: Devops
+tags: Docker
 ---
 
 

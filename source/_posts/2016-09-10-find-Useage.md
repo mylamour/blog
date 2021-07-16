@@ -2,7 +2,8 @@
 layout: post
 title: find and grep
 categories: 全栈工程师
-tags: 知识回顾
+kerywords: shell find grep
+tags: Linux
 ---
 ### 讲讲find，还有grep
 之前在stackoverflow看了[How to find all files containing specific text on Linux?](http://stackoverflow.com/questions/16956810/how-to-find-all-files-containing-specific-text-on-linux)
@@ -37,7 +38,7 @@ tags: 知识回顾
 > 图画的有点丑，哈哈
 
 * -exec ls -l {} \;
-![img](/images//find-options.png)
+![img](../image/find-options.png)
 
 
 <font color="red"> 有用的例子</font>
@@ -48,7 +49,7 @@ tags: 知识回顾
 $ find / -type f -exec grep -H 'text-to-find-here' {} \;
 $ grep -rnw '/path/to/somewhere/' -e "pattern"
 ```
-![img](/images//grep.png)
+![img](../image/grep.png)
 
 还有w是word-regexp,l是show filename not the result itself, grep其实没怎么讲，因为我都是常用的也就是-iroEn几个选项，其他的很少用，剩下的配合awk了
 

@@ -1,10 +1,9 @@
 ---
 layout: post
 title: conda in action
-categories: HowTo
-tags:    
-- 知识回顾 
-- 学习笔记
+categories: Devops
+keywords: Conda Python Useage
+tags: Conda
 ---
 
 

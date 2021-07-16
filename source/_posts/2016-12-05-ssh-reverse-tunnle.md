@@ -1,8 +1,8 @@
 ---
 layout: post
 title: SSH 内网穿透
-categories: HowTo
-tags: 小手段
+categories: Devops
+tags: Linux
 ---
 
 买的vps配置不好，远不如实验室的服务器。So,拿我的vps做下端口转发，即可。
@@ -16,7 +16,7 @@ tags: 小手段
 
 
 盗图一张
-![原理图](/images//reverese-ssh3.png)
+![原理图](../image/reverese-ssh3.png)
 
 step2:
 

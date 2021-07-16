@@ -1,8 +1,8 @@
 ---
 layout: post
 title: 浅谈OCR在Jeston TK1上的产品化两种解决方案
-categories: HowTo
-tags: 学习笔记
+categories: OCR
+tags: Tesseract
 ---
 
 
@@ -54,7 +54,7 @@ $   sed -i '/TimesNewRoman-10-5.png/d' `ls | grep _index`
 $ 	sed -i 's/GPU/CPU/g' alpha_solver.prototxt 	#我的是CPU模式的，看你自己的情况
 $   caffe train -solver alpha_solver.prototxt
 ```
-![caffe-ocr](/images//caffe-ocr.jpg) 
+![caffe-ocr](../image/caffe-ocr.jpg) 
 
 other: Docker说是不支持armhf的，所以如果安装caffe的话还是需要手动安装。
 但是不一定局限于caffe，可以安装Tensorflow，Theano.
