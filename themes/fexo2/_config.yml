@@ -1,10 +1,10 @@
 # Blog info
-blog_name: mour
-slogan: 见贤思齐焉,见不贤而内自省也
-url: http://iami.xyz
+blog_name: Kunpeng's website
+slogan: 大道至简，知行合一
+url: https://kunpeng.website
 
 # Set avatar (Absolute url and relative url)
-avatar: /images/avatar.jpg
+avatar: /images/avatar.png
 
 # Set favicon
 favicon: /favicon.ico
@@ -20,15 +20,15 @@ home_nav:
   - name: Blog
     url: /archives
     target_blank: false #不在新页面打开
-  - name: Project
-    url: /project/
-    target_blank: true #在新页面打开
+  # - name: Project
+  #   url: /project/
+  #   target_blank: true #在新页面打开
   - name: Github
     url: https://github.com/mylamour
     target_blank: true
-  - name: Twitter
-    url: https://twitter.com/kkmy_sad
-    target_blank: true
+  # - name: Twitter
+  #   url: https://twitter.com/kkmy_sad
+  #   target_blank: true
 
 # config page nav
 page_nav:
@@ -65,7 +65,7 @@ toolbox:
 
 search_slogan:
   isShow: true # true|fase
-  text: I am here, where you are?
+  text: 企业安全架构 数据安全 安全架构 应用安全
 
 # link_slogan:
 #   isShow: true # true|fase
@@ -83,7 +83,7 @@ backtop:
   about: false
 
 donation:
-  show: true
+  show: false
   btn_text: 支持一下
   tip: Coffe or tea ?
   items:
@@ -164,27 +164,27 @@ link:
     avatar: 
 
 
-project:
-  - type: personal
-    name: machine learning for security
-    url: https://github.com/mylamour/machine-learning-for-security
+# project:
+#   - type: personal
+#     name: machine learning for security
+#     url: https://github.com/mylamour/machine-learning-for-security
 
 
-  - type: personal
-    name: flask ocr
-    url: https://github.com/mylamour/flask-ocr
+#   - type: personal
+#     name: flask ocr
+#     url: https://github.com/mylamour/flask-ocr
 
     
-  - type: personal
-    name: python 2 pythonic
-    url: https://github.com/mylamour/python-and-pythonic
+#   - type: personal
+#     name: python 2 pythonic
+#     url: https://github.com/mylamour/python-and-pythonic
     
 
-  - type: personal
-    name: Forensic Tools
-    url: https://github.com/mylamour/-_--Forensics-Tools
+#   - type: personal
+#     name: Forensic Tools
+#     url: https://github.com/mylamour/-_--Forensics-Tools
 
 
-  - type: personal
-    name: Pastebin Spider
-    url: https://github.com/mylamour/pastebin-Spider
+#   - type: personal
+#     name: Pastebin Spider
+#     url: https://github.com/mylamour/pastebin-Spider

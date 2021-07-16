@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: PY.AI
+title: Kunpeng's website
 subtitle:
 description:
 author: mour
@@ -12,7 +12,7 @@ timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://iami.xyz
+url: https://kunpeng.website
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
