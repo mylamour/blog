@@ -107,15 +107,15 @@ post:
 # =========================================================
 
 # Custom CSS style, 推荐把样式文件放在blog源码文件夹，而不是主题里面
-personal_style: /css/personal-style.css
+personal_style: 
 
 # 这个值取决于你得背景图片是深色还是浅色，深色用dark，浅色用light
 home_background_scheme: light # dark、light
 
 # custom font-family 暂时只支持这3种英文字体，你可以完全自定义字体(看文档)
-blog_name_font_familiy: calligraffittiregular
+# blog_name_font_familiy: calligraffittiregular
 # blog_name_font_familiy: Lobster-Regular
-# blog_name_font_familiy: PoiretOne-Regular
+blog_name_font_familiy: PoiretOne-Regular
 
 init_page_content: HOME_NAV  # HOME_NAV | POST
 
@@ -124,7 +124,7 @@ init_page_content: HOME_NAV  # HOME_NAV | POST
 # 第三方服务
 # =========================================================
 # Stats
-google_analytics:
+google_analytics: G-YPQ8BFV2QD
 baidu_analytics: 
 
 # Comment service
