@@ -114,8 +114,8 @@ home_background_scheme: light # dark、light
 
 # custom font-family 暂时只支持这3种英文字体，你可以完全自定义字体(看文档)
 # blog_name_font_familiy: calligraffittiregular
-# blog_name_font_familiy: Lobster-Regular
-blog_name_font_familiy: PoiretOne-Regular
+blog_name_font_familiy: Lobster-Regular
+# blog_name_font_familiy: PoiretOne-Regular
 
 init_page_content: HOME_NAV  # HOME_NAV | POST
 
