@@ -85,7 +85,7 @@ backtop:
 donation:
   show: true
   btn_text: 支持一下
-  tip: Coffe or Tea ?
+  tip: 三思而后行
   items:
     - type: 微信
       text: 微信扫一扫
