@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How To Get Real ?
-categories: HOWTO
+categories: HowTo
 kerywords: 读书总结
 tags: 漫漫人生路 
 ---
