@@ -39,8 +39,12 @@ comments: no
 
 **本站所有文章均系原创，如若转载需经过本人授权同意**
 
+### 书籍
+
+* [《安全架构要参：构建企业适用的安全架构》](https://book.iami.xyz)
+
 ### 欢迎交流
 
-* 网站：[{{ site.name }}]({{ site.url }})
-* 邮箱：[{{ site.email }}](mailto:{{ site.email }})
-* GitHub : [http://github.com/{{ site.hub }}](http://github.com/{{ site.hub }})
+* 网站: [{{ site.name }}]({{ site.url }})
+* 邮箱: [{{ site.email }}](mailto:{{ site.email }})
+* GitHub: [http://github.com/{{ site.hub }}](http://github.com/{{ site.hub }})
