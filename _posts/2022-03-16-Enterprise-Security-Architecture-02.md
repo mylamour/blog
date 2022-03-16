@@ -61,9 +61,3 @@ tags: 安全架构
 # 参考
 * [安全架构要参:构建企业适用的安全架构](https://book.iami.xyz)
 * [什么是安全架构](https://iami.xyz/Security-Architecture-Review/)
-
-
-
-
-<!-- ![0117_001](https://user-images.githubusercontent.com/12653147/130038046-89a065ea-248f-4ad4-96e0-3efd91ded825.jpg) -->
-<!-- ![0294_001](https://user-images.githubusercontent.com/12653147/130038412-39a8b77a-f1be-4659-a053-cbbd9ae31b19.jpg) 策略管理里的好图 -->
