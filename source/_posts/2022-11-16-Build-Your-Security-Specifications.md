@@ -27,10 +27,7 @@ tags: 安全架构
 
 格式上的字体选择，字号大小就不讨论了。一般首页指明规范的名称，编号，版本号，批准情况，历史记录等。页脚标注仅限内部使用，页眉放置编号及名称，同时加上水印，如果是国际化的企业，还需要准备多语言版本。下面是截图。
 
-首页|目录页|示例页
-:-:|:-:|:-:
-![img1](https://user-images.githubusercontent.com/12653147/202099846-6e3c60f3-c64f-48cf-8f65-573d390a3bee.png) |![img2](https://user-images.githubusercontent.com/12653147/202099877-e19c2c06-6093-4d1e-8ef1-99f8cad7c9d1.png) | ![img3](https://user-images.githubusercontent.com/12653147/202099906-7448fd7b-d61b-4cb1-95ac-1e7c68ea3058.png)
-
+![img](https://user-images.githubusercontent.com/12653147/202150833-1f8b8204-fb21-41f5-adc4-69369407c5d2.png)
 
 一般内容来说会包含以下几点：
 * 概述和目的
