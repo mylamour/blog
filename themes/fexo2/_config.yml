@@ -1,7 +1,7 @@
 # Blog info
-blog_name: Kunpeng's website
+blog_name: 放之的笔记
 slogan: 大道至简，知行合一
-url: https://kunpeng.website
+url: https://iami.xyz
 
 # Set avatar (Absolute url and relative url)
 avatar: /images/avatar.png
@@ -10,23 +10,23 @@ avatar: /images/avatar.png
 favicon: /favicon.ico
 
 # For seo
-keywords: Machine Learning, Web Security Research, Full Stack, Shell, 爬虫, 机器学习, 网络安全, 数据安全, 企业安全, 安全架构, 金融安全, 应用安全
+keywords: 爬虫, 机器学习, 网络安全, 数据安全, 企业安全, 安全架构, 金融安全, 应用安全, Machine Learning, Web Security Research, Full Stack, Shell
 
 home_nav:
 
-  - name: Gist
-    url: https://gist.github.com/mylamour
+  - name: Issues
+    url: https://github.com/mylamour/blog/issues
     target_blank: true
   - name: Blog
     url: /archives
-    target_blank: false #不在新页面打开
-  # - name: Project
-  #   url: /project/
-  #   target_blank: true #在新页面打开
-  - name: Github
-    url: https://github.com/mylamour
-    target_blank: true
-  - name: Linkedin
+    target_blank: true #不在新页面打开
+  - name: 书单
+    url: https://iread.cool
+    target_blank: true #在新页面打开
+  - name: CISO说
+    url: https://ciso.chat
+    target_blank: true #在新页面打开
+  - name: LinkedIn
     url: https://www.linkedin.com/in/zhaokunpeng
     target_blank: true
 
@@ -85,7 +85,7 @@ backtop:
 donation:
   show: true
   btn_text: 支持一下
-  tip: 三思而后行
+  tip: 如果你觉得有帮助
   items:
     - type: 微信
       text: 微信扫一扫
