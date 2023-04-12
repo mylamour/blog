@@ -14,18 +14,18 @@ keywords: 爬虫, 机器学习, 网络安全, 数据安全, 企业安全, 安全
 
 home_nav:
 
-  - name: Issues
-    url: https://github.com/mylamour/blog/issues
-    target_blank: true
-  - name: Blog
-    url: /archives
-    target_blank: true #不在新页面打开
   - name: 书单
     url: https://iread.cool
     target_blank: true #在新页面打开
   - name: CISO说
     url: https://ciso.chat
     target_blank: true #在新页面打开
+  - name: Blog
+    url: /archives
+    target_blank: true #不在新页面打开
+  - name: Issues
+    url: https://github.com/mylamour/blog/issues
+    target_blank: true
   - name: LinkedIn
     url: https://www.linkedin.com/in/zhaokunpeng
     target_blank: true
