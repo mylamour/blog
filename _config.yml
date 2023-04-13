@@ -15,7 +15,13 @@ timezone: Asia/Shanghai
 url: https://iami.xyz/archives
 root: /
 permalink: :year/:month/:day/:title/
-permalink_defaults:
+permalink_defaults: :title/
+#  backup configurateion
+# url: https://iami.xyz/
+# root: /
+# permalink: :year/:month/:day/:title/
+# permalink_defaults:
+
 
 # Directory
 source_dir: source
