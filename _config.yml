@@ -12,16 +12,17 @@ timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://iami.xyz/archives
-root: /
-permalink: :title/
-permalink_defaults:
-#  backup configurateion
-# url: https://iami.xyz/
+#  due to i changed the layout with hexo, google pagerank still index the old link. below configuration can works for old one
+# url: https://iami.xyz/archives
 # root: /
-# permalink: :year/:month/:day/:title/
+# permalink: :title/
 # permalink_defaults:
+#  backup configurateion
 
+url: https://iami.xyz/
+root: /
+permalink: :year/:month/:day/:title/
+permalink_defaults:
 
 # Directory
 source_dir: source
