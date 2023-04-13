@@ -21,7 +21,7 @@ timezone: Asia/Shanghai
 
 url: https://iami.xyz/
 root: /
-permalink: :year/:month/:day/:title/
+permalink: /blog/:year/:month/:day/:title/
 permalink_defaults:
 
 # Directory
