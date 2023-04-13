@@ -15,6 +15,7 @@
     <% theme.home_nav.forEach(function(item, i){ %>
       <li class="item">
         <% if(item.target_blank === true) { %>
+          <i class="<%= item.icon %>"> </i>
           <a href="<%= item.url %>" rel="noopener noreferrer" target="_blank"><%= item.name %></a>
         <% } else { %>
           <i class="<%= item.icon %>"> </i>
