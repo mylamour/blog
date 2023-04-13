@@ -14,8 +14,8 @@ timezone: Asia/Shanghai
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://iami.xyz/archives
 root: /
-permalink: :year/:month/:day/:title/
-permalink_defaults: :title/
+permalink: :title/
+permalink_defaults:
 #  backup configurateion
 # url: https://iami.xyz/
 # root: /
