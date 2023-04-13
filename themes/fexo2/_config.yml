@@ -21,7 +21,7 @@ home_nav:
     url: https://ciso.chat
     target_blank: true #在新页面打开
   - name: Blog
-    url: /archives
+    url: /blog 
     target_blank: true #不在新页面打开
   - name: Issues
     url: https://github.com/mylamour/blog/issues
@@ -33,7 +33,7 @@ home_nav:
 # config page nav
 page_nav:
   - name: 博客
-    url: /archives/
+    url: /blog/
     target_blank: false # 不在新页面打开
   - name: 分类
     url: /category/
