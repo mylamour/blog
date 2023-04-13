@@ -15,20 +15,26 @@ keywords: 爬虫, 机器学习, 网络安全, 数据安全, 企业安全, 安全
 home_nav:
 
   - name: 书单
+    icon: icon-book
     url: https://iread.cool
     target_blank: true #在新页面打开
   - name: CISO说
+    icon: icon-chat
     url: https://ciso.chat
     target_blank: true #在新页面打开
   - name: Blog
+    icon: icon-write
     url: /blog 
-    target_blank: true #不在新页面打开
+    target_blank: false #不在新页面打开
   - name: Issues
+    icon: icon-info
     url: https://github.com/mylamour/blog/issues
     target_blank: true
   - name: LinkedIn
+    icon: icon-linkedin
     url: https://www.linkedin.com/in/zhaokunpeng
     target_blank: true
+  
 
 # config page nav
 page_nav:
@@ -44,7 +50,7 @@ page_nav:
 
   - name: 关于
     url: /about/
-    target_blank: falsez
+    target_blank: false
   - name: RSS
     url: /atom.xml
     target_blank: true # 在新页面打开

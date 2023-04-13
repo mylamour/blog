@@ -17,6 +17,7 @@
         <% if(item.target_blank === true) { %>
           <a href="<%= item.url %>" rel="noopener noreferrer" target="_blank"><%= item.name %></a>
         <% } else { %>
+          <i class="<%= item.icon %>"> </i>
           <a href="<%= item.url %>"><%= item.name %></a>
         <% } %>
         <span>|</span>
