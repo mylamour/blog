@@ -25,11 +25,11 @@ Defense in Depth的设计理念一般来说是作用在Layered Architecture上�
 
 下面开始看系统，这里的概念比较宽泛。可以理解为提供服务的一套软硬件支撑共同作为一个系统。对于系统来说，显然是分层架构的，从硬件到OS，再到虚拟化或者容器化，之后去运行相应的应用/进程等。假设我们的关注点从硬件开始，就需要TPM，TEE，Root Of Trust， Hardware Based Encryption等防御技术，其次OS层面考虑VMP，HIDS，EDR，AV等，乃至RASP，Security SDK等等都是应用层面可以做的事情，以及永远不要忘了log。 如果现在我们算是完成了单体System的Defense in Depth，那么在微服务的场景里，多个单体系统连接到一起就构成了的服务平面。
 
-![image](https://user-images.githubusercontent.com/12653147/221557980-b0c7be68-c624-4e92-a42c-c54d6be7c211.png)
+![image](https://img.iami.xyz/images/221557980-b0c7be68-c624-4e92-a42c-c54d6be7c211.png)
 
 既然已经构成了服务平面，对于终端用户来说，访问链路是从端开始经过CDN、Firewall、WAF、NIDS等等一系列的安全设备/工具。如果是自建的机房，就会可能出现下图左侧的情况。然后通过BGP或者其他协议实现旁路引流，选择感兴趣流量丢给安全设备，这样就意味着不同Rack上的机器流量都会经过防火墙进行检测，否则就会出现一种情况，用户在正常经过访问链路使用服务的同时，部署在不同安全域的微服务之间并没有安全检测。类似支付业务和钱包业务部署在不同VPC内，但是VPC之间的流量是没有经过检测的，也就意味着一旦边界失陷，就意味着无尽的横向移动。在这个过程中又涉及到OSI模型，如下右图所示。应用层流量到传输层，然后到网络层的过程。有一个transmit和receive的过程，虽然安全设备已经内嵌了不同Layer的防御措施，但架构师在设计的时候也需要关注到。
 
-![image](https://user-images.githubusercontent.com/12653147/221558012-cad3039e-aeca-4477-8276-c240373af8e1.png)
+![image](https://img.iami.xyz/images/221558012-cad3039e-aeca-4477-8276-c240373af8e1.png)
 
 # 0x03 总结
 

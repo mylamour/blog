@@ -6,7 +6,7 @@ kerywords: OWASPTop10
 tags: 安全研发
 ---
 
-![image](https://user-images.githubusercontent.com/12653147/38121820-270e056c-3404-11e8-80b9-6567dab571ba.png)
+![image](https://img.iami.xyz/images/38121820-270e056c-3404-11e8-80b9-6567dab571ba.png)
 
 这是一份OWASP TOP10变更对比，不过注入始终是NO.1,多出来个XXE,把错误配置，和授权绕过排名提高关注。 作为第一次阅读OWASP 的白皮书，除了系统化一下整个概念流程之后，个人觉得比较好的是最后的几个提问,比较值得思考(不要自己看着什么就是是是，要想一想):
 * What’s Next for Developers
@@ -14,8 +14,8 @@ tags: 安全研发
 * What’s Next for Organizations
 * What’s Next for Application Managers
 
-![image](https://user-images.githubusercontent.com/12653147/38122994-4253bd6a-340b-11e8-8f39-fe8493c5cae2.png)
-![image](https://user-images.githubusercontent.com/12653147/38123022-65b0a53e-340b-11e8-9455-c525ab909f10.png)
+![image](https://img.iami.xyz/images/38122994-4253bd6a-340b-11e8-8f39-fe8493c5cae2.png)
+![image](https://img.iami.xyz/images/38123022-65b0a53e-340b-11e8-9455-c525ab909f10.png)
 
 而我自己主要作为一个安全研发,和web渗透测试，比较关注前两个问题。
 
@@ -40,8 +40,8 @@ tags: 安全研发
 
 
 # RISK计算
-![image](https://user-images.githubusercontent.com/12653147/38122656-d8bbc836-3408-11e8-8947-acc25089197c.png)
-![image](https://user-images.githubusercontent.com/12653147/38122694-0d9a232c-3409-11e8-95c7-072810f7d4c1.png)
+![image](https://img.iami.xyz/images/38122656-d8bbc836-3408-11e8-8947-acc25089197c.png)
+![image](https://img.iami.xyz/images/38122694-0d9a232c-3409-11e8-95c7-072810f7d4c1.png)
 
 # Other
 前期搞日站技术，和机器学习技术。后期搞SDL，安全架构，。  美亚，绿盟，启明星辰的股票都在涨啊...只能看看模拟盈亏ing.### [The Security Checklist](https://github.com/FallibleInc/security-guide-for-developers)

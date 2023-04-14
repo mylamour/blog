@@ -6,7 +6,7 @@ kerywords: 证书 CA Cert
 tags: PKI 证书
 ---
 
-![image](https://user-images.githubusercontent.com/12653147/77220702-c5b0be00-6b7d-11ea-85cf-535409cb44b6.png)
+![image](https://img.iami.xyz/images/77220702-c5b0be00-6b7d-11ea-85cf-535409cb44b6.png)
 
 # With Vault
 
@@ -20,11 +20,11 @@ You have three choices:
 
 And finally, you would see that:
 
-<img width="1652" alt="Screen Shot 2020-03-21 at 2 06 13 PM" src="https://user-images.githubusercontent.com/12653147/77220664-6b176200-6b7d-11ea-8c7b-82c81732a343.png">
+<img width="1652" alt="Screen Shot 2020-03-21 at 2 06 13 PM" src="https://img.iami.xyz/images/77220664-6b176200-6b7d-11ea-8c7b-82c81732a343.png">
 
-<img width="1196" alt="Screen Shot 2020-03-21 at 2 08 51 PM" src="https://user-images.githubusercontent.com/12653147/77220704-c77a8180-6b7d-11ea-8d62-9a635abf3c91.png">
+<img width="1196" alt="Screen Shot 2020-03-21 at 2 08 51 PM" src="https://img.iami.xyz/images/77220704-c77a8180-6b7d-11ea-8d62-9a635abf3c91.png">
 
-<img width="1165" alt="Screen Shot 2020-03-21 at 2 11 51 PM" src="https://user-images.githubusercontent.com/12653147/77220776-4ec7f500-6b7e-11ea-8a85-1ead1c26c13e.png">
+<img width="1165" alt="Screen Shot 2020-03-21 at 2 11 51 PM" src="https://img.iami.xyz/images/77220776-4ec7f500-6b7e-11ea-8a85-1ead1c26c13e.png">
 
 
 
@@ -39,9 +39,9 @@ $ openssl x509 -req -in 91sec.vip.csr -CA rootCA.crt -CAkey rootCA.key -CAcreate
 ```
 
 
-<img width="444" alt="Screen Shot 2020-03-21 at 2 24 14 PM" src="https://user-images.githubusercontent.com/12653147/77220903-aa46b280-6b7f-11ea-9589-05c2173ce9ba.png">
-<img width="496" alt="Screen Shot 2020-03-21 at 2 25 51 PM" src="https://user-images.githubusercontent.com/12653147/77221017-b8e19980-6b80-11ea-8b73-22d39cb87eff.png">
-<img width="502" alt="Screen Shot 2020-03-21 at 2 49 16 PM" src="https://user-images.githubusercontent.com/12653147/77221251-2d1d3c80-6b83-11ea-9033-ec34fa27c956.png">
+<img width="444" alt="Screen Shot 2020-03-21 at 2 24 14 PM" src="https://img.iami.xyz/images/77220903-aa46b280-6b7f-11ea-9589-05c2173ce9ba.png">
+<img width="496" alt="Screen Shot 2020-03-21 at 2 25 51 PM" src="https://img.iami.xyz/images/77221017-b8e19980-6b80-11ea-8b73-22d39cb87eff.png">
+<img width="502" alt="Screen Shot 2020-03-21 at 2 49 16 PM" src="https://img.iami.xyz/images/77221251-2d1d3c80-6b83-11ea-9033-ec34fa27c956.png">
 
 
 

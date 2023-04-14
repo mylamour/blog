@@ -10,7 +10,7 @@ tags: Fuzzing
 
 This is the finally status:
 
-![image](https://user-images.githubusercontent.com/12653147/62222783-7fd49900-b3e6-11e9-97f5-fbb1fe0567dc.png)
+![image](https://img.iami.xyz/images/62222783-7fd49900-b3e6-11e9-97f5-fbb1fe0567dc.png)
 
 So. let's beginning.
 
@@ -46,14 +46,14 @@ python -m fuzzfetch -a -n firefox --fuzzing -o browsers/
 wget -O ./browsers/prefs.js https://raw.githubusercontent.com/MozillaSecurity/fuzzdata/master/settings/firefox/prefs-default-e10s.js
 ```
 
-![image](https://user-images.githubusercontent.com/12653147/62223561-bb239780-b3e7-11e9-8045-d48f19ef82e6.png)
+![image](https://img.iami.xyz/images/62223561-bb239780-b3e7-11e9-8045-d48f19ef82e6.png)
 
 Now, you can running it with `no-op` adapter, because there was only one adapter was being installed by default, also you have no choice to find new one. you must write it by yourself. So, we can run it firstly:
-![image](https://user-images.githubusercontent.com/12653147/62224502-66811c00-b3e9-11e9-984c-500ab25325e7.png)
+![image](https://img.iami.xyz/images/62224502-66811c00-b3e9-11e9-984c-500ab25325e7.png)
 
 But if you want another adapter, what should i do ?
 
-![image](https://user-images.githubusercontent.com/12653147/62224928-08a10400-b3ea-11e9-9aa7-bdc8be6deebe.png)
+![image](https://img.iami.xyz/images/62224928-08a10400-b3ea-11e9-9aa7-bdc8be6deebe.png)
 
 Now, you can see this example. it was create from [wiki](https://github.com/MozillaSecurity/grizzly/wiki/Writing-an-Adapter), but it not suitable to Windows. so let's change it.
 
@@ -65,7 +65,7 @@ git clone --depth=1 https://github.com/googleprojectzero/domato
 
 in this tutorial, i put in this place:
 
-![image](https://user-images.githubusercontent.com/12653147/62225189-8a912d00-b3ea-11e9-8fa3-3b18bb0dfd6f.png)
+![image](https://img.iami.xyz/images/62225189-8a912d00-b3ea-11e9-8fa3-3b18bb0dfd6f.png)
 
 Now, we need to modify the script  to make it suitable for windows. 
 * `tempfile` can not used in windows

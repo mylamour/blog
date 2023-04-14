@@ -8,7 +8,7 @@ tags: 安全运维 AWS Terraform
 
 Terrafrom多区部署虚拟货币的demo代码详见[这里](https://github.com/mylamour/devops-note/tree/master/terraform/cryptocoin)
 目录结构如下:
-![image](https://user-images.githubusercontent.com/12653147/42406498-7e8ced92-81db-11e8-891e-f2daf1420437.png)
+![image](https://img.iami.xyz/images/42406498-7e8ced92-81db-11e8-891e-f2daf1420437.png)
 
 只需将每个货币的部署方式和脚本实现放在对应的不同文件夹下，然后在main.tf进行每个模块的调用即可。当然，这只是为了钱包节点的同步，而不是为了挖矿。采用多区同步用于确保尽可能的使节点能够同步到最新的区块。当然还可以在每个区设置多台，然后多区部署。
 

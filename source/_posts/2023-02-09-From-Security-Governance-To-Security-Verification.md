@@ -14,7 +14,7 @@ tags: 安全架构
 
 以下图为例，将Governance和Design作为Logical部分，Implementation和Verification作为Physical部分。在Logical部分由Governance引导Design的架构方向，在Physical部分，由Verification检测Implementation的项目质量。同时根据Physical的反馈去修正Logical的细节。那就先暂时把这个模型命名为**LSP**模型吧。（哈哈哈）
 
-![image](https://user-images.githubusercontent.com/12653147/217746259-1b5a9b78-b47d-4d84-a881-01f6f8c27a7f.png)
+![image](https://img.iami.xyz/images/217746259-1b5a9b78-b47d-4d84-a881-01f6f8c27a7f.png)
 
 言归正传，我们来根据这个Model将每个过程涉及到的input和output简单列出来，详见下图。
 
@@ -22,7 +22,7 @@ tags: 安全架构
 1. 你需要补充自己的Component作为Input和Output；
 2. 当使用Component时需要确认是否具备对应的Input；
 
-![image](https://user-images.githubusercontent.com/12653147/217699918-d37356c1-c00a-4ddc-b2c7-7dbe2a2c0881.png)
+![image](https://img.iami.xyz/images/217699918-d37356c1-c00a-4ddc-b2c7-7dbe2a2c0881.png)
 
 1. 具备顶层设计的安全治理多是自上而下的。这意味着得到了领导层的**support**，能获得到对应的**resource**（**support <---> resource**）。至于能够得到support，可能因为法律法规（legal部分），也可能因为面临业务上的风险或者有商誉问题（marketing&industry部分）等。
 有了驱动之后，安全治理会在这个过程输出一定的Security Strategy、Policy、Standard等文档（**这些输出应该具备一定的Education Program使员工能够理解。可以是培训，测试，游戏等形式**）。

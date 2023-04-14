@@ -38,7 +38,7 @@ tags: 漫漫人生路
 * python 并行编程的博客还没写完
 * 不知道为什么我的lstm模型在DGA检测上跑这么慢
 * inndy师傅的场子，只做了一点基础的以及ctf misc
-* [webshell种类](https://user-images.githubusercontent.com/12653147/38929412-c32b6b44-433e-11e8-852a-f74a57fb5ab9.png)整理完了
+* [webshell种类](https://img.iami.xyz/images/38929412-c32b6b44-433e-11e8-852a-f74a57fb5ab9.png)整理完了
 
 失落的一段时间司机大叔安慰了我很多，虽然我什么也没说。告诉我年轻人就要多闯闯。
 

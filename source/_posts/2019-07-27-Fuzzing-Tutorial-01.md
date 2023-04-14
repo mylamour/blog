@@ -17,28 +17,28 @@ radamsa用于生成随机的fuzz向量(不用在意这些名词),当然你也可
 1.克隆代码并编译
 `git clone https://gitlab.com/akihe/radamsa.git && cd radamsa && make && sudo make install`
 
-![image](https://user-images.githubusercontent.com/12653147/44978555-99cee700-af9d-11e8-8e9e-0a3111de5bdd.png)
+![image](https://img.iami.xyz/images/44978555-99cee700-af9d-11e8-8e9e-0a3111de5bdd.png)
 
 2.使用：`echo 随便什么 | radamsa` 生成攻击载荷
 
-![image](https://user-images.githubusercontent.com/12653147/44978666-d995ce80-af9d-11e8-8e7e-76ebead99717.png)
+![image](https://img.iami.xyz/images/44978666-d995ce80-af9d-11e8-8e7e-76ebead99717.png)
 
-![image](https://user-images.githubusercontent.com/12653147/44978719-f205e900-af9d-11e8-813a-3b95d57eaf1a.png)
+![image](https://img.iami.xyz/images/44978719-f205e900-af9d-11e8-813a-3b95d57eaf1a.png)
 
 3.其他用法
 * 生成多个testcase
 `echo "岁月神偷"| radamsa -d 2 -n 10`
 生成10个，每2毫秒一次，可以调整一下。比如说`-d 600` ，随意喽。
 
-![image](https://user-images.githubusercontent.com/12653147/44979655-414d1900-afa0-11e8-9e28-ed6b99150036.png)
+![image](https://img.iami.xyz/images/44979655-414d1900-afa0-11e8-9e28-ed6b99150036.png)
 
 * 针对文件生成testcase
 `radamsa -r guest.jpg -o ./1.png`
 
-<img src="https://user-images.githubusercontent.com/12653147/44980007-35158b80-afa1-11e8-8846-8679c5ddd47c.png" width="200" height="200" />
-<img  src="https://user-images.githubusercontent.com/12653147/44980200-bec55900-afa1-11e8-969f-7dc891246279.png" width="200" height="200" />
-<img src="https://user-images.githubusercontent.com/12653147/44980207-c38a0d00-afa1-11e8-8a4c-a816fc5dbaab.png" width="200" height="200" />
-<img src="https://user-images.githubusercontent.com/12653147/44980216-c97fee00-afa1-11e8-9a6f-3cec98afb8c3.png" width="200" height="200" />
+<img src="https://img.iami.xyz/images/44980007-35158b80-afa1-11e8-8846-8679c5ddd47c.png" width="200" height="200" />
+<img  src="https://img.iami.xyz/images/44980200-bec55900-afa1-11e8-969f-7dc891246279.png" width="200" height="200" />
+<img src="https://img.iami.xyz/images/44980207-c38a0d00-afa1-11e8-8a4c-a816fc5dbaab.png" width="200" height="200" />
+<img src="https://img.iami.xyz/images/44980216-c97fee00-afa1-11e8-9a6f-3cec98afb8c3.png" width="200" height="200" />
 
 
 以上为对原图的改变
@@ -114,9 +114,9 @@ windows下的神器自然是winafl了，看神器吧（不过我感觉可能是�
 afl-fuzz.exe -i C:\Users\i\Desktop\Fuzzing\db -o C:\Users\i\Desktop\Fuzzing\results -D C:\Users\i\Desktop\Fuzzing\DynamoRIO\bin64 -t 20000 -- -fuzz_iterations 5000 -target_module "D:\Program Files (x86)\VideoLAN\VLC\vlc.exe" -target_offset 0x532a0 -nargs 2 -m 1024 -- "D:\Program Files (x86)\VideoLAN\VLC\vlc.exe" @@
 ```
 
-![image](https://user-images.githubusercontent.com/12653147/45439093-7f0e1800-b6eb-11e8-901e-29e5ebc0db16.png)
-![image](https://user-images.githubusercontent.com/12653147/45439106-86352600-b6eb-11e8-9103-353f56f5bb0b.png)
-![image](https://user-images.githubusercontent.com/12653147/45438403-a7951280-b6e9-11e8-8f38-fbadc416ad08.png)
+![image](https://img.iami.xyz/images/45439093-7f0e1800-b6eb-11e8-901e-29e5ebc0db16.png)
+![image](https://img.iami.xyz/images/45439106-86352600-b6eb-11e8-9103-353f56f5bb0b.png)
+![image](https://img.iami.xyz/images/45438403-a7951280-b6e9-11e8-8f38-fbadc416ad08.png)
 
 # 其他
 fuzz到crash只是第一步，如何根据crash创建payload才是重要的事情。

@@ -14,7 +14,7 @@ tags: 机器学习 威胁检测
 
 具体项目参见[这里](https://github.com/mylamour/DGADomain),包含了使用说明。
 采用了360netlab提供的公开数据集，以及一份alexa top 100millon。
-![img](https://user-images.githubusercontent.com/12653147/47637980-3d043d00-db98-11e8-9bf3-537a4ecf90ee.png)
+![img](https://img.iami.xyz/images/47637980-3d043d00-db98-11e8-9bf3-537a4ecf90ee.png)
 
 经过250个epoch之后可以达到很好的准确度。为1， 但是模型太大，可以采用quantize进行训练，压缩。但是会导致精度下降，cutoff值越大，精度越低，模型越小。
 

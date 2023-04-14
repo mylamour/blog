@@ -12,7 +12,7 @@ In this tutorial, we will build a ftp Service with data at rest encryption. that
 
 This is what you need:
 
-![image](https://user-images.githubusercontent.com/12653147/103079245-7026a780-460e-11eb-884a-77f4e129bc22.png)
+![image](https://img.iami.xyz/images/103079245-7026a780-460e-11eb-884a-77f4e129bc22.png)
 
 * Encryption As A Services (You can find a tutorial on how to create it in the last blog #81, also you can change with other eaas )
 * pyftpdlib (use it to build a ftp services) 
@@ -25,7 +25,7 @@ As you can see in this picture, we are going to use linux system authentication 
 
 Here is the sequence diagram. as you can see in the below picture, it was mainly with 3 parts. and here's a brief introduction.
 
-![pki_connection (1)](https://user-images.githubusercontent.com/12653147/103064383-d3a0dd00-45ee-11eb-9e62-afc44f09480a.png)
+![pki_connection (1)](https://img.iami.xyz/images/103064383-d3a0dd00-45ee-11eb-9e62-afc44f09480a.png)
 
 * login
 At the login part,  FTP Service will check the kek file path for each user at each login, and decrypt the KEK string to get user's AES key, then use AES key to decrypt user's file.
@@ -43,7 +43,7 @@ At the logout part, there was two main things. one is to encrypt all unencrypted
 Before we talking about encrypt & decrypt, you should know some basic crypto algorithms. `RSA` and `AES` is a common crypto algorithm.  `AES` was a  symmetric algorithms , that's mean you can use one aes key to encrypt/decrypt file.
 `RSA` was a asymmetric algorithms , and you can use public key to encrypt some message, but only able to use private key to decrypt that.  in this case, we use `RSA` to protected the `AES` key which is really used to encrypt and decrypt files. 
 
-![image](https://user-images.githubusercontent.com/12653147/103079375-afed8f00-460e-11eb-8776-795ee6ada9cf.png)
+![image](https://img.iami.xyz/images/103079375-afed8f00-460e-11eb-8776-795ee6ada9cf.png)
 
 > here is a encrypted key
 

@@ -50,24 +50,24 @@ ffmpeg -i input.mp4 -i image.png -filter_complex "[0:v][1:v] overlay=x=10:y=10" 
 同时针对其他的一些小bug，比如ffmpeg默认是overwrite为false的，作为ffmpeg-python的library，当你output为quiet时，此时就会导致程序报错而不知道怎么回事，需要强制设置为true.
 
 一些测试效果图：
-原图： ![guest](https://user-images.githubusercontent.com/12653147/74144461-b9108000-4c37-11ea-964f-0dd80ebc2761.jpg)
+原图： ![guest](https://img.iami.xyz/images/74144461-b9108000-4c37-11ea-964f-0dd80ebc2761.jpg)
 水印图：
-![wm](https://user-images.githubusercontent.com/12653147/74144472-bf9ef780-4c37-11ea-9d67-2ab74e1ee7c7.png)
+![wm](https://img.iami.xyz/images/74144472-bf9ef780-4c37-11ea-9d67-2ab74e1ee7c7.png)
 盲水印图：
-![wi_guest_blind](https://user-images.githubusercontent.com/12653147/74144454-b4e46280-4c37-11ea-8eef-6c86a1af9b46.png)
+![wi_guest_blind](https://img.iami.xyz/images/74144454-b4e46280-4c37-11ea-8eef-6c86a1af9b46.png)
 解压后的水印：
-![wm_show](https://user-images.githubusercontent.com/12653147/74144503-ce85aa00-4c37-11ea-875f-d3a2106fa9c5.png)
+![wm_show](https://img.iami.xyz/images/74144503-ce85aa00-4c37-11ea-875f-d3a2106fa9c5.png)
 
 至于明水印，由于是采用ffmpeg overlay去做的，所以位置的控制完全在于Overlay的写法，`overlay`本身基础的有`x`,`y`，即坐标。其后还有`enable=between(t, xxxx,yyy)`，可以针对视频repeat fream.
 而对于图像本身的透明效果，不像`drawtext`可以直接设置`alpha=0.4` 这种格式， 0.4代表了百分之40，而是需要采用`colorchannelmixer`,去控制`aa`的值。
 这是40%透明度的效果
-![jjjjjjjjj](https://user-images.githubusercontent.com/12653147/74206390-27942300-4cb6-11ea-91a5-0c98b22ae27a.png)
+![jjjjjjjjj](https://img.iami.xyz/images/74206390-27942300-4cb6-11ea-91a5-0c98b22ae27a.png)
 
 # 理想中的
 
 拥有多格式多水印选项，具备完善的数据分级和权限控制，以及日志和追踪的功能。特性来说，需要有自动植入和一键追溯更优。
 
-![image](https://user-images.githubusercontent.com/12653147/74119770-d7588a80-4bfb-11ea-88ec-ced701034f37.png)
+![image](https://img.iami.xyz/images/74119770-d7588a80-4bfb-11ea-88ec-ced701034f37.png)
 
 
 # 实际上的

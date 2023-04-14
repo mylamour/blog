@@ -8,7 +8,7 @@ tags: 反爬
 
 这是之前为即刻Anti-Spam，针对内容安全画的思维导图：
 
-![anti-spam risk management](https://user-images.githubusercontent.com/12653147/42406784-1b72ad54-81e1-11e8-898d-dcf520f8dbfd.png)
+![anti-spam risk management](https://img.iami.xyz/images/42406784-1b72ad54-81e1-11e8-898d-dcf520f8dbfd.png)
 
 所有的阻挡应该是威胁的一层层缓解手段，直到屏障的方式无法穿透。
 
@@ -30,16 +30,16 @@ real_ip_recursive on;
 
 首先这些把日志导入splunk进行分析，(以下ip均为阿里wafip),然后可以看出对分析来说没有什么帮助
 
-![lalpbbcc1ge1nf3nbfrncfw_2556_1114](https://user-images.githubusercontent.com/12653147/42406795-816fb7e6-81e1-11e8-9dd1-f7c034fca9c6.png)
+![lalpbbcc1ge1nf3nbfrncfw_2556_1114](https://img.iami.xyz/images/42406795-816fb7e6-81e1-11e8-9dd1-f7c034fca9c6.png)
 
 禁用之后来自该Ip的访问几乎瞬间降为0：
 
-![lalpbbcc1ge2svtnblfnczg_2456_1207](https://user-images.githubusercontent.com/12653147/42406799-89b5632e-81e1-11e8-809e-8a5c11dd63a9.png)
+![lalpbbcc1ge2svtnblfnczg_2456_1207](https://img.iami.xyz/images/42406799-89b5632e-81e1-11e8-809e-8a5c11dd63a9.png)
 
 构建字段，查询当天注册的哪些邮箱用户。然后提交给后台从管理员系统将这些用户标记。注意不是删除。或者禁用账号。
 
-![lalpbbcc1gifcibnamxnbdc_1079_613](https://user-images.githubusercontent.com/12653147/42406809-e035d2a6-81e1-11e8-8258-3c1b63d82004.png)
-![lalpbbcc1gikpvnna53nckk_2217_925](https://user-images.githubusercontent.com/12653147/42406811-e18e5ed4-81e1-11e8-84f2-565fb9d8c3aa.png)
+![lalpbbcc1gifcibnamxnbdc_1079_613](https://img.iami.xyz/images/42406809-e035d2a6-81e1-11e8-8258-3c1b63d82004.png)
+![lalpbbcc1gikpvnna53nckk_2217_925](https://img.iami.xyz/images/42406811-e18e5ed4-81e1-11e8-84f2-565fb9d8c3aa.png)
 
 # Note
 Splunk很好用，比以前用ELK更舒服，尤其是强大的自动生成正则去匹配的功能，当然还是需要自己定义下正则的。
@@ -97,10 +97,10 @@ if ($cors = 'true') {
 
 完整配置文件为:
 
-![image](https://user-images.githubusercontent.com/12653147/42438569-f2301b6c-8392-11e8-872f-7c4c80d58809.png)
+![image](https://img.iami.xyz/images/42438569-f2301b6c-8392-11e8-872f-7c4c80d58809.png)
 
 
 测试之后即可发现，配置生效，每6次就会禁止了。当然应该配置自定义返回的状态码，默认是503。需要提供一个友好的状态码给前端用于交互。
 
 具有解决问题的能力，为什么配置之后不起作用，双重请求头会报错，如何发现，如何解决。👀
-![lalpauor5jryy-7nbnbnchq_2580_1654](https://user-images.githubusercontent.com/12653147/47093786-7c5b9100-d25c-11e8-88fa-f97c50b980a2.png)
+![lalpauor5jryy-7nbnbnchq_2580_1654](https://img.iami.xyz/images/47093786-7c5b9100-d25c-11e8-88fa-f97c50b980a2.png)

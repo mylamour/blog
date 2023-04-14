@@ -14,12 +14,12 @@ tags: 安全架构
 # 企业安全架构方法论
 
 ## 概念
-![image](https://user-images.githubusercontent.com/12653147/130034048-e75b342d-f4f2-4651-8df3-aa19790e3ea0.png)
+![image](https://img.iami.xyz/images/130034048-e75b342d-f4f2-4651-8df3-aa19790e3ea0.png)
 > 任何普适性的方法大都也需要因地制宜。总之，读完此书之后很好的帮助了我总结了之前总结......
 
 因为每个阶段又有许多需要单独考虑的地方，我根据书中内容整理了一份表格，同时在gist上贴了份**文字版**[摘要在此](https://gist.github.com/mylamour/64ef30331cda95f08570f11ce135e171):
 
-![image](https://user-images.githubusercontent.com/12653147/130034780-a64ea58f-ecaf-4d96-9f45-9dc208855969.png)
+![image](https://img.iami.xyz/images/130034780-a64ea58f-ecaf-4d96-9f45-9dc208855969.png)
 
 **注：下文所有截图均来自原书** 
 
@@ -34,19 +34,19 @@ tags: 安全架构
 
 不过在处理顺序上一般在制定Operational Security Architecture的同时应该是已经考虑到了Logical，Physical的Security Architecture，以及可能遇到的Component上的问题。
 
-![0112_001](https://user-images.githubusercontent.com/12653147/130037905-a48e043f-5b05-4140-acd5-a685224aa823.jpg)
+![0112_001](https://img.iami.xyz/images/130037905-a48e043f-5b05-4140-acd5-a685224aa823.jpg)
 
 > 也就是说涉及到任何要输出的东西时，Mange & Measure 是潜在发生的。可能来自自己，可能来自别人/团队。
 
 下图以Directory Services为例展示了6 Layer是如何形成的。
 
-![0131_002](https://user-images.githubusercontent.com/12653147/130038184-78723488-2eec-4347-b784-dd993b238623.jpg)
+![0131_002](https://img.iami.xyz/images/130038184-78723488-2eec-4347-b784-dd993b238623.jpg)
 
 ## 0-1
 
 这里有两张图，分别展示了这套框架的运行逻辑。第一张是指整个三个阶段（可抽象一下）商业策略是是怎么从受到不同影响的输入(Input),来自期望目标(Goals)，市场，财务，产品原材料等反馈到安全策略上，以及从Logical -> Physical过程中的考虑的一些案例（case）和因素,直至形成可信的运营。
 
-![0127_001](https://user-images.githubusercontent.com/12653147/130038090-fcb8797b-379d-41b7-989e-c4fb6f8b5d3a.jpg)
+![0127_001](https://img.iami.xyz/images/130038090-fcb8797b-379d-41b7-989e-c4fb6f8b5d3a.jpg)
 
 至于有的地方是否是过时的，我们可以暂时不用细究。方法论迁移的套路里细节一般影响不大。例如我们甚至也可以套用阴阳学说在安全建设里面（以下是胡说的），例如：
 
@@ -77,5 +77,5 @@ tags: 安全架构
 
 
 
-<!-- ![0117_001](https://user-images.githubusercontent.com/12653147/130038046-89a065ea-248f-4ad4-96e0-3efd91ded825.jpg) -->
-<!-- ![0294_001](https://user-images.githubusercontent.com/12653147/130038412-39a8b77a-f1be-4659-a053-cbbd9ae31b19.jpg) 策略管理里的好图 -->
+<!-- ![0117_001](https://img.iami.xyz/images/130038046-89a065ea-248f-4ad4-96e0-3efd91ded825.jpg) -->
+<!-- ![0294_001](https://img.iami.xyz/images/130038412-39a8b77a-f1be-4659-a053-cbbd9ae31b19.jpg) 策略管理里的好图 -->

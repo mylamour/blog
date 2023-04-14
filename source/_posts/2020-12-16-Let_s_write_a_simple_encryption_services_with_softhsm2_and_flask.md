@@ -12,7 +12,7 @@ tags: 安全研发
 
 About one month ago, i am plan to write a simple encryption as a service. after few days research, i make a simple architecture. 
 
-![image](https://user-images.githubusercontent.com/12653147/100545213-b9950880-3295-11eb-905f-f0d466cc9f2d.png)
+![image](https://img.iami.xyz/images/100545213-b9950880-3295-11eb-905f-f0d466cc9f2d.png)
 
 As you can see in the picture, i am going to use `softhsm` to store the private key and let `docker` as the runtime. also we build a web service with `flask`.
 

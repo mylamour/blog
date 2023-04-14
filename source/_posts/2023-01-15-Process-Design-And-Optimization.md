@@ -16,7 +16,7 @@ tags: 安全架构
 
 下面简单介绍一下如何正向去设计和优化流程。 （反向的话一般是从日常工作出发，**将经验中的最佳实践按照一定模式固定下来的过程**。很多场景化的SOP基本是反向建设的。）
 
-![build-process](https://user-images.githubusercontent.com/12653147/212522556-99299279-04ee-4074-9e1b-93861b3bbd3e.png)
+![build-process](https://img.iami.xyz/images/212522556-99299279-04ee-4074-9e1b-93861b3bbd3e.png)
 
 需求分析与依赖管理
 
@@ -29,7 +29,7 @@ tags: 安全架构
 * **经验中总结出来的不同模式（Pattern）/模型（Model）构成了“所谓”的最佳实践（Best Practice），而长期的最佳实践逐渐形成了参考架构（Reference Architecture）。**。这些Pattern可以理解为Rule Set，是由一条条的rule组成。而对于每个领域，都有各自的规律可循（Domain Model）。 这些Pattern共同作用形成了System。 对于软件架构而言，常见的Pattern有C/S、M/S、MVC、Pipeline、Broker、Plugin等等，对于安全来说Secxuiry， Security Domain Model有SABSA、O-ESA， STRIDE等，而对于企业架构，又有TOGAF等。 在分析需求和解决问题的过程中就需要将不同领域的参考架构融合到一起，也可以理解为知识迁移的过程。可以参考上一篇博客里框架融合的部分。千万注意不要先入为主，需要对未知的领域进行多次的调研沟通。
 
 * **系统实现指的是目标能够可拆解、实现过程是结构化的**。 系统实现的最终结果不一定是一个IT系统或者各种软件，比如在这里指的就是一个流程的建立。怎么去拆解流程，怎么样组合pipeline的节点，顺序等。通过不同Pattern的作用，形成了相应的System。
-![model](https://user-images.githubusercontent.com/12653147/212538730-e9c1a995-92ff-41a1-be18-4682a8f3d5df.gif)
+![model](https://img.iami.xyz/images/212538730-e9c1a995-92ff-41a1-be18-4682a8f3d5df.gif)
 
 逻辑层面来说，设计流程并优化的大概思路就是上面所写的了。**可以是真正的一个流程，比如说线上变更的工单流程，也可以是去解决问题的一个思考过程。**
 
@@ -38,7 +38,7 @@ tags: 安全架构
 再以微服务安全举例来理解下系统化的思考及解决问题的过程。
 1. 需求分析：解决X1,X2,X3问题
 2. 依赖管理：AWS Cloud，K8S，Service Mesh, Spring Cloud。运维倾向XX，不愿意XX，应用倾向XX，不愿XX，安全XX，YY
-3. 模式融合： 现有变更流程，现有的发布模式，现有的基础设施，现有的安全管理。分别参考了哪些最佳实践，有哪些可以结合的点。[例如上篇博客中提到的安全架构和TOGAF的融合](https://user-images.githubusercontent.com/12653147/210775112-b782b001-52b1-441b-ad79-1f4e2d4c0e62.png)
+3. 模式融合： 现有变更流程，现有的发布模式，现有的基础设施，现有的安全管理。分别参考了哪些最佳实践，有哪些可以结合的点。[例如上篇博客中提到的安全架构和TOGAF的融合](https://img.iami.xyz/images/210775112-b782b001-52b1-441b-ad79-1f4e2d4c0e62.png)
 4. 系统实现： 长期方案从基础设施层面去做XXX，解决了哪几个问题。短期方案从应用层面去做XXX，解决了哪几个问题；在长期方案中需要A1,A2,A3,A4 步骤实施，分别怎么解决XXX问题
 
 # 0x03 总结
@@ -47,4 +47,4 @@ tags: 安全架构
 
 当然，系统化思考对于技术工作是有一定好处的。不过也总感觉讲究严谨的逻辑的同时其实也丧失了天真和浪漫的想象。
 
-<!-- ![corp-security](https://user-images.githubusercontent.com/12653147/212540121-2d3f68e2-ec50-43cb-873a-06f1e7a74e22.png) -->
+<!-- ![corp-security](https://img.iami.xyz/images/212540121-2d3f68e2-ec50-43cb-873a-06f1e7a74e22.png) -->

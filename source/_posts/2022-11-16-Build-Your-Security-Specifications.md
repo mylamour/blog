@@ -12,7 +12,7 @@ tags: 安全架构
 
 # 0x02 正文
 
-![management](https://user-images.githubusercontent.com/12653147/201935506-1dc5a487-16cd-4ced-a522-22da19b96f22.png)
+![management](https://img.iami.xyz/images/201935506-1dc5a487-16cd-4ced-a522-22da19b96f22.png)
 
 ## 领域与范围
 
@@ -27,7 +27,7 @@ tags: 安全架构
 
 格式上的字体选择，字号大小就不讨论了。一般首页指明规范的名称，编号，版本号，批准情况，历史记录等。页脚标注仅限内部使用，页眉放置编号及名称，同时加上水印，如果是国际化的企业，还需要准备多语言版本。下面是截图。
 
-![img](https://user-images.githubusercontent.com/12653147/202150833-1f8b8204-fb21-41f5-adc4-69369407c5d2.png)
+![img](https://img.iami.xyz/images/202150833-1f8b8204-fb21-41f5-adc4-69369407c5d2.png)
 
 一般内容来说会包含以下几点：
 * 概述和目的

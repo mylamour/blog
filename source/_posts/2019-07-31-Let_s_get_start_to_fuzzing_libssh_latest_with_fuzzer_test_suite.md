@@ -11,9 +11,9 @@ Now, let me show you how to modify and run it easily.
 
 1. `cd /root/FTS/libssh-2017-1272`
 2. `vim build.sh`
-![image](https://user-images.githubusercontent.com/12653147/62205063-25751180-b3c1-11e9-8811-6597116f9582.png)
+![image](https://img.iami.xyz/images/62205063-25751180-b3c1-11e9-8811-6597116f9582.png)
 3. `cd .. && ./libssh-2017-1272/build.sh`
 4. `./libssh-2017-1272-fsanitize_fuzzer`
-![image](https://user-images.githubusercontent.com/12653147/62205143-5d7c5480-b3c1-11e9-882a-a5503bd6d580.png)
+![image](https://img.iami.xyz/images/62205143-5d7c5480-b3c1-11e9-882a-a5503bd6d580.png)
 
 Best wish to you, good luck.  (may be you should modify `libssh_server_fuzzer.cc` by yourself.)

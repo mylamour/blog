@@ -15,7 +15,7 @@ tags: 安全架构
 
 老规矩，看图说话。 其实不难发现还是策略技术运营三块走，虽然是老一套了，但实际都具备的公司也不多。
 
-![image](https://user-images.githubusercontent.com/12653147/177453812-35cbccde-a78a-404c-a7ce-08a4cd88844a.png)
+![image](https://img.iami.xyz/images/177453812-35cbccde-a78a-404c-a7ce-08a4cd88844a.png)
 
 
 ## Object
@@ -37,7 +37,7 @@ tags: 安全架构
 
 # 0x02 架构与平台
 
-![image](https://user-images.githubusercontent.com/12653147/177459465-5c150ba8-fd50-4b3a-affa-06056ba4db41.png)
+![image](https://img.iami.xyz/images/177459465-5c150ba8-fd50-4b3a-affa-06056ba4db41.png)
 
 这里面
 1. 每个治理领域都需要策略，技术，运营做支撑

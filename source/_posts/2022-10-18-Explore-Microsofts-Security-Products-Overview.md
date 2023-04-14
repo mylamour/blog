@@ -14,7 +14,7 @@ tags: 安全产品
 
 > 首先要声明的是我之前并没有使用过微软的安全产品。因最近工作需要，对微软安全产品进行学习，因此文章部分可能存在谬误。至于每个产品的使用请参考具体文档。
 
-![MicrosoftProductOview](https://user-images.githubusercontent.com/12653147/196314165-04f2aaca-d61f-4d81-9da9-f4ad54bdf0c8.png)
+![MicrosoftProductOview](https://img.iami.xyz/images/196314165-04f2aaca-d61f-4d81-9da9-f4ad54bdf0c8.png)
 
 微软安全能力主要有安全产品、安全解决方案和安全服务三部分。这里仅介绍安全产品部分。一共是6个产品线，实际可以分为三大块。Defender和Sentinel构建了端和云以及云上应用的威胁检测及响应。Entra和Intune分别负责设备管理用户准入等身份管理和访问相关。Purview和Priva主要关注在合规和隐私方面，其中数据防泄漏和信息保护也都纳入了这两个产品之中。
 
@@ -40,7 +40,7 @@ tags: 安全产品
 * 云应用（发现应用，应用治理，活动记录）
 
 值得一提的有两部分，一是威胁模拟评估和钓鱼攻击模拟（我在此处将其归为一类），一是Advanced Hunting（这个中文译成搜寻真的是不够形象，下面缩写为AH）。钓鱼模拟能够很快的对选定用户组投放payload，并可以针对中招群体提供安全培训。AH默认支持警报、应用和标识、设备、威胁和漏洞管理进行搜索。内置了一定的Schema，Functions。例如对Device上的一些网络，文件，进程等Event进行查询，Email的Url，Attachment等。不过有时候感觉更像是一个高级版本的入侵检测工具。没有真正的Hunting功能。
-![advanced Hunting](https://user-images.githubusercontent.com/12653147/196439697-aaeae9f3-1baa-417c-ac06-a745113b46b7.png)
+![advanced Hunting](https://img.iami.xyz/images/196439697-aaeae9f3-1baa-417c-ac06-a745113b46b7.png)
 
 总体来说是一个基于数据驱动的产品，能够很好的展示资产信息，漏洞信息，目前的威胁状况。对于安装Defender而言，Windows好处是不需要额外动作，不过一些高级功能或者license仍需要手动激活。而对于其他平台可能没有那么顺滑。
 

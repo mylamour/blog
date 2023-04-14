@@ -9,7 +9,7 @@ tags: PKI 证书 数据安全
 
 SoftHSM is an implementation of a cryptographic store accessible through a PKCS #11 interface. It is being developed as a part of the OpenDNSSEC project. In this blog, i use softhsm to generate key pairs and use libp11 to make it was able to used by openssl. 
 
-![image](https://user-images.githubusercontent.com/12653147/102032240-332f0980-3df3-11eb-8363-d4639f197d49.png)
+![image](https://img.iami.xyz/images/102032240-332f0980-3df3-11eb-8363-d4639f197d49.png)
 
 In this case, we create two rsa keypairs in one softhsm slot, also you can let the issue ca to use another slot.
 
@@ -45,7 +45,7 @@ init = 696976398
 ```
 
 > **please change the init vaule with your own slot id**
-![image](https://user-images.githubusercontent.com/12653147/102035117-9b351e00-3dfa-11eb-9fbf-12c73ceadf17.png)
+![image](https://img.iami.xyz/images/102035117-9b351e00-3dfa-11eb-9fbf-12c73ceadf17.png)
 you can see the next section to learn how to init slot and show slot info.
 
 
@@ -625,7 +625,7 @@ done.
 ```
 it's enough to non-interactive usage. but fot some web browser, maybe you still need to trust it manually.  here is the example for firefox
 
-![image](https://user-images.githubusercontent.com/12653147/102035961-af7a1a80-3dfc-11eb-9ecd-6a0ac9c2faae.png)
+![image](https://img.iami.xyz/images/102035961-af7a1a80-3dfc-11eb-9ecd-6a0ac9c2faae.png)
 
 
 # 0x06 write test code
@@ -650,7 +650,7 @@ httpd.serve_forever()
 ```
 > in this case, i created a ssl certs for `www.example.com`. but i am not the owner of this domain, so  just modified `/etc/hosts` file, and add this line `127.0.0.1       www.example.com`
 
-![image](https://user-images.githubusercontent.com/12653147/102035726-1e0aa880-3dfc-11eb-89ca-77fd7a2bdfa1.png)
+![image](https://img.iami.xyz/images/102035726-1e0aa880-3dfc-11eb-89ca-77fd7a2bdfa1.png)
 
 
 # 0x07 Conclusion 

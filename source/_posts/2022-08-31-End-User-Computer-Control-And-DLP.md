@@ -8,7 +8,7 @@ tags: 安全架构
 
 # 终端安全治理
 
-![image](https://user-images.githubusercontent.com/12653147/187610583-acca64c5-105b-4893-b932-aa969c502093.png)
+![image](https://img.iami.xyz/images/187610583-acca64c5-105b-4893-b932-aa969c502093.png)
 
 终端安全简单将其分为两类，一类是安全主打的终端控制，一类是IT主打的设备管理。
 

@@ -47,8 +47,8 @@ tags: 安全运维 安全架构
   </tr>
   <tr>
     <td class="tg-baqh" colspan="2">部署示意图</td>
-    <td class="tg-baqh" colspan="2"><img src="https://user-images.githubusercontent.com/12653147/77225558-18ed3580-6bab-11ea-80c6-e2947e49fffd.png" alt="Image" width="496" height="296"></td>
-    <td class="tg-baqh" colspan="2"><img src="https://user-images.githubusercontent.com/12653147/77225559-1be82600-6bab-11ea-9b04-b3a4dd60bee4.png" width="641" height="240"></td>
+    <td class="tg-baqh" colspan="2"><img src="https://img.iami.xyz/images/77225558-18ed3580-6bab-11ea-80c6-e2947e49fffd.png" alt="Image" width="496" height="296"></td>
+    <td class="tg-baqh" colspan="2"><img src="https://img.iami.xyz/images/77225559-1be82600-6bab-11ea-9b04-b3a4dd60bee4.png" width="641" height="240"></td>
   </tr>
   <tr>
     <td class="tg-baqh" colspan="2">优点</td>

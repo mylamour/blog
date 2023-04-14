@@ -38,7 +38,7 @@ tags: Linux
 > 图画的有点丑，哈哈
 
 * -exec ls -l {} \;
-![img](../image/find-options.png)
+![img](https://img.iami.xyz/images/find-options.png)
 
 
 <font color="red"> 有用的例子</font>
@@ -49,7 +49,7 @@ tags: Linux
 $ find / -type f -exec grep -H 'text-to-find-here' {} \;
 $ grep -rnw '/path/to/somewhere/' -e "pattern"
 ```
-![img](../image/grep.png)
+![img](https://img.iami.xyz/images/grep.png)
 
 还有w是word-regexp,l是show filename not the result itself, grep其实没怎么讲，因为我都是常用的也就是-iroEn几个选项，其他的很少用，剩下的配合awk了
 

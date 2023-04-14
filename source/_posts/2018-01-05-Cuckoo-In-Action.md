@@ -30,7 +30,7 @@ webui用起来很简单,没有什么说的.
 
 * 路径介绍:
 > .cuckoo/storage/analyses 存储分析后的文件,按task id 存储,
-![2018-01-05 16-43-36](https://user-images.githubusercontent.com/12653147/34602426-a60bf966-f23a-11e7-9137-aabc50b4058f.png)
+![2018-01-05 16-43-36](https://img.iami.xyz/images/34602426-a60bf966-f23a-11e7-9137-aabc50b4058f.png)
 
 
 `report.json`是以json形式存储的报告内容,丢给Yara匹配即可,有cuckoo模块最好吧,个人感觉对webshell的检测,这种方式并不好,即便是针对其他检测,也是依靠自己带的一部分规则,不过沙箱本身就是靠自己来分析.

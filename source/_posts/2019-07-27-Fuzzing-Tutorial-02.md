@@ -35,16 +35,16 @@ gn gen out/Default                   # 生成ninja文件准备构建
 autoninja -C out/Default chrome  
 ```
 
-![image](https://user-images.githubusercontent.com/12653147/44777163-71657800-abac-11e8-8d0b-690e5bc0b0da.png)
-![image](https://user-images.githubusercontent.com/12653147/44777726-dff70580-abad-11e8-8c14-dc031bdb64e0.png)
+![image](https://img.iami.xyz/images/44777163-71657800-abac-11e8-8d0b-690e5bc0b0da.png)
+![image](https://img.iami.xyz/images/44777726-dff70580-abad-11e8-8c14-dc031bdb64e0.png)
 
 8核8G的机器，前面的基本上一秒编译一个，看来可能要9个小时后才能编译完。运气好的话
 
-![image](https://user-images.githubusercontent.com/12653147/44888428-c4057800-ad03-11e8-9494-1e1afa1e865a.png)
+![image](https://img.iami.xyz/images/44888428-c4057800-ad03-11e8-9494-1e1afa1e865a.png)
 
 编译结束,大小也变成了49G
 
-![image](https://user-images.githubusercontent.com/12653147/44888721-30cd4200-ad05-11e8-8b3e-b926f5db6d3d.png)
+![image](https://img.iami.xyz/images/44888721-30cd4200-ad05-11e8-8b3e-b926f5db6d3d.png)
 
 构建libfuzzer
 
@@ -52,12 +52,12 @@ autoninja -C out/Default chrome
  $ gn gen out/libfuzzer '--args=use_libfuzzer=true is_asan=true is_ubsan_security=true is_debug=false enable_nacl=false' --check
  $ ninja -C out/libfuzzer v8_json_parser_fuzzer
 ```
-![image](https://user-images.githubusercontent.com/12653147/44890311-4d20ad00-ad0c-11e8-8c50-8b0707517ab0.png)
+![image](https://img.iami.xyz/images/44890311-4d20ad00-ad0c-11e8-8c50-8b0707517ab0.png)
 
 ```
 $ ./out/libfuzzer/v8_json_parser_fuzzer ~/chromium/testcases/json_parser_corpus/ --dict=json.dict -jobs=6 -workers=6
 ```
-![image](https://user-images.githubusercontent.com/12653147/44891509-4e54d880-ad12-11e8-848d-5418dcbfb95c.png)
+![image](https://img.iami.xyz/images/44891509-4e54d880-ad12-11e8-848d-5418dcbfb95c.png)
 
 
 # ToDo

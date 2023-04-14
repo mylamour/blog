@@ -21,7 +21,7 @@ tags: k8s 安全运维 AWS
 
 奔向k8s的新架构如图所示，图由[visual paradigm](https://online.visual-paradigm.com/)(在线工具)绘制。至于为什么选择k8s，好处就不用多说了。文档很多。而且以目前这种操作，可以说落实推动了DevOps。假如开发也很了解k8s的话，可以直接控制自己的版本发布，配置自己的Configmap然后推送到相应的deployment或者暴露出Services。可以说是最好不过了，也是真正意义上的开发即运维。
 
-![default](https://user-images.githubusercontent.com/12653147/42153384-8a438f66-7e15-11e8-95a8-b0ef85c5e0e9.png)
+![default](https://img.iami.xyz/images/42153384-8a438f66-7e15-11e8-95a8-b0ef85c5e0e9.png)
 
 # 安装及配置k8s集群
 首先先把一个域名NS记录解析到AWS上，然后配置一个s3 存储桶用于存储kops启动过程中的状态。然后开始创建集群。

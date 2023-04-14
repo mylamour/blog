@@ -25,14 +25,14 @@ Here is the steps:
 * you can change the listening port, also you have to change the setting to export port from docker to host
 
 2.  access the website `https://127.0.0.1:8201`, and you will see the initialization page. input the numbers of `key share` and `key threshold`
-![image](https://user-images.githubusercontent.com/12653147/98922122-0e522880-250d-11eb-8de4-62ee11ed9832.png)
+![image](https://img.iami.xyz/images/98922122-0e522880-250d-11eb-8de4-62ee11ed9832.png)
 
 
 # 0x02 Prepared GPG Public Key
 1. generate the pgp key with `gpg --full-generate-key`
-![image](https://user-images.githubusercontent.com/12653147/98922890-f8913300-250d-11eb-97fb-f32aa972cc18.png)
+![image](https://img.iami.xyz/images/98922890-f8913300-250d-11eb-97fb-f32aa972cc18.png)
 
-![image](https://user-images.githubusercontent.com/12653147/98922494-79036400-250d-11eb-8c4a-54f187fd22b0.png)
+![image](https://img.iami.xyz/images/98922494-79036400-250d-11eb-8c4a-54f187fd22b0.png)
 
 2. you need make sure each Key Custodian has created their own `PGP` key, and share the public key to you.  for example, if you setting  3 key shares in the first step. you have to got 3 PGP keys. also another one for root token.
 
@@ -56,23 +56,23 @@ gpg --export 69D33CF252B5B177D67AC2728C8BF5945A111336 | base64
 
 As you can see, i create 3 pgp keys for testing.
 
-![image](https://user-images.githubusercontent.com/12653147/98923789-101ceb80-250f-11eb-9e03-b4a9ccc6f09f.png)
+![image](https://img.iami.xyz/images/98923789-101ceb80-250f-11eb-9e03-b4a9ccc6f09f.png)
 
 2.  enable text mode and put the 4 PGP public keys to the dashboard. which you got from the last step 
 
-![image](https://user-images.githubusercontent.com/12653147/98924045-5d00c200-250f-11eb-9a41-7ce2563a7467.png)
+![image](https://img.iami.xyz/images/98924045-5d00c200-250f-11eb-9a41-7ce2563a7467.png)
 
 3. Download the keys and tokens which was encrypted by PGP Keys
 
-![image](https://user-images.githubusercontent.com/12653147/98924279-9cc7a980-250f-11eb-8ee1-9256dcd55f43.png)
+![image](https://img.iami.xyz/images/98924279-9cc7a980-250f-11eb-8ee1-9256dcd55f43.png)
 
 Also you can click the button to show the cipher text.  but you can't get the real key without PGP private key.
 
-![image](https://user-images.githubusercontent.com/12653147/98924403-bc5ed200-250f-11eb-8991-e6a97f075d39.png)
+![image](https://img.iami.xyz/images/98924403-bc5ed200-250f-11eb-8991-e6a97f075d39.png)
 
 Due to you need share those keys to each Key Custodian , so the better way is to download it.
 
-![image](https://user-images.githubusercontent.com/12653147/98924565-edd79d80-250f-11eb-8ae4-b1eb5f0dc3b4.png)
+![image](https://img.iami.xyz/images/98924565-edd79d80-250f-11eb-8ae4-b1eb5f0dc3b4.png)
 
 # 0x004  Unseal it.
 1. Suppose all key custodian was get them keys. now you need to decrypt it and get the plaintext
@@ -81,13 +81,13 @@ Due to you need share those keys to each Key Custodian , so the better way is to
 echo xxxxxxxxxxxxx29a51e0dxxxxxxxxxxxxxxxxxxxxb48e7e5a83915a662989xxxxxxxxxxxxxxxxxxxx4077153525b0547841d52aab4dfab26f2e265f417f5e11c3a00 | xxd -r -p | gpg -d
 
 ```
-![image](https://user-images.githubusercontent.com/12653147/98926007-b8cc4a80-2511-11eb-90e7-a6fcdfe062e2.png)
+![image](https://img.iami.xyz/images/98926007-b8cc4a80-2511-11eb-90e7-a6fcdfe062e2.png)
 
 and put those key into dashboard
 
-![image](https://user-images.githubusercontent.com/12653147/98926382-342dfc00-2512-11eb-90b6-670f70d72ef4.png)
+![image](https://img.iami.xyz/images/98926382-342dfc00-2512-11eb-90b6-670f70d72ef4.png)
 
-![image](https://user-images.githubusercontent.com/12653147/98926894-d8b03e00-2512-11eb-89f3-557878ee9432.png)
+![image](https://img.iami.xyz/images/98926894-d8b03e00-2512-11eb-89f3-557878ee9432.png)
 
 
 # 0x004 Login into Vault
@@ -101,16 +101,16 @@ echo xxxxxxxxxx+xxxxxxxxxxxxxxxxxxxx++xxxxxxx | base64 -d | gpg -d
 **Notice**
 *  Note that the decryption operations on both sides are different.  you need to use `xxd -r -p | gpg -d` to decrypt key shares and use `base64 -d | gpg -d`  to decrypt root token.
 
-![image](https://user-images.githubusercontent.com/12653147/98927679-d00c3780-2513-11eb-9d2e-d5b170724e52.png)
+![image](https://img.iami.xyz/images/98927679-d00c3780-2513-11eb-9d2e-d5b170724e52.png)
 
-![image](https://user-images.githubusercontent.com/12653147/98928014-3729ec00-2514-11eb-9eb7-40c08562182f.png)
+![image](https://img.iami.xyz/images/98928014-3729ec00-2514-11eb-9eb7-40c08562182f.png)
 
-![image](https://user-images.githubusercontent.com/12653147/98927934-19f51d80-2514-11eb-9f87-7df2ee26ab65.png)
+![image](https://img.iami.xyz/images/98927934-19f51d80-2514-11eb-9f87-7df2ee26ab65.png)
 
 
 2. seal again
 
-![image](https://user-images.githubusercontent.com/12653147/98928149-6d676b80-2514-11eb-96aa-7010220c4240.png)
+![image](https://img.iami.xyz/images/98928149-6d676b80-2514-11eb-96aa-7010220c4240.png)
 
 # 0x005 Conclusion 
 

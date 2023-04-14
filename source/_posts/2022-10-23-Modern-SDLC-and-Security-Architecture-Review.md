@@ -14,7 +14,7 @@ tags: 安全架构
 
 在谈现代化的SDLC之前，我先来简单的说一下SDLC为什么是现在这个样子，这里我做了一个图。
 
-![sdlc01](https://user-images.githubusercontent.com/12653147/197389197-94db2c9f-6c70-4c0a-8e8d-ccc348a2d331.gif)
+![sdlc01](https://img.iami.xyz/images/197389197-94db2c9f-6c70-4c0a-8e8d-ccc348a2d331.gif)
 
 看图，应用经过了研发部署（R&D），在最初对系统提供的防护是在运行时的，这时候的安全能力（Security Capability）一般是提供防火墙、WAF、抗D等，这也是所谓的边界防御（Border Security）。而边界防御显然意味着在屏障被突破之后，内部没有任何的防护措施。那如果我们把Security Capability左移（Shift To Left；顺便补充个右移的概念，一般是指测试更希望在真实环境里进行故障注入等操作），为整个R&D覆盖安全能力，在每个阶段都提供一定的安全输出。因此也就从Border Security变成了Defense in Depth（当然此处只是应用视角的Defense in Depth）。
 
@@ -42,7 +42,7 @@ OK，假设我们的假设已经实现。我们来看下如何去建设现代化
 
 上一段讲了平台输出能力，提到的DevSecOps平台是关注在Architect Design之后Runtime之前，而Runtime之后基本上没有什么大的变动，往往会内置流量清洗的能力，从而达到对异常流量的检测和拦截以及人机验证等。那SDLC中还剩下架构设计和评审这一块，具体是如何通过平台化去提供能力。
 
-![SPLC](https://user-images.githubusercontent.com/12653147/197378430-ac3fd009-9bbd-48fc-8471-b7e8ec628aff.png)
+![SPLC](https://img.iami.xyz/images/197378430-ac3fd009-9bbd-48fc-8471-b7e8ec628aff.png)
 
 花了一下午画了这张图，顺着图讲几句。中间这个框里代表了对Modern SDLC平台的一个需求，主要分为两块，一块是Security Capability，一块是Enhancement。 
 

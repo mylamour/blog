@@ -12,11 +12,11 @@ tags: Openresty
 
 ## 安装
 
-![image](https://user-images.githubusercontent.com/12653147/64002257-2781db80-caf9-11e9-80e6-60e7124d0318.png)
+![image](https://img.iami.xyz/images/64002257-2781db80-caf9-11e9-80e6-60e7124d0318.png)
 
 1.编辑配置文件
 
-![image](https://user-images.githubusercontent.com/12653147/64002418-87788200-caf9-11e9-9c7d-ac60bcb4329f.png)
+![image](https://img.iami.xyz/images/64002418-87788200-caf9-11e9-9c7d-ac60bcb4329f.png)
 
 配置文件内容如下
 ```nginx
@@ -40,11 +40,11 @@ http {
 
 2.加入环境变量
 
-![image](https://user-images.githubusercontent.com/12653147/64002483-af67e580-caf9-11e9-9e1c-5ba1049e3f2f.png)
+![image](https://img.iami.xyz/images/64002483-af67e580-caf9-11e9-9e1c-5ba1049e3f2f.png)
 
 我这里是`source ~/.zshrc` ,依照自己的shell的配置文件即可
 
-![image](https://user-images.githubusercontent.com/12653147/64002707-361cc280-cafa-11e9-8c25-916998626a09.png)
+![image](https://img.iami.xyz/images/64002707-361cc280-cafa-11e9-8c25-916998626a09.png)
 
 
 3.让我们使用`http_load`来压测一下看看
@@ -58,12 +58,12 @@ echo http://127.0.0.1:4996 > url
 ./http_load -p 20 -s 5 url
 ```
 
-![image](https://user-images.githubusercontent.com/12653147/64003697-52216380-cafc-11e9-9361-b34f11a922a1.png)
+![image](https://img.iami.xyz/images/64003697-52216380-cafc-11e9-9361-b34f11a922a1.png)
 
 
 ## 示例一:  Openresty Log Response
 
-![image](https://user-images.githubusercontent.com/12653147/64093843-57272280-cd49-11e9-8d1d-b1b6bb3acac2.png)
+![image](https://img.iami.xyz/images/64093843-57272280-cd49-11e9-8d1d-b1b6bb3acac2.png)
 
 让我们看一下`conf/logresponse.conf`
 
@@ -105,7 +105,7 @@ http {
 ## 示例二: Openresty with redis
 
 
-![image](https://user-images.githubusercontent.com/12653147/64104220-5e5b2a00-cd63-11e9-9bdc-84aa9de647a0.png)
+![image](https://img.iami.xyz/images/64104220-5e5b2a00-cd63-11e9-9bdc-84aa9de647a0.png)
 
 
 
@@ -143,7 +143,7 @@ http {
 
 首先安装依赖`yum install lua-devel`， 然后`git clone https://github.com/cloudflare/lua-aho-corasick && make && make install`
 
-![image](https://user-images.githubusercontent.com/12653147/64106368-91072180-cd67-11e9-8618-5a93261c8471.png)
+![image](https://img.iami.xyz/images/64106368-91072180-cd67-11e9-8618-5a93261c8471.png)
 
 安装之后，进行文件配置，同时在lua脚本之中编写逻辑即可。
 
@@ -183,14 +183,14 @@ ngx.say("match result: ", r)
 
 ```
 
-![image](https://user-images.githubusercontent.com/12653147/64106991-ebed4880-cd68-11e9-90da-252a3d7c8ef0.png)
+![image](https://img.iami.xyz/images/64106991-ebed4880-cd68-11e9-90da-252a3d7c8ef0.png)
 
 > 告诉我看到这，你明白了Openresty还可以做什么吗？
 
 
 # 遇到的问题排查
 
-![image](https://user-images.githubusercontent.com/12653147/64088187-d3147100-cd2f-11e9-93a6-6e82a2b1d079.png)
+![image](https://img.iami.xyz/images/64088187-d3147100-cd2f-11e9-93a6-6e82a2b1d079.png)
 
 除了`content_by_lua_file` 还有以下这些：
 
@@ -212,7 +212,7 @@ location /lua {
 
 * 及时查看error的log，然后判断路径是不是正确。
 
-![image](https://user-images.githubusercontent.com/12653147/64088127-8fba0280-cd2f-11e9-8e4b-3ff9307d87b1.png)
+![image](https://img.iami.xyz/images/64088127-8fba0280-cd2f-11e9-8e4b-3ff9307d87b1.png)
 
 
 # Resources

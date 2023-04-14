@@ -16,13 +16,13 @@ tags: 安全架构
 
 如果从数据分类的角度出发看数据保护，那么除了对不同状态的数据设置对应的安全控制措施还需要去确保数据提供方/使用方确实遵守了安全控制。
 
-![data control](https://user-images.githubusercontent.com/12653147/185795167-9d6a69ae-8cc7-46de-856c-f0b3b2eefc1a.png)
+![data control](https://img.iami.xyz/images/185795167-9d6a69ae-8cc7-46de-856c-f0b3b2eefc1a.png)
 
 可以看到图中针对C1的数据是不允许存储，C2-C3的则要求使用基于HSM的密钥进行加密保护，同时针对C1-C4的数据在传输过程中都需要使用基于x509证书提供的TLS服务。而C5的数据则不做要求。同样在销毁过程中，针对存储介质是否复用，是否离开控制而提供了不同的处置措施。
 
 上述这些都是从数据本身出发的，而数据显然是存在静态和动态之间的转换过程。针对这些过程以及数据本身的控制，仍然需要相应的技术支撑。例如统一接入数据源，通过扫描数据对不同的数据进行分类，打标。统一访问权限控制等等。入的时候对文件提供额外的病毒扫描，出的时候提供统一的3rd file sharing工具，以及经过DLP等。至于集团内不同BU间的数据吐给风控或者需要做分析的一些部门/合作方时，可以适当使用隐私计算的一些措施，例如FL。
 
-![image](https://user-images.githubusercontent.com/12653147/182520933-dd09221b-fb69-4c96-b3a0-ec9bb719b03d.png)
+![image](https://img.iami.xyz/images/182520933-dd09221b-fb69-4c96-b3a0-ec9bb719b03d.png)
 
 除了上述之外，还有一些值得思考的点：
 
@@ -43,14 +43,14 @@ tags: 安全架构
 
 从第一节里不难看出，针对数据在静态，传输，流动中都大量使用了密码学相关的技术完成了安全控制。例如静态数据加密，根密钥的分量合成，加密即服务以及透明加解密等等。作为逻辑上的基本保障，完成对数据的保护。加密基础设施可以说是做数据安全的关键之一。针对这一块的能力建设，之前的博客已经总结过几次了。此处不再赘述。
 
-![image](https://user-images.githubusercontent.com/12653147/182515944-0b04bf5e-46dd-4346-bb59-cd0d70bbde2e.png)
+![image](https://img.iami.xyz/images/182515944-0b04bf5e-46dd-4346-bb59-cd0d70bbde2e.png)
 
 
 # 0x03. 身份认证及访问管理(Identify & Access Management)
 
 身份认证和访问管理意味着谁能通过认证，获得了什么样的身份/角色，对应的获得什么样的授权，因此可以访问到什么样的数据。在企业内部，一般通过HR系统(e.g. Workday)完成provision user，然后同步数据到目录服务(AAD, AD等)，接着通过IDP提供认证服务。与此同时Application(Service Provider)也需要完成接入IDP的配置。这样就形成了用户访问SP应用的时候，跳转至统一的登录界面完成认证(User/Pass+MFA, Cert + MFA, OTP) ，随后获得在相应系统内的权限。这里常用的协议有SAML，OIDC，Radius，LDAP等，当然如果可能尽量选用基于TLS的，例如LDAPS，RADSEC等，同样的OIDC尽量选择PKCE模式。
 
-![image](https://user-images.githubusercontent.com/12653147/182621923-e9bebaad-62a4-4de0-af0d-2ffd2e4b64e2.png)
+![image](https://img.iami.xyz/images/182621923-e9bebaad-62a4-4de0-af0d-2ffd2e4b64e2.png)
 
 不过这里吐槽下不同产品对SAML协议的实现(其实也不仅是SAML...)，真可谓一言难尽，导致出现了各种奇奇怪怪的配置。尤其是Fireye家的产品，同一个产品线的配置 有的时候attribute和value居然完全是相反的。例如在hx上配置的是admin="appliance.role.default", 在ETP上就变成了appliance.role.default="admin"。在用户手册都不能起作用的情况下，只能靠多次尝试才能解决问题。类似的还出现在SAAS服务的SSO集成过程中，有的支持配置，有的需要提交信息给到厂商完成配置，有的提供自定义界面，但不支持更改callback地址，然后callback地址是个内网的。
 

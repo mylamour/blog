@@ -16,7 +16,7 @@ generate Root CA like that:
 i➜  /tmp  ᐅ  mkcert -install
 ```
 (picture was take from it installed, that would be different from first time to install it)
-![Screenshot from 2020-03-21 09-16-19](https://user-images.githubusercontent.com/12653147/77216357-99f7ee80-6b11-11ea-8ef5-52805426482c.png)
+![Screenshot from 2020-03-21 09-16-19](https://img.iami.xyz/images/77216357-99f7ee80-6b11-11ea-8ef5-52805426482c.png)
 
 Also, you can find it in your local directory.
 
@@ -38,21 +38,21 @@ i➜  /tmp  ᐅ  mkcert -key-file 91sec.club.key -cert-file 91sec.club.crt docs.
 
 Now, upload your cert to remote server, and configure it by your cert.  `nginx -s reload`  
 
-![Screenshot from 2020-03-21 09-21-07](https://user-images.githubusercontent.com/12653147/77216441-476b0200-6b12-11ea-9035-dde130b80be0.png)
+![Screenshot from 2020-03-21 09-21-07](https://img.iami.xyz/images/77216441-476b0200-6b12-11ea-9035-dde130b80be0.png)
 
 #  open your browser & test and verify
 
 open your `chrome` browser, and access your website（In my scenario, i change my host point to my website)
 
-![Screenshot from 2020-03-06 15-52-07](https://user-images.githubusercontent.com/12653147/77216334-77fe6c00-6b11-11ea-9732-e6e5bade442e.png)
+![Screenshot from 2020-03-06 15-52-07](https://img.iami.xyz/images/77216334-77fe6c00-6b11-11ea-9732-e6e5bade442e.png)
 
 Attention please, **it's only worked for those computer which was installed by your root CA.**    and not
 
 
 If you want find where it is, please open your `chrome` and input `chrome://settings/certificates?search=cert` and click `authorities` tab.  (that would be different in another platform. for example, cert management in MacOS was manager by `keychain access`) 
 
-![Screenshot from 2020-03-21 09-14-09](https://user-images.githubusercontent.com/12653147/77216316-61f0ab80-6b11-11ea-95f6-9e203e0c43b6.png)
-![Screenshot from 2020-03-21 09-14-26](https://user-images.githubusercontent.com/12653147/77216315-5f8e5180-6b11-11ea-95da-a7df65830343.png)
+![Screenshot from 2020-03-21 09-14-09](https://img.iami.xyz/images/77216316-61f0ab80-6b11-11ea-95f6-9e203e0c43b6.png)
+![Screenshot from 2020-03-21 09-14-26](https://img.iami.xyz/images/77216315-5f8e5180-6b11-11ea-95da-a7df65830343.png)
 
 So, this is a  demo for you to learn CA part. if you want deep into it, you should know more about NSS, PKI, And so on.
 

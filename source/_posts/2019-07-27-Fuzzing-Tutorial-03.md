@@ -24,7 +24,7 @@ make
 ```shell
 ./configure --target-list="aarch64-softmmu,microblazeel-softmmu" --enable-fdt --disable-kvm --disable-xen 
 ```
-![image](https://user-images.githubusercontent.com/12653147/61783502-6edcc400-adf7-11e9-9c0f-ae032f7d1cbd.png)
+![image](https://img.iami.xyz/images/61783502-6edcc400-adf7-11e9-9c0f-ae032f7d1cbd.png)
 
 事实证明还是在Centos上比较容易搞定。
 
@@ -53,7 +53,7 @@ make
 ```
 此处本来尝试了采用afl-gcc和afl-g++去编译，但是没有成功。
 更改install的路径`vim Makefile`在大概919行的位置，更改目录为自己的。此处为
-![image](https://user-images.githubusercontent.com/12653147/61921831-00f6e080-af4e-11e9-80e1-3fd165101c0a.png)
+![image](https://img.iami.xyz/images/61921831-00f6e080-af4e-11e9-80e1-3fd165101c0a.png)
 然后运行`make install`
 就可以看到对应的文件已经在目录下了
 然后查看`ls /proc/kallsyms` 。这个文件包含了kernel image和动态加载模块的符号表。 如果没有该文件，可以通过下面命令开启:
@@ -65,7 +65,7 @@ make
 cp /proc/kallsyms  .
 cp arch/x86/boot/bzImage /home/ops/fuzz_learning/tools/kern
 ```
-![image](https://user-images.githubusercontent.com/12653147/61921855-1966fb00-af4e-11e9-9f6b-c79953f57de0.png)
+![image](https://img.iami.xyz/images/61921855-1966fb00-af4e-11e9-9f6b-c79953f57de0.png)
 
 由上图看内核编译就绪，接下来开始运行
 
@@ -74,7 +74,7 @@ make inputs
 ./runFuzz -M 10
 ```
 
-![image](https://user-images.githubusercontent.com/12653147/61921965-72cf2a00-af4e-11e9-8d68-0787e594111c.png)
+![image](https://img.iami.xyz/images/61921965-72cf2a00-af4e-11e9-8d68-0787e594111c.png)
 
 当然最重要的是，如果能看到Crash就好了...
 

@@ -27,10 +27,10 @@ done
 ```
 
 这一次测试出了有哪些空白页，没办法数据不是可用的，输出的都是这样的
-![img](../image/crawl/1.png)
+![img](https://img.iami.xyz/images/crawl/1.png)
 
 从图上就可以看出最小的是1026字节，于是乎稍加修改可以得到这样的结果，url全是验证过的具有内容的。
-![img1](../image/crawl/2.png)
+![img](https://img.iami.xyz/images/crawl/2.png)
 
 然后就可以简单的抓下来网页，顺便截个图。
 截图是用的phantomjs ,当时怕要是自己分析不好，先拿个一眼能看的数据备份一份下来。
@@ -76,8 +76,8 @@ done
 ```
 
 这里发现如果你是url新建的是url类型的文件夹，他会建连续一串嵌套的文件，针对这里抓到的截图文件
-![img3](../image/crawl/3.png)
+![img3](https://img.iami.xyz/images/crawl/3.png)
 其他的则是正常的
-![img4](../image/crawl/4.png)
+![img4](https://img.iami.xyz/images/crawl/4.png)
 
 其实呢，针对我这个地方的抓取，用R是更加的方便的，通过rvest包，可以很方便的将获取所有表格。虽然我并没有采取使用R的方法，一开始写的python脚本，也是循环get数据，但是并不如wget更好使。本来打算一次性放在这篇里面，但是有点累了，决定把另一半放到下一篇再写。另外抓这个的时候还是很兴奋的，一连搞了一天多。还有我的好朋友，谢谢你。

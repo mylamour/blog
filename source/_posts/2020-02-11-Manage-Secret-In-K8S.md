@@ -23,7 +23,7 @@ We avoid to deep into it. Because this blog should be focused on secret solution
 ### Architecture & WorkFlow
 Firstly, following the picture to have a overview of k8s architecture. 
 
-![Screenshot from 2020-02-11 14-51-48](https://user-images.githubusercontent.com/12653147/74216069-34c50800-4cde-11ea-844e-aeff136479cd.png)
+![Screenshot from 2020-02-11 14-51-48](https://img.iami.xyz/images/74216069-34c50800-4cde-11ea-844e-aeff136479cd.png)
 
 Classically, k8s was deployed as Master/Slave mode. every node can hold on different pod, but pod can't deployed over different pod. and every container was only single one process. In any node, there was three part on it. `Kube-Proxy`, `Kubelet`, And Container Runtime. Most time. it was Docker.
 
@@ -39,7 +39,7 @@ As for Secret. it can be a token, DB password,  HTTPS Cert and so on. At least, 
 
 when you build a application based on k8s.  Configuration was need divide  to two part. Plaintext with k8s `ConfigMap`, ciphertext with `Secret`.  Now we look at  the workflow.
 
-![Screenshot from 2020-02-11 14-56-23](https://user-images.githubusercontent.com/12653147/74216239-b61c9a80-4cde-11ea-9547-0bb58f2de4e3.png)
+![Screenshot from 2020-02-11 14-56-23](https://img.iami.xyz/images/74216239-b61c9a80-4cde-11ea-9547-0bb58f2de4e3.png)
 
 Controller can watch the state of any pods. Every change was deployed through those parts. 
 Master Node:  Deloyment Controller -> ReplicaSet Controller -> Scheduler Assign pod to Node 
@@ -74,7 +74,7 @@ For example: `kubectl port-forward vault-xxxxxx-xxxxxx 8200` to view vault dashb
 
 Vault is created by hashicorp, this company make lot of changes in devops. Such as vagrant, terraform, packer. I like it. So, let's talk about vault.
 
-![image](https://user-images.githubusercontent.com/12653147/74218569-5970ae00-4ce5-11ea-816c-2ad08751a2a7.png) (This image from vault docs)
+![image](https://img.iami.xyz/images/74218569-5970ae00-4ce5-11ea-816c-2ad08751a2a7.png) (This image from vault docs)
 
 In one word, all you need is  in here. PKI certificate, SSH certificate, Cross region, Cross Cloud, Cross Datacenter and so on. 
 
@@ -96,7 +96,7 @@ In advance, you can use ACME mode, but it's not necessary.
 
 ## aws  secret manager
 
-![image](https://user-images.githubusercontent.com/12653147/74219866-f84ad980-4ce8-11ea-87f1-f9aa58ad74cd.png)
+![image](https://img.iami.xyz/images/74219866-f84ad980-4ce8-11ea-87f1-f9aa58ad74cd.png)
 
 Due to it's not enough resources, also compared to vault. So i decide not to do this experiment. But in another side, we can found that was be used in [Godadday](https://github.com/godaddy/kubernetes-external-secrets)
 
@@ -105,7 +105,7 @@ Due to it's not enough resources, also compared to vault. So i decide not to do 
 It's design to encrypt your Secret into a SealedSecret, which is safe to store - **even to a public repository**. It's was mainly with two parts. Client side & Server side. After you install, you can encrypt it with local part, and decrypt with server part , also It's still a **controller** in k8s.
 
 Checkout this image
-![image](https://user-images.githubusercontent.com/12653147/74219612-457a7b80-4ce8-11ea-9c08-324d04cd7ea9.png)
+![image](https://img.iami.xyz/images/74219612-457a7b80-4ce8-11ea-9c08-324d04cd7ea9.png)
 
 # Secret In Actions
 
@@ -141,7 +141,7 @@ if you want sign it with other issuers, please must sure it was exists. for exam
 
 
 ## vault
-![vault-k8s-auth-workflow](https://user-images.githubusercontent.com/12653147/74220259-0f3dfb80-4cea-11ea-9c8b-2753d4116ad2.png)
+![vault-k8s-auth-workflow](https://img.iami.xyz/images/74220259-0f3dfb80-4cea-11ea-9c8b-2753d4116ad2.png)
 
 step 1: install vault with helm
 
@@ -156,10 +156,10 @@ Please check this [tutorial](https://learn.hashicorp.com/vault/identity-access-m
 * kubernets-vault (k8s vault controller)
 there was two different ways:
 
-![image](https://user-images.githubusercontent.com/12653147/74220910-cab35f80-4ceb-11ea-8b89-c35ee50ddb79.png)
+![image](https://img.iami.xyz/images/74220910-cab35f80-4ceb-11ea-8b89-c35ee50ddb79.png)
 Also i following this [Quick start](https://github.com/Boostport/kubernetes-vault/blob/master/deployments/quick-start/README.md) to learn it:
 
- ![Screenshot from 2020-02-02 14-00-46](https://user-images.githubusercontent.com/12653147/74220470-a86d1200-4cea-11ea-9533-21d346d81f63.png)
+ ![Screenshot from 2020-02-02 14-00-46](https://img.iami.xyz/images/74220470-a86d1200-4cea-11ea-9533-21d346d81f63.png)
 
 ## kubesal with k8s
 

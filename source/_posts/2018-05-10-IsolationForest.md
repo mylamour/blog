@@ -118,15 +118,15 @@ plt.show()
 
 
 
-![figure_2](https://user-images.githubusercontent.com/12653147/39852800-1a293516-5451-11e8-8263-b9d25296e619.png)
-![figure_1](https://user-images.githubusercontent.com/12653147/39852802-1cdf3648-5451-11e8-98de-a5ec017eeb44.png)
+![figure_2](https://img.iami.xyz/images/39852800-1a293516-5451-11e8-8263-b9d25296e619.png)
+![figure_1](https://img.iami.xyz/images/39852802-1cdf3648-5451-11e8-98de-a5ec017eeb44.png)
 
 
 对于这种标签明确的，显然效果并不是那么好,只有90%的正确率，xgb的表现都已经99%以上了，但是在测试集上的效果也不是很理想。虽然有人说是和测试集的时间分布有关，但是我认为订单的每笔都应该是独立特征，和时间分布无关。前几天VSRC上来自京东的寿大佬分享的反刷单实践中也是这么操作的。我们先load进来的之前的xgb模型进行预测并可视化的可以看到。
 
 
-![figure_1-1](https://user-images.githubusercontent.com/12653147/39853097-be2446a0-5452-11e8-9fad-6b1ebe81e512.png)
-![figure_2-1](https://user-images.githubusercontent.com/12653147/39853098-bfeb1798-5452-11e8-82eb-3ae70795cc2d.png)
+![figure_1-1](https://img.iami.xyz/images/39853097-be2446a0-5452-11e8-9fad-6b1ebe81e512.png)
+![figure_2-1](https://img.iami.xyz/images/39853098-bfeb1798-5452-11e8-82eb-3ae70795cc2d.png)
 
 这里可以看到的是normal被检测的比较准，但是对danger的预测效果够差的。怪不得排名掉到了`40/201`了。如何调优才是关键,How, How???
 

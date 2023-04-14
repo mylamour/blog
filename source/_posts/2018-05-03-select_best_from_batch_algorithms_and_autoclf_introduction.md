@@ -244,7 +244,7 @@ def isave_predict_data(data_id,predict,filename):
 
 ps: 1332 人参赛，目前居然只有36人提交结果。大佬都是在后面提交的啊。自己还是真的菜。不过让我想不明白的是，这个比赛每天只启动一次系统测评，不像之前的腾讯广告回流的那个，每次提交都会即时评测，可以方便调优，但这个又不是，搞不懂。不过我已经有了新的思路去做这个了。关键点不一定是那些个-1的标签，但一定是个突破点。
 
-![screenshot from 2018-05-03 23-58-02](https://user-images.githubusercontent.com/12653147/39588187-df04c13a-4f2d-11e8-8046-695c8134d10b.png)
+![screenshot from 2018-05-03 23-58-02](https://img.iami.xyz/images/39588187-df04c13a-4f2d-11e8-8046-695c8134d10b.png)
 
 
  # Resources

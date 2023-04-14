@@ -22,14 +22,14 @@ tags: 安全运营 业务安全
 
 # 设计及验证
 
-![image](https://user-images.githubusercontent.com/12653147/43710367-056d7a10-99a2-11e8-8171-7772585ec438.png)
+![image](https://img.iami.xyz/images/43710367-056d7a10-99a2-11e8-8171-7772585ec438.png)
 
 POC验证,（请无视字段。。。。），当然前提是前端也要做好反调试和加密。
 
-![image](https://user-images.githubusercontent.com/12653147/43710903-9e83148e-99a3-11e8-9713-9dc6ce5ae0c6.png)
+![image](https://img.iami.xyz/images/43710903-9e83148e-99a3-11e8-9713-9dc6ce5ae0c6.png)
 
 
-![image](https://user-images.githubusercontent.com/12653147/43710859-74e025ea-99a3-11e8-9e71-6878a439735c.png)
+![image](https://img.iami.xyz/images/43710859-74e025ea-99a3-11e8-9e71-6878a439735c.png)
 
 前后端接入之后，但依旧不能完全的阻止攻击，在攻击者花费一定时间之后还是有可能被攻破的。那么如何在后面的阶段检测到脚本作弊，则需要对用户行为进行分析。
 
@@ -73,5 +73,5 @@ monitorEvents(document.body.querySelectorAll('input')); // lo
 * [Log all events fired by an element in jquery](https://stackoverflow.com/questions/7439570/how-do-you-log-all-events-fired-by-an-element-in-jquery)
 ele面试时key提供了一个很不错的方法，`记录击键的时间戳`.我本来是记录的数据量有点大了
 
-<!-- ![image](https://user-images.githubusercontent.com/12653147/54924594-b2a5e680-4f47-11e9-8827-ba8245245ca2.png) -->
+<!-- ![image](https://img.iami.xyz/images/54924594-b2a5e680-4f47-11e9-8827-ba8245245ca2.png) -->
 

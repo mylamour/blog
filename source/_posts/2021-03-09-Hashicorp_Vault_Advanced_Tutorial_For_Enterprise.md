@@ -30,7 +30,7 @@ It supported use HSM for the crypto part, and MFA for operation part.
 
 * ADVANCED DATA PROTECTION
 it supported Application to use KMIP in more Scenario.
-![image](https://user-images.githubusercontent.com/12653147/110409935-083b1580-80c3-11eb-85ca-93dd3ccdfcaa.png)
+![image](https://img.iami.xyz/images/110409935-083b1580-80c3-11eb-85ca-93dd3ccdfcaa.png)
 (image from [ThalesGroup](https://dis-blog.thalesgroup.com/security/2019/02/11/what-is-the-key-management-interoperability-protocol-kmip-the-benefit-of-a-kmip-compliant-key-manager/))
 
 # 0x02 Best Practice
@@ -88,7 +88,7 @@ Dynamic secret  is necessary for the key point. and I just give two scenario.  t
 ## Encryption As a Service
 Transit engine was included generally ,  even for open source version. and we can enable different transit engine for different services , also it was able to store & rotate the transit key.  and it support version management for the key.  in general,  application can get the ciphertext after send the plaintext to the transit engine. then can store it to anywhere.  here is a simple explanation from Hashicorp learning center. 
 
-![image](https://user-images.githubusercontent.com/12653147/110428807-ddfa4f80-80e4-11eb-9d2e-d7ed2ba5d26e.png)
+![image](https://img.iami.xyz/images/110428807-ddfa4f80-80e4-11eb-9d2e-d7ed2ba5d26e.png)
 
 ## PKI Services 
 we can use PKI Engine to build a  PKI Service simply , and it only have basic function , so I will not intro it here. if you want know to build a Internal CA, you need to use a more professional product, e.g. EJCBA.  

@@ -15,7 +15,7 @@ tags: 安全架构
 
 # 0x01 从企业架构谈起
 
-![image](https://user-images.githubusercontent.com/12653147/120158690-fd59d200-c226-11eb-9166-79f08063e497.png)
+![image](https://img.iami.xyz/images/120158690-fd59d200-c226-11eb-9166-79f08063e497.png)
 
 我准备先从企业架构谈起，了解企业虽然不是做安全的开始，但却决定了做到什么程度。
 
@@ -30,18 +30,18 @@ tags: 安全架构
 
 # 0x02 再看安全架构
 
-![image](https://user-images.githubusercontent.com/12653147/120158828-20848180-c227-11eb-9fdc-b2ae48efb43d.png)
+![image](https://img.iami.xyz/images/120158828-20848180-c227-11eb-9fdc-b2ae48efb43d.png)
 * 驱动企业针对安全作出改变的有以下几个方面： 合规，公共安全，商誉，金融安全。对于企业来说，业务直接面临的就是来自监管合规方面的压力，以及内部的风险管理的压力。从业务驱动着IT作出变化，从而影响业务也发生改变。在政策和合规上，显而易见的决定了业务形态。
 * 此处将IT架构中的安全治理简单分为三层，分别是基础安全，应用安全，数据安全。但同时需要注意办公网的业务系统不一定部署在Office，DC内部也不一定仅是生产(site)业务,在远程办公的情况下，可能还会不部署办公网（Corp）业务。
 * CIS在Infrastructure层面提供了最为精准的Control Set。 ISMS是ISO27001中的一部分提供了信息安全管理的指导框架。
 * 类似日志和监控这种基础运维层面的东西，还真不一定是安全团队在leader，当然也不仅限于基础安全，应用也需要记录日志并做监控，这是通用的需求。类似的还有审计，账户管理，认证集成。
 
-![image](https://user-images.githubusercontent.com/12653147/120158876-2da17080-c227-11eb-8933-ec103482587f.png)
+![image](https://img.iami.xyz/images/120158876-2da17080-c227-11eb-8933-ec103482587f.png)
 * 从纵向看一个应用的落地过程，业务拆分进行拆分，可以从处理顺序做，也可以从业务类型去做应用设计。设计完成后的应用，采用某种系统架构，此处指的是具体采用的具体组件，例如Nginx，Tomcat，lvs，网关等等，此后根据系统架构，申请对应的VM直接部署到对应的数据中心里去。当然云化后的部署方式又会流畅不少。
 * 系统架构中的一些TAL，CAL，CAS，DAL在大部分企业里应该是不具备的.....
 * 安全运营，安全管理，安全技术是做安全的三个方面，我们需要能够提供相应的策略，标准，以及指南，标准操作流程给到外部。在这个过程中，应该能够实现一定的自动化。尤其是在运营过程。
 
-![image](https://user-images.githubusercontent.com/12653147/120158929-3abe5f80-c227-11eb-99ee-d501e230659e.png)
+![image](https://img.iami.xyz/images/120158929-3abe5f80-c227-11eb-99ee-d501e230659e.png)
 
 这里提供了TOGAF中针对架构处理的一个指南，具体可以参考TOGAF的框架详情。
 * 确定范围，明确目标。经过一系列的输入和步骤得到相应的输出。
@@ -54,7 +54,7 @@ tags: 安全架构
 
 # 0x03 协作与组织架构
 
-![image](https://user-images.githubusercontent.com/12653147/120159151-7527fc80-c227-11eb-9831-b35d43d71d0d.png)
+![image](https://img.iami.xyz/images/120159151-7527fc80-c227-11eb-9831-b35d43d71d0d.png)
 
 并不全，之前在本地生活和阿里集团安全之间的经历以及目前在China 和Global之间的交互不尽相同。
 
@@ -82,7 +82,7 @@ tags: 安全架构
 <!-- 
 
 # 私有云建设过程中的安全架构
-https://user-images.githubusercontent.com/12653147/119325495-80bd7580-bcb3-11eb-9e73-f7acf4ea1216.png
+https://img.iami.xyz/images/119325495-80bd7580-bcb3-11eb-9e73-f7acf4ea1216.png
 这张图上的内容应该是比较容易去帮助理解不同Layer之间的区别，但对于一些产品在IAAS和PAAS中的定义其实是相对的，例如DB可以是PAAS的部分，也可以是SAAS的，当然对于金融企业来说，一般要求是On-Prem的。另外除去合规，私有云也可以搭建在公有云基础设施。这里的IAAS，PAAS，公私有均是以其业务性质定义的。在下面的文章中我将会针对不同Service Layer中的安全场景进行一些介绍。
 或者改成举两个例子，一个是基础安全应用安全数据安全在IAAS，一个是数据安全在IAAS，PAAS，SAAS
 ## IAAS视角

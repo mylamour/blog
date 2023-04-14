@@ -77,7 +77,7 @@ PS：突然发现上面有歧义，以上的一级引用意指这句话可不可
 * 我实在不明白为什么有的人什么都不会又tm不想提高自己，不愿意接触不会的知识。
 > 想有什么用(海知时杨老师给我讲的，鉴于杨老师的特质，时刻提醒自己)
 
-![img](../image/caodandefenxiang.png)
+![img](https://img.iami.xyz/images/caodandefenxiang.png)
 
 * 现在看来我们实验室出来的，水平都还是可以的，
 

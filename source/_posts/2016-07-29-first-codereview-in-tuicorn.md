@@ -8,15 +8,15 @@ tags: 实习笔记
 
 
 
-![img1](../image/fc-first/fc-01.JPG)
-![img2](../image/fc-first/fc-02.JPG)
-![img](../image/fc-first/fc-03.JPG)
-![img](../image/fc-first/fc-04.JPG)
-![img](../image/fc-first/fc-05.JPG)
-![img](../image/fc-first/fc-06.JPG)
-![img](../image/fc-first/fc-07.JPG)
-![img](../image/fc-first/fc-08.JPG)
-![img](../image/fc-first/fc-09.JPG)
+![img](https://img.iami.xyz/images/fc-first/fc-01.JPG)
+![img](https://img.iami.xyz/images/fc-first/fc-02.JPG)
+![img](https://img.iami.xyz/images/fc-first/fc-03.JPG)
+![img](https://img.iami.xyz/images/fc-first/fc-04.JPG)
+![img](https://img.iami.xyz/images/fc-first/fc-05.JPG)
+![img](https://img.iami.xyz/images/fc-first/fc-06.JPG)
+![img](https://img.iami.xyz/images/fc-first/fc-07.JPG)
+![img](https://img.iami.xyz/images/fc-first/fc-08.JPG)
+![img](https://img.iami.xyz/images/fc-first/fc-09.JPG)
 
 
 <font color="green">当时还临时让解释了cookie和session的不同，还临时让讲了下为什么把css放上面，js放下面，dom树的渲染步骤等乱七八糟的。</font>
@@ -24,4 +24,4 @@ tags: 实习笔记
 
 
 #### Resources
-[Little PPT](../image/fc-first/firstime.pptx)
+[Little PPT](https://img.iami.xyz/images/fc-first/firstime.pptx)
