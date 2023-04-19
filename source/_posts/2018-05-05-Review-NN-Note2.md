@@ -1,8 +1,8 @@
 ---
 layout: post
 title: 机器学习笔记整理
-categories: 学习数据挖掘的路上
-tags: 机器学习
+categories: 安全工程师
+tags: AI与机器学习
 ---
 
 整理自Bitbucket中机器学习笔记和手抄本

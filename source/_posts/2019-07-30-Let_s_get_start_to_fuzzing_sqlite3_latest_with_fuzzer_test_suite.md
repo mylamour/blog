@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Let's get start to fuzzing sqlite3 latest with fuzzer-test-suite
+title: Fuzzing学习笔记：fuzzing sqlite3 latest with fuzzer-test-suite
 categories: 安全工程师
 kerywords: Fuzzing fuzzer-test-suite sqlite3
-tags: Fuzzing
+tags: Fuzzing 旧文迁移
 ---
 
 In this blog, all you need is only `https://github.com/google/fuzzer-test-suite/` .

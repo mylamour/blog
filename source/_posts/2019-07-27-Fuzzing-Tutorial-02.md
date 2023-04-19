@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Chromium Fuzzing with libfuzzer
+title: Fuzzing学习笔记：libfuzzer与Chromium
 categories: 安全工程师
 kerywords: Fuzzing tutorial 
-tags: Fuzzing
+tags: Fuzzing 旧文迁移
 ---
 
 接上篇，当然依旧是整理自[gist](https://gist.github.com/mylamour/640622641ee39edf3701544a4303cb2e)。

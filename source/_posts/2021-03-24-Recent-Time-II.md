@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 致虚极守静笃
+title: 致虚极，守静笃
 categories: HowTo
 kerywords: 生活总结
 tags: 漫漫人生路 

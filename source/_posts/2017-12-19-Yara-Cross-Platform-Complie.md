@@ -3,7 +3,7 @@ layout: post
 title:  Yara模块编写与gyp的跨平台编译
 categories: 安全工程师
 kerywords:  Yara 安全研发
-tags: 安全研发 Yara
+tags: 入侵检测与反入侵 工具 安全研发
 ---
 
 ## 前言

@@ -3,7 +3,7 @@ layout: post
 title: Hashicorp Vault Advanced Tutorial For Enterprise
 categories: 安全工程师
 kerywords: Hashicorp Vault Enterprise
-tags: Vault 安全架构 数据安全
+tags: 工具 安全架构 数据安全
 ---
 
 In this tutorial, I'd like to share something on the principles how to design the architecture for Hashicorp Vault. Not only Infrastructure , but also Crypto and Operation. but I won't show the configuration command. and you can find those in Hashicorp Vault Homepage basically.

@@ -1,10 +1,9 @@
 ---
 layout: post
-title: Crawl From QiChaCha
-categories: 安全工程师
-tags: 抓取数据
+title: 小小爬虫学习中(五)
+categories: 一个实习生
+tags: 爬虫与反爬虫
 ---
-### 企查查相关
 
 来这里的第一份小任务是获取自动登录企查查后的cookie,本来是打算
 
@@ -67,7 +66,7 @@ request(options, function (error, response, body) {
 
 不过可以从这里面看出来一个东西，就是模拟微信只需要在`user-Agent`里面加上`MicroMessenger` 
 
-![User-agent](../image/user-Agent.jpg)
+![User-agent](https://img.iami.xyz/images/user-Agent.jpg)
 
 其实呢，你可以看到，里面之所以加了不同的浏览器版本，其实就是为了兼容(图片来自第一次在这里的技术分享%>_<%)。
 

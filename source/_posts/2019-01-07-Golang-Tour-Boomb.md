@@ -1,9 +1,9 @@
 ---
 layout: post
 title: golang也要耍一耍
-categories: 全栈工程师
+categories: 安全工程师
 kerywords: golang 教程  golang tour burpforce demo project
-tags: Golang 安全研发
+tags: 安全研发
 ---
 
 # 前言

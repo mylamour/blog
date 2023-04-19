@@ -1,9 +1,9 @@
 ---
 layout: post
 title: 浅谈隐私计算与数据安全
-categories: 安全工程师
+categories: 安全架构师
 kerywords: 数据安全 隐私计算 安全多方计算 不经意传输 混淆电路 秘密分享 同态加密 差分隐私
-tags: 安全架构
+tags: 安全架构 数据安全
 ---
 
 # 0x00 前言

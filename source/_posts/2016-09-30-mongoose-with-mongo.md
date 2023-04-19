@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Mongooser Should Know ? 
-categories: 全栈工程师
-tags: 实习笔记
+categories: 一个实习生
+tags: 实习笔记 全栈 Mongo
 ---
 
 

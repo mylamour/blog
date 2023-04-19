@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Not Only To Build Your Own Github Pages
-categories: 全栈工程师
+title: 使用github pages搭建静态网站
+categories: 一个小学生
 kerywords: Jekyll Markdown Github_Pages
-tags: 知识回顾
+tags: 网站搭建 Markdown 旧文迁移
 ---
 
 # 快速构造一个Github Pages

@@ -3,7 +3,7 @@ layout: post
 title: Cuckoo需要注意的坑
 categories: 安全工程师
 kerywords: Cuckoo 沙箱 Webshell检测 动态检测
-tags: Cuckoo 安全研发
+tags: 入侵检测与反入侵 工具
 ---
 ### 安装
 > 坑挺多的,安装和使用都不好搞,把踩的坑暂记于此.

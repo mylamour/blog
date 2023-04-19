@@ -3,7 +3,7 @@ layout: post
 title: 谈谈安全设计中的纵深防御
 categories: 安全架构师
 kerywords: 安全架构 企业安全 安全设计 纵深防御 微服务安全 服务平面 Defense In Depth 设计理念
-tags: 安全架构
+tags: 安全架构 基础安全
 ---
 
 # 0x01 前言

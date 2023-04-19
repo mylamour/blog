@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Text Summarization 
-categories: 学习数据挖掘的路上
+title: 文本摘要（Text Summarization）
+categories: 安全工程师
 keywords: Extraction Summariztation, FastText, PageRank, Rouge, NLP
-tags: NLP 机器学习 深度学习
+tags: AI与机器学习 学习数据挖掘
 ---
 
 # 前言

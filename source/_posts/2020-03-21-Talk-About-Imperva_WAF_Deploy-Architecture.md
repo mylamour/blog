@@ -3,7 +3,7 @@ layout: post
 title: 浅谈Imperva WAF 的部署方案
 categories: 安全工程师
 kerywords: Imperva WAF 架构设计
-tags: 安全运维 安全架构 
+tags: 安全运维 安全架构 旧文迁移
 ---
 
 

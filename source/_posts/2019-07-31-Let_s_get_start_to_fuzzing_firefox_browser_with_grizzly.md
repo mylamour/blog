@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Let's get start to fuzzing firefox browser with grizzly
+title: Fuzzing学习笔记：fuzzing firefox browser with grizzly
 categories: 安全工程师
 kerywords: Fuzzing grizzly
-tags: Fuzzing
+tags: Fuzzing 旧文迁移
 ---
 
 [grizzly](https://github.com/MozillaSecurity/grizzly/) is cross platform browser fuzzing framework, when we read the introduction.  it was developed by Mozilla Security. In this blog, i will show you how to use it to start browser fuzzing. This tutorial was running on my `windows` computer

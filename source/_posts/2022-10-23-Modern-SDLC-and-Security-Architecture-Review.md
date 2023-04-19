@@ -3,7 +3,7 @@ layout: post
 title: 现代化SDLC与架构评审
 categories: 安全架构师
 kerywords: 应用安全 SDLC 安全架构 架构评审 安全治理 架构建设
-tags: 安全架构
+tags: 安全架构 应用安全
 ---
 
 # 0x01 前言

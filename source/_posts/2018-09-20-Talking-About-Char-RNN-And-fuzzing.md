@@ -3,7 +3,7 @@ layout: post
 title: fuzzing随机性与char-rnn样本生成
 categories: 安全工程师
 kerywords: 模糊测试，机器学习，fuzzing，char-rnn
-tags: 机器学习 Fuzzing
+tags: AI与机器学习 Fuzzing
 ---
 
 
@@ -26,7 +26,7 @@ Fuzzing的原理很简单，就是生成随机数据丢给被测试系统，得�
 
 从下图可以看出来，RNN的输出关系可以使一对一，一对多，多对一，多对多等等。
 
-![image](../image/mldl/rnn.jpeg)
+![image](https://img.iami.xyz/images/mldl/rnn.jpeg)
 
 文本的生成是一个序列，而参与训练的也是一个序列，所以看成是一个多对多的训练过程。一段文本作为序列丢进神经网络, 独热编码处理成向量后丢给RNN单元，进行训练。其实是生成的前一个字符，作为下个字符输出的输入。
 

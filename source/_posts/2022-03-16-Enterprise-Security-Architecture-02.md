@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 再谈安全架构《二》
-categories: 安全工程师
+categories: 安全架构师
 kerywords: 应用架构 安全架构 数据安全 企业安全架构 架构设计 业务驱动
 tags: 安全架构
 ---

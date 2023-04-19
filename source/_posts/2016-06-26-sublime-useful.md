@@ -1,11 +1,11 @@
 ---
 layout: post
-title: sublime 快捷键以及其他
-categories: 小技巧
+title: sublime快捷键以及其他
+categories: 一个小学生
 kerywords: Sublime shortcut
-tags: Sublime
+tags: Sublime 旧文迁移 小技巧 工具
 ---
-### sublime使用
+# 快捷键
 
 * Ctrl+K+B：开关侧栏
 * Ctrl+Shift+P：打开命令面板
@@ -46,7 +46,7 @@ tags: Sublime
 * 按Ctrl+Shift+上下键，可替换行 
 
 
-### Other 
+# 其他 
 
 * Sublime版本升级之后，Online Markdonw Preview不能使用的解决办法
 
@@ -54,11 +54,10 @@ tags: Sublime
 
 * Sublime自动保存只需要配置文件中添加"save_on_focus_lost": true
 
-### Resources
+# 资源
 
-[sublime 配置 Nodejs ](https://github.com/tanepiper/SublimeText-Nodejs)
+* [sublime 配置 Nodejs ](https://github.com/tanepiper/SublimeText-Nodejs)
 
-[sublime markdown 插件](http://macplay.leanote.com/post/%E8%BF%91%E4%B9%8E%E5%AE%8C%E7%BE%8E%E7%9A%84-Markdown-%E5%86%99%E4%BD%9C%E4%BD%93%E9%AA%8C-Sublime-Text-3-OmniMarkupPreviewer)
+* [sublime markdown 插件](http://macplay.leanote.com/post/%E8%BF%91%E4%B9%8E%E5%AE%8C%E7%BE%8E%E7%9A%84-Markdown-%E5%86%99%E4%BD%9C%E4%BD%93%E9%AA%8C-Sublime-Text-3-OmniMarkupPreviewer)
 
-[sublime zencodeing 插件](http://frontenddev.org/article/sublime-does-text-3-plug-in-emmet-original-zencoding.html)
-
+* [sublime zencodeing 插件](http://frontenddev.org/article/sublime-does-text-3-plug-in-emmet-original-zencoding.html)

@@ -1,9 +1,9 @@
 ---
 layout: post
-title: GIL And Python Parallel Programing (I)
-categories: 全栈工程师 
+title: GIL和Python并行编程（一）
+categories: 安全工程师 
 keywords: GIL, mutliprocessing, threading, python, parallerl programing
-tags: Python
+tags: 安全研发
 ---
 
 

@@ -1,9 +1,9 @@
 ---
 layout: post
-title: sklearn和特征工程
-categories: 学习数据挖掘的路上
+title: Sklearn和特征工程
+categories: 安全工程师
 kerywords: 机器学习 Sklearn 特征工程
-tags: 机器学习
+tags: AI与机器学习 学习数据挖掘
 ---
 
 ipynb文件在我的gist[点这里](https://gist.github.com/mylamour/b1700c0b22253dac66498fe4d01fa727)，等到后期整理下，把`bitbucket`上我的机器学习笔记迁移过来, 本篇是 https://www.cnblogs.com/jasonfreak/p/5448385.html 的学习笔记

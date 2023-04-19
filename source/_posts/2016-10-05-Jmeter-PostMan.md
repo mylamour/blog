@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Jmeter And PostMan 
-categories: 全栈工程师
-tags: 知识回顾
+title: Jmeter & PostMan 
+categories: 一个实习生
+tags: 实习笔记 全栈 工具
 ---
 ## 题记
 学技术的时候没空，有空的时间不想写。也算是明白别人长期写一份博客是多么的有毅力。
@@ -17,27 +17,27 @@ awk '{printf "%s %s \n","groupName",$1}' filename.txt > testGroup.txt 增加一�
 
 * Postman
 
-> ![postman_1](../image/apiTest/Postman_1.jpg)
-![postman_2](../image/apiTest/Postman_2.jpg)
+> ![postman_1](https://img.iami.xyz/images/apiTest/Postman_1.jpg)
+![postman_2](https://img.iami.xyz/images/apiTest/Postman_2.jpg)
 
 
 
 * Jmeter
 
-> ![Jmeter_1](../image/apiTest/Jmeter_1.jpg)
-![Jmeter_2](../image/apiTest/Jmeter_2.jpg)
+> ![Jmeter_1](https://img.iami.xyz/images/apiTest/Jmeter_1.jpg)
+![Jmeter_2](https://img.iami.xyz/images/apiTest/Jmeter_2.jpg)
 
 
 
 * Web Test(本图来自网络，忘了是谁制作的了，谢谢。)
 
-> ![WebTest](../image/apiTest/web_test.jpg)
+> ![WebTest](https://img.iami.xyz/images/apiTest/web_test.jpg)
 
 
 
 
 
-### 后记
+## 后记
 有时间补一章专门讲测试用例自动化生成。哦，对了，那个Jmeter脚本还可以用<font color="green">Badboy</font>录制自动导出。不过有时候效果并不太好，尤其是进行大批量图片上传的压力测试。哦，还有记得用<font color="green">Spotlight</font>进行服务器端的监控，这样就可以得到CPU/NET/IO/DISK/MEM等服务器上的一些关键信息，进行判断并预测真实负载。
 
 ### 其他补充

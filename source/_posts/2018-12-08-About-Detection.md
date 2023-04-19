@@ -3,7 +3,7 @@ layout: post
 title: 计算机威胁检测综述
 categories: 安全工程师
 kerywords: 机器学习 入侵检测 Webshell检测 恶意病毒软件检测 Malware Detection APT检测 威胁检测
-tags: 威胁检测
+tags: 入侵检测与反入侵 安全运营
 ---
 
 # 前言

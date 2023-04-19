@@ -3,7 +3,7 @@ layout: post
 title: 商业设备的使用心得
 categories: 安全工程师
 kerywords: 企业安全 互联网企业安全 数据安全
-tags: 安全运维
+tags: 安全运维 安全架构
 ---
 
 # 前言

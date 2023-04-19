@@ -3,7 +3,7 @@ layout: post
 title: 敏捷开发流程与跨团队沟通
 categories: HowTo
 kerywords: 项目管理 跨团队沟通 敏捷开发
-tags: 项目管理 安全运营 漫漫人生路
+tags: 漫漫人生路
 ---
 
 # 前言

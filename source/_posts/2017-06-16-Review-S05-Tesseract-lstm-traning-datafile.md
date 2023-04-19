@@ -1,15 +1,14 @@
 ---
 layout: post
-title: OCR和用Tesseract训练chi_sim.traineddata
-categories: OCR
+title: Tesseract训练chi_sim.traineddata实现中文OCR
+categories: 一个小学生
 keywords: Tesseract OCR Docker
-tags: Tesseract
+tags: 工具 学习数据挖掘
 ---
 
-#### 前言:Tesseract
 Tesseract 最新的版本4.0版本，新增了lstm训练方式。当时做毕设时经过一系列的其他挫折，刚好发现这个可以使用在嵌入式开发板上，因此去学习并使用了一下。
 
-#### 正文 一: OCR简介
+#### OCR简介
 主要有两种方法
 
 1. Segment-Based method
@@ -26,13 +25,13 @@ Tesseract 最新的版本4.0版本，新增了lstm训练方式。当时做毕设
 <font color="red">下面所有操作，假设你已经安装好了最新版本的Tesseract，并且`clone`了相应的`langdata`和`tessdata`，并且放置在同一目录下。</font>
 使用百度云下载详情参考`https://iami.xyz/Review-S06-Baiduyun-download-Taolu/`
 
-#### 正文 二: Tesseract的普通训练方式
+#### Tesseract的普通训练方式
 想去ProcessON上下载原图的时候，才发现自己忘了账号是什么了...虽然当时只是作为临时存毕设的流程图用，但也是大意了。
-![default_flow](../image/Tesseract/common_01.png)
+![default_flow](https://img.iami.xyz/images/Tesseract/common_01.png)
 
 这就是默认的训练的流程，具体的也已经在流程图绘制的比较详细了。同样下图是每一步对应的操作。相关代码我已经放在了`gist`上，可以自行查看，包括生成图片和普通的训练链接为`https://gist.github.com/mylamour/e4f116e64d690c366715f67fefc8357f`
 
-![default_flow_code](../image/Tesseract/common_02.png)
+![default_flow_code](https://img.iami.xyz/images/Tesseract/common_02.png)
 
 
 <font color="red"> 注意事项 </font>
@@ -41,15 +40,15 @@ Tesseract 最新的版本4.0版本，新增了lstm训练方式。当时做毕设
 * 自己由字体生成训练图片去训练的话，图片像素不宜过大。否则训练的时候，耗时不仅久，而且会占大量内存。
 * 普通训练只占用单核，所以非常慢。
 
-#### 正文 三: tesseract的LSTM训练方式
+#### tesseract的LSTM训练方式
 
-![default_lstm](../image/Tesseract/default_lstm.png)
+![default_lstm](https://img.iami.xyz/images/Tesseract/default_lstm.png)
 
 这张图是按照官网给出的vgslspecs的语法，并结合官方文档介绍，自己推测画出来的。可能有错误，需要大牛指正。下面这张图展示了LSTM的cell的变化，LSTM是RNN的一种，更详细的需要参考后面的附录。我只能做个简单的介绍放在上面，数学功底有限，不宜妄言。只有理解了之后，才能重新设计一个新的网络去使用。
 
 * LSTM的训练方式也有两种，一种是从头开始，自己设计一个网络。一种是从现有的字库种提取出lstm模型，然后进行修改，重新训练，合并出新的字体。此处我们选用第二种。之所以没有选用第一种，是因为从scratch训练需要运行scrollView.jar包，而这个包运行时必须需要物理显示器，也就是`0`位置的，像vnc之类的都是`0:1`或者`0:2`之类的，是不可以的。而我的服务器不仅没有物理显示器，而且我的真个环境是在自己的`docker`里面运行的。出于一系列问题，只能选第二种。
 
-![lstm](../image/Tesseract/lstm_01.gif)
+![lstm](https://img.iami.xyz/images/Tesseract/lstm_01.gif)
 
 下面介绍如何进行训练。首先你需要生成一个训练集和一个测试集，下面的部分截图来自我论文里。
 
@@ -134,7 +133,7 @@ $ lstmeval --model ./chi_sim.lstm --eval_listfile ./tesseract-ocr/chieval/chi_si
 ```
 
 最后，这是我从服务器上下载下来的数据，选择了3个较低错误率的数据库下载了下来。前面的数字是错误率。
-![lstm_result](../image/Tesseract/lstm_02.png)
+![lstm_result](https://img.iami.xyz/images/Tesseract/lstm_02.png)
 
 #### Resources 
 * [Tesseract Documention](https://github.com/tesseract-ocr/tesseract/wiki/Technical-Documentation)

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: CNN笔记整理
-categories: 学习数据挖掘的路上
-tags: 深度学习 机器学习
+categories: 安全工程师
+tags: AI与机器学习 学习数据挖掘
 ---
 
 # FAQ

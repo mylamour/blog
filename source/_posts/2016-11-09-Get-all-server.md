@@ -1,11 +1,11 @@
 ---
 layout: post
-title: 实习之登堂入室
-categories: 安全工程师
+title: 因为渗透进了一家新公司实习
+categories: 一个实习生
 tags: 实习笔记
 ---
 
-# 但行好事，莫问前程
+但行好事，莫问前程
 > 解决方案
 
 * <font color="red"> 删除Github上的敏感配置信息(包括但不限于微信Appkey,secert,Email账号，mlab上的DB配置，产品AppKey,Secert, ELK服务器账号密码等信息且不只是一个配置文件中出现)或着撤下Github上所有的公司产品代码 </font>
@@ -15,7 +15,7 @@ tags: 实习笔记
 * <font color="red"> 重要信息不可放置到外网上。</font>
 
 
-#### 这是一次找实习之余，偶然接到这家公司的面试。出于对目标公司的好奇。当然只是作为对所中意公司的了解(之前是一点也不了解)，进行了小小的测试。目前所有已测试数据均已删除。不过经过此次测试发现越来越喜欢这家公司了。
+这是一次找实习之余，偶然接到这家公司的面试。出于对目标公司的好奇。当然只是作为对所中意公司的了解(之前是一点也不了解)，进行了小小的测试。目前所有已测试数据均已删除。不过经过此次测试发现越来越喜欢这家公司了。
 
 
 1.故事的开始。
@@ -26,7 +26,7 @@ tags: 实习笔记
 
 一边从搜索引擎得到网站一些信息，然后去github尝试了一下，看看有没有人上传过代码。不尝试不知道，发现信息泄露十分严重。数个员工均在github上公开了代码。其中配置文件包括服务器，企业邮箱，db，ELK信息等。
 拿出旁注工具，旁注得到域名
-![旁注得到域名](../image/hackit/pangzhu_1.jpg)
+![旁注得到域名](https://img.iami.xyz/images/hackit/pangzhu_1.jpg)
 
 同时登录企业邮箱，邮箱中并无重要信息。但是Get到了部分通讯录。有了通讯录就方便了很多。通讯录是Json格式的，看起来很费事，所以转成csv好点。
 
@@ -45,11 +45,11 @@ paste name.txt mail.txt  | awk '{printf "%s %s %s \n", $1 ,",",$2 }' > ConnectIn
 `awk '{key = $1; $1 = ""; a[key] = a[key] $0} END { for (key in a) print key, a[key] }' <<< cat IpInfo.txt`
 
 得到整理好的数据，可以看到有三个ip上同时每个上面部署了两个站点。当然后来换了个字典，发现其实不止这么多二级域名，一共有16个的样子吧。
-![整理数据](../image/hackit/pangzhu_2.jpg)
+![整理数据](https://img.iami.xyz/images/hackit/pangzhu_2.jpg)
 
 这边得到了iplist就应该开始进行扫描了。使用 `nmap -A -Pn -iL IPlist.txt > IPScanresult.txt` 同时还有一个进行URL的扫描。当然这个时候我还在搜索信息。发现其使用一个XX部落，通过密码猜测进入。然后发现一个十分重要的东西。就是内网映射服务器的账号密码在那记载着呢。
 
-![进来了](../image/hackit/RUKOUVPS.png)
+![进来了](https://img.iami.xyz/images/hackit/RUKOUVPS.png)
 进来之后发现其实还部署着docker，nginx，ELK等服务，但是这台服务器的性能上是真一般，而且网速超级慢。
 
 3.服务器之上
@@ -96,16 +96,16 @@ OVER_by_2016_11_12
 
 ps:其他过程不想写了，昨天搞到将近两点，本来还打算看看面试题呢。不过也没什么可看的。哎，通知了对方。有的人说不要，有的人说要。还是，但行好事，莫问前程。希望ok。
 
-![通知对方](../image/hackit/attention.jpg)
+![通知对方](https://img.iami.xyz/images/hackit/attention.jpg)
 
 ps2:前几天和堂姐聊天，说要辞实习，重新找一份。姐说：年轻人就是好。是啊，年轻，棱角未平，阳光正好。现在我又佩服我的老姐了，能拿下全马，佩服你。
 
 
 update:14号上午，还是不想看面试题。昨天发邮件通知之后，也没人回复个谢谢。邮箱密码虽然改了，但服务器还是没有修改。这次又测到4个DB服务器的账号密码。
 
-![DBMSG](../image/hackit/msg1.jpg)
+![DBMSG](https://img.iami.xyz/images/hackit/msg1.jpg)
 
 问了下HR面试我的面试官名字，找到之后，微博,github,知乎。发现我们两个的学习路线差不多。不知道今天下午的面试会怎么样？OK,嘿嘿。
 update:14号上午11:00，好吧官方微博账号到手。
 
-![weibohh](../image/hackit/weibo.png)
+![weibohh](https://img.iami.xyz/images/hackit/weibo.png)

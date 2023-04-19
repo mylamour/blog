@@ -1,9 +1,9 @@
 ---
 layout: post
 title: 网页内容自动抽取与词云展示
-categories: 学习数据挖掘的路上
+categories: 安全工程师
 kerywords: 网页内容抽取 词云
-tags: 机器学习
+tags: 学习数据挖掘
 ---
 
 最近接到一批数据需要分析，当然常规的就是先用bs4解析处理，提取内容。然而很早之前就听说过了网页内容自动抽取，于是就尝试了下，`CxExtractor`来自[cx-extractor-python](https://github.com/chrislinan/cx-extractor-python) 

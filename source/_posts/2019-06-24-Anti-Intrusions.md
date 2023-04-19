@@ -3,7 +3,7 @@ layout: post
 title: 浅谈反入侵
 categories: 安全工程师
 kerywords: 安全思考 反思 安全 安全架构 安全创新 总结 反入侵 安全运营 混沌安全 企业安全建设 Anti-Intrusions Enterprise Security
-tags: 反入侵
+tags: 入侵检测与反入侵 安全运营
 ---
 
 # 前言

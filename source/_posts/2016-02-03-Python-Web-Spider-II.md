@@ -1,18 +1,17 @@
 ---
 layout: post
-title: Talking about Web Spider II
-categories: 全栈工程师
+title: 爬虫学习二
+categories: 一个小学生
 kerywords: Spider Web Crawler
-tags: 知识回顾
+tags: 爬虫与反爬虫 旧文迁移
 ---
 
-[我的零开始](https://iami.xyz/Python-Web-Spider-I)
+[爬虫学习一](https://iami.xyz/Python-Web-Spider-I)
 
-## 一些库的简单使用
+# 基础
+
 1. urllib2(用来下载网页)
-三种下载网页的方法
-> simply
-
+* simple
 ```python
          import urllib2
         
@@ -22,8 +21,7 @@ tags: 知识回顾
 
         cont = response.read()                                #读取内容，可以在前面加个如果状态码有效
 ```
-> Add Head, data
-
+* Add Head, data
 ```python
         import urllib2
         
@@ -35,8 +33,8 @@ tags: 知识回顾
         
         response = urllibe2.urlopen(request)            #发送请求
 ```
-> advance
->> 其实就是Cookie,Proxy,Redirect相关的,分别是HTTPCookieProcessor , ProxyHandler , HTTPRedirectHandler 
+* advance
+其实就是Cookie,Proxy,Redirect相关的,分别是HTTPCookieProcessor , ProxyHandler , HTTPRedirectHandler 
 
 ```python
         import urllibe2, cookielib
@@ -52,15 +50,13 @@ tags: 知识回顾
         
         
 2. Beautifuk Soup (用来解析网页)
->从一个Html网页创建一个Beautiful对象，然后可以搜索节点，find_all,find等可以访问节点的名称和属性。当然配合正则表达式更好
-
->>```<a href='1111.html' class='article_link'> python </a> ```像这一个节点名称为a，属性href为1111.html，属性class为article_link，而节点内容为python
->>>创建beautifulSoup对象
-        `from bs4 import BeautifulSoup`    
-        `soup = BeautifulSoup( html_doc,  'html.parser', from_encoding='utf-8' )`      
->>>搜索节点
->>>>
-
+从一个Html网页创建一个Beautiful对象，然后可以搜索节点，find_all,find等可以访问节点的名称和属性。当然配合正则表达式更好。 ```<a href='1111.html' class='article_link'> python </a> ```像这一个节点名称为a，属性href为1111.html，属性class为article_link，而节点内容为python
+创建beautifulSoup对象
+```bash
+from bs4 import BeautifulSoup
+soup = BeautifulSoup( html_doc,  'html.parser', from_encoding='utf-8' )
+```
+搜索节点
 ```python
         find_all(nane, attrs, string)      
         node = soup.find_all('a')     
@@ -68,16 +64,16 @@ tags: 知识回顾
         soup.find_all('a', href= re.compile(r'/view/\d+\.htm'))     #正则匹配 
         soup.find_all ('div', class_= 'abc', string= 'Python')
 ```
-
->>>访问节点信息
->>>>
+访问节点信息
+```python
         node.naem
         node['href']
         node.get_text()
-        
+```   
         
 3. 连接数据库(前提是要安装好数据库)
->PostgreSQL
+
+* PostgreSQL
 
 ```python
         import psycopg2  
@@ -95,7 +91,7 @@ tags: 知识回顾
          conn.close() 
 ```
 
->ms sql
+* ms sql
 
 ```python
         import psmssql  
@@ -113,7 +109,7 @@ tags: 知识回顾
         conn.close() 
 ```
 
->mysql
+* mysql
 
 ```python
         import MySQLdb
@@ -131,22 +127,21 @@ tags: 知识回顾
         conn.close()
 ```
         
-+ 资料补充
+# 资料补充
 
-    [Scrapy](http://scrapy.org/)
-
-    [Requests](http://www.python-requests.org/)
-
-    [CasperJS/PhantomJS](http://casperjs.org)
-    
-    [HtmlParser](https://docs.python.org/3/library/html.parser.html)
-    
-    [你见过那些瞠目结舌的爬虫技巧-知乎](http://www.zhihu.com/question/38192299)
-    
-    还可以使用一些web框架去写爬虫，例如flask，django（手撕包菜用的就是这个）,tornado
-    
-    [Tornado框架的爬虫示例](http://www.tornadoweb.org/en/stable/guide/queues.html)
-    [Nutch](http://nutch.apache.org/)
-    
-    当然其他语言也可以写爬虫，java, ruby,php等，还有go啊，js啊
+还可以使用一些web框架去写爬虫，例如flask，django（手撕包菜用的就是这个）,tornado。当然其他语言也可以写爬虫，java, ruby,php等，还有go啊，js啊
         
+* [Scrapy](http://scrapy.org/)
+
+* [Requests](http://www.python-requests.org/)
+
+* [CasperJS/PhantomJS](http://casperjs.org)
+    
+* [HtmlParser](https://docs.python.org/3/library/html.parser.html)
+    
+* [你见过那些瞠目结舌的爬虫技巧-知乎](http://www.zhihu.com/question/38192299)
+    
+* [Tornado框架的爬虫示例](http://www.tornadoweb.org/en/stable/guide/queues.html) 
+* [Nutch](http://nutch.apache.org/)
+    
+  

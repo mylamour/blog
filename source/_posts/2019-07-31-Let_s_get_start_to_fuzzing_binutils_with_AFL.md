@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Let's get start to fuzzing binutils with AFL
+title: Fuzzing学习笔记：fuzzing binutils with AFL
 categories: 安全工程师
 kerywords: Fuzzing AFL
-tags: Fuzzing
+tags: Fuzzing 旧文迁移
 ---
 
 In the begin at the blog,  look at this picture, it was fuzzing with `readelf` ( one of `binutils` )

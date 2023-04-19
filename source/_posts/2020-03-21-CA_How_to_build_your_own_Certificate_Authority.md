@@ -1,9 +1,9 @@
 ---
 layout: post
-title: 【CA】How to build your own Certificate Authority
+title: How to build your own Certificate Authority
 categories: 安全工程师
 kerywords: 证书 CA Cert
-tags: PKI 证书
+tags: 数据安全 工具 旧文迁移
 ---
 
 ![image](https://img.iami.xyz/images/77220702-c5b0be00-6b7d-11ea-85cf-535409cb44b6.png)
@@ -44,7 +44,25 @@ $ openssl x509 -req -in 91sec.vip.csr -CA rootCA.crt -CAkey rootCA.key -CAcreate
 <img width="502" alt="Screen Shot 2020-03-21 at 2 49 16 PM" src="https://img.iami.xyz/images/77221251-2d1d3c80-6b83-11ea-9033-ec34fa27c956.png">
 
 
+# Install Root CA in Server
 
+* Ubuntu
+
+```bash
+$ sudo mkdir /usr/share/ca-certificates/extra
+$ sudo cp foo.crt /usr/share/ca-certificates/extra/foo.crt                    #Copy the CA .crt file to this directory
+$ sudo dpkg-reconfigure ca-certificates                   #add the .crt file's path relative to /usr/share/ca-certificates to /etc/ca-certificates.conf
+```
+
+* Centos
+
+```bash
+$ sudo cp foo.crt /etc/pki/tls/certs/ca-bundle.crt
+$ update-ca-trust enable
+$ update-ca-trust extract
+```
+
+Also, you can install CA to gold image
 
 # Resources
 
@@ -53,3 +71,5 @@ $ openssl x509 -req -in 91sec.vip.csr -CA rootCA.crt -CAkey rootCA.key -CAcreate
 * [本地建立CA签发数字证书](https://note.qidong.name/2019/01/local-certification-agent/)
 * [Opensll Certificate authority](https://jamielinux.com/docs/openssl-certificate-authority)
 * [How to create self signed certificate with openssl](https://stackoverflow.com/questions/10175812/how-to-create-a-self-signed-certificate-with-openssl)
+* [ Install root ca in ubuntu](https://askubuntu.com/questions/73287/how-do-i-install-a-root-certificate)
+* [Install root ca in centos](https://techjourney.net/update-add-ca-certificates-bundle-in-redhat-centos/)

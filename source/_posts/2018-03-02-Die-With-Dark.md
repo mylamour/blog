@@ -2,12 +2,12 @@
 layout: post
 title: 写在数据泄露之前
 categories: 安全工程师
-tags: 小手段
+tags: 小技巧 学习数据挖掘 数据安全
 ---
 
 # 前言
 
-![img](https://img.iami.xyz/images/goneWithWind/goodbaytoonionblog.png)
+![img](https://img.iami.xyz/images/goodbaytoonionblog.png)
 
 Tor上的博客关掉了.为什么拿这个放在最前面呢,是想要表示,怎么样才能匿名的在网络上存在下去,当然当我发出这篇文章的时候,我就不再是匿名的了.就像那谁说的,当你观测一个物体时,他会因为你的观测而改变.我知道自己知道的越来越少.自己的水平几斤几两,心里还是有点B数的.然而思考良久,还是打算记录下来.所以,仅以此文将本人对互联网隐私和思考记录于此.
 

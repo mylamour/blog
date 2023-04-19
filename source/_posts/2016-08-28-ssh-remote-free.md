@@ -1,29 +1,28 @@
 ---
 layout: post
 title: SSH的免密码登陆
-categories: Devops
+categories: 一个实习生
 kerywords: SSH 
-tags: Linux
+tags: Linux SSH 工具
 ---
-## <font color="green"> SSH 相关  </font>
 
-### SSH Introduction
+### SSH 介绍
 
-> SSH协议中主要为三个部分：
->> 1. 传输层
--	用户认证协议
--	连接协议
->
- 验证主要为两种安全验证
- >>1. 基于密码的安全验证(顾名思义，知道账户名和密码进行登录)
- - 基于密钥的安全验证(通过验证密钥进行登录)
+SSH协议中主要为三个部分：
+- 传输层
+- 用户认证协议
+- 连接协议
 
-> OpenSSH是提供ssh相关服务的经典工具
->> * 远程操作 ssh, scp, and sftp.
+验证主要为两种安全验证
+- 基于密码的安全验证(顾名思义，知道账户名和密码进行登录)
+- 基于密钥的安全验证(通过验证密钥进行登录)
+
+OpenSSH是提供ssh相关服务的经典工具
+* 远程操作 ssh, scp, and sftp.
 * 密钥管理  ssh-add, ssh-keysign, ssh-keyscan,  ssh-keygen.
 * 服务端 sshd, sftp-server,  ssh-agent.
 
-### SSH Basic Useage 
+### SSH 基础使用
 
 * `$ ssh remotehost`
 * `$ ssh username@remotehost`
@@ -31,25 +30,23 @@ tags: Linux
 * `$ ssh -p 23456 username@remotehost`
 
 
+### 安装SSH Server
+ubuntu
+`$ sudo apt-get install openssh-server  ` # ssh服务
+`$ service ssh start`  #一般安装之后，服务就自动开启了，如果没有的话可以手动开启下。
 
-### How to install SSH
-> ubuntu
->>	`$ sudo apt-get install openssh-server  ` # ssh服务
+windows
+ssh服务可以安装cygwin,具体参考下相关资源里的openssh-rsa-authentication-for-windows-and-linux，客户端的话可以安装Xshell, putty,MobaXterm.
 
->>	`$ service ssh start`  #一般安装之后，服务就自动开启了，如果没有的话可以手动开启下。
+android
+ssh服务用SSHDroid，客户端用connect-ssh,Juice-ssh,super terminal去连接远程服务器。
 
-> windows
->>ssh服务可以安装cygwin,具体参考下相关资源里的openssh-rsa-authentication-for-windows-and-linux，客户端的话可以安装Xshell, putty,MobaXterm.
-
-> android
->>ssh服务用SSHDroid，客户端用connect-ssh,Juice-ssh,super terminal去连接远程服务器。
 ### 传输数据(基本上是单个文件传输)
 * `$　scp user@destip:/path/to/your/dest`
 * `$　scp -P yourPort user@destip:/path/ /local/path/`
 * `$　scp -P yourPort sourceip:/path/ user@destip:/path/ `
 
-> 其他
->>* <font color="red">rsync(服务器之间同步数据，极好的，适用于文件夹之类的都可以,apt-get install rsync(ubuntu) yum install rsync(Centos),当然这些服务器之间的备份最好配合crontab定时使用),
+* <font color="red">rsync(服务器之间同步数据，极好的，适用于文件夹之类的都可以,apt-get install rsync(ubuntu) yum install rsync(Centos),当然这些服务器之间的备份最好配合crontab定时使用),
 * sz(windwos下xshell配合sz极好的，这个要源码安装，google下就行了)</font>
 
 ### 免密码登录远程服务器

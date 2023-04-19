@@ -1,15 +1,15 @@
 ---
 layout: post
-title: Crawl From Little IV
-categories: 学习数据挖掘的路上
-tags: 抓取数据
+title: 小小爬虫学习中(四)
+categories: 一个实习生
+tags: 爬虫与反爬虫
 ---
 
 ### 前言
 
 一个月前的一次信息抓取，数据不多，信息是上海市的废品回收站。没什么可说的。代码也简单，不过问题还是在代码上。最开始用R，因为rvest包提取表格的效果很好。后来还是不行，就只有用python了。
 	
-![feipin](../image/crawl/feipininfo.jpg)
+![feipin](https://img.iami.xyz/images/crawl/feipininfo.jpg)
 
 
 ```R

@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Talking about Web Spider I
-categories: 全栈工程师
+title: 爬虫学习一
+categories: 一个小学生
 kerywords: Spider Web Crawler
-tags: 知识回顾
+tags: 爬虫与反爬虫 旧文迁移
 ---
 
 ## 前言
@@ -39,17 +39,3 @@ tags: 知识回顾
 >听说还有的是进行大数据建模，分析出是否是人类行为，感觉是十分高大上的。不知道新浪的清理死粉是不是这样做的
 
 至于登陆的时候千奇百怪的验证码技术，也是一个十分好的防爬虫技术。就拿12306的登陆验证码，我相信现在的图片识别技术应该难识别的。
-
-
-
-
-
-
-
-
-
-
-
-
-
-

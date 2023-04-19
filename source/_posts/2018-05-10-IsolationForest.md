@@ -1,9 +1,9 @@
 ---
 layout: post
 title: 异常检测算法之IsolationForest
-categories: 学习数据挖掘的路上
+categories: 安全工程师
 kerywords: 异常检测 IsolationForest
-tags: 机器学习
+tags: AI与机器学习 学习数据挖掘
 ---
 
 离职第一天，在家撸代码写博客，读读Write Up。

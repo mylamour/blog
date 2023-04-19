@@ -1,8 +1,8 @@
 ---
 layout: post
 title: 百度云盘下载的套路
-categories: 小技巧
-tags: 小手段
+categories: 一个小学生
+tags: 小技巧 工具
 ---
 
 #### 前言: 都是套路
@@ -16,15 +16,15 @@ tags: 小手段
 
 * step1:
 
-![export](../image/BaiduExport/01.png)
+![export](https://img.iami.xyz/images/BaiduExport/01.png)
 
 * step2
 
-![get_link](../image/BaiduExport/02.png)
+![get_link](https://img.iami.xyz/images/BaiduExport/02.png)
  
 * step3 
 
-![download](../image/BaiduExport/03.png)
+![download](https://img.iami.xyz/images/BaiduExport/03.png)
 
 step1,2,3略显白痴，小技巧就是拿到链接放在aria2c时批量下载记得在每个下载后面加`&`。
 

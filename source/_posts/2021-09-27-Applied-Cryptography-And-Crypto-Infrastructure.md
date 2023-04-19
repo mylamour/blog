@@ -3,7 +3,7 @@ layout: post
 title: 浅谈加密基础设施
 categories: 安全工程师
 kerywords: 应用架构 安全架构 数据安全 企业安全架构 架构设计 业务驱动 密码学基础
-tags: 安全架构
+tags: 安全架构 数据安全
 ---
 
 # 0x00 前言

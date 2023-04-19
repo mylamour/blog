@@ -1,9 +1,9 @@
 ---
 layout: post
 title: conda in action
-categories: Devops
+categories: 一个实习生
 keywords: Conda Python Useage
-tags: Conda
+tags: 工具
 ---
 
 

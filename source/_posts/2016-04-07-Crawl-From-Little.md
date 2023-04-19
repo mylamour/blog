@@ -1,29 +1,26 @@
 ---
 layout: post
-title: Crawl From Little I
-categories: 安全工程师
+title: 小小爬虫学习中（一）
+categories: 一个小学生
 kerywords: Spider Web Crawler
-tags: 抓取数据
+tags: 爬虫与反爬虫 旧文迁移
 ---
 
-#### 找到最适合自己的抓取方式，不论是Python, wget,curl, NodeJs, R ，随便你，开心就好(抓取的数据要有效率)
+找到最适合自己的抓取方式，不论是Python, wget,curl, NodeJs, R ，随便你，开心就好(抓取的数据要有效率)
 
-## 起源
- 事情的起源是，someday，我发现了学校的一个网站有信息泄露了,背单词苦逼到几点我，好想日站。然而，我怎么能做这种有辱xx的事呢，好了借口找不到了，切入正文。
- 
- 找到url,　构造类似与　xxx.edu.cn/xxx.jsp?tableid=yyy
- 由于我当时并不知道，到底1-yyyy之间有多少有用的，所以就直接把1-yyyy之间全抓了，而且傻逼的最开始并未考虑其中有的表页是空白。当时就用了几行代码,用的自带的wget，写了个循环了事。
+事情的起源是，someday，我发现了学校的一个网站有信息泄露了,背单词苦逼到几点我，好想日站。然而，我怎么能做这种有辱xx的事呢，好了借口找不到了，切入正文。
 
----
+找到url,　构造类似与　xxx.edu.cn/xxx.jsp?tableid=yyy
+由于我当时并不知道，到底1-yyyy之间有多少有用的，所以就直接把1-yyyy之间全抓了，而且傻逼的最开始并未考虑其中有的表页是空白。当时就用了几行代码,用的自带的wget，写了个循环了事。
 
 
 ```bash
 #!/bin/bash
 for i in {1..800}
 do
-  echo http://xxx.xxx.edu.cn:8081/KingoKJ/taglib/DataTable1.jsp?tableId=$i >>myurl
+echo http://xxx.xxx.edu.cn:8081/KingoKJ/taglib/DataTable1.jsp?tableId=$i >>myurl
 done
-  time cat myurl|while read line;do curl -l $line -m 5 --connect-timeout 5 -o /dev/null -s -w "$line "%{http_code}" "%{size_download}"\n" >>kb_TEST ; done
+time cat myurl|while read line;do curl -l $line -m 5 --connect-timeout 5 -o /dev/null -s -w "$line "%{http_code}" "%{size_download}"\n" >>kb_TEST ; done
 ```
 
 这一次测试出了有哪些空白页，没办法数据不是可用的，输出的都是这样的
@@ -33,33 +30,33 @@ done
 ![img](https://img.iami.xyz/images/crawl/2.png)
 
 然后就可以简单的抓下来网页，顺便截个图。
-截图是用的phantomjs ,当时怕要是自己分析不好，先拿个一眼能看的数据备份一份下来。
-在zsh中安装Phantom之后可能无法直接使用，要切换回bash才行
+截图是用的phantomjs ,当时怕要是自己分析不好，先拿个一眼能看的数据备份一份下来。（在zsh中安装Phantom之后可能无法直接使用，要切换回bash才行）
+
 1.截图的js代码，参考官网，不过当时测试时，怕截不完整，查了下资料
 
 ```js
 var page = new WebPage(),
-    address, output, size;
- 
+address, output, size;
+
 if (phantom.args.length < 2 || phantom.args.length > 3) {
-    console.log('Usage: rasterize.js URL filename');
-    phantom.exit();
+console.log('Usage: rasterize.js URL filename');
+phantom.exit();
 } else {
-    address = phantom.args[0];
-    output = phantom.args[1];
-    page.viewportSize = { width: 500, height:1000}
-    	
-    //如何滚动到页面底部，你可以设置显示器很大很大就行了
-    page.open(address, function (status) {
-        if (status !== 'success') {
-            console.log('Unable to load the address!');
-        } else {
-            window.setTimeout(function () {
-                page.render(output);
-                phantom.exit();
-            }, 200);
-        }
-    });
+address = phantom.args[0];
+output = phantom.args[1];
+page.viewportSize = { width: 500, height:1000}
+    
+//如何滚动到页面底部，你可以设置显示器很大很大就行了
+page.open(address, function (status) {
+    if (status !== 'success') {
+        console.log('Unable to load the address!');
+    } else {
+        window.setTimeout(function () {
+            page.render(output);
+            phantom.exit();
+        }, 200);
+    }
+});
 }
 
 ```

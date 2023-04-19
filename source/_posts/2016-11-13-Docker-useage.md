@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Docker for daily use
-categories: Devops
-tags: Docker
+title: 日常使用的Docker命令
+categories: 一个实习生
+tags: 工具 全栈 实习笔记
 ---
 
 

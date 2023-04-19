@@ -1,9 +1,9 @@
 ---
 layout: post
-title: k8s and SecDevOps with AWS 
+title: AWS中的K8S以及SecDevOps 
 categories: 安全工程师
 kerywords: k8s 安全运维
-tags: k8s 安全运维 AWS
+tags: AWS 基础安全
 ---
 
 # 前言

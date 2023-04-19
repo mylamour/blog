@@ -1,9 +1,9 @@
 ---
 layout: post
-title: 【Vault KMS】How to initialized hashicorp vault safely
+title: How to initialized Hashicorp Vault safely
 categories: 安全工程师
 kerywords: 安全流程 安全规范 Opeartion Security HashicorpVault
-tags: 安全运营 数据安全 Vault
+tags: 安全运营 数据安全 工具 旧文迁移
 ---
 
 I'm not going to introduce the basic concept of vault. and only focused on how to initialized it more secure.  this is a step by step to help you to build a simple testing.

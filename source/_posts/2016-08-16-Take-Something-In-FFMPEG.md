@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Use ffmpeg to capture video frames
-categories: 全栈工程师
-tags: 实习笔记 
+title: 使用ffmpeg处理video frames
+categories: 一个实习生
+tags: 实习笔记 全栈
 ---
 
 
-### <font color="green">上午还在写单元测试，下午就干这件事：抽取一批视频抽取前面3秒，中间3秒，后面3秒的图片。一秒大概25帧</font>
+<font color="green">上午还在写单元测试，下午就干这件事：抽取一批视频抽取前面3秒，中间3秒，后面3秒的图片。一秒大概25帧</font>
 
 ``` shell
 #!/bin/bash
@@ -48,6 +48,4 @@ rm -f filelist.txt
 
 ```
 
-
-###　
 后来又分析了下errlog，发现中间有一些视频是不能抽取的，但是呢，总的抽取过程中，所有视频基本上都是226张左右，也就是说是正常的，但是6万多张图片中，大概800张抽取错误。现在分析是视频不完整导致的。

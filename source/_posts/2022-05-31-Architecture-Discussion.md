@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 架构杂谈
-categories: 安全工程师
+categories: 安全架构师
 kerywords: 高可用 架构设计 数据安全 服务可靠性 业务驱动 SRE DevOps
 tags: 安全架构
 ---

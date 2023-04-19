@@ -3,7 +3,7 @@ layout: post
 title: 浅谈终端安全与DLP治理
 categories: 安全架构师
 kerywords: 数据安全 安全策略 安全技术 安全运营 安全平台 企业安全 安全治理 DLP 数据防泄漏 终端安全
-tags: 安全架构
+tags: 安全架构 数据安全 终端安全
 ---
 
 # 终端安全治理

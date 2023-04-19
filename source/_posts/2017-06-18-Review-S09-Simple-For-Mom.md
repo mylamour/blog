@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 纯属折腾之——旧电脑折腾日记
-categories: 小技巧
-tags: 小手段
+title: 旧电脑折腾日记
+categories: 一个小学生
+tags: 小技巧
 ---
 
 #### 前言 : 旧电脑退休了

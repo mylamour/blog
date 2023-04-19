@@ -1,16 +1,16 @@
 ---
 layout: post
 title: Ansible与Redis集群的搭建
-categories: Devops
+categories: 安全工程师
 keywords: Ansible Redis DigitalOcean
-tags: Linux
+tags: 工具
 ---
 
-#### 前言 : 就是废话啦
+#### 前言: 就是废话啦
 
 之前为了给vultr写一篇文档`how to build a redis cluster in vulter `，后来由于语法问题没有通过，就搁置了。也没有翻译回来贴在自己的博客上。所以还是收拾一下吧。其实只是为了搭建`pyspider`分布式的。
 
-#### 正文 : 什么是什么东西
+#### 正文: 什么是什么东西
 
 用`ansible`，是latern哥推荐的，我呢是从`vagrant`过度过来的。他们都是基于`ssh`的。安装很简单`pip install ansible`就行了。
 `redis` 用过吧，缓存队列是最常用的功能。

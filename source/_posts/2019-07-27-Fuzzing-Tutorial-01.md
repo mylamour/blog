@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Fuzzing学习笔记之AFL入门 
+title: Fuzzing学习笔记：AFL入门 
 categories: 安全工程师
 kerywords: Fuzzing tutorial 
-tags: Fuzzing
+tags: Fuzzing 旧文迁移
 ---
 
 Fuzzing就是模糊测试，简单来说就是产生各种变异输入源进行输入，这也就意味着。如何寻找输入点（二进制文件，web服务，系统软件，网络协议，文件系统，操作系统），如何持续产生高效输入源（怎么样使你的输入更加有效能够让程序崩溃？）如何分析不同输入后目标产生的结果。如何将整个流程自动化起来。

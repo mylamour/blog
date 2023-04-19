@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Use JavaScript To Open Camera And Capture Image
-categories: 全栈工程师
+title: 使用JavaScript打开Camera并Capture Image
+categories: 一个实习生
 kerywords: JavaScript Camera Capture
-tags: 实习笔记
+tags: 实习笔记 全栈
 ---
 
 ```js

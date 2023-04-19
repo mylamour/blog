@@ -1,9 +1,9 @@
 ---
 layout: post
-title: find and grep
-categories: 全栈工程师
+title: find & grep
+categories: 一个实习生
 kerywords: shell find grep
-tags: Linux
+tags: Linux 全栈 实习笔记 工具
 ---
 ### 讲讲find，还有grep
 之前在stackoverflow看了[How to find all files containing specific text on Linux?](http://stackoverflow.com/questions/16956810/how-to-find-all-files-containing-specific-text-on-linux)

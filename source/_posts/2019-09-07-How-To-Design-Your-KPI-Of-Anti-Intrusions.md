@@ -1,9 +1,9 @@
 ---
 layout: post
 title: 怎么设计你的反入侵KPI
-categories: HowTo
+categories: 安全工程师
 kerywords:  反入侵 KPI OKR
-tags: 漫漫人生路 反入侵
+tags: 入侵检测与反入侵 安全运营
 ---
 
 

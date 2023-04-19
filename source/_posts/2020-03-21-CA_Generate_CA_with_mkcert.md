@@ -1,9 +1,9 @@
 ---
 layout: post
-title: 【CA】Generate CA with mkcert
+title: How to use mkcert
 categories: 安全工程师
 kerywords: 证书 CA Cert
-tags: PKI 证书
+tags: 数据安全 工具 旧文迁移
 ---
 
 # install & generate root CA  with mkcert

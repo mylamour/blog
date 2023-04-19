@@ -1,9 +1,9 @@
 ---
 layout: post
 title: locatunnel的使用回顾 
-categories: Devops
+categories: 一个实习生
 keywords: Localtunnel Reverse
-tags: Linux
+tags: Linux 工具
 ---
 
 #### 前言：

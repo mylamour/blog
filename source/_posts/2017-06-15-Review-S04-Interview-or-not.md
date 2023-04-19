@@ -1,8 +1,8 @@
 ---
 layout: post
 title: 算是比较有意思的事情吧 
-categories: 安全工程师
-tags: 小手段
+categories: 一个小学生
+tags: 小技巧
 ---
 
 #### 前言：没有前言

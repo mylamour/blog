@@ -3,7 +3,7 @@ layout: post
 title: 浅谈数据安全
 categories: 安全工程师
 kerywords: 企业安全 互联网企业安全 数据安全 安全架构
-tags: 安全架构
+tags: 安全架构 数据安全
 ---
 
 

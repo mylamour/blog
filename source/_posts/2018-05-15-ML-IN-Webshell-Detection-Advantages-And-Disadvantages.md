@@ -3,7 +3,7 @@ layout: post
 title: Web安全检测中机器学习的经验之谈
 categories: 安全工程师
 kerywords: Webshell检测，机器学习，比较
-tags: 机器学习 威胁检测
+tags: AI与机器学习 学习数据挖掘 入侵检测与反入侵
 ---
 
 

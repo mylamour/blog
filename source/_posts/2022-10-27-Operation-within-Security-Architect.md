@@ -3,7 +3,7 @@ layout: post
 title: 安全架构师的运营一二事
 categories: 安全架构师
 kerywords: 安全运营 安全架构 企业安全 安全治理 安全运营
-tags: 安全架构
+tags: 安全架构 安全运营
 ---
 
 # 0x01 前言

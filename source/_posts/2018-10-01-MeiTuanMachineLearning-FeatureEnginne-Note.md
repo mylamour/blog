@@ -1,9 +1,9 @@
 ---
 layout: post
 title: 特征工程笔记《下篇》
-categories: 学习数据挖掘的路上
+categories: 安全工程师
 kerywords: 特征工程 美团机器学习实践 机器学习
-tags: 机器学习
+tags: AI与机器学习 学习数据挖掘
 ---
 
 # 前言

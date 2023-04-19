@@ -1,9 +1,9 @@
 ---
 layout: post
 title: Openresty入门
-categories: Devops
+categories: 安全工程师
 kerywords: Openresty 
-tags: Openresty
+tags: 工具
 ---
 
 # Openresty 入门

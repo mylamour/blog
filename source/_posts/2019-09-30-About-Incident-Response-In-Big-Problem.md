@@ -3,7 +3,7 @@ layout: post
 title: 关于重保这件事
 categories: 安全工程师
 kerywords: 重大事件保障 阶段性检测 
-tags: 安全随笔
+tags: 安全运营 旧文迁移
 ---
 
 简写两笔感悟，有空下次再续。
