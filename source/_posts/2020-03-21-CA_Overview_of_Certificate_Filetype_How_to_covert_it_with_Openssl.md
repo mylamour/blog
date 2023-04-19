@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 【CA】Overview of Certificate Filetype & How to covert it with Openssl
+title: Use Openssl To Convert Certificate Format
 categories: 安全工程师
 kerywords: 证书 CA Cert PKI
 tags: 数据安全 工具 旧文迁移

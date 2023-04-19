@@ -1,11 +1,25 @@
 <section class="tag-box">
-  <div class="tag-title"><%= __('tags') %></div>
+  <div class="tag-title">
+    <%= __('tags') %>
+  </div>
   <div class="tag-list">
-    <% site.tags.sort('name').each(function(tag) { %>
-      <a class="tag-item" href="#<%= tag.name %>">
-        <span class="tag-name"><%= tag.name%></span>
-        <span class="tag-size">( <%= tag.length %> )</span>
+    <% var processedTagNames=new Set(); site.tags.sort('name').each(function(tag) { var tagNamesArray=tag.name.split(" ");  
+        tagNamesArray.forEach(function(tagName) {  
+          if (!processedTagNames.has(tagName)) {  
+            processedTagNames.add(tagName);  
+            var relatedTags = site.tags.filter(function(tag) {  
+              return tag.name.split(" ").includes(tagName);  
+            });  
+            var tagLength = relatedTags.reduce(function(totalLength, tag) {  
+              return totalLength + tag.length;  
+            }, 0);  
+    %>  
+            <a class=" tag-item" href="#<%= tagName %>">
+      <span class="tag-name">
+        <%= tagName %>
+      </span>
+      <span class="tag-size">( <%= tagLength %> )</span>
       </a>
-    <% }); %>
+      <% } }); }); %>
   </div>
 </section>

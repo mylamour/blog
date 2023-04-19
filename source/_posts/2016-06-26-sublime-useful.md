@@ -3,7 +3,7 @@ layout: post
 title: sublime快捷键以及其他
 categories: 一个小学生
 kerywords: Sublime shortcut
-tags: Sublime 旧文迁移 小技巧 工具
+tags: 旧文迁移 工具
 ---
 # 快捷键
 

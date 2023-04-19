@@ -3,7 +3,7 @@ layout: post
 title: 使用github pages搭建静态网站
 categories: 一个小学生
 kerywords: Jekyll Markdown Github_Pages
-tags: 网站搭建 Markdown 旧文迁移
+tags: 旧文迁移 工具
 ---
 
 # 快速构造一个Github Pages

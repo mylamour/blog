@@ -3,7 +3,7 @@ layout: post
 title: 浅谈代码安全及安全
 categories: 一个实习生
 keywords: 代码审计 安全意识
-tags: 代码审计 实习笔记
+tags: 实习笔记
 ---
 
 #### 前言
