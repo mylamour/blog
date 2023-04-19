@@ -1,7 +1,7 @@
   <li class="item-year item item-title item-title-<%= post.year % 5 %>">
     <a href="<%- url_for(config.archive_dir + '/' + post.year) %>" class="text-year">
       <%= post.year %>
-      <i class="<%- getAnimalIcon(post.year) %>"></i>
+      <!-- <i class="<%- getAnimalIcon(post.year) %>"></i>
       <%
         function getAnimalIcon(year) {
           var index = parseInt(year) % 12;
@@ -21,6 +21,6 @@
           }
           return icon[index]
         }
-      %>
+      %> -->
     </a>
   </li>

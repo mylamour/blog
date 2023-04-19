@@ -1,6 +1,6 @@
 # Blog info
-blog_name: 放之的笔记
-slogan: 大道至简，知行合一
+blog_name: 放之
+slogan: 一个安全架构师
 url: https://iami.xyz
 
 # Set avatar (Absolute url and relative url)
@@ -15,59 +15,58 @@ keywords: 爬虫, 机器学习, 网络安全, 数据安全, 企业安全, 安全
 home_nav:
 
   - name: 书单
-    icon: icon-text
+    # icon: icon-text
     url: https://iread.cool
     target_blank: true #在新页面打开
   - name: CISO说
-    icon: icon-tag
+    # icon: icon-feather
     url: https://ciso.chat
     target_blank: true #在新页面打开
-  - name: Blog
-    icon: icon-feather
-    url: /blog 
+  - name: 博客
+    # icon: icon-archive
+    url: /blog
     target_blank: false #不在新页面打开
-  - name: Issues
-    icon: icon-archive
-    url: https://github.com/mylamour/blog/issues
-    target_blank: true
   - name: LinkedIn
-    icon: icon-user-1
+    # icon: icon-user-1
     url: https://www.linkedin.com/in/zhaokunpeng
+    target_blank: true
+  - name: RSS
+    # icon: icon-rss
+    url: https://iami.xyz/atom.xml
     target_blank: true
   
 
 # config page nav
 page_nav:
-  - name: 博客
-    url: /blog/
-    target_blank: false # 不在新页面打开
+  # - name: 博客
+  #   url: /blog/
+  #   target_blank: false # 不在新页面打开
+  - name: 搜索
+    url: /search/
+    target_blank: false # 在新页面打开
   - name: 分类
     url: /category/
     target_blank: false
   - name: 标签
     url: /tag/
     target_blank: false
-
-  - name: 关于
-    url: /about/
-    target_blank: false
-  - name: RSS
+  # - name: 关于
+  #   url: /about/
+  #   target_blank: false
+  - name: 订阅
     url: /atom.xml
     target_blank: true # 在新页面打开
-  - name: 搜索
-    url: /search/
-    target_blank: false # 在新页面打开
 
-page_nav_style: CIRCLE  # CIRCLE|ROUND_RECT
+page_nav_style: ROUND_RECT  # CIRCLE|ROUND_RECT
 
 # 面包屑
 breadcrumb:
-  isShow: true # true|fase
+  isShow: false # true|fase
 
 # 盒子
 toolbox:
   isShow: true # true|fase
-  text: 慎独
+  text: 主页
 
 search_slogan:
   isShow: true # true|fase
@@ -77,19 +76,18 @@ search_slogan:
 #   isShow: true # true|fase
 #   text: 交换友链可以邮件 forsigner@gmail.com
 
-
 # set backtop show or hide
 backtop:
-  home: false
-  archive: false
+  home: true
+  archive: true
   category: true
   tag: true
   post: true
-  link: false
-  about: false
+  link: true
+  about: true
 
 donation:
-  show: true
+  show: false
   btn_text: 支持一下
   tip: 如果你觉得有帮助
   items:
@@ -102,11 +100,11 @@ donation:
 
 
 post:
-  header_align: CENTER # LEFT|CENTER
+  header_align: LEFT # LEFT|CENTER
   showToc: true # true|false
-  showComments: true
+  showComments: false
   open_in_new_window: false
-  show_prev_next: true
+  show_prev_next: false
 
 # =========================================================
 # 个性化设置
@@ -121,6 +119,7 @@ home_background_scheme: light # dark、light
 # custom font-family 暂时只支持这3种英文字体，你可以完全自定义字体(看文档)
 # blog_name_font_familiy: calligraffittiregular
 blog_name_font_familiy: Lobster-Regular
+# blog_name_font_familiy: Helvetica
 # blog_name_font_familiy: PoiretOne-Regular
 
 init_page_content: HOME_NAV  # HOME_NAV | POST
@@ -156,7 +155,7 @@ valine:
 
 
 # 不算子,文章访问量统计和显示
-busuanzi: false
+busuanzi: true
 
 # =========================================================
 # 页面内容设置
