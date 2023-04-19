@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 使用llama_index实现定制化ChatGPT
+title: 如何定制化ChatGPT
 categories: 安全架构师
 kerywords: 安全架构 企业安全 安全设计 Security Design 微服务安全 安全治理 安全验证 
 tags: AI与机器学习
