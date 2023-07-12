@@ -4,42 +4,51 @@
       <%- getPostListsDom(site.tags.sort('name'))%>
 </div>
 
-<%- partial('_partial/component/back-top', {showBacktop: theme.backtop.tag}) %>
-
-  <% function getPostListsDom(tags) { var postList=[]; var processedTagNames=new Set(); tags.each(function(tag, i) { var
-    tagNamesArray=tag.name.split(" ");  
+<% function getPostListsDom(tags) { var postList=[]; var processedTagNames=new Set(); tags.each(function (tag, i) { var
+  tagNamesArray=tag.name.split(" ");  
   
-      tagNamesArray.forEach(function(tagName) {  
-        if (!processedTagNames.has(tagName)) {  
-          processedTagNames.add(tagName);  
+        tagNamesArray.forEach(function (tagName) {  
+            if (!processedTagNames.has(tagName)) {  
+                processedTagNames.add(tagName);  
   
-          var relatedTags = site.tags.filter(function(tag) {  
-            return tag.name.split(" ").includes(tagName);  
-          });  
+                var relatedTags = site.tags.filter(function (tag) {  
+                    return tag.name.split(" ").includes(tagName);  
+                });  
   
-          var tagLength = relatedTags.reduce(function(totalLength, tag) {  
-            return totalLength + tag.length;  
-          }, 0);  
+                var tagLength = relatedTags.reduce(function (totalLength, tag) {  
+                    return totalLength + tag.length;  
+                }, 0);  
   
-          var tagInfo = {id: i % 5, isTag: true, tagName: tagName, count: tagLength};  
-          postList.push(tagInfo);  
+                var tagInfo = { id: i % 5, isTag: true, tagName: tagName, count: tagLength };  
+                postList.push(tagInfo);  
   
-          relatedTags.forEach(function(tag) {  
-            tag.posts.sort('date', -1).each(function(post) {  
-              postList.push(post);  
-            });  
-          });  
-        }  
-      });  
+                // Combine all posts from related tags and sort them by date  
+                var combinedPosts = [];  
+                relatedTags.forEach(function (tag) {  
+                    tag.posts.each(function (post) {  
+                        combinedPosts.push(post);  
+                    });  
+                });  
+  
+                combinedPosts.sort(function (a, b) {  
+                    return b.date - a.date;  
+                });  
+  
+                // Add sorted posts to postList  
+                combinedPosts.forEach(function (post) {  
+                    postList.push(post);  
+                });  
+            }  
+        });  
     });  
   
     var dom = '<ul class=" list-post">';
 
-    postList.forEach(function (post, i) {
-    var patialPath = post.isTag ? '_partial/component/item-tag' : '_partial/component/item-post';
-    dom += partial(patialPath, {post: post});
-    });
+  postList.forEach(function (post, i) {
+  var patialPath = post.isTag ? '_partial/component/item-tag' : '_partial/component/item-post';
+  dom += partial(patialPath, { post: post });
+  });
 
-    dom += '</ul>';
-    return dom;
-    }%>
+  dom += '</ul>';
+  return dom;
+  } %>

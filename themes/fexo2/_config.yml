@@ -15,7 +15,7 @@ keywords: 爬虫, 机器学习, 网络安全, 数据安全, 企业安全, 安全
 home_nav:
 
   - name: 书单
-    # icon: icon-text
+    icon: icon-heart
     url: https://iread.cool
     target_blank: true #在新页面打开
   # - name: CISO说
@@ -23,7 +23,7 @@ home_nav:
   #   url: https://ciso.chat
   #   target_blank: true #在新页面打开
   - name: 博客
-    # icon: icon-archive
+    icon: icon-text
     url: /blog
     target_blank: false #不在新页面打开
   # - name: LinkedIn
@@ -47,9 +47,9 @@ page_nav:
   - name: 分类
     url: /category/
     target_blank: false
-  # - name: 标签
-  #   url: /tag/
-  #   target_blank: false
+  - name: 标签
+    url: /tag/
+    target_blank: false
   # - name: 关于
   #   url: /about/
   #   target_blank: false
@@ -81,7 +81,7 @@ backtop:
   home: true
   archive: true
   category: true
-  tag: false
+  tag: true
   post: true
   link: true
   about: true
@@ -91,9 +91,9 @@ donation:
   btn_text: 支持一下
   tip: 如果你觉得有帮助
   items:
-    - type: 微信
-      text: 微信扫一扫
-      imgUrl: /images/qr-wechat.png
+    # - type: 微信
+    #   text: 微信扫一扫
+    #   imgUrl: /images/qr-wechat.png
     # - type: 支付宝
     #   text: 支付宝扫一扫
     #   imgUrl: /images/qr-alipay.jpg
@@ -119,7 +119,8 @@ home_background_scheme: light # dark、light
 # custom font-family 暂时只支持这3种英文字体，你可以完全自定义字体(看文档)
 # blog_name_font_familiy: calligraffittiregular
 # blog_name_font_familiy: Lobster-Regular
-blog_name_font_familiy: Helvetica
+# blog_name_font_familiy: Helvetica
+blog_name_font_familiy: TESTFONT
 # blog_name_font_familiy: PoiretOne-Regular
 
 init_page_content: HOME_NAV  # HOME_NAV | POST
@@ -129,7 +130,7 @@ init_page_content: HOME_NAV  # HOME_NAV | POST
 # 第三方服务
 # =========================================================
 # Stats
-google_analytics: G-YPQ8BFV2QD
+google_analytics: G-6ELBN1SQMD
 baidu_analytics: 
 
 # Comment service
@@ -148,9 +149,6 @@ valine:
   avatar: mm # gravatar style
   guest_info: nick,mail,link # custom comment header
   pageSize: 10 # pagination size
-
-# 注意，多说即将关闭，建议选用上面四个评论系统
-# duoshuo_shortname: forsigner
 
 
 
