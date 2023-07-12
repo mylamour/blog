@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 放之
+title: 开新小室
 subtitle: 吾生也有涯, 而知也无涯
-description: 记录一个安全架构师的成长记录
+description: 记录一个安全架构师的成长过程
 author: 放之
-language: cn
+language: zh
 timezone: Asia/Shanghai
 
 # URL
@@ -58,7 +58,7 @@ highlight:
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
   path: ''
-  per_page: 10
+  per_page: 0
   order_by: -date
   
 # Category & Tag
@@ -75,7 +75,7 @@ time_format: HH:mm:ss
 
 # Pagination
 ## Set per_page to 0 to disable pagination
-per_page: 33
+per_page: 0
 pagination_dir: page
 
 # Extensions

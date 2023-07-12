@@ -1,6 +1,8 @@
 # Blog info
-blog_name: 放之
-slogan: 一个安全架构师
+blog_name: 開
+slogan: 吾生也有涯, 而知也无涯。
+# Inclusive, Adaptive, Multifaceted, Innovative
+# 记录一个安全架构师的成长过程
 url: https://iami.xyz
 
 # Set avatar (Absolute url and relative url)
@@ -10,7 +12,7 @@ avatar: /images/avatar.png
 favicon: /favicon.ico
 
 # For seo
-keywords: 爬虫, 机器学习, 网络安全, 数据安全, 企业安全, 安全架构, 金融安全, 应用安全, Machine Learning, Web Security Research, Full Stack, Shell
+keywords: 安全架构 安全架构师 企业安全建设 数据安全 应用安全 基础安全 SDLC 安全研发 机器学习与人工智能 机器学习与入侵检测  
 
 home_nav:
 
@@ -53,6 +55,9 @@ page_nav:
   # - name: 关于
   #   url: /about/
   #   target_blank: false
+  - name: 书单
+    url: https://iread.cool
+    target_blank: true
   - name: 订阅
     url: /atom.xml
     target_blank: true # 在新页面打开
@@ -66,7 +71,8 @@ breadcrumb:
 # 盒子
 toolbox:
   isShow: true # true|fase
-  text: 主页
+  text: 🥷 #⛏️
+  # 🔜
 
 search_slogan:
   isShow: true # true|fase
@@ -100,7 +106,7 @@ donation:
 
 
 post:
-  header_align: LEFT # LEFT|CENTER
+  header_align: CENTER # LEFT|CENTER
   showToc: true # true|false
   showComments: false
   open_in_new_window: false
@@ -123,7 +129,7 @@ home_background_scheme: light # dark、light
 blog_name_font_familiy: TESTFONT
 # blog_name_font_familiy: PoiretOne-Regular
 
-init_page_content: HOME_NAV  # HOME_NAV | POST
+init_page_content: POST #HOME_NAV  # HOME_NAV | POST
 
 
 # =========================================================

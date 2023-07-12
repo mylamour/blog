@@ -1,6 +1,8 @@
 <div class="content content-archive">
   <%- partial('_partial/component/page-header', {location: __('location.blog')}) %>
 
+  <%- partial('_partial/component/toolbox') %>
+
   <div class="post-list-box archive-body">
     <%- getPostListsDom(page.posts) %>
   </div>
