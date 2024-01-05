@@ -2,7 +2,7 @@
 layout: post
 title:  一年四季
 categories: HowTo
-kerywords: 
+kerywords: 人生路漫漫 上下而求索 平静且耐力
 tags: 漫漫人生路
 ---
 
