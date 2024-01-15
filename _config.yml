@@ -8,7 +8,7 @@ sitemap:
 # Site
 title: 放之
 subtitle: 吾生也有涯, 而知也无涯
-description: 记录一个安全架构师的成长过程
+description: 放之的个人博客,记录一个信息安全架构师的成长过程,也会有些生活感悟。
 author: 放之
 language: zh
 timezone: Asia/Shanghai
@@ -16,7 +16,7 @@ timezone: Asia/Shanghai
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 #  due to i changed the layout with hexo, google pagerank still index the old link. below configuration can works for old one
-url: https://iami.xyz/
+url: https://fz.cool/
 root: /
 permalink: :title/
 permalink_defaults:

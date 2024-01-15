@@ -2,6 +2,10 @@
 
 ## Changelog
 
+### 2024/0115
+
+* Modified blog domain to https://fz.cool
+
 ### 2023/06/25
 * Display blog directly
 * Modified the blog style , include font, css, and related
@@ -19,8 +23,8 @@
 ### 2022/09/22
 ![Screenshot 2023-04-14 at 18 48 33](https://user-images.githubusercontent.com/12653147/232024645-cce00e6b-49ae-451d-8889-c682d64c0716.png)
 * Blog: https://iami.xyz
+* Blog RSS: https://iami.xyz/atom.xml
 * Notes: https://github.com/mylamour/blog/issues
-* Blog RSS: https://blog.iami.xyz/atom.xml
 * My Book: https://book.iami.xyz or https://www.securityarchitecture.pro/
 * Read List: https://iread.cool 
 <!-- https://web.archive.org/web/20230224163358/http://iami.xyz/ -->
