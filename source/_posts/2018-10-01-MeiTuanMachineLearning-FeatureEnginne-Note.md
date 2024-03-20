@@ -91,7 +91,7 @@ tags: AI与机器学习 学习数据挖掘
 
 下面介绍一些选择方法(敲到表格里还真是费劲...)。
 
-![](../image/mldl/feature_select.png)
+![](https://img.iami.xyz/images/mldl/feature_select.png)
 
 以上大概是整个特征选择的笔记了，至此，关于机器学习中最重要的一环，特征工程想必有了一个深刻的了解了。当然领域的专业知识，也是非常必要的。除此之外还要明白的是:
 

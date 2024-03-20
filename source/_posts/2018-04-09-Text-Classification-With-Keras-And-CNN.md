@@ -83,7 +83,7 @@ plt.show()
 
 ```
 
-![demo_decison_tree](../image/mldl/demo_decison_tree.png)
+![demo_decison_tree](https://img.iami.xyz/images/mldl/demo_decison_tree.png)
 
 # CNN与文本分类
 

@@ -69,7 +69,7 @@ tags: 旧文迁移 工具
 <code>
  
     
-还有表格![markdownbiaoge](../image/ww.png)这样书写便可得到：
+还有表格![markdownbiaoge](https://img.iami.xyz/images/ww.png)这样书写便可得到：
 
 | name       |   num      | price |
 | ------------- |:-------------:| -----:|
@@ -77,7 +77,7 @@ tags: 旧文迁移 工具
 | MX5         | 2|   $12 
 | Boox        | 3|    $1 
 
-当然你又会问上面的图片是怎么插入的，其实是这样的：  \!\[markdownbiaoge\](../image/ww.png)
+当然你又会问上面的图片是怎么插入的，其实是这样的：  \!\[markdownbiaoge\](https://img.iami.xyz/images//ww.png)
 也就是：
     ``` ![imgname](imgpath)也可以这样写![imgname][id] [id](imgpath) ```
     
@@ -121,7 +121,7 @@ git checkout -b branchName
 
 ### 3.2 使用Jekyll
 
-运行这个命令`jekyll new test`可以在当前目录下生成一个新的jekyll项目，目录结构大致为![mulu](../image/jekyllmulu.png)：
+运行这个命令`jekyll new test`可以在当前目录下生成一个新的jekyll项目，目录结构大致为![mulu](https://img.iami.xyz/images/jekyllmulu.png)：
 其中_config.yml是配置文件(另yml后缀也是一种数据格式文件，同xml,csv,json一样用来存储数据)，在这个文件中你可以配置你的博客的一些基本内容。
 而目录下的Sass则支持一种名为SCSS的格式，可以嵌套样式:
 
