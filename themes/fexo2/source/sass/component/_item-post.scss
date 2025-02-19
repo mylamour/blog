@@ -1,6 +1,8 @@
 .item-post {
   position: relative;
   padding-left: 20px;
+  margin-bottom: 15px;
+  
   &:before {
     position: absolute;
     top: 50%;
@@ -13,23 +15,28 @@
     border-radius: 50%;
     background: #ddd;
   }
+  
   .post-date {
     font-size: 12px;
     display: inline-block;
+    min-width: 10px;
+    // margin-right: 30px;
     color: #888;
   }
+  
   .post-title {
     font-size: 16px;
     font-weight: normal;
     position: relative;
     display: inline-block;
     transition-duration: .5s;
-    color: #333;
+    color: #e94822;
     vertical-align: middle;
     text-overflow: ellipsis;
     max-width: 430px;
     white-space: nowrap;
     overflow: hidden;
+    margin-left: 15px;
 
     transition-propety: background-color;
     &:hover {

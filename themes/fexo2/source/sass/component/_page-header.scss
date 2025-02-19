@@ -1,21 +1,22 @@
 .page-header {
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   background: #fff;
   .breadcrumb {
-    width: 100px;
+    width: 120px;
     font-size: 16px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     margin-left: -52px;
-    color: #d0d0d0;
+    color: #666;
     text-align: center;
     .location {
       margin-left: 0;
-      font-size: 13px;
+      font-size: 14px;
+      letter-spacing: 0.5px;
     }
     i {
       font-size: 26px;
-      color: #dfdfdf;
+      color: #999;
     }
   }
   .box-blog-info {
@@ -26,24 +27,28 @@
       vertical-align: middle;
     }
     img {
-      width: 60px;
-      height: 60px;
+      width: 70px;
+      height: 70px;
       vertical-align: middle;
       border-radius: 50%;
       object-fit: cover;
       overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     .info {
       .name {
-        font-size: 24px;
-        font-weight: bold;
+        font-size: 28px;
+        font-weight: 600;
         margin: 0;
-        color: #000;
+        color: #222;
+        letter-spacing: -0.5px;
       }
       .slogan {
         display: inline-block;
-        color: #999;
-        margin-top: 3px;
+        color: #666;
+        margin-top: 5px;
+        font-size: 16px;
+        line-height: 1.5;
       }
     }
   }

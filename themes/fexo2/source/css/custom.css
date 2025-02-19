@@ -1,0 +1,246 @@
+/* Custom theme for Security Architect Blog */
+
+/* Post date and title styling */
+.post-item {
+  margin-bottom: 1.5em;
+}
+
+.post-time {
+  font-size: 0.9em;
+  color: #ff6b6b;
+  margin-bottom: 0.3em;
+  display: block;
+  opacity: 0.9;
+  letter-spacing: 0.1px;
+}
+
+.post-link {
+  font-size: 1.2em;
+  margin-top: 0.2em;
+  margin-bottom: 0.3em;
+  display: block;
+  transition: all 0.3s ease;
+  color: #e94822;
+  text-decoration: none;
+  position: relative;
+  padding: 2px 4px;
+}
+
+.post-link:hover {
+  color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.1);
+  border-radius: 3px;
+}
+
+.post-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #ff6b6b;
+  transition: width 0.3s ease;
+}
+
+.post-link:hover::after {
+  width: 100%;
+}
+
+/* Base theme colors */
+:root {
+  --primary-color: #0a192f;
+  --secondary-color: #e94822;
+  --accent-color: #ff6b6b;
+  --text-color: #f4f4f4;
+  --background-color: #0a1929;
+  --shield-glow: 0 0 15px rgba(255, 107, 107, 0.3);
+}
+
+/* Article styling */
+.article-content {
+  color: var(--text-color);
+}
+
+.article-content h1,
+.article-content h2,
+.article-content h3 {
+  color: var(--secondary-color);
+  border-bottom: 2px solid #ff6b6b;
+  padding-bottom: 0.3em;
+}
+
+.article-content a {
+  color: #ff9f1c;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.article-content a:hover {
+  color: var(--secondary-color);
+  text-shadow: var(--shield-glow);
+}
+
+/* Code blocks */
+.highlight {
+  background: rgba(10, 25, 47, 0.8);
+  border-radius: 4px;
+  border: 1px solid rgba(255, 107, 107, 0.2);
+}
+
+.highlight .string {
+  color: #ff9f1c;
+}
+
+.highlight .keyword {
+  color: #e94822;
+}
+
+/* Blockquote styling */
+.article-content blockquote {
+  border-left: 4px solid var(--secondary-color);
+  background: rgba(255, 107, 107, 0.05);
+  margin: 1.5em 0;
+  padding: 1em 1.5em;
+}
+
+/* Dark mode enhancements */
+html.dark body {
+  background: var(--background-color);
+  background-image: 
+    linear-gradient(rgba(10, 25, 47, 0.97), rgba(10, 25, 47, 0.97)),
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 180, 216, 0.03) 2px, rgba(0, 180, 216, 0.03) 4px);
+}
+
+/* Header and navigation styling */
+.content-home .title {
+  color: var(--text-color);
+  text-shadow: var(--shield-glow);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.content-home .slogan {
+  color: var(--secondary-color);
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.content-home .nav .item a {
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.content-home .nav .item a:hover {
+  color: var(--accent-color);
+  text-shadow: var(--shield-glow);
+}
+
+.content-home .nav .item a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--secondary-color);
+  transition: width 0.3s ease;
+}
+
+.content-home .nav .item a:hover::after {
+  width: 100%;
+}
+
+/* Article styling */
+.article-content {
+  color: var(--text-color);
+}
+
+.article-content h1,
+.article-content h2,
+.article-content h3 {
+  color: var(--secondary-color);
+  border-bottom: 2px solid rgba(238, 95, 18, 0.954);
+  padding-bottom: 0.3em;
+}
+
+.article-content a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.article-content a:hover {
+  color: var(--secondary-color);
+  text-shadow: var(--shield-glow);
+}
+
+/* Code blocks */
+.highlight {
+  background: rgba(10, 25, 47, 0.8);
+  border-radius: 4px;
+  border: 1px solid rgba(0, 180, 216, 0.2);
+}
+
+.highlight .string {
+  color: #48cae4;
+}
+
+.highlight .keyword {
+  color: #00b4d8;
+}
+
+/* Blockquote styling */
+.article-content blockquote {
+  border-left: 4px solid var(--secondary-color);
+  background: rgba(0, 180, 216, 0.05);
+  margin: 1.5em 0;
+  padding: 1em 1.5em;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secondary-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
+}
+
+/* Shield-inspired elements */
+.content-home::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 50% 50%, 
+      rgba(0, 180, 216, 0.03) 0%, 
+      transparent 60%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+  .content-home .title {
+    font-size: 2.5em;
+  }
+  
+  .content-home .slogan {
+    font-size: 1.2em;
+  }
+}
