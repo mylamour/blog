@@ -3,7 +3,7 @@ layout: post
 title: 生成式AI安全指南
 categories: 安全架构师
 kerywords: 企业安全 生成式AI AI安全 大模型安全 安全治理 AI框架
-tags: 安全架构
+tags: 安全架构 AI安全
 ---
 
 # 0x00 引言
