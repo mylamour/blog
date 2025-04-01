@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Fuzzing学习笔记：fuzzing sqlite3 latest with fuzzer-test-suite
+title: Fuzzing学习笔记：sqlite3 with fuzzer-test-suite
 categories: 安全工程师
 kerywords: Fuzzing fuzzer-test-suite sqlite3
 tags: Fuzzing 旧文迁移

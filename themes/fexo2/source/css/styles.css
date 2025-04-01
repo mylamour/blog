@@ -304,8 +304,8 @@
   font-weight: normal;
 }
 @font-face {
-  font-family: "TESTFONT";
-  src: url("/fonts/fzssjt.ttf") format("truetype"); /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  font-family: "LXGWWenKai";
+  src: url("/fonts/LXGWWenKai-Regular-min.ttf") format("truetype"); /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
   font-style: bold;
   font-weight: bold;
   font-display: swap;
@@ -430,7 +430,7 @@ dfn {
  * contexts in Firefox 4+, Safari, and Chrome.
  */
 h1 {
-  font-size: 2em;
+  font-size: 3em;
   margin: 0.67em 0;
 }
 
@@ -695,7 +695,7 @@ body, .smooth-container {
 
 html,
 body {
-  font-family: "TESTFONT", "Roboto", Verdana, "Open Sans", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
+  font-family: "LXGWWenKai", "Roboto", Verdana, "Open Sans", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   width: 100%;
@@ -1023,7 +1023,8 @@ figure.highlight {
   color: rgb(19.8037383178, 143.1962616822, 118.8224299065);
 }
 .article-content strong {
-  color: #000;
+  color: red;
+  font-weight: bold;
 }
 .article-content a strong {
   color: #1abc9c;

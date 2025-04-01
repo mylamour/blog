@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Fuzzing学习笔记：fuzzing binutils with AFL
+title: Fuzzing学习笔记：binutils with AFL
 categories: 安全工程师
 kerywords: Fuzzing AFL
 tags: Fuzzing 旧文迁移

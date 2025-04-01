@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 自由之道
+title: 追寻自由之道
 categories: HowTo
 kerywords: 人生路漫漫 上下而求索 平静且耐力 情 求道 真我 生活 总结 随笔
 tags: 漫漫人生路

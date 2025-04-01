@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Fuzzing学习笔记：fuzzing firefox browser with grizzly
+title: Fuzzing学习笔记：firefox with grizzly
 categories: 安全工程师
 kerywords: Fuzzing grizzly
 tags: Fuzzing 旧文迁移

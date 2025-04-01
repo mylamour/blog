@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Fuzzing学习笔记：用QEMU和AFL对Linux Kernel Fuzzing
+title: Fuzzing学习笔记：Linux Kernel Fuzzing
 categories: 安全工程师
 kerywords: Fuzzing tutorial 
 tags: Fuzzing 旧文迁移
@@ -20,7 +20,9 @@ git clone https://github.com/nccgroup/TriforceAFL
 cd TriforceAFL
 make
 ```
+
 注，如果在Ubuntu上编译不通过，可以进入qemu_mode/修改脚本，然后重新make
+
 ```shell
 ./configure --target-list="aarch64-softmmu,microblazeel-softmmu" --enable-fdt --disable-kvm --disable-xen 
 ```

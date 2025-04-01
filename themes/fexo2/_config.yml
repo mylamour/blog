@@ -6,7 +6,7 @@ slogan:  吾生也有涯, 而知也无涯
 url: https://fz.cool
 
 # Set avatar (Absolute url and relative url)
-avatar: /images/02.png
+avatar: /images/avatar.png
 
 # Set favicon
 favicon: /favicon.ico
@@ -29,7 +29,10 @@ page_nav:
     url: /tag/
     target_blank: true
   - name: 书单
-    url: https://iread.cool
+    url: https://iread.fz.cool
+    target_blank: true
+  - name: 关于
+    url: /about/
     target_blank: true
   - name: 订阅
     url: /atom.xml
@@ -44,8 +47,8 @@ breadcrumb:
 # 盒子
 toolbox:
   isShow: true # true|fase
-  text: 🔜 #⛏️
-  # 🔜🥷
+  text: ⛏️
+  # 🔜🥷⛏️
 
 search_slogan:
   isShow: true # true|fase

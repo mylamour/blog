@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Fuzzing学习笔记：fuzzing libssh latest with fuzzer-test-suite
+title: Fuzzing学习笔记：libssh with fuzzer-test-suite
 categories: 安全工程师
 kerywords: Fuzzing fuzzer-test-suite libssh
 tags: Fuzzing 旧文迁移
