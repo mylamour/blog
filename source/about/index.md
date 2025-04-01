@@ -6,6 +6,7 @@ comments: no
 
 > 2025年4月1日，做个愚人
 * 目前在AMEX China担任高级信息安全架构师，看整体安全架构；
+<!-- * 微信公众号放之，搜索ECyberSecurity -->
 * 专注在企业安全架构，致力于通过安全设计提高企业安全水位，落地最佳实践（成本-性能-安全）；
 * 熟悉AWS、Azure、阿里云；GCP自学ing；IAC工具喜欢使用Terraform和Ansible去[Setup项目](https://github.com/mylamour/setup)；
 * 主Python开发。其他语言也都能写一点，但都算不上精通。写过一些小项目（目前计划通过一些Side Project重温编程和算法）：
@@ -36,7 +37,7 @@ Hello World，我是**放之**(Felix Zhao)，欢迎来到我的博客《开新�
 
 * 我的分类不是以技术维度进行的，而是以我的职业经历命名，《[一个小学生](https://fz.cool/category/#%E4%B8%80%E4%B8%AA%E5%B0%8F%E5%AD%A6%E7%94%9F)》是我在读书，读书的时候花了几块钱注册了 https://iami.xyz 域名，开始学习搭建网站。等增加《[一个实习生](https://fz.cool/category/#%E4%B8%80%E4%B8%AA%E5%AE%9E%E4%B9%A0%E7%94%9F)》分类时我已经开始工作了，之后就是做《[安全工程师](https://fz.cool/category/#%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88)》和《[安全架构师](https://fz.cool/category/#%E5%AE%89%E5%85%A8%E6%9E%B6%E6%9E%84%E5%B8%88)》。 虽然很多架构的知识和实践都是来自安全工程师时期，乃至架构师的title也仿佛从执念变成了获得了的奖励。 最后是《[How To](https://fz.cool/category/#HowTo)》，独立于成长时间线之外，是记录一些人生相关的思考。 
 
-* 如果你专注安全架构，你可以通过时间顺序阅读《[安全架构](https://fz.cool/tag/#%E5%AE%89%E5%85%A8%E6%9E%B6%E6%9E%84)》，从安全产品的部署架构开始，记录了我一点点了解和学习架构的过程。
+* 如果你专注安全架构，你可以通过时间顺序阅读《[安全架构](https://fz.cool/tag/#%E5%AE%89%E5%85%A8%E6%9E%B6%E6%9E%84)》，从安全产品的部署架构开始，记录了我一点点了解和学习架构的过程。我还写了一本小册子《[安全架构要参](https://securityarchitecture.pro/)》,可以一看。
 
 * 如果你想了解一些我的三观，或者我放的臭屁，可以查看《[漫漫人生路](https://fz.cool/tag/#%E6%BC%AB%E6%BC%AB%E4%BA%BA%E7%94%9F%E8%B7%AF)》
 
