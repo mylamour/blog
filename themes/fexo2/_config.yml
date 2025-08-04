@@ -82,8 +82,8 @@ init_page_content: POST #HOME_NAV  # HOME_NAV | POST
 # 第三方服务
 # =========================================================
 # Stats
-google_analytics: G-6ELBN1SQMD
-baidu_analytics: 
+# google_analytics: G-6ELBN1SQMD
+# baidu_analytics: 
 
 # Comment service
 disqus_shortname: 
