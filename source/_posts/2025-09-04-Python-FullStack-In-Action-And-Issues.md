@@ -303,13 +303,13 @@ app.config.update({
 * 申请DNS解析
 * 申请企业CA签发的证书
 
-还不包含
+还不包含以下等等
 * 代码的扫描
 * 容器的扫描
 * 托管密钥的申请
 * 内部SSO的集成
 * SIEM的集成
-等等
+
 
 看到这里，我在想如果我是一个研发，可能我也要骂DevSecOps。如果不是经历了一遍研发设计和部署，那么这些安全控制的东西可能还会令人沾沾自喜。但实际看下来，则是非常影响研发效率的。但快速迭代和安全之间一定是要取得一个平衡的，如何实现，值得思考。
 
@@ -317,16 +317,13 @@ app.config.update({
 
 这里记录一下，从研发之初到部署时遇到的过的Bug，以及如何解决的。
 
-## 工具或平台（Platform）类
+工具或平台（Platform）类：
 
-集成平台A：
-* 平台页面触发的申请动作会触发平台侧邮箱通知，但api申请则不触发。那只能自己实现邮箱通知的功能
-* 平台测试环境IP:PORT使用443， URL使用9443，但却仅告知了开防火墙443，排错时才发现9443也存在通讯。但在迁移到生产时，直接更换了URL中的IP之后，又发现生产只访问URL且使用443端口
-* 测试环境的登陆证书下载后，平台侧未同步，导致访问失败
-* 平台生产环境登陆证书转JKS格式后未添加OCA1的证书链接导致NO Trust Store
-
-集成平台B：
-* API文档里的传参和实际传参不一致。 报错信息几乎为0。 {K:[V]} 不是 {K:V}， 有的传string of list但不是传string。换了最新版的文档就解决了
+* A平台页面触发的申请动作会触发平台侧邮箱通知，但api申请则不触发。那只能自己实现邮箱通知的功能
+* A平台测试环境IP:PORT使用443， URL使用9443，但却仅告知了开防火墙443，排错时才发现9443也存在通讯。但在迁移到生产时，直接更换了URL中的IP之后，又发现生产只访问URL且使用443端口
+* A平台测试环境的登陆证书下载后，平台侧未同步，导致访问失败
+* A平台生产环境登陆证书转JKS格式后未添加OCA1的证书链接导致NO Trust Store
+* B平台的API文档里的传参和实际传参不一致。 报错信息几乎为0。 {K:[V]} 不是 {K:V}， 有的传string of list但不是传string。换了最新版的文档就解决了
 
 关于Docker/Podman：
 
@@ -356,19 +353,19 @@ Windows：
 * celery在windows平台和linux平台下运行的不一致，参数不同要加`-P evenlet`，否则终端会假死。`celery -A tasks.celery_app worker -l info -P eventlet` 因为默认实现的`prefork`不兼容，fork()函数的系统调用是在linux下的。 但同时要注意， celery的beat功能不支持`-P eventlet`
 * 使用pipreqs生成依赖时显示编码问题，强制使用utf-8解决，`pipreqs . --force --encoding utf-8` 
 
-## 编码（Coding/Programing）类
+编码（Coding/Programing）类：
 
 * application读jks文件路径不对，测试时和打包后不一致。
 * print到stdout但是不显示，更换使用logging模块显示
 * celery 调度任务失败了，但是状态被记录了。即便后续重启任务，状态不会被刷新。（不知道为啥）
 
 
-## 人为疏忽类
+人为疏忽类：
 * 单词拼写错误，xxxxservice vs xxxxservices ； orgnization vs organization
 * 两侧都要开防火墙： 机房出网要开防火墙，访问对方端点要加机房的出口IP。 然后防火墙说开通了，实际测试不通。因为还有一条deny all的策略。
 * 配置分离后，填入了平台正确的生产环境Token，结果显示未认证。检查发现，平台侧创建后未启用该Token
 
-## AI类
+AI类：
 * 删除了不该删除的代码，逻辑改变，疯狂报错
 * 增加了不该增加的特性，页面逻辑改变
 * 为Docker Compose file优化时增加了Health Check，然后该服务本身没提供healthcheck端点，且之后有服务依赖该容器起来，导致接连启动失败。
