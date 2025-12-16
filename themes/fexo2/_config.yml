@@ -17,6 +17,33 @@ keywords: 安全架构 安全架构师 企业安全建设 数据安全 应用安
 # Custom CSS style, 推荐把样式文件放在blog源码文件夹，而不是主题里面
 personal_style: /css/custom.css
 
+# config home nav
+home_nav:
+  - name: 笔记
+    url: /blog/
+    icon: icon-text
+    target_blank: true
+  - name: 书单
+    url: https://iread.fz.cool
+    icon: icon-list
+    target_blank: true
+  - name: 设计
+    url: https://design.fz.cool
+    icon: icon-ma
+    target_blank: true
+  - name: 架构
+    url: https://securityarchitecture.pro
+    icon: icon-archive
+    target_blank: true
+  - name: 关于
+    url: /about/
+    icon: icon-user
+    target_blank: true
+  - name: 订阅
+    url: /atom.xml
+    icon: icon-rss
+    target_blank: true
+
 # config page nav
 page_nav:
   - name: 搜索
@@ -27,12 +54,6 @@ page_nav:
     target_blank: true
   - name: 标签
     url: /tag/
-    target_blank: true
-  - name: 书单
-    url: https://iread.fz.cool
-    target_blank: true
-  - name: 关于
-    url: /about/
     target_blank: true
   - name: 订阅
     url: /atom.xml
@@ -75,7 +96,7 @@ blog_name_font_familiy: Lobster-Regular
 # blog_name_font_familiy: TESTFONT
 # blog_name_font_familiy: PoiretOne-Regular
 
-init_page_content: POST #HOME_NAV  # HOME_NAV | POST
+init_page_content: HOME_NAV # HOME_NAV | POST
 
 
 # =========================================================
