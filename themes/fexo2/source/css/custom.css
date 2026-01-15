@@ -284,6 +284,40 @@ body::-webkit-scrollbar {
   padding: 1em 1.5em;
 }
 
+/* Table of Contents styling */
+.toc,
+.toc-title {
+  font-weight: 700;
+  font-size: 1.1em;
+  color: #e94822;
+  margin-bottom: 1em;
+}
+
+.toc a,
+.article-toc a {
+  color: #666;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: block;
+  padding: 0.3em 0;
+  border-left: 2px solid transparent;
+  padding-left: 0.8em;
+  margin-left: -0.8em;
+}
+
+.toc a:hover,
+.article-toc a:hover {
+  color: #e94822;
+  border-left-color: #e94822;
+}
+
+/* Table styling */
+.article-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: 0.95em;
+}
 /* Code blocks */
 .highlight {
   background: rgba(10, 25, 47, 0.8);
