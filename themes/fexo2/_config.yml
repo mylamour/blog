@@ -68,7 +68,7 @@ breadcrumb:
 # 盒子
 toolbox:
   isShow: true # true|fase
-  text: ⛏️
+  text: 𝛑
   # 🔜🥷⛏️
 
 search_slogan:

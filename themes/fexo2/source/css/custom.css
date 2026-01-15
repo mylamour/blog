@@ -65,7 +65,7 @@ body::-webkit-scrollbar {
 }
 
 .content-home .slogan {
-  color: var(--secondary-color);
+  color: black;
   font-weight: 300;
   letter-spacing: 0.5px;
 }
@@ -576,4 +576,43 @@ code[class*="language-"] .token.italic .token.content {
 /* Fallback for browsers not supporting :has() */
 .ais-Hits-item:has(.hit-title:empty) {
   display: none;
+}
+
+/* Archive page post title styling */
+.post-title {
+  color: #000000 !important; /* Black color by default */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.post-title:hover {
+  color: #ff0000 !important; /* Red color on hover */
+}
+
+/* Animal icons at timeline nodes - Remove colored dot, show only icon */
+.item-year.item-title:before {
+  content: none !important; /* Remove the colored dot */
+  display: none !important;
+}
+
+.item-year {
+  position: relative;
+}
+
+.item-year a.text-year {
+  position: relative;
+}
+
+.item-year a.text-year i {
+  position: absolute;
+  left: -26px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  color: #555;
+  z-index: 2;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
 }
