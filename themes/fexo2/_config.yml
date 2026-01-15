@@ -4,7 +4,7 @@ slogan:  吾生也有涯, 而知也无涯
 # Inclusive, Adaptive, Multifaceted, Innovative
 # 记录一个安全架构师的成长过程
 url: https://fz.cool
-
+# author: 放之
 # Set avatar (Absolute url and relative url)
 avatar: /images/avatar.png
 
@@ -23,10 +23,6 @@ home_nav:
     url: /blog/
     icon: icon-text
     target_blank: true
-  - name: 书单
-    url: https://iread.fz.cool
-    icon: icon-list
-    target_blank: true
   - name: 设计
     url: https://design.fz.cool
     icon: icon-ma
@@ -34,6 +30,10 @@ home_nav:
   - name: 架构
     url: https://securityarchitecture.pro
     icon: icon-archive
+    target_blank: true
+  - name: 书单
+    url: https://iread.fz.cool
+    icon: icon-list
     target_blank: true
   - name: 关于
     url: /about/

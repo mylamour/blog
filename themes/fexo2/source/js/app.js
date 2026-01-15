@@ -30,8 +30,66 @@
   }());
 
   document.addEventListener('DOMContentLoaded', function() {
-    FastClick.attach(document.body);
+    // Initialize code block enhancements
+    initCodeBlocks();
+    // Initialize Mermaid diagrams
+    initMermaid();
   }, false);
+
+  // Add copy button to code blocks
+  function initCodeBlocks() {
+    var codeBlocks = document.querySelectorAll('figure.highlight');
+    codeBlocks.forEach(function(block) {
+      // Add copy button
+      var copyBtn = document.createElement('button');
+      copyBtn.className = 'code-copy-btn';
+      copyBtn.textContent = 'Copy';
+      copyBtn.addEventListener('click', function() {
+        var code = block.querySelector('.code') || block.querySelector('pre');
+        var text = code ? code.textContent : '';
+        navigator.clipboard.writeText(text).then(function() {
+          copyBtn.textContent = 'Copied!';
+          setTimeout(function() { copyBtn.textContent = 'Copy'; }, 2000);
+        });
+      });
+      block.style.position = 'relative';
+      block.appendChild(copyBtn);
+    });
+  }
+
+  // Initialize Mermaid diagrams
+  function initMermaid() {
+    if (typeof mermaid === 'undefined') return;
+
+    // Hexo renders code blocks as figure.highlight.language-xxx
+    var mermaidBlocks = document.querySelectorAll('figure.highlight.mermaid, figure.highlight.language-mermaid');
+
+    mermaidBlocks.forEach(function(block, index) {
+      var code = block.querySelector('.code') || block.querySelector('pre');
+      if (!code) return;
+
+      var container = document.createElement('div');
+      container.className = 'mermaid';
+      container.textContent = code.textContent;
+      block.parentElement.replaceChild(container, block);
+    });
+
+    // Also check for pre > code.mermaid (standard markdown)
+    var preBlocks = document.querySelectorAll('pre code.mermaid, pre code.language-mermaid');
+    preBlocks.forEach(function(block) {
+      var pre = block.parentElement;
+      var container = document.createElement('div');
+      container.className = 'mermaid';
+      container.textContent = block.textContent;
+      pre.parentElement.replaceChild(container, pre);
+    });
+
+    // Initialize mermaid if any diagrams found
+    var diagrams = document.querySelectorAll('.mermaid');
+    if (diagrams.length > 0) {
+      mermaid.init(undefined, '.mermaid');
+    }
+  }
 
   window.noZensmooth = true;
 

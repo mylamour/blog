@@ -48,6 +48,9 @@ function getUniqueYears(posts) {
     }
   });
 
+  // Sort years in descending order (newest first)
+  years.sort(function(a, b) { return b - a; });
+
   return years;
 };
 

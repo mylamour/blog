@@ -1,29 +1,97 @@
 <script type="text/javascript">
-  function loadScript(url, callback) {
-    var script = document.createElement('script')
-    script.type = 'text/javascript';
+  // Add lazy loading to all images
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('img').forEach(function(img) {
+      if (!img.hasAttribute('loading')) {
+        img.setAttribute('loading', 'lazy');
+      }
+    });
 
-    if (script.readyState) { //IE
-      script.onreadystatechange = function() {
-        if (script.readyState == 'loaded' ||
-          script.readyState == 'complete') {
-          script.onreadystatechange = null;
-          callback();
+    // Convert Hexo's code blocks to PrismJS format
+    document.querySelectorAll('figure.highlight').forEach(function(figure) {
+      // Get the language from the class
+      var lang = '';
+      figure.classList.forEach(function(cls) {
+        if (cls !== 'highlight') {
+          lang = cls;
         }
-      };
-    } else { //Others
-      script.onload = function() {
-        callback();
-      };
+      });
+
+      // Check if it's a mermaid diagram
+      if (lang === 'mermaid' || lang === 'plaintext') {
+        var codeContent = '';
+        var lines = figure.querySelectorAll('.code .line');
+        if (lines.length > 0) {
+          lines.forEach(function(line) {
+            codeContent += line.textContent + '\n';
+          });
+        } else {
+          // Fallback to get all text
+          var codeBlock = figure.querySelector('.code pre');
+          if (codeBlock) {
+            codeContent = codeBlock.textContent;
+          }
+        }
+
+        // Check if content looks like mermaid
+        if (codeContent.trim().match(/^(graph|sequenceDiagram|classDiagram|stateDiagram|erDiagram|gantt|pie|flowchart|journey)/)) {
+          // Create mermaid div
+          var mermaidDiv = document.createElement('div');
+          mermaidDiv.className = 'mermaid';
+          mermaidDiv.textContent = codeContent;
+          figure.parentNode.replaceChild(mermaidDiv, figure);
+        } else if (lang !== 'plaintext') {
+          // Create PrismJS format code block for other languages
+          var pre = document.createElement('pre');
+          pre.className = 'language-' + (lang || 'plaintext');
+          var code = document.createElement('code');
+          code.className = 'language-' + (lang || 'plaintext');
+          code.textContent = codeContent;
+          pre.appendChild(code);
+          figure.parentNode.replaceChild(pre, figure);
+        }
+      } else if (lang) {
+        // Convert to PrismJS format
+        var codeContent = '';
+        var lines = figure.querySelectorAll('.code .line');
+        if (lines.length > 0) {
+          lines.forEach(function(line) {
+            codeContent += line.textContent + '\n';
+          });
+        } else {
+          var codeBlock = figure.querySelector('.code pre');
+          if (codeBlock) {
+            codeContent = codeBlock.textContent;
+          }
+        }
+
+        var pre = document.createElement('pre');
+        pre.className = 'language-' + lang;
+        var code = document.createElement('code');
+        code.className = 'language-' + lang;
+        code.textContent = codeContent;
+        pre.appendChild(code);
+        figure.parentNode.replaceChild(pre, figure);
+      }
+    });
+
+    // Initialize Prism.js for code highlighting
+    if (typeof Prism !== 'undefined') {
+      Prism.highlightAll();
     }
 
-    script.src = url;
-    document.getElementsByTagName('head')[0].appendChild(script);
-  }
-
-  window.onload = function() {
-    loadScript('/js/bundle.js?235683', function() {
-      // load success
-    });
-  }
+    // Initialize Mermaid for diagrams
+    if (typeof mermaid !== 'undefined') {
+      mermaid.initialize({ 
+        startOnLoad: true, 
+        theme: 'default',
+        securityLevel: 'loose'
+      });
+    }
+  });
 </script>
+<script src="/js/bundle.js" defer></script>
+
+<!-- Prism.js for syntax highlighting -->
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>

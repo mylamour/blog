@@ -47,6 +47,9 @@
 
   <%- partial('style') %>
 
+  <!-- Prism.js for code highlighting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+
   <% if (theme.personal_style){ %>
     <%- css(theme.personal_style) %>
   <% } %>
@@ -58,5 +61,8 @@
   <% if (theme.busuanzi){ %>
     <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
   <% } %>
-  
+
+  <!-- Mermaid for diagrams -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+
 </head>

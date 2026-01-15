@@ -5,6 +5,11 @@
   <h1 class="name" style="font-family: <%= theme.blog_name_font_familiy || 'calligraffittiregular' %>">
     <%= theme.blog_name %>
   </h1>
+  <% if (theme.author) { %>
+    <h2 class="author">
+      <%= theme.author %>
+    </h2>
+  <% } %>
   <div class="slogan">
     <%= theme.slogan %>
   </div>

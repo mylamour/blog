@@ -2,7 +2,16 @@
 
 ## Changelog
 
-### 2024/0115
+
+### 2026/1/15
+
+* Remove useless front, Lazy Load image to reduce the LCP
+* Use Prism to highlight code block within Markdown
+* Hidden the scroll bar.
+* Support Mermaid Render.
+* Upgrade Netlify runtime from 18.x to 22.x
+
+### 2024/01/15
 
 * Modified blog domain to https://fz.cool
 

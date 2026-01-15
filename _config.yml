@@ -50,10 +50,31 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
-  enable: true
+  enable: false
   line_number: false
-  auto_detect: true
+  auto_detect: false
   tab_replace:
+
+prismjs:
+  enable: true
+  preprocess: false
+  line_number: false
+  tab_replace: ''
+
+# Marked renderer config
+marked:
+  gfm: true
+  pedantic: false
+  breaks: true
+  smartLists: true
+  smartypants: true
+  modifyAnchors: 0
+  autolink: true
+  sanitizeUrl: false
+  headerIds: true
+  prependRoot: false
+  external_link:
+    enable: false
   
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
