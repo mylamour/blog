@@ -5,7 +5,7 @@
   --primary-color: #0a192f;
   --secondary-color: #e94822;
   --accent-color: #ff6b6b;
-  --text-color: #f4f4f4;
+  --text-color: #333333;
   --background-color: #0a1929;
   --shield-glow: 0 0 15px rgba(255, 107, 107, 0.3);
 }
@@ -53,6 +53,10 @@ body::-webkit-scrollbar {
 }
 
 .content-home .avatar img {
+  animation: spin 10s linear infinite;
+}
+
+.box-blog-info .avatar img {
   animation: spin 10s linear infinite;
 }
 
@@ -250,13 +254,13 @@ body::-webkit-scrollbar {
 .article-content h1,
 .article-content h2,
 .article-content h3 {
-  color: var(--secondary-color);
+  color: #333333;
   border-bottom: 2px solid var(--accent-color);
   padding-bottom: 0.3em;
 }
 
 .article-content a {
-  color: #ff9f1c; /* Kept the more specific orange for links within content */
+  color: #000000; /* Kept the more specific orange for links within content */
   text-decoration: none;
   transition: all 0.3s ease;
 }
@@ -281,7 +285,7 @@ body::-webkit-scrollbar {
   border-left: 4px solid var(--secondary-color);
   background: rgba(255, 107, 107, 0.05); /* Using accent color for consistency */
   margin: 1.5em 0;
-  padding: 1em 1.5em;
+  /* padding: 1em 1.5em; */
 }
 
 /* Table of Contents styling */
@@ -323,6 +327,15 @@ body::-webkit-scrollbar {
   background: rgba(10, 25, 47, 0.8);
   border-radius: 4px;
   border: 1px solid rgba(255, 107, 107, 0.2); /* Using accent color for consistency */
+  overflow-x: auto;
+  /* Hide scrollbar while keeping scroll functionality */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.highlight::-webkit-scrollbar {
+  display: none;
 }
 
 .highlight .string {
@@ -398,6 +411,14 @@ figure.highlight:hover .code-copy-btn {
   margin: 20px 0;
   text-align: center;
   overflow-x: auto;
+  /* Hide scrollbar while keeping scroll functionality */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.mermaid::-webkit-scrollbar {
+  display: none;
 }
 
 .mermaid svg {
@@ -411,6 +432,14 @@ pre[class*="language-"] {
   padding: 16px;
   border-radius: 6px;
   overflow-x: auto;
+  /* Hide scrollbar while keeping scroll functionality */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+pre[class*="language-"]::-webkit-scrollbar {
+  display: none;
 }
 
 code[class*="language-"] {
@@ -440,7 +469,7 @@ code[class*="language-"] .token.italic .token.content {
   padding: 3px 6px;
   border-radius: 4px;
   background-color: #f7f7f7;
-  color: #e96900;
+  color: #131313;
   font-size: 0.9em;
 }
 
