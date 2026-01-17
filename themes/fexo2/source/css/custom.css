@@ -6,7 +6,7 @@
   --secondary-color: #e94822;
   --accent-color: #ff6b6b;
   --text-color: #333333;
-  --background-color: #0a1929;
+  --background-color: #333333;
   --shield-glow: 0 0 15px rgba(255, 107, 107, 0.3);
 }
 
@@ -260,7 +260,7 @@ body::-webkit-scrollbar {
 }
 
 .article-content a {
-  color: #000000; /* Kept the more specific orange for links within content */
+  color: #333333; /* Kept the more specific orange for links within content */
   text-decoration: none;
   transition: all 0.3s ease;
 }
