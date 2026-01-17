@@ -78,7 +78,7 @@ search_slogan:
 post:
   header_align: LEFT # LEFT|CENTER
   showToc: true # true|false
-  showComments: false
+  showComments: true # Set to true to show comments
   open_in_new_window: true
   show_prev_next: false
 
@@ -123,11 +123,29 @@ valine:
   guest_info: nick,mail,link # custom comment header
   pageSize: 10 # pagination size
 
+# Giscus comment system  https://giscus.app you need access this website and input your repository name and category name 
+#  then you will get related information to fill in the config.yml
+giscus:
+  enable: true # Set to true to enable giscus
+  repo: mylamour/blog # GitHub repository in the format: username/repo
+  repo_id: MDEwOlJlcG9zaXRvcnk1MDkxMzE2Mw== # Repository ID, get from https://giscus.app
+  category: Announcements # Discussion category name
+  category_id: DIC_kwDOAwjfi84CBF9i # Category ID, get from https://giscus.app
+  mapping: pathname # pathname, url, title, og:title
+  strict: 0 # 0 = disabled, 1 = enabled
+  reactions_enabled: 1 # 1 = enabled, 0 = disabled
+  emit_metadata: 0
+  input_position: bottom # top or bottom
+  theme: light # light, dark, dark_dimmed, transparent_dark, preferred_color_scheme
+  lang: zh-CN # en, zh-CN, zh-TW, etc.
+  loading: lazy # lazy or eager
 
 
 # 不算子,文章访问量统计和显示
-busuanzi: false
-
+busuanzi: true
+count:
+  wordcount: true
+  readtime: true
 # =========================================================
 # 页面内容设置
 # =========================================================

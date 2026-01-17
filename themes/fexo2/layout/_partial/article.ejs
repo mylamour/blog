@@ -8,6 +8,8 @@
         <span><%= date(post.date, 'YYYY.MM.DD') %></span>
       </span>
 
+      <!-- <%- partial('component/category') %> -->
+      
       <% if (config.author){ %>
         <span class="article-author">
           <i class="icon-user"></i>
@@ -15,7 +17,28 @@
         </span>
       <% } %>
 
-      <%- partial('component/category') %>
+
+      <% if (theme.count.wordcount){ %>
+        <span class="post-count">
+          <i class="icon-feather"></i>
+          <span><%= wordcount(post.content) %>字</span>
+        </span>
+      <% } %>
+
+      <% if (theme.count.readtime){ %>
+        <span class="post-count">
+          <span>预计阅读<%= min2read(post.content) %>分钟</span>
+        </span>
+      <% } %>
+
+      <% if (theme.busuanzi){ %>
+        <span id="busuanzi_container_page_pv">
+          <i class="icon-info-circled-1"></i>
+          <span>访问: <span id="busuanzi_value_page_pv">
+            <i class="fa fa-spinner fa-spin"></i></span>&nbsp次
+          </span>
+        </span>
+      <% } %>
 
       <% if (theme.disqus_shortname && theme.url && page.comments){ %>
         <span>
@@ -24,14 +47,7 @@
         </span>
       <% } %>
 
-      <% if (theme.busuanzi){ %>
-      <i class="fa fa-eye"></i> 
-        <span id="busuanzi_container_page_pv">
-           &nbsp热度 <span id="busuanzi_value_page_pv">
-           <i class="fa fa-spinner fa-spin"></i></span>℃
-        </span>
-      <% } %>
-
+      
       <% if (theme.duoshuo_shortname){ %>
         <i class="icon-comment"></i> 
         <span class="ds-thread-count" data-thread-key="<%= page.layout %>-<%= page.slug %>"><i class="fa fa-spinner fa-spin"></i></span> 条评论

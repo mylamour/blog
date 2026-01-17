@@ -1,0 +1,19 @@
+<% if (theme.giscus && theme.giscus.enable){ %>
+  <div id="giscus-container"></div>
+  <script src="https://giscus.app/client.js"
+    data-repo="<%= theme.giscus.repo %>"
+    data-repo-id="<%= theme.giscus.repo_id %>"
+    data-category="<%= theme.giscus.category %>"
+    data-category-id="<%= theme.giscus.category_id %>"
+    data-mapping="<%= theme.giscus.mapping || 'pathname' %>"
+    data-strict="<%= theme.giscus.strict || '0' %>"
+    data-reactions-enabled="<%= theme.giscus.reactions_enabled || '1' %>"
+    data-emit-metadata="<%= theme.giscus.emit_metadata || '0' %>"
+    data-input-position="<%= theme.giscus.input_position || 'bottom' %>"
+    data-theme="<%= theme.giscus.theme || 'light' %>"
+    data-lang="<%= theme.giscus.lang || 'zh-CN' %>"
+    data-loading="<%= theme.giscus.loading || 'lazy' %>"
+    crossorigin="anonymous"
+    async>
+  </script>
+<% } %>

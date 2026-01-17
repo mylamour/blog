@@ -10,6 +10,9 @@
 * Hidden the scroll bar.
 * Support Mermaid Render.
 * Upgrade Netlify runtime from 18.x to 22.x
+* Enable BuSuanZi Count
+* Enable WordCount & Time Read
+* Enable Comments System Powered By https://giscus.app/
 
 ### 2024/01/15
 
