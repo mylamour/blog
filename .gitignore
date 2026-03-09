@@ -7,3 +7,9 @@ public/
 .deploy*/
 .gitignore
 source/_posts/drafts/*
+.claude/*
+.cursor/*
+.cursorrules
+CLAUDE.md
+docs/*
+.up
