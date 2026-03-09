@@ -570,7 +570,6 @@ crycrypto 在48小时内用80+测试实现了完整的 ISO 9797-1 和 TR-31 标�
 - X 轴是项目规模（LOC），Y 轴是会话深度（消息数），气泡越大代表成功率越高。
 - 核心结论：大项目并不天然失败；失败通常发生在"高消息数 + 低结构化管理"的组合。
 
-> 💡 动态演示：范式转移（Paradigm Shift）
 
 ![img](https://img.iami.xyz/images/vibecoding-learning/paradigm_shift.gif)
 
@@ -580,7 +579,6 @@ crycrypto 在48小时内用80+测试实现了完整的 ISO 9797-1 和 TR-31 标�
 - 不同结果类型（成功/部分/失败/放弃）的会话长度分布。
 - 核心结论：成功会话集中在短闭环（20-50条消息），失败会话拖出长尾（200+条消息）。
 
-> 💡 动态演示：会话形状对比（Session Shape）
 
 ![img](https://img.iami.xyz/images/vibecoding-learning/session_shape.gif)
 
