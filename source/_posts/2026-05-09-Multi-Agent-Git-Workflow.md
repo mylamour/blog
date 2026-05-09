@@ -30,7 +30,7 @@ tags: 安全架构 安全产品 安全研发
 
 多 Agent 并发最容易失控的不是模型能力，是 **ownership 模糊**。两个 agent 同时编辑同一个 contract file，谁的 diff 是对的？没人知道。所以解决方案不是更复杂的口头约定，而是把隔离结构做进工作流。
 
-## `main` 只做集成，不做开发
+## 1. `main` 只做集成，不做开发
 
 第一条最简单也最容易被破坏：**不要在 `main` 上直接开发，更不要让 AI 在 `main` 上改代码**。`main` 应该只承担一个职责——integration branch，代表团队当前认可的集成状态，不是任何人或任何 Agent 的临时草稿区。
 
@@ -60,7 +60,7 @@ git rev-list --left-right --count main...origin/main
 
 这是 AI 时代第一条"慢动作"——在 `main` 上的任何冲突解决，都要假设另一头还有 N 个 agents 在并发写入。
 
-## 一个任务 = 一个 branch + 一个 worktree + 一个 owner + 一份 scope
+## 2. 一个任务 = 一个 branch + 一个 worktree + 一个 owner + 一份 scope
 
 物理隔离从 worktree 区域分配开始。我自己的本地仓库默认长这样：
 
@@ -146,7 +146,7 @@ git diff --check
 
 这些命令的目的不是仪式感，而是让 reviewer 看到三件事：这个 PR 只改了预期文件、diff 没有低级格式错误、提交历史只包含本任务应该带来的 commits（没有"夹带私货"）。
 
-## PR 模板：必须能被读完
+> PR 模板：必须能被读完
 
 在 AI 参与的项目里，**小 PR 比大而全的自动化产出重要 10 倍**。PR 必须小到一个人类 reviewer 真的能读完。每个 PR 至少应该带：
 
