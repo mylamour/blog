@@ -12,7 +12,7 @@ avatar: /images/avatar.png
 favicon: /favicon.ico
 
 # For seo
-keywords: 安全架构 安全架构师 企业安全建设 数据安全 应用安全 基础安全 SDLC 安全研发 机器学习与人工智能 机器学习与入侵检测  
+keywords: AI安全 Agent开发 安全架构 安全架构师 企业安全建设 数据安全 应用安全 基础安全 SDLC 安全研发 机器学习与人工智能 机器学习与入侵检测
 
 # Custom CSS style, 推荐把样式文件放在blog源码文件夹，而不是主题里面
 personal_style: /css/custom.css
@@ -22,14 +22,6 @@ home_nav:
   - name: 笔记
     url: /blog/
     icon: icon-text
-    target_blank: true
-  - name: 设计
-    url: https://design.fz.cool
-    icon: icon-ma
-    target_blank: true
-  - name: 架构
-    url: https://securityarchitecture.pro
-    icon: icon-archive
     target_blank: true
   - name: 书单
     url: https://iread.fz.cool
