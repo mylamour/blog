@@ -37,9 +37,11 @@ tags: 安全架构 安全产品 安全研发
 推荐的本地配置：
 
 ```bash
+
 git config pull.rebase true
 git config pull.ff only
 git config branch.main.rebase false
+
 ```
 
 | 配置 | 含义 |
@@ -51,9 +53,11 @@ git config branch.main.rebase false
 同步 `main` 之前，先诊断，再动手：
 
 ```bash
+
 git fetch origin --prune
 git status --short --branch
 git rev-list --left-right --count main...origin/main
+
 ```
 
 如果本地 `main` 和远程 `origin/main` 都向前走了一步，**不要在脏的 `main` 上直接 pull 解决冲突**。正确的做法是：创建一个隔离的 integration worktree，从 `origin/main` 重放目标分支，跑测试、看 diff、验证通过再合入。
@@ -65,10 +69,12 @@ git rev-list --left-right --count main...origin/main
 物理隔离从 worktree 区域分配开始。我自己的本地仓库默认长这样：
 
 ```text
+
 repo/
   .claude/worktrees/   // 留给 Claude Code
   .cursor/worktrees/   // 留给 Cursor
   .worktrees/          // Codex 或通用任务
+
 ```
 
 worktree 目录用 `.git/info/exclude` 忽略掉，避免本地执行环境（venv、node_modules、临时缓存）跟着 commit 误提交。
@@ -76,6 +82,7 @@ worktree 目录用 `.git/info/exclude` 忽略掉，避免本地执行环境（ve
 分支命名要携带来源和意图——它在多人协作里是索引，不是装饰品：
 
 ```text
+
 codex/<scope>-<task>
 claude/<scope>-<task>
 cursor/<scope>-<task>
@@ -83,6 +90,7 @@ docs/<topic>
 feat/<topic>
 fix/<topic>
 backup/<topic>-<date>
+
 ```
 
 避免 `update`、`fixes`、`wip`、`new-code` 这种看不出责任和边界的名字。一个分支是哪个 agent 创建的、改的什么 scope，光看名字就该一目了然。
@@ -110,27 +118,33 @@ backup/<topic>-<date>
 **编辑前**：
 
 ```bash
+
 git fetch origin --prune
 git switch main
 git pull --ff-only
 git worktree add .worktrees/<task-name> -b <branch-name> origin/main
 git status --short --branch    # 必须 clean
 git branch -vv
+
 ```
 
 **开发中**：
 
 ```bash
+
 git status --short
 git diff --stat
 git diff --check    // 这一行专门挑出尾随空格、混合空格Tab之类的低级错
+
 ```
 
 **commit 前**：
 
 ```bash
+
 git diff --name-only
 git diff --cached --name-only
+
 ```
 
 如果 staged 文件列表里出现了你没预期的路径——停下，重新审视。**AI 经常会"顺手"动到不在 scope 里的文件。**
@@ -138,10 +152,12 @@ git diff --cached --name-only
 **PR 前**：
 
 ```bash
+
 git fetch origin --prune
 git log --oneline origin/main..HEAD
 git diff --name-only origin/main...HEAD
 git diff --check
+
 ```
 
 这些命令的目的不是仪式感，而是让 reviewer 看到三件事：这个 PR 只改了预期文件、diff 没有低级格式错误、提交历史只包含本任务应该带来的 commits（没有"夹带私货"）。
@@ -183,6 +199,7 @@ AI 写代码越快，破坏性 Git 操作就越要慢。把高风险动作和它
 stash 之前一定要先看 `git status --short` 和 `git diff --stat`。如果变更里有可能属于另一个 agent 或工程师的文件，**停下来识别 owner**：
 
 ```bash
+
 git worktree list
 git branch -vv
 ```
@@ -190,11 +207,13 @@ git branch -vv
 worktree 清理的默认策略是——**不确定就保留**。AI session 结束时工具经常会问要不要删 worktree，默认答案是"保留"，除非五条全过：
 
 ```bash
+
 git status --short                              # clean
 git branch -vv                                  # 没有 unpushed commits
 git worktree list                               # 没有人在用
 gh pr list --state open --head <branch-name>    # 没有 open PR
 git log --oneline origin/main..<branch-name>    # 有价值的 commits 已 push 或 merge
+
 ```
 
 保留一份 review context 通常比省一点本地磁盘重要得多。
