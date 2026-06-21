@@ -68,6 +68,7 @@ marked:
   breaks: true
   smartLists: true
   smartypants: true
+  lazyload: true
   modifyAnchors: 0
   autolink: true
   sanitizeUrl: false

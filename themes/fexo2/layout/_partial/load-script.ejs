@@ -1,15 +1,44 @@
 <script type="text/javascript">
-  // Add lazy loading to all images
-  document.addEventListener('DOMContentLoaded', function() {
+  (function() {
+    normalizeTocTargets();
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', enhancePage);
+    } else {
+      enhancePage();
+    }
+  }());
+
+  function normalizeTocTargets() {
+    document.querySelectorAll('.toc-link[href^="#"]').forEach(function(link) {
+      var encodedId = link.getAttribute('href').replace(/^#/, '');
+      if (!encodedId) return;
+
+      try {
+        var decodedId = decodeURIComponent(encodedId);
+        var target = document.getElementById(decodedId);
+        if (target && !document.getElementById(encodedId)) {
+          target.id = encodedId;
+        }
+      } catch (e) {
+        // Keep the original anchor if the hash is not URI-encoded.
+      }
+    });
+  }
+
+  function enhancePage() {
     document.querySelectorAll('img').forEach(function(img) {
       if (!img.hasAttribute('loading')) {
         img.setAttribute('loading', 'lazy');
       }
+      if (!img.hasAttribute('decoding')) {
+        img.setAttribute('decoding', 'async');
+      }
     });
 
-    // Convert Hexo's code blocks to PrismJS format
+    var hasMermaid = false;
+
     document.querySelectorAll('figure.highlight').forEach(function(figure) {
-      // Get the language from the class
       var lang = '';
       figure.classList.forEach(function(cls) {
         if (cls !== 'highlight') {
@@ -17,7 +46,6 @@
         }
       });
 
-      // Check if it's a mermaid diagram
       if (lang === 'mermaid' || lang === 'plaintext') {
         var codeContent = '';
         var lines = figure.querySelectorAll('.code .line');
@@ -26,72 +54,187 @@
             codeContent += line.textContent + '\n';
           });
         } else {
-          // Fallback to get all text
           var codeBlock = figure.querySelector('.code pre');
           if (codeBlock) {
             codeContent = codeBlock.textContent;
           }
         }
 
-        // Check if content looks like mermaid
         if (codeContent.trim().match(/^(graph|sequenceDiagram|classDiagram|stateDiagram|erDiagram|gantt|pie|flowchart|journey)/)) {
-          // Create mermaid div
           var mermaidDiv = document.createElement('div');
           mermaidDiv.className = 'mermaid';
           mermaidDiv.textContent = codeContent;
           figure.parentNode.replaceChild(mermaidDiv, figure);
-        } else if (lang !== 'plaintext') {
-          // Create PrismJS format code block for other languages
-          var pre = document.createElement('pre');
-          pre.className = 'language-' + (lang || 'plaintext');
-          var code = document.createElement('code');
-          code.className = 'language-' + (lang || 'plaintext');
-          code.textContent = codeContent;
-          pre.appendChild(code);
-          figure.parentNode.replaceChild(pre, figure);
+          hasMermaid = true;
         }
-      } else if (lang) {
-        // Convert to PrismJS format
-        var codeContent = '';
-        var lines = figure.querySelectorAll('.code .line');
-        if (lines.length > 0) {
-          lines.forEach(function(line) {
-            codeContent += line.textContent + '\n';
-          });
-        } else {
-          var codeBlock = figure.querySelector('.code pre');
-          if (codeBlock) {
-            codeContent = codeBlock.textContent;
-          }
-        }
+      }
 
-        var pre = document.createElement('pre');
-        pre.className = 'language-' + lang;
-        var code = document.createElement('code');
-        code.className = 'language-' + lang;
-        code.textContent = codeContent;
-        pre.appendChild(code);
-        figure.parentNode.replaceChild(pre, figure);
+      normalizeCodeWhitespace(figure);
+
+      if (!figure.querySelector('.code-copy-btn')) {
+        addCodeCopyButton(figure);
       }
     });
 
-    // Initialize Prism.js for code highlighting
-    if (typeof Prism !== 'undefined') {
-      Prism.highlightAll();
+    hasMermaid = hasMermaid || document.querySelectorAll('.mermaid').length > 0;
+
+    if (hasMermaid) {
+      loadMermaidIfNeeded();
+    }
+  }
+
+  function loadScript(src, onload) {
+    var script = document.createElement('script');
+    script.src = src;
+    script.defer = true;
+    script.onload = onload;
+    document.head.appendChild(script);
+  }
+
+  function loadMermaidIfNeeded() {
+    loadScript('https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js', function() {
+      if (typeof mermaid !== 'undefined') {
+        mermaid.initialize({
+          startOnLoad: false,
+          theme: 'default',
+          securityLevel: 'loose'
+        });
+        mermaid.init(undefined, '.mermaid');
+      }
+    });
+  }
+
+  function normalizeCodeWhitespace(block) {
+    var lines = Array.prototype.slice.call(block.querySelectorAll('.code .line'));
+    if (lines.length === 0) return;
+
+    var textLines = lines.map(function(line) {
+      return line.textContent.replace(/\u00a0/g, ' ');
+    });
+    var nonEmptyLines = textLines.filter(function(text) {
+      return text.trim().length > 0;
+    });
+    var commonIndent = 0;
+
+    if (nonEmptyLines.length > 0) {
+      commonIndent = nonEmptyLines.reduce(function(min, text) {
+        var match = text.match(/^[\t ]*/);
+        var indent = match ? match[0].length : 0;
+        return Math.min(min, indent);
+      }, Infinity);
     }
 
-    // Initialize Mermaid for diagrams
-    if (typeof mermaid !== 'undefined') {
-      mermaid.initialize({ 
-        startOnLoad: true, 
-        theme: 'default',
-        securityLevel: 'loose'
-      });
+    if (!isFinite(commonIndent)) {
+      commonIndent = 0;
     }
-  });
+
+    lines.forEach(function(line) {
+      var startTrim = commonIndent;
+      if (line.textContent.replace(/\u00a0/g, ' ').trim().length === 0) {
+        startTrim = line.textContent.length;
+      }
+
+      trimLineEdgeText(line, startTrim, true);
+    });
+
+    removeCodeEdgeBlankLines(lines);
+  }
+
+  function trimLineEdgeText(line, startTrim, trimEnd) {
+    var remainingStart = startTrim;
+    var walker = document.createTreeWalker(line, NodeFilter.SHOW_TEXT, null, false);
+    var textNodes = [];
+    var currentNode;
+
+    while ((currentNode = walker.nextNode())) {
+      textNodes.push(currentNode);
+    }
+
+    textNodes.forEach(function(node) {
+      if (remainingStart <= 0 || node.nodeValue.length === 0) return;
+
+      var removable = node.nodeValue.match(/^[\t \u00a0]*/)[0].length;
+      var removeCount = Math.min(remainingStart, removable);
+      if (removeCount > 0) {
+        node.nodeValue = node.nodeValue.slice(removeCount);
+        remainingStart -= removeCount;
+      }
+    });
+
+    if (!trimEnd) return;
+
+    for (var i = textNodes.length - 1; i >= 0; i--) {
+      var textNode = textNodes[i];
+      var trimmed = textNode.nodeValue.replace(/[\t \u00a0]+$/, '');
+      if (trimmed.length !== textNode.nodeValue.length) {
+        textNode.nodeValue = trimmed;
+        if (trimmed.length > 0) break;
+      } else if (textNode.nodeValue.length > 0) {
+        break;
+      }
+    }
+  }
+
+  function removeCodeEdgeBlankLines(lines) {
+    var first = 0;
+    var last = lines.length - 1;
+
+    while (first <= last && lines[first].textContent.trim().length === 0) {
+      removeCodeLine(lines[first], true);
+      first++;
+    }
+
+    while (last >= first && lines[last].textContent.trim().length === 0) {
+      removeCodeLine(lines[last], false);
+      last--;
+    }
+  }
+
+  function removeCodeLine(line, removeNextBreak) {
+    var sibling = removeNextBreak ? line.nextSibling : line.previousSibling;
+
+    while (sibling && sibling.nodeType === Node.TEXT_NODE && sibling.nodeValue.length === 0) {
+      sibling = removeNextBreak ? sibling.nextSibling : sibling.previousSibling;
+    }
+
+    if (sibling && sibling.nodeName === 'BR') {
+      sibling.parentNode.removeChild(sibling);
+    }
+
+    line.parentNode.removeChild(line);
+  }
+
+  function getCodeText(block) {
+    var lines = block.querySelectorAll('.code .line');
+    if (lines.length > 0) {
+      return Array.prototype.map.call(lines, function(line) {
+        return line.textContent.replace(/\u00a0/g, ' ').replace(/[\t ]+$/, '');
+      }).join('\n');
+    }
+
+    var code = block.querySelector('.code') || block.querySelector('pre');
+    return code ? code.textContent.replace(/\u00a0/g, ' ').trim() : '';
+  }
+
+  function addCodeCopyButton(block) {
+    var button = document.createElement('button');
+    button.className = 'code-copy-btn';
+    button.type = 'button';
+    button.textContent = '复制';
+    button.addEventListener('click', function() {
+      var text = getCodeText(block);
+      if (!text) return;
+
+      navigator.clipboard.writeText(text).then(function() {
+        button.textContent = '已复制';
+        setTimeout(function() {
+          button.textContent = '复制';
+        }, 1600);
+      });
+    });
+
+    block.style.position = 'relative';
+    block.appendChild(button);
+  }
 </script>
 <script src="/js/bundle.js" defer></script>
-
-<!-- Prism.js for syntax highlighting -->
-<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>

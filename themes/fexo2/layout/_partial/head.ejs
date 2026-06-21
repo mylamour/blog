@@ -45,10 +45,12 @@
     <link rel="icon" href="<%- theme.favicon %>">
   <% } %>
 
-  <%- partial('style') %>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.7.0/lxgwwenkailite-regular.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.2.8/latin-400.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.2.8/latin-500.css">
 
-  <!-- Prism.js for code highlighting -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+  <%- partial('style') %>
 
   <% if (theme.personal_style){ %>
     <%- css(theme.personal_style) %>
@@ -58,11 +60,8 @@
   <%- partial('baidu-analytics') %>
   <%- partial('baidu-push') %>
 
-  <% if (theme.busuanzi){ %>
+  <% if (theme.busuanzi && page.layout === 'post'){ %>
     <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
   <% } %>
-
-  <!-- Mermaid for diagrams -->
-  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 
 </head>
