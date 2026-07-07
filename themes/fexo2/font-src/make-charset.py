@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""从主题 layout/配置/关于页提取 FZShuSong 需要的字符集。加字后重跑 subset.sh 即可。"""
+"""从主题 layout/配置/关于页提取 FZShuSong 需要的字符集。加字后重跑 subset.sh 即可。
+
+注意：动态内容（文章标题、分类名、标签名）不会被本脚本自动抽取——阅读面由
+LXGW WenKai 渲染不受影响，但若新增的动态文字落在 FZShuSong 渲染的 UI 面上且
+不在子集内，会回落到 PingFang SC 等系统字体（不豆腐，仅字形风格不同）。
+需要精确覆盖时把字符追加到下方的补充集合里再重跑 subset.sh。"""
 import glob, pathlib, string
 
 ROOT = pathlib.Path(__file__).resolve().parents[3]  # blog 根目录

@@ -1,4 +1,5 @@
 #!/bin/sh
+# 依赖：pip3 install fonttools brotli
 set -e
 cd "$(dirname "$0")"
 python3 make-charset.py
