@@ -86,8 +86,6 @@ home_background_scheme: light # dark、light
 blog_name_font_familiy: FZShuSong
 # blog_name_font_familiy: Helvetica
 # blog_name_font_familiy: TESTFONT
-# blog_name_font_familiy: PoiretOne-Regular
-
 init_page_content: HOME_NAV # HOME_NAV | POST
 
 
