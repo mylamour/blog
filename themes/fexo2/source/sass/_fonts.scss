@@ -10,10 +10,10 @@
 }
 
 
-/* 方正书宋简体 (FZShuSong-Z01S) */
+/* 方正书宋简体 (FZShuSong-Z01S)，子集见 font-src/，加字后重跑 font-src/subset.sh */
 @font-face {
     font-family: "FZShuSong";
-    src: url("/fonts/fzssjt.ttf") format("truetype");
+    src: url("/fonts/fzshusong-subset.woff2") format("woff2");
     font-style: normal;
     font-weight: bold;
     font-display: swap;
