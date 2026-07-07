@@ -83,7 +83,7 @@ home_background_scheme: light # dark、light
 
 # custom font-family 暂时只支持这3种英文字体，你可以完全自定义字体(看文档)
 # blog_name_font_familiy: calligraffittiregular
-blog_name_font_familiy: Lobster-Regular
+blog_name_font_familiy: FZShuSong
 # blog_name_font_familiy: Helvetica
 # blog_name_font_familiy: TESTFONT
 # blog_name_font_familiy: PoiretOne-Regular

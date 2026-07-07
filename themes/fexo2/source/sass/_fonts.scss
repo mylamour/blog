@@ -9,23 +9,15 @@
     font-display: swap;
 }
 
-@font-face {
-    font-family: "Lobster-Regular";
-    src: url("/fonts/Lobster-Regular.woff") format("woff"),
-         url("/fonts/Lobster-Regular.ttf") format("truetype");
-    font-style: normal;
-    font-weight: normal;
-    font-display: swap;
-}
-
 
 /* PoiretOne-Regular and JosefinSans-Thin removed - unused */
 
 
+/* 方正书宋简体 (FZShuSong-Z01S) */
 @font-face {
-    font-family: "TESTFONT";
-    src: url("/fonts/fzssjt.ttf") format("truetype"); /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
-    font-style: bold;
+    font-family: "FZShuSong";
+    src: url("/fonts/fzssjt.ttf") format("truetype");
+    font-style: normal;
     font-weight: bold;
     font-display: swap;
 }
