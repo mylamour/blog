@@ -1,16 +1,15 @@
 {
   "name": "fexo",
-  "version": "1.0.0",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "build": "npm run build:css && npm run build:js",
+    "build:css": "sass source/sass/styles.scss:source/css/styles.css --style=compressed --no-source-map && npm run rev",
+    "build:js": "cat source/js/fastclick.js source/js/scroll-spy.js source/js/zenscroll.js source/js/util.js source/js/app.js | esbuild --minify --loader=js > source/js/bundle.js",
+    "rev": "node -e \"const fs=require('fs'),c=require('crypto');const h=c.createHash('md5').update(fs.readFileSync('source/css/styles.css')).digest('hex').slice(0,8);const p='layout/_partial/style.ejs';fs.writeFileSync(p,fs.readFileSync(p,'utf8').replace(/styles\\.css\\?v=[a-f0-9]+/,'styles.css?v='+h))\""
+  },
   "devDependencies": {
-    "autoprefixer": "^6.3.3",
-    "babel": "^6.5.2",
-    "babel-eslint": "^5.0.0",
-    "gulp": "^3.9.1",
-    "gulp-concat": "^2.6.0",
-    "gulp-postcss": "^6.1.0",
-    "gulp-rev-easy": "^1.1.2",
-    "gulp-sass": "^2.2.0",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-uglify": "^1.5.3"
+    "esbuild": "^0.21.0",
+    "sass": "^1.77.0"
   }
 }
