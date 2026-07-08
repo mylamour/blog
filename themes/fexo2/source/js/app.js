@@ -3,7 +3,6 @@
   'use strict';
 
   var $html = document.documentElement;
-  var $body = document.body;
   var $toc = document.getElementById('toc');
   var $backTop = document.getElementById('backTop');
   var $toolboxMobile = document.getElementById('toolbox-mobile');
@@ -43,18 +42,18 @@
   // toc and backTop
   Util.bind(window, 'scroll', function() {
     scrollTop = getScrollTop();
+    if ($backTop) {
+      scrollTop > 10 ? Util.addClass($backTop, 'show') : Util.removeClass($backTop, 'show');
+    }
+
     if ($toc) {
       var tocHeight = parseInt(window.getComputedStyle($toc)['height'], 10);
       var winHeight = document.documentElement.clientHeight;
       if (tocHeight + 20 > winHeight) {
           return;
       }
-      
-      scrollTop > 180 ? Util.addClass($toc, 'fixed') : Util.removeClass($toc, 'fixed');
-    }
 
-    if ($backTop) {
-      scrollTop > 10 ? Util.addClass($backTop, 'show') : Util.removeClass($backTop, 'show');
+      scrollTop > 180 ? Util.addClass($toc, 'fixed') : Util.removeClass($toc, 'fixed');
     }
   });
 
