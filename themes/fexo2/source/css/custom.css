@@ -1178,6 +1178,17 @@ html[data-theme="dark"] a.back-top:hover { background: #332c26; }
   a.back-top { right: 14px; bottom: 66px; width: 36px; height: 36px; }
 }
 
+/* 阅读进度条（仅文章页，JS 注入） */
+#readingProgress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: var(--reading-accent);
+  z-index: 9998;
+}
+
 /* ============================================================
    暗色模式 · 暖褐纸墨（html[data-theme="dark"]）
    custom.css 在 styles.css 之后加载，此处覆盖即为最终值。
