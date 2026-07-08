@@ -5,7 +5,7 @@
   "scripts": {
     "build": "npm run build:css && npm run build:js",
     "build:css": "sass source/sass/styles.scss:source/css/styles.css --style=compressed --no-source-map && npm run rev",
-    "build:js": "cat source/js/fastclick.js source/js/scroll-spy.js source/js/zenscroll.js source/js/util.js source/js/app.js | esbuild --minify --loader=js > source/js/bundle.js",
+    "build:js": "cat source/js/scroll-spy.js source/js/zenscroll.js source/js/util.js source/js/app.js | esbuild --minify --loader=js > source/js/bundle.js",
     "rev": "node -e \"const fs=require('fs'),c=require('crypto');const h=c.createHash('md5').update(fs.readFileSync('source/css/styles.css')).digest('hex').slice(0,8);const p='layout/_partial/style.ejs';fs.writeFileSync(p,fs.readFileSync(p,'utf8').replace(/styles\\.css\\?v=[a-f0-9]+/,'styles.css?v='+h))\""
   },
   "devDependencies": {
