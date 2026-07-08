@@ -1141,6 +1141,43 @@ html[data-theme="dark"] .theme-toggle:hover { background: #332c26; }
   .theme-toggle { right: 14px; bottom: 20px; width: 36px; height: 36px; }
 }
 
+a.back-top {
+  position: fixed;
+  right: 22px;
+  bottom: 76px;
+  z-index: 9990;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--reading-line);
+  border-radius: 50%;
+  background: rgba(255, 253, 250, 0.92);
+  color: var(--reading-muted);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease,
+    opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+}
+a.back-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+a.back-top i { color: inherit; font-size: 22px; line-height: 1; }
+a.back-top:hover { color: var(--reading-accent); background: #fffaf5; }
+html[data-theme="dark"] a.back-top {
+  background: rgba(42, 36, 31, 0.92);
+}
+html[data-theme="dark"] a.back-top:hover { background: #332c26; }
+
+@media (max-width: 767px) {
+  a.back-top { right: 14px; bottom: 66px; width: 36px; height: 36px; }
+}
+
 /* ============================================================
    暗色模式 · 暖褐纸墨（html[data-theme="dark"]）
    custom.css 在 styles.css 之后加载，此处覆盖即为最终值。

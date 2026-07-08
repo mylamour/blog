@@ -11,11 +11,14 @@
   var $close = document.getElementById('close');
   var $modalDialog = document.getElementById('modal-dialog');
   var scrollTop = 0;
-  var tocTop = 20;
+
+  function getScrollTop() {
+    return window.pageYOffset || document.documentElement.scrollTop || 0;
+  }
 
   (function init() {
     if ($backTop) {
-      $body.scrollTop > 10 ? Util.addClass($backTop, 'show') : Util.removeClass($backTop, 'show');
+      getScrollTop() > 10 ? Util.addClass($backTop, 'show') : Util.removeClass($backTop, 'show');
     }
 
     if ($toc) {
@@ -24,7 +27,7 @@
       if (tocHeight + 20 > winHeight) {
           return;
       }
-      $body.scrollTop > 180 ? Util.addClass($toc, 'fixed') : Util.removeClass($toc, 'fixed');
+      getScrollTop() > 180 ? Util.addClass($toc, 'fixed') : Util.removeClass($toc, 'fixed');
     }
 
   }());
@@ -39,7 +42,7 @@
 
   // toc and backTop
   Util.bind(window, 'scroll', function() {
-    scrollTop = $body.scrollTop;
+    scrollTop = getScrollTop();
     if ($toc) {
       var tocHeight = parseInt(window.getComputedStyle($toc)['height'], 10);
       var winHeight = document.documentElement.clientHeight;
@@ -57,12 +60,11 @@
 
   if ($backTop) {
     Util.bind($backTop, 'click', function() {
-      zenscroll.to($body)
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
 
   if ($toc) {
-    var $toc = document.getElementById('toc');
     var $tocLinks = document.querySelectorAll('.toc-link');
     var links = Array.prototype.slice.call($tocLinks);
 
