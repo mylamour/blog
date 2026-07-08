@@ -1111,13 +1111,13 @@ figure.highlight .code-copy-btn:hover {
 
 html[data-theme="dark"] {
   --reading-text: #cfc5b8;
-  --reading-muted: #8f8377;
+  --reading-muted: #9c9186;
   --reading-line: #3a322b;
   --reading-title: #e8ddd0;
   --reading-accent: #c08762;
   --reading-code-bg: #2a241f;
-  --reading-code-border: #3a322b;
-  --reading-code-text: #cfc5b8;
+  --reading-code-border: var(--reading-line);
+  --reading-code-text: var(--reading-text);
   color-scheme: dark;
 }
 
@@ -1128,33 +1128,33 @@ html[data-theme="dark"] body {
 }
 
 /* —— 首页 —— */
-html[data-theme="dark"] .content-home .title { color: #e8ddd0; text-shadow: none; }
-html[data-theme="dark"] .content-home .name { color: #e8ddd0; }
-html[data-theme="dark"] .content-home .slogan { color: #8f8377; }
-html[data-theme="dark"] .content-home .author { color: #8f8377; }
+html[data-theme="dark"] .content-home .title { color: var(--reading-title); text-shadow: none; }
+html[data-theme="dark"] .content-home .name { color: var(--reading-title); }
+html[data-theme="dark"] .content-home .slogan { color: var(--reading-muted); }
+html[data-theme="dark"] .content-home .author { color: var(--reading-muted); }
 html[data-theme="dark"] .content-home .nav { color: #6b6158; }
-html[data-theme="dark"] .content-home .nav .item a { color: #cfc5b8; }
-html[data-theme="dark"] .content-home .nav .item a:hover { color: #c08762; text-shadow: none; }
-html[data-theme="dark"] .content-home .nav .item a::after { background: #c08762; }
+html[data-theme="dark"] .content-home .nav .item a { color: var(--reading-text); }
+html[data-theme="dark"] .content-home .nav .item a:hover { color: var(--reading-accent); text-shadow: none; }
+html[data-theme="dark"] .content-home .nav .item a::after { background: var(--reading-accent); }
 html[data-theme="dark"] hr {
-  background-image: linear-gradient(0deg, transparent, #3a322b, transparent);
+  background-image: linear-gradient(0deg, transparent, var(--reading-line), transparent);
 }
 
 /* —— 页头 / 工具箱 / 内容框架 —— */
 html[data-theme="dark"] .page-header { background: transparent; }
 html[data-theme="dark"] .page-header .breadcrumb,
-html[data-theme="dark"] .page-header .breadcrumb i { color: #8f8377; }
-html[data-theme="dark"] .page-header .box-blog-info .info .name { color: #e8ddd0; }
-html[data-theme="dark"] .page-header .box-blog-info .info .slogan { color: #8f8377; }
-html[data-theme="dark"] .post-header.LEFT { border-left-color: #2a241f; }
-html[data-theme="dark"] .post-header.CENTER { background: #2a241f; }
+html[data-theme="dark"] .page-header .breadcrumb i { color: var(--reading-muted); }
+html[data-theme="dark"] .page-header .box-blog-info .info .name { color: var(--reading-title); }
+html[data-theme="dark"] .page-header .box-blog-info .info .slogan { color: var(--reading-muted); }
+html[data-theme="dark"] .post-header.LEFT { border-left-color: var(--reading-code-bg); }
+html[data-theme="dark"] .post-header.CENTER { background: var(--reading-code-bg); }
 html[data-theme="dark"] .post-header .toolbox { background: #211c18; }
-html[data-theme="dark"] .content { border-left-color: #2a241f; }
+html[data-theme="dark"] .content { border-left-color: var(--reading-code-bg); }
 html[data-theme="dark"] .toolbox .toolbox-entry,
-html[data-theme="dark"] .toolbox .list-toolbox .item-toolbox a { color: #cfc5b8; background: #2a241f; }
+html[data-theme="dark"] .toolbox .list-toolbox .item-toolbox a { color: var(--reading-text); background: var(--reading-code-bg); }
 html[data-theme="dark"] .toolbox .toolbox-entry:hover,
 html[data-theme="dark"] .toolbox .list-toolbox .item-toolbox a:hover { background: #332c26; }
-html[data-theme="dark"] .toolbox .toolbox-entry .icon-home { color: #8f8377; }
+html[data-theme="dark"] .toolbox .toolbox-entry .icon-home { color: var(--reading-muted); }
 
 /* —— 文章排版 —— */
 html[data-theme="dark"] .content.content-post .article-header .post-title { color: var(--reading-title) !important; }
@@ -1163,37 +1163,37 @@ html[data-theme="dark"] .article-content h2,
 html[data-theme="dark"] .article-content h3,
 html[data-theme="dark"] .article-content h4,
 html[data-theme="dark"] .article-content h5,
-html[data-theme="dark"] .article-content h6 { color: #e8ddd0; }
+html[data-theme="dark"] .article-content h6 { color: var(--reading-title); }
 html[data-theme="dark"] .article-content a { color: #d3a586; }
-html[data-theme="dark"] .article-content a:hover { color: #c08762; text-shadow: none; }
+html[data-theme="dark"] .article-content a:hover { color: var(--reading-accent); text-shadow: none; }
 html[data-theme="dark"] .article-content strong,
 html[data-theme="dark"] .article-content b { color: #e08d75; }
 html[data-theme="dark"] .article-content blockquote {
   color: var(--reading-text);
-  border-left-color: #c08762;
+  border-left-color: var(--reading-accent);
   background: rgba(192, 135, 98, 0.07);
 }
 html[data-theme="dark"] .article-content ul li:before { background: rgba(192, 135, 98, 0.5); }
-html[data-theme="dark"] .article-content ol li::marker { color: #c08762; }
+html[data-theme="dark"] .article-content ol li::marker { color: var(--reading-accent); }
 html[data-theme="dark"] .article-content img { filter: brightness(0.85); }
 html[data-theme="dark"] .article-content table,
 html[data-theme="dark"] .article-content table td,
-html[data-theme="dark"] .article-content table th { border-color: #3a322b; color: var(--reading-text); }
+html[data-theme="dark"] .article-content table th { border-color: var(--reading-line); color: var(--reading-text); }
 
 /* —— 代码块 —— */
 html[data-theme="dark"] figure.highlight,
 html[data-theme="dark"] .highlight,
 html[data-theme="dark"] pre[class*="language-"] {
-  background: #2a241f;
-  border-color: #3a322b;
+  background: var(--reading-code-bg);
+  border-color: var(--reading-line);
   box-shadow: none;
   scrollbar-color: #4a4038 transparent;
 }
 html[data-theme="dark"] .highlight::-webkit-scrollbar-thumb { background: #4a4038; }
-html[data-theme="dark"] .highlight .gutter pre { color: #6b6158; border-right-color: #3a322b; }
+html[data-theme="dark"] .highlight .gutter pre { color: #6b6158; border-right-color: var(--reading-line); }
 html[data-theme="dark"] .highlight .comment,
 html[data-theme="dark"] .highlight .meta,
-html[data-theme="dark"] .highlight .quote { color: #857a70; }
+html[data-theme="dark"] .highlight .quote { color: #9a8e84; }
 html[data-theme="dark"] .highlight .keyword,
 html[data-theme="dark"] .highlight .selector-tag,
 html[data-theme="dark"] .highlight .type,
@@ -1237,80 +1237,80 @@ html[data-theme="dark"] .highlight .selector-attr,
 html[data-theme="dark"] .highlight .selector-pseudo,
 html[data-theme="dark"] .highlight .class { color: #c2a37e; }
 html[data-theme="dark"] :not(pre) > code {
-  border-color: #3a322b;
+  border-color: var(--reading-line);
   background: #2e2823;
   color: #d3a586;
 }
 html[data-theme="dark"] figure.highlight .code-copy-btn {
   border-color: rgba(58, 50, 43, 0.9);
   background: rgba(42, 36, 31, 0.94);
-  color: #8f8377;
+  color: var(--reading-muted);
 }
-html[data-theme="dark"] figure.highlight .code-copy-btn:hover { background: #332c26; color: #c08762; }
+html[data-theme="dark"] figure.highlight .code-copy-btn:hover { background: #332c26; color: var(--reading-accent); }
 html[data-theme="dark"] .mermaid { background: #f5efe8; }
 
 /* —— 目录 —— */
 html[data-theme="dark"] .toc,
-html[data-theme="dark"] .toc-title { color: #c08762; }
+html[data-theme="dark"] .toc-title { color: var(--reading-accent); }
 html[data-theme="dark"] .toc a,
-html[data-theme="dark"] .article-toc a { color: #8f8377; }
+html[data-theme="dark"] .article-toc a { color: var(--reading-muted); }
 html[data-theme="dark"] .toc a:hover,
-html[data-theme="dark"] .article-toc a:hover { color: #c08762; border-left-color: #c08762; }
+html[data-theme="dark"] .article-toc a:hover { color: var(--reading-accent); border-left-color: var(--reading-accent); }
 html[data-theme="dark"] .toc-article { border-left-color: var(--reading-line); }
 html[data-theme="dark"] .toc-article .toc-title { color: #a89c8f; }
-html[data-theme="dark"] .toc-article a { color: #8f8377; }
+html[data-theme="dark"] .toc-article a { color: var(--reading-muted); }
 html[data-theme="dark"] .toc-article a:hover,
-html[data-theme="dark"] .toc-article a.toc-link.active { color: #c08762; }
+html[data-theme="dark"] .toc-article a.toc-link.active { color: var(--reading-accent); }
 
 /* —— 列表页 / 归档 —— */
 html[data-theme="dark"] .post-time { color: #a3897a; }
 html[data-theme="dark"] .post-link { color: #d3a586; }
-html[data-theme="dark"] .post-link:hover { color: #c08762; background: rgba(192, 135, 98, 0.1); }
-html[data-theme="dark"] .post-link::after { background: #c08762; }
-html[data-theme="dark"] .post-title { color: #e8ddd0 !important; }
-html[data-theme="dark"] .post-title:hover { color: #c08762 !important; }
-html[data-theme="dark"] .item-post:before { background: #3a322b; }
-html[data-theme="dark"] .item-post .post-date { color: #8f8377; }
-html[data-theme="dark"] .item-year a.text-year { color: #e8ddd0; }
-html[data-theme="dark"] .item-year a.text-year i { color: #8f8377; }
+html[data-theme="dark"] .post-link:hover { color: var(--reading-accent); background: rgba(192, 135, 98, 0.1); }
+html[data-theme="dark"] .post-link::after { background: var(--reading-accent); }
+html[data-theme="dark"] .post-title { color: var(--reading-title) !important; }
+html[data-theme="dark"] .post-title:hover { color: var(--reading-accent) !important; }
+html[data-theme="dark"] .item-post:before { background: var(--reading-line); }
+html[data-theme="dark"] .item-post .post-date { color: var(--reading-muted); }
+html[data-theme="dark"] .item-year a.text-year { color: var(--reading-title); }
+html[data-theme="dark"] .item-year a.text-year i { color: var(--reading-muted); }
 
 /* —— 分类 / 标签 / 分页 —— */
 html[data-theme="dark"] .category-box .category-title,
-html[data-theme="dark"] .tag-box .tag-title { color: #cfc5b8; background: #2a241f; }
+html[data-theme="dark"] .tag-box .tag-title { color: var(--reading-text); background: var(--reading-code-bg); }
 html[data-theme="dark"] .category-box .category-list .category-item,
-html[data-theme="dark"] .tag-box .tag-list .tag-item { color: #8f8377; background: #2a241f; }
+html[data-theme="dark"] .tag-box .tag-list .tag-item { color: var(--reading-muted); background: var(--reading-code-bg); }
 html[data-theme="dark"] .category-box .category-list .category-item:hover,
-html[data-theme="dark"] .tag-box .tag-list .tag-item:hover { color: #cfc5b8; background: #332c26; }
+html[data-theme="dark"] .tag-box .tag-list .tag-item:hover { color: var(--reading-text); background: #332c26; }
 html[data-theme="dark"] .pagination .page-nav .page-number,
-html[data-theme="dark"] .pagination .page-nav .extend { color: #cfc5b8; }
+html[data-theme="dark"] .pagination .page-nav .extend { color: var(--reading-text); }
 html[data-theme="dark"] .pagination .page-nav .page-number:hover,
 html[data-theme="dark"] .pagination .page-nav .page-number.current,
-html[data-theme="dark"] .pagination .page-nav .extend:hover { color: #e8ddd0; background: #332c26; }
+html[data-theme="dark"] .pagination .page-nav .extend:hover { color: var(--reading-title); background: #332c26; }
 
 /* —— 搜索页 —— */
 html[data-theme="dark"] #stats,
 html[data-theme="dark"] .hit-content,
-html[data-theme="dark"] .no-results { color: #8f8377; }
-html[data-theme="dark"] .search-hit { border-bottom-color: #3a322b; }
-html[data-theme="dark"] .search-hit:hover { background: #2a241f; }
-html[data-theme="dark"] .hit-title { color: #e8ddd0; }
-html[data-theme="dark"] .hit-link:hover .hit-title { color: #c08762; }
+html[data-theme="dark"] .no-results { color: var(--reading-muted); }
+html[data-theme="dark"] .search-hit { border-bottom-color: var(--reading-line); }
+html[data-theme="dark"] .search-hit:hover { background: var(--reading-code-bg); }
+html[data-theme="dark"] .hit-title { color: var(--reading-title); }
+html[data-theme="dark"] .hit-link:hover .hit-title { color: var(--reading-accent); }
 html[data-theme="dark"] .hit-title mark,
 html[data-theme="dark"] .hit-title em,
 html[data-theme="dark"] .hit-content mark,
 html[data-theme="dark"] .hit-content em { background: rgba(201, 162, 39, 0.28); color: inherit; }
-html[data-theme="dark"] .ais-Pagination-link { color: #cfc5b8; border-color: #3a322b; }
-html[data-theme="dark"] .ais-Pagination-link:hover { background: #2a241f; }
+html[data-theme="dark"] .ais-Pagination-link { color: var(--reading-text); border-color: var(--reading-line); }
+html[data-theme="dark"] .ais-Pagination-link:hover { background: var(--reading-code-bg); }
 html[data-theme="dark"] .ais-Pagination-item--selected .ais-Pagination-link {
   color: #211c18;
-  background: #c08762;
-  border-color: #c08762;
+  background: var(--reading-accent);
+  border-color: var(--reading-accent);
 }
 
 /* —— 搜索框 / 移动工具按钮 —— */
 html[data-theme="dark"] .content-search .wrap-search-box .search-box {
-  background: #2a241f;
-  border: 1px solid #3a322b;
+  background: var(--reading-code-bg);
+  border: 1px solid var(--reading-line);
 }
 html[data-theme="dark"] .content-search .wrap-search-box .search-box .input-search,
 html[data-theme="dark"] .search-box input,
@@ -1318,13 +1318,13 @@ html[data-theme="dark"] #input-search {
   -webkit-appearance: none;
   appearance: none;
   background: transparent !important;
-  color: #cfc5b8;
-  -webkit-text-fill-color: #cfc5b8;
+  color: var(--reading-text);
+  -webkit-text-fill-color: var(--reading-text);
 }
-html[data-theme="dark"] .search-box .icon-search { color: #8f8377; }
+html[data-theme="dark"] .search-box .icon-search { color: var(--reading-muted); }
 html[data-theme="dark"] #toolbox-mobile,
 html[data-theme="dark"] .toolbox-mobile {
-  background: #2a241f;
-  color: #cfc5b8;
-  border-color: #3a322b;
+  background: var(--reading-code-bg);
+  color: var(--reading-text);
+  border-color: var(--reading-line);
 }
