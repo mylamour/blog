@@ -1105,6 +1105,43 @@ figure.highlight .code-copy-btn:hover {
 }
 
 /* ============================================================
+   右下角浮动按钮：主题切换（back-top 造型在 Task 6 并入此组）
+   ============================================================ */
+
+.theme-toggle {
+  position: fixed;
+  right: 22px;
+  bottom: 26px;
+  z-index: 9990;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--reading-line);
+  border-radius: 50%;
+  background: rgba(255, 253, 250, 0.92);
+  color: var(--reading-muted);
+  cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+.theme-toggle:hover { color: var(--reading-accent); background: #fffaf5; }
+.theme-toggle .icon-moon { display: block; }
+.theme-toggle .icon-sun { display: none; }
+html[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+html[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+html[data-theme="dark"] .theme-toggle {
+  border-color: var(--reading-line);
+  background: rgba(42, 36, 31, 0.92);
+}
+html[data-theme="dark"] .theme-toggle:hover { background: #332c26; }
+
+@media (max-width: 767px) {
+  .theme-toggle { right: 14px; bottom: 20px; width: 36px; height: 36px; }
+}
+
+/* ============================================================
    暗色模式 · 暖褐纸墨（html[data-theme="dark"]）
    custom.css 在 styles.css 之后加载，此处覆盖即为最终值。
    ============================================================ */
