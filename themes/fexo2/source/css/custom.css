@@ -1189,6 +1189,35 @@ html[data-theme="dark"] a.back-top:hover { background: #332c26; }
   z-index: 9998;
 }
 
+/* 图片点击放大 */
+.article-content img { cursor: zoom-in; }
+
+.image-zoom-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(24, 20, 17, 0);
+  cursor: zoom-out;
+  transition: background 0.24s ease;
+}
+.image-zoom-overlay img {
+  max-width: 92vw;
+  max-height: 92vh;
+  border-radius: 4px;
+  opacity: 0;
+  transform: scale(0.96);
+  transition: transform 0.24s ease, opacity 0.24s ease;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.35);
+  cursor: zoom-out;
+  filter: none;
+}
+.image-zoom-overlay.show { background: rgba(24, 20, 17, 0.82); }
+.image-zoom-overlay.show img { opacity: 1; transform: scale(1); }
+html[data-theme="dark"] .image-zoom-overlay.show { background: rgba(10, 8, 6, 0.88); }
+
 /* ============================================================
    暗色模式 · 暖褐纸墨（html[data-theme="dark"]）
    custom.css 在 styles.css 之后加载，此处覆盖即为最终值。
