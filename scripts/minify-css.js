@@ -1,16 +1,27 @@
 'use strict';
 
-const fs = require('fs');
-const path = require('path');
 const CleanCSS = require('clean-css');
 
 hexo.extend.filter.register('after_generate', () => {
-  const file = path.join(hexo.public_dir, 'css/custom.css');
-  if (!fs.existsSync(file)) return;
+  const key = 'css/custom.css';
+  const stream = hexo.route.get(key);
+  if (!stream) return;
 
-  const result = new CleanCSS({}).minify(fs.readFileSync(file, 'utf8'));
-  if (result.errors.length) {
-    throw new Error('clean-css failed: ' + result.errors.join('; '));
-  }
-  fs.writeFileSync(file, result.styles);
+  return new Promise((resolve, reject) => {
+    let css = '';
+    stream.on('data', (chunk) => { css += chunk; });
+    stream.on('error', reject);
+    stream.on('end', () => {
+      const result = new CleanCSS({}).minify(css);
+      if (result.errors.length) {
+        reject(new Error('clean-css failed: ' + result.errors.join('; ')));
+        return;
+      }
+      if (result.warnings.length) {
+        hexo.log.warn('clean-css warnings: ' + result.warnings.join('; '));
+      }
+      hexo.route.set(key, result.styles);
+      resolve();
+    });
+  });
 });
