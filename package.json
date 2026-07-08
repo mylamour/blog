@@ -20,5 +20,8 @@
     "hexo-search": "^1.0.4",
     "hexo-server": "^0.2.0",
     "hexo-wordcount": "^6.0.1"
+  },
+  "devDependencies": {
+    "html-minifier-terser": "^7.2.0"
   }
 }
