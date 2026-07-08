@@ -8,11 +8,11 @@ hexo.extend.filter.register('after_generate', () => {
   if (!stream) return;
 
   return new Promise((resolve, reject) => {
-    let css = '';
-    stream.on('data', (chunk) => { css += chunk; });
+    const chunks = [];
+    stream.on('data', (chunk) => { chunks.push(Buffer.from(chunk)); });
     stream.on('error', reject);
     stream.on('end', () => {
-      const result = new CleanCSS({}).minify(css);
+      const result = new CleanCSS({}).minify(Buffer.concat(chunks).toString('utf8'));
       if (result.errors.length) {
         reject(new Error('clean-css failed: ' + result.errors.join('; ')));
         return;
