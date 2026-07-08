@@ -252,11 +252,9 @@ body::-webkit-scrollbar {
 }
 
 .article-content h1,
-.article-content h2,
-.article-content h3 {
-  color: #333333;
-  border-bottom: 2px solid var(--accent-color);
-  padding-bottom: 0.3em;
+.article-content h2 {
+  border-bottom: 1px solid var(--reading-line);
+  padding-bottom: 0.35em;
 }
 
 .article-content a {
@@ -276,7 +274,7 @@ body::-webkit-scrollbar {
   color: #ef0505;
   padding: 2px 6px;
   border-radius: 3px;
-  font-size: 15px;
+  font-size: inherit;
   letter-spacing: 0.3px;
 }
 
@@ -711,8 +709,11 @@ code[class*="language-"] .token.italic .token.content {
 }
 
 .article-content p,
-.article-content li {
+.article-content li,
+.article-content ul,
+.article-content ol {
   color: var(--reading-text);
+  font-size: 17px;
   line-height: 1.88;
 }
 
@@ -1042,6 +1043,15 @@ figure.highlight .code-copy-btn:hover {
   .post-header.LEFT,
   .fexo-comments.comments-post {
     width: min(720px, calc(100vw - 48px));
+  }
+}
+
+/* Optical centering: the timeline column is mathematically centered, but its
+   ink sits right of the axis, so nudge the block toward the page center. */
+@media screen and (min-width: 1100px) {
+  .content.content-archive {
+    position: relative;
+    left: 70px;
   }
 }
 
