@@ -4,6 +4,7 @@ title: 密码学运营必知必会
 categories: 安全架构师
 kerywords: SM2 ECC Curve ASN.1 Applied Cryptopgraphy CipherSuite HMAC HKDF Encrypt Decrypt X509 证书 密钥 KeyBlocker
 tags: 安全运营
+translated: true
 ---
 
 > 试着从架构师视角拆解一下日常运营中需要知识，以求即见树木，也见树林。 
