@@ -1,4 +1,6 @@
 # 阶段一：iami.xyz 仍是中文站 domain alias 期间，按 host 强制 301 到 fz.cool。
-# 英文站接管 iami.xyz 域名时删除下面两行（spec §4 阶段二）。
+# 英文站接管 iami.xyz 域名时删除下面四行（spec §4 阶段二）。
 https://iami.xyz/* https://fz.cool/:splat 301!
 http://iami.xyz/* https://fz.cool/:splat 301!
+https://www.iami.xyz/* https://fz.cool/:splat 301!
+http://www.iami.xyz/* https://fz.cool/:splat 301!
