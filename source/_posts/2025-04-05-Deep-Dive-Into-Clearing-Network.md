@@ -4,6 +4,7 @@ title: 一文了解清算网络：业务、技术及安全
 categories: 安全架构师
 kerywords: 清算业务 收单发卡 支付 断直连 美国运通 卡组织 支付安全 跨境支付 加密 密码学 网络安全 VPN 银行卡组 银联 Stripe Payment PayPal 企业安全 安全架构 业务视角 安全 infomation security cybersecurity
 tags: 安全架构
+translated: true
 ---
 
 # 0x00 引言
