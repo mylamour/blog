@@ -1492,3 +1492,16 @@ html[data-theme="dark"] .toolbox-mobile {
     animation: none;
   }
 }
+
+/* 语言切换器（文章 meta 行） */
+.article-meta .lang-switch a {
+  color: var(--reading-accent);
+  text-decoration: none;
+  border: 1px solid var(--reading-line);
+  border-radius: 3px;
+  padding: 0 6px;
+  font-size: 12px;
+}
+.article-meta .lang-switch a:hover {
+  border-color: var(--reading-accent);
+}

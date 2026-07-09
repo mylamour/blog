@@ -46,6 +46,15 @@
   %>
   <title><% if (title){ %><%= title %> | <% } %><%= config.title %></title>
   <link rel="canonical" href="<%= canonicalUrl %>">
+  <% if (page.translated && config.alt_lang_url) {
+    var altPath = (page.canonical_path || page.path || '').replace(/index\.html$/, '');
+    var altUrl = config.alt_lang_url + '/' + altPath;
+    var enUrl = (config.language === 'en') ? canonicalUrl : altUrl;
+  %>
+  <link rel="alternate" hreflang="<%= config.language || 'zh-CN' %>" href="<%= canonicalUrl %>">
+  <link rel="alternate" hreflang="<%= config.alt_lang %>" href="<%= altUrl %>">
+  <link rel="alternate" hreflang="x-default" href="<%= enUrl %>">
+  <% } %>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -95,14 +104,16 @@
   <% } %>
 
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <% if (theme.blog_name_font_familiy === 'FZShuSong') { %>
   <link rel="preload" href="/fonts/fzshusong-subset.woff2" as="font" type="font/woff2" crossorigin>
+  <% } %>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.7.0/lxgwwenkailite-regular.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.2.8/latin-400.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.2.8/latin-500.css">
 
   <%- partial('style') %>
 
-  <link rel="stylesheet" href="/css/custom.css?v=a75223f3">
+  <link rel="stylesheet" href="/css/custom.css?v=8584cea1">
 
   <%- partial('google-analytics') %>
   <%- partial('baidu-analytics') %>
