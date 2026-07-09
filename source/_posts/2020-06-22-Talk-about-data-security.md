@@ -44,13 +44,13 @@ tags: 安全架构 数据安全
 
 * 反爬
 
-无论是黑灰产，还是竞对、监管，获取一手数据都有着不可言喻的价值。如何防止通过公共接口，批量快速的获取数据是非常关键的一环。全链路反爬非常困难，通过端上的可信SDK采集相关信息，得到唯一标示，网络层代理识别，指标统计分析，同时结合威胁情报以及账号安全去做，同时贴合具体场景做rate limiter, captcha, deny 等，以及后续怎么做到平台化，粒度如何控制到api级别等等都是逐渐发展的。对比之前的工作经验，一个明显的区别就是之前是针对具体业务做反爬时才会去收集其对应的业务需求，开启相应的防御规则，灰度上线。而现在则将动作前置，在应用上线前，就让业务给出预期的rate limiter threshold，并针对具体api配置好策略，并开启观察模式。也可参考之前总结[走出反爬困境](https://iami.xyz/Anti-Spider/)
+无论是黑灰产，还是竞对、监管，获取一手数据都有着不可言喻的价值。如何防止通过公共接口，批量快速的获取数据是非常关键的一环。全链路反爬非常困难，通过端上的可信SDK采集相关信息，得到唯一标示，网络层代理识别，指标统计分析，同时结合威胁情报以及账号安全去做，同时贴合具体场景做rate limiter, captcha, deny 等，以及后续怎么做到平台化，粒度如何控制到api级别等等都是逐渐发展的。对比之前的工作经验，一个明显的区别就是之前是针对具体业务做反爬时才会去收集其对应的业务需求，开启相应的防御规则，灰度上线。而现在则将动作前置，在应用上线前，就让业务给出预期的rate limiter threshold，并针对具体api配置好策略，并开启观察模式。也可参考之前总结[走出反爬困境](/Anti-Spider/)
 
 ## 传输
 
 * 全站TLS
 
-包括对内对外系统的加密通讯，不仅是业务还有管理平台，审计系统，以及业务系统间调用的加密。例如grpc的调用采用tls协议。但同时还有两点需要注意的是，一个是注意TLS版本的漏洞问题，不要选择错了。二是证书的选择（算法支持，服务端又支持哪些tls suite？），生成，分发，存储。更新机制等等。当然甚至需要构建offline CA，RA以及内部构建多个中级子CA，或者换而言之是issuer CA. 对于istio这种内部系统做mtls的，不必要集成整个RA API，而使其作为单独的子CA，其他可参考之前的总结[CA/RA的一点收益](https://iami.xyz/What-Hells-In-CA-And-RA/)
+包括对内对外系统的加密通讯，不仅是业务还有管理平台，审计系统，以及业务系统间调用的加密。例如grpc的调用采用tls协议。但同时还有两点需要注意的是，一个是注意TLS版本的漏洞问题，不要选择错了。二是证书的选择（算法支持，服务端又支持哪些tls suite？），生成，分发，存储。更新机制等等。当然甚至需要构建offline CA，RA以及内部构建多个中级子CA，或者换而言之是issuer CA. 对于istio这种内部系统做mtls的，不必要集成整个RA API，而使其作为单独的子CA，其他可参考之前的总结[CA/RA的一点收益](/What-Hells-In-CA-And-RA/)
 
 * Keyless CDN
 
@@ -74,7 +74,7 @@ tags: 安全架构 数据安全
 
 * 密钥
 
-密钥是一切加密的基础，真随机数的生成的原理不太懂，所以应用时根密钥还是主要是以HSM为主，分层密钥给到不同业务，制定统一的算法使用标准，包含强度，算法类型。加上考虑国内对算法的要求，尤其是国密算法在金融业的整改计划，当然密钥数据的同步和备份都应该着重关注。同时KMS做密钥管理，提供统一的api接口，最好KMS能直接对接到HSM上，当然国内的厂商套装产品仍待发力，用户体验较差。国外的产品又不适合国情。详细可以参考之前的记录[KMS/HSM的一点收益](https://iami.xyz/What-Hells-In-HSM/)  
+密钥是一切加密的基础，真随机数的生成的原理不太懂，所以应用时根密钥还是主要是以HSM为主，分层密钥给到不同业务，制定统一的算法使用标准，包含强度，算法类型。加上考虑国内对算法的要求，尤其是国密算法在金融业的整改计划，当然密钥数据的同步和备份都应该着重关注。同时KMS做密钥管理，提供统一的api接口，最好KMS能直接对接到HSM上，当然国内的厂商套装产品仍待发力，用户体验较差。国外的产品又不适合国情。详细可以参考之前的记录[KMS/HSM的一点收益](/What-Hells-In-HSM/)  
 
 
 * 保险箱
@@ -121,13 +121,13 @@ tags: 安全架构 数据安全
 
 # 资源
 
-* [DSMM第四期与我的数据安全观](https://iami.xyz/DSMM-Date-Security/)
+* [DSMM第四期与我的数据安全观](/DSMM-Date-Security/)
 * [互联网企业数据安全体系建设](https://tech.meituan.com/2018/05/24/data-security-system-construction.html)
 * [从SDL到DevSecOps：始终贯穿开发生命周期的安全](https://www.freebuf.com/vuls/240074.html)
 <!-- * [饿了么MySQL异地多活的数据双向复制经验谈](https://dbaplus.cn/news-11-1399-1.html) -->
 * [Google 基础架构安全设计概述](https://cloud.google.com/security/infrastructure/design/)
-* [KMS/HSM的一点收益](https://iami.xyz/What-Hells-In-HSM/)
-* [CA/RA的一点收益](https://iami.xyz/What-Hells-In-CA-And-RA/)
-* [堡垒机的一点收益](https://iami.xyz/What-Hells-In-JumpServer/)
-* [走出反爬困境](https://iami.xyz/Anti-Spider/)
+* [KMS/HSM的一点收益](/What-Hells-In-HSM/)
+* [CA/RA的一点收益](/What-Hells-In-CA-And-RA/)
+* [堡垒机的一点收益](/What-Hells-In-JumpServer/)
+* [走出反爬困境](/Anti-Spider/)
 * [istio Security](https://istio.io/latest/docs/concepts/security/)

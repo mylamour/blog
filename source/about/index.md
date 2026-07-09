@@ -35,7 +35,7 @@ Hello World，我是**放之**(Felix Zhao)，欢迎来到我的博客《开新�
 
 # 阅读指南
 
-* 我的分类不是以技术维度进行的，而是以我的职业经历命名，《[一个小学生](https://fz.cool/category/#%E4%B8%80%E4%B8%AA%E5%B0%8F%E5%AD%A6%E7%94%9F)》是我在读书，读书的时候花了几块钱注册了 https://iami.xyz 域名，开始学习搭建网站。等增加《[一个实习生](https://fz.cool/category/#%E4%B8%80%E4%B8%AA%E5%AE%9E%E4%B9%A0%E7%94%9F)》分类时我已经开始工作了，之后就是做《[安全工程师](https://fz.cool/category/#%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88)》和《[安全架构师](https://fz.cool/category/#%E5%AE%89%E5%85%A8%E6%9E%B6%E6%9E%84%E5%B8%88)》。 虽然很多架构的知识和实践都是来自安全工程师时期，乃至架构师的title也仿佛从执念变成了获得了的奖励。 最后是《[How To](https://fz.cool/category/#HowTo)》，独立于成长时间线之外，是记录一些人生相关的思考。 
+* 我的分类不是以技术维度进行的，而是以我的职业经历命名，《[一个小学生](https://fz.cool/category/#%E4%B8%80%E4%B8%AA%E5%B0%8F%E5%AD%A6%E7%94%9F)》是我在读书，读书的时候花了几块钱注册了 iami.xyz 域名，开始学习搭建网站。等增加《[一个实习生](https://fz.cool/category/#%E4%B8%80%E4%B8%AA%E5%AE%9E%E4%B9%A0%E7%94%9F)》分类时我已经开始工作了，之后就是做《[安全工程师](https://fz.cool/category/#%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88)》和《[安全架构师](https://fz.cool/category/#%E5%AE%89%E5%85%A8%E6%9E%B6%E6%9E%84%E5%B8%88)》。 虽然很多架构的知识和实践都是来自安全工程师时期，乃至架构师的title也仿佛从执念变成了获得了的奖励。 最后是《[How To](https://fz.cool/category/#HowTo)》，独立于成长时间线之外，是记录一些人生相关的思考。 
 
 * 如果你专注安全架构，你可以通过时间顺序阅读《[安全架构](https://fz.cool/tag/#%E5%AE%89%E5%85%A8%E6%9E%B6%E6%9E%84)》，从安全产品的部署架构开始，记录了我一点点了解和学习架构的过程。我还写了一本小册子《[安全架构要参](https://securityarchitecture.pro/)》,可以一看。
 

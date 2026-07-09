@@ -187,5 +187,5 @@ ps: 最近刷了碟中谍前4部，看到那么多不可能的地方被伊森和
 * [On The Performance of ARM TrustZone](https://arxiv.org/pdf/1906.09799.pdf)
 * [Xandu](https://cloud.xanadu.ai/)
 * [差分隐私算法基础](https://differential-privacy.cn/3-Basic-Techniques-and-Composition-Theorems/Composition-theorems/Laplace-versus-Gauss.html)
-* [浅谈加密基础设施](https://iami.xyz/Applied-Cryptography-And-Crypto-Infrastructure/)
-* [浅谈数据安全](https://iami.xyz/Talk-about-data-security/)
+* [浅谈加密基础设施](/Applied-Cryptography-And-Crypto-Infrastructure/)
+* [浅谈数据安全](/Talk-about-data-security/)

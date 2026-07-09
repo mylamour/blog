@@ -247,7 +247,7 @@ CFB模式与OFB模式的对比
 
 ![image](https://img.iami.xyz/images/134870125-50c0bbcb-8a57-4155-a262-fe94643aebe3.png)
 
-以PKI进行举例(之前曾经总结过[一篇关于CA/RA文章](https://iami.xyz/What-Hells-In-CA-And-RA/), 以及另[一篇关于HSM的](https://iami.xyz/What-Hells-In-HSM/)), 在确定了建设PKI的方案后，对逻辑架构和物理架构进行设计，同时包含了与其他系统/服务（日志，监控，权限，加密机等）的整合，在系统进行部署并提供服务后。继续建设整合服务，例如提供Support template， Customer Service，以及提供一定的SDK让其他系统/应用进行调用。不同功能的CA产生的不同证书提供给不同的应用或用户，其中提供给员工用于访问内部系统的证书是不是可以通过MDM工具推送到员工的Laptop，以及LB上的用于提供TLS服务的证书，以及所有需要根证书的地方等等。尽量优化日常运营中繁复的工作。
+以PKI进行举例(之前曾经总结过[一篇关于CA/RA文章](/What-Hells-In-CA-And-RA/), 以及另[一篇关于HSM的](/What-Hells-In-HSM/)), 在确定了建设PKI的方案后，对逻辑架构和物理架构进行设计，同时包含了与其他系统/服务（日志，监控，权限，加密机等）的整合，在系统进行部署并提供服务后。继续建设整合服务，例如提供Support template， Customer Service，以及提供一定的SDK让其他系统/应用进行调用。不同功能的CA产生的不同证书提供给不同的应用或用户，其中提供给员工用于访问内部系统的证书是不是可以通过MDM工具推送到员工的Laptop，以及LB上的用于提供TLS服务的证书，以及所有需要根证书的地方等等。尽量优化日常运营中繁复的工作。
 
 同样的针对HSM，KMS或者说Secret Management之类的也是类似的做法。 
 

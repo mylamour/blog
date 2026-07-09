@@ -53,5 +53,5 @@ tags: 漫漫人生路
 一个团队内，不会还不学，动不动就抱怨问题，总是话分两块，你聊需求，他说实现难点，你聊技术，他说用户体验。以前不知道，可能自己在刚开始工作的头两年也有这个坏习惯，当然也可能因为位置和视角不一样。现在才发现，这种行为在Manager内心可能会显得非常不专业，也明白了企业内为什么大家都是很容易被替代的。
 
 我又看了几遍，还是要坚持做好自己，经常反省。后面有空再总结一下SOC的文章。
-* [做Project Leader的一些经验](https://iami.xyz/Project-Manager/)
-* [管理团队与项目](https://iami.xyz/summary-of-pmo-experience/)
+* [做Project Leader的一些经验](/Project-Manager/)
+* [管理团队与项目](/summary-of-pmo-experience/)

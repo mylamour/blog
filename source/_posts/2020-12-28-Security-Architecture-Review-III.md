@@ -73,7 +73,7 @@ tags: 安全架构 数据安全
 咨询是一项繁复又考研自控力的工作，就像运营工作中难免遇到一些傻傻的问题，那我们应该撒气或者生闷气吗，显然不必要的。这也是极为考研提供咨询答疑之类support角色的心理。下面提到的专项中的合规审计其实也有很大一部分是咨询的工作。但是对于很多企业并不会单独为该项服务设立单独的角色。
 
 4 专项
-具体可以做的一些基础工作可以参考之前写的一篇文章 [浅谈数据安全](https://iami.xyz/Talk-about-data-security/) ，当然这篇文章也并不是列出了全部。下面也就简单举例一二。（由于每一项都需要有系统的基础运维日志收集监控等，因此暂时不列在下面了）
+具体可以做的一些基础工作可以参考之前写的一篇文章 [浅谈数据安全](/Talk-about-data-security/) ，当然这篇文章也并不是列出了全部。下面也就简单举例一二。（由于每一项都需要有系统的基础运维日志收集监控等，因此暂时不列在下面了）
 
 * Crypto/Secret - 算法选择咨询/密钥的生命周期管理（增补删除）
 * PKI —— CA/RA - 申请证书的答疑咨询/证书生命周期管理
@@ -99,9 +99,9 @@ tags: 安全架构 数据安全
 每当遇到瓶颈都要告诉自己，瓶颈之外还有新的技术视野。持续学习吧！
 
 关于安全架构写了三篇，分别浅谈了应用安全架构，基础安全架构和数据安全架构: 
-* [什么是安全架构《一》](https://iami.xyz/Security-Architecture-Review/) 
-* [什么是安全架构《二》](https://iami.xyz/Security-Architecture-Review-II/)
-* [什么是安全架构《三》](https://iami.xyz/Security-Architecture-Review-III/)
+* [什么是安全架构《一》](/Security-Architecture-Review/) 
+* [什么是安全架构《二》](/Security-Architecture-Review-II/)
+* [什么是安全架构《三》](/Security-Architecture-Review-III/)
 
 
 
