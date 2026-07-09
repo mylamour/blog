@@ -1,13 +1,5 @@
 /* Custom theme for Security Architect Blog */
 
-/* Base theme colors */
-:root {
-  --secondary-color: #e94822;
-  --accent-color: #ff6b6b;
-  --text-color: #333333;
-  --shield-glow: 0 0 15px rgba(255, 107, 107, 0.3);
-}
-
 /* Hide scrollbar completely while keeping scroll functionality */
 html {
   overflow-y: scroll;
@@ -52,8 +44,7 @@ body::-webkit-scrollbar {
 
 /* Header and navigation styling */
 .content-home .title {
-  color: var(--text-color);
-  text-shadow: var(--shield-glow);
+  color: var(--reading-title);
   font-weight: 600;
   letter-spacing: 1px;
 }
@@ -81,8 +72,7 @@ body::-webkit-scrollbar {
 }
 
 .content-home .nav .item a:hover {
-  color: var(--accent-color);
-  text-shadow: var(--shield-glow);
+  color: var(--reading-accent);
 }
 
 .content-home .nav .item a::after {
@@ -92,7 +82,7 @@ body::-webkit-scrollbar {
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--secondary-color);
+  background: var(--reading-accent);
   transition: width 0.3s ease;
 }
 
@@ -189,56 +179,9 @@ body::-webkit-scrollbar {
   font-weight: bold;
 }
 
-/* Post list styling */
-.post-item {
-  margin-bottom: 1.5em;
-}
-
-.post-time {
-  font-size: 0.9em;
-  color: #ff6b6b;
-  margin-bottom: 0.3em;
-  display: block;
-  opacity: 0.9;
-  letter-spacing: 0.1px;
-}
-
-.post-link {
-  font-size: 1.2em;
-  margin-top: 0.2em;
-  margin-bottom: 0.3em;
-  display: block;
-  transition: all 0.3s ease;
-  color: #e94822;
-  text-decoration: none;
-  position: relative;
-  padding: 2px 4px;
-}
-
-.post-link:hover {
-  color: #ff6b6b;
-  background: rgba(255, 107, 107, 0.1);
-  border-radius: 3px;
-}
-
-.post-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: #ff6b6b;
-  transition: width 0.3s ease;
-}
-
-.post-link:hover::after {
-  width: 100%;
-}
-
 /* Article styling */
 .article-content {
-  color: var(--text-color);
+  color: var(--reading-text);
 }
 
 .article-content h1,
@@ -248,20 +191,19 @@ body::-webkit-scrollbar {
 }
 
 .article-content a {
-  color: #333333; /* Kept the more specific orange for links within content */
+  color: #333333;
   text-decoration: none;
   transition: all 0.3s ease;
 }
 
 .article-content a:hover {
-  color: var(--secondary-color);
-  text-shadow: var(--shield-glow);
+  color: var(--reading-accent);
 }
 
 .article-content strong,
 .article-content b {
   font-weight: bold;
-  color: #ef0505;
+  color: var(--reading-accent);
   padding: 2px 6px;
   border-radius: 3px;
   font-size: inherit;
@@ -270,8 +212,8 @@ body::-webkit-scrollbar {
 
 /* Blockquote styling */
 .article-content blockquote {
-  border-left: 4px solid var(--secondary-color);
-  background: rgba(255, 107, 107, 0.05); /* Using accent color for consistency */
+  border-left: 4px solid var(--reading-accent);
+  background: rgba(155, 91, 71, 0.06);
   margin: 1.5em 0;
   /* padding: 1em 1.5em; */
 }
@@ -281,7 +223,7 @@ body::-webkit-scrollbar {
 .toc-title {
   font-weight: 700;
   font-size: 1.1em;
-  color: #e94822;
+  color: var(--reading-accent);
   margin-bottom: 1em;
 }
 
@@ -299,8 +241,8 @@ body::-webkit-scrollbar {
 
 .toc a:hover,
 .article-toc a:hover {
-  color: #e94822;
-  border-left-color: #e94822;
+  color: var(--reading-accent);
+  border-left-color: var(--reading-accent);
 }
 
 /* Table styling */
@@ -315,7 +257,7 @@ body::-webkit-scrollbar {
 .highlight {
   background: rgba(10, 25, 47, 0.8);
   border-radius: 4px;
-  border: 1px solid rgba(255, 107, 107, 0.2); /* Using accent color for consistency */
+  border: 1px solid var(--reading-code-border);
   overflow-x: auto;
   /* Hide scrollbar while keeping scroll functionality */
   scrollbar-width: none; /* Firefox */
@@ -332,7 +274,7 @@ body::-webkit-scrollbar {
 }
 
 .highlight .keyword {
-  color: #e94822;
+  color: #c9a227;
 }
 
 /* Shield-inspired elements */
@@ -504,7 +446,7 @@ code[class*="language-"] .token.italic .token.content {
 }
 
 .hit-link:hover .hit-title {
-  color: #e94822;
+  color: var(--reading-accent);
 }
 
 .hit-title mark,
@@ -580,9 +522,9 @@ code[class*="language-"] .token.italic .token.content {
 }
 
 .ais-Pagination-item--selected .ais-Pagination-link {
-  background: #e94822;
+  background: var(--reading-accent);
   color: white;
-  border-color: #e94822;
+  border-color: var(--reading-accent);
 }
 
 /* Hide empty search results (items without titles) */
