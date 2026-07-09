@@ -598,13 +598,13 @@ code[class*="language-"] .token.italic .token.content {
 
 /* Archive page post title styling */
 .post-title {
-  color: #000000 !important; /* Black color by default */
+  color: var(--reading-title) !important;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .post-title:hover {
-  color: #ff0000 !important; /* Red color on hover */
+  color: var(--reading-accent) !important;
 }
 
 /* Animal icons at timeline nodes - Remove colored dot, show only icon */
@@ -640,7 +640,7 @@ code[class*="language-"] .token.italic .token.content {
   --reading-font: "LXGW WenKai Lite", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
   --reading-mono: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
   --reading-text: #292521;
-  --reading-muted: #81766f;
+  --reading-muted: #7a6f67;
   --reading-line: #eee4dc;
   --reading-title: #211d19;
   --reading-accent: #9b5b47;
