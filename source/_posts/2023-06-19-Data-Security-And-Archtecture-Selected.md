@@ -93,4 +93,4 @@ tags: 安全架构
 
 有兴趣的同学可以阅读下之前写的关于数据安全的一些文章。
 * [再聊聊数据安全](/build-your-data-security-architecture/)
-* [浅谈加密基础设施](/applied-cryptography-and-crypto-infrastructure/)
+* [浅谈加密基础设施](/Applied-Cryptography-And-Crypto-Infrastructure/)
