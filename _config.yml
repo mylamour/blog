@@ -40,9 +40,9 @@ i18n_dir: :lang
 skip_render:
 
 # 把 Netlify 的 _headers/_redirects 复制进 public（Hexo 默认跳过下划线开头文件）
+# 注意：_config.en.yml 的 include 是完整列表（含 _redirects），英文站 catch-all 依赖它
 include:
   - _headers
-  - _redirects
 
 # Writing
 new_post_name: :year-:month-:day-:title.md
