@@ -37,6 +37,10 @@ code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
 
+# 把 Netlify 的 _headers 复制进 public（Hexo 默认跳过下划线开头文件）
+include:
+  - _headers
+
 # Writing
 new_post_name: :year-:month-:day-:title.md
  # File name of new posts
