@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
 <% if (theme.home_background_scheme === 'light') {%>
-  <html class="light page-<%= page.base ? page.base.replace(/\//g, '') : page.layout ? page.layout : 'home' %>">
+  <html lang="<%= page.lang || page.language || config.language || 'zh-CN' %>" class="light page-<%= page.base ? page.base.replace(/\//g, '') : page.layout ? page.layout : 'home' %>">
 <% } else { %>
-  <html class="dark page-<%= page.base ? page.base.replace(/\//g, '') : page.layout ? page.layout : 'home' %>">
+  <html lang="<%= page.lang || page.language || config.language || 'zh-CN' %>" class="dark page-<%= page.base ? page.base.replace(/\//g, '') : page.layout ? page.layout : 'home' %>">
 <% } %>
 
 <head>
@@ -25,8 +25,27 @@
   } else if (is_tag()){
     title = 'Tag: ' + page.tag;
   }
+
+  var canonicalUrl = page.permalink || full_url_for(page.canonical_path || page.path || path);
+  canonicalUrl = canonicalUrl.replace(/\/index\.html$/, '/');
+
+  var pageDescription = page.description || page.excerpt || page.content || config.description;
+  if (pageDescription) {
+    pageDescription = strip_html(pageDescription).replace(/\s+/g, ' ').trim().substring(0, 200);
+  }
+
+  function getTagNames(tags) {
+    var names = [];
+    if (tags && tags.length) {
+      tags.forEach(function(tag) {
+        names.push(tag.name || tag);
+      });
+    }
+    return names;
+  }
   %>
   <title><% if (title){ %><%= title %> | <% } %><%= config.title %></title>
+  <link rel="canonical" href="<%= canonicalUrl %>">
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -36,7 +55,36 @@
     <meta name="keywords" content="<%= theme.keywords %>" />
   <% } %>
 
-  <%- open_graph() %>
+  <%- open_graph({ url: canonicalUrl }) %>
+
+  <% if (page.layout === 'post') {
+    var tagNames = getTagNames(page.tags);
+    var jsonLd = {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': canonicalUrl
+      },
+      headline: page.title || config.title,
+      description: pageDescription,
+      url: canonicalUrl,
+      datePublished: page.date && page.date.toISOString ? page.date.toISOString() : undefined,
+      dateModified: page.updated && page.updated.toISOString ? page.updated.toISOString() : page.date && page.date.toISOString ? page.date.toISOString() : undefined,
+      author: {
+        '@type': 'Person',
+        name: config.author || config.title
+      },
+      publisher: {
+        '@type': 'Person',
+        name: config.author || config.title
+      },
+      inLanguage: page.lang || page.language || config.language || 'zh-CN',
+      keywords: tagNames.length ? tagNames.join(', ') : undefined
+    };
+  %>
+    <script type="application/ld+json"><%- JSON.stringify(jsonLd).replace(/</g, '\\u003c') %></script>
+  <% } %>
 
   <% if (theme.rss){ %>
     <link rel="alternate" href="<%- theme.rss %>" title="<%= config.title %>" type="application/atom+xml">
@@ -47,6 +95,7 @@
   <% } %>
 
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preload" href="/fonts/fzshusong-subset.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.7.0/lxgwwenkailite-regular.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.2.8/latin-400.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.2.8/latin-500.css">
@@ -64,4 +113,3 @@
   <% } %>
 
 </head>
-  <link rel="preload" href="/fonts/fzshusong-subset.woff2" as="font" type="font/woff2" crossorigin>
