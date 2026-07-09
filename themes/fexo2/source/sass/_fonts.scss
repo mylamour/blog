@@ -18,3 +18,14 @@
     font-weight: bold;
     font-display: swap;
 }
+
+/* 「開」(U+958B) 不在方正书宋简体字库内，用思源宋体（OFL 授权）补齐，
+   重生成见 font-src/subset-ext.sh */
+@font-face {
+    font-family: "FZShuSong";
+    src: url("/fonts/fzshusong-ext.woff2") format("woff2");
+    font-style: normal;
+    font-weight: bold;
+    font-display: swap;
+    unicode-range: U+958B;
+}
