@@ -1,0 +1,63 @@
+# 英文站（iami.xyz）增量配置。
+# 构建：hexo generate --config _config.yml,_config.en.yml（本文件覆盖 _config.yml）。
+# 注意：多配置合并对数组整体替换，include / home_nav 等必须完整列出。
+title: iami
+subtitle: Life is finite, while knowledge is infinite.
+description: Security architecture, applied cryptography, and AI engineering — field notes from a principal security architect.
+author: Felix Zhao
+language: en
+url: https://iami.xyz
+source_dir: source-en
+
+include:
+  - _headers
+  - _redirects
+
+# hreflang 对侧站点
+alt_lang: zh-CN
+alt_lang_url: https://fz.cool
+
+theme_config:
+  blog_name: iami
+  slogan: Life is finite, while knowledge is infinite.
+  url: https://iami.xyz
+  keywords: security architecture, enterprise security, data security, applied cryptography, AI security, agentic engineering
+  # FZShuSong 子集只含中文字符，英文站名用系统字体
+  blog_name_font_familiy: Helvetica
+  home_nav:
+    - name: Blog
+      url: /blog/
+      icon: icon-text
+      target_blank: true
+    - name: Books
+      url: https://iread.fz.cool
+      icon: icon-list
+      target_blank: true
+    - name: About
+      url: /about/
+      icon: icon-user
+      target_blank: true
+    - name: RSS
+      url: /atom.xml
+      icon: icon-rss
+      target_blank: true
+  page_nav:
+    - name: Search
+      url: /search/
+      target_blank: true
+    - name: Categories
+      url: /category/
+      target_blank: true
+    - name: Tags
+      url: /tag/
+      target_blank: true
+    - name: RSS
+      url: /atom.xml
+      target_blank: true
+  search_slogan:
+    isShow: true
+    text: security architecture · applied crypto · AI engineering
+  giscus:
+    # mapping 用 url 而非 pathname：中英文章 slug 相同，pathname 会让两站共用同一评论线程
+    mapping: url
+    lang: en

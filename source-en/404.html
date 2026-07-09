@@ -1,0 +1,82 @@
+---
+layout: false
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>404 · iami</title>
+<script>(function(){var t=null;try{t=localStorage.getItem('theme')}catch(e){}if(t==='dark'||(!t&&window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}})()</script>
+<style>
+:root {
+  --bg: #fffdfa;
+  --text: #292521;
+  --muted: #7a6f67;
+  --title: #211d19;
+  --accent: #9b5b47;
+  --line: #eee4dc;
+}
+html[data-theme="dark"] {
+  --bg: #211c18;
+  --text: #cfc5b8;
+  --muted: #9c9186;
+  --title: #e8ddd0;
+  --accent: #c08762;
+  --line: #3a322b;
+  color-scheme: dark;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  text-align: center;
+  padding: 24px;
+}
+.code {
+  font-size: 88px;
+  font-weight: 700;
+  color: var(--title);
+  letter-spacing: 4px;
+  line-height: 1.2;
+}
+h1 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--title);
+  margin-top: 8px;
+}
+p { color: var(--muted); margin-top: 12px; font-size: 15px; line-height: 1.8; }
+.nav { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--line); }
+.nav a {
+  display: inline-block;
+  margin: 0 10px;
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  font-size: 15px;
+}
+.nav a:hover { text-decoration-color: currentColor; }
+</style>
+</head>
+<body>
+<main>
+  <div class="code">404</div>
+  <h1>This page is not in the room</h1>
+  <p>The page you are looking for does not exist or has moved.<br>
+     If it exists in Chinese only, try <a href="https://fz.cool/" style="color:var(--accent)">fz.cool</a>.</p>
+  <nav class="nav">
+    <a href="/">Home</a>
+    <a href="/blog/">All posts</a>
+    <a href="/search/">Search</a>
+  </nav>
+</main>
+</body>
+</html>

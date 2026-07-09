@@ -2,6 +2,10 @@
   "name": "hexo-site",
   "version": "0.0.0",
   "private": true,
+  "scripts": {
+    "build:en": "hexo clean && hexo generate --config _config.yml,_config.en.yml",
+    "server:en": "hexo clean && hexo server --config _config.yml,_config.en.yml -p 4124"
+  },
   "hexo": {
     "version": "7.3.0"
   },
