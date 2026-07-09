@@ -2,7 +2,7 @@
 layout: post
 title: "Applied Cryptography Operations: What Practitioners Must Know"
 categories: Security Architecture
-kerywords: SM2 ECC curve ASN.1 applied cryptography ciphersuite HMAC HKDF encryption X509 certificate key management key blocker
+kerywords: SM2 ECC curve ASN.1 applied cryptography ciphersuite HMAC HKDF encryption X509 certificate key management key block
 tags: Security Operations
 translated: true
 description: A security architect's field guide to day-to-day cryptography operations — curves and SM2, ASN.1 and X.509, cipher suites, HMAC/HKDF, and key management pitfalls.
