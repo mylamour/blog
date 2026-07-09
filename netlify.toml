@@ -1,35 +1,9 @@
 [build]
   publish = "public"
-  command = "hexo generate"
+  command = "node themes/fexo2/rev.js && hexo generate"
 
+# 压缩由本地构建链完成（dart-sass/esbuild/minify-html.js/minify-css.js），
+# 关闭 Netlify 后处理避免它改写带 ?v= 的资源引用。
+# 缓存头统一由 source/_headers 管理。
 [build.processing]
-  skip_processing = false
-
-[build.processing.css]
-  bundle = true
-  minify = true
-
-[build.processing.js]
-  bundle = true
-  minify = true
-
-[build.processing.html]
-  pretty_urls = true
-
-[build.processing.images]
-  compress = true
-
-[[headers]]
-  for = "/fonts/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/css/*"
-  [headers.values]
-    Cache-Control = "public, max-age=604800"
-
-[[headers]]
-  for = "/js/*"
-  [headers.values]
-    Cache-Control = "public, max-age=604800"
+  skip_processing = true
