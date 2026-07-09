@@ -20,3 +20,10 @@ location:
   projects: Projects
   search: Search
   tags: Tags
+words: " words"
+readtime: "~%d min read"
+visits: "Views: "
+visits_suffix: ""
+toggle_theme: Toggle dark mode
+copy: Copy
+copied: Copied

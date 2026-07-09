@@ -20,3 +20,10 @@ location:
   projects: 项目
   search: 搜索
   tags: 标签
+words: 字
+readtime: 预计阅读%d分钟
+visits: "访问: "
+visits_suffix: " 次"
+toggle_theme: 切换深色模式
+copy: 复制
+copied: 已复制

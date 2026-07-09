@@ -10,3 +10,10 @@ archive_a: 彙整
 archive_b: 彙整：%s
 page: 第 %d 頁
 recent_posts: 最新文章
+words: 字
+readtime: 預計閱讀%d分鐘
+visits: "訪問: "
+visits_suffix: " 次"
+toggle_theme: 切換深色模式
+copy: 複製
+copied: 已複製

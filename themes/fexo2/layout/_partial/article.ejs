@@ -21,20 +21,20 @@
       <% if (theme.count.wordcount){ %>
         <span class="post-count">
           <i class="icon-feather"></i>
-          <span><%= wordcount(post.content) %>字</span>
+          <span><%= wordcount(post.content) %><%= __('words') %></span>
         </span>
       <% } %>
 
       <% if (theme.count.readtime){ %>
         <span class="post-count">
-          <span>预计阅读<%= min2read(post.content) %>分钟</span>
+          <span><%= __('readtime', min2read(post.content)) %></span>
         </span>
       <% } %>
 
       <% if (theme.busuanzi){ %>
         <span id="busuanzi_container_page_pv" style="display:none">
           <i class="icon-info-circled-1"></i>
-          <span>访问: <span id="busuanzi_value_page_pv"></span>&nbsp;次</span>
+          <span><%= __('visits') %><span id="busuanzi_value_page_pv"></span><%= __('visits_suffix') %></span>
         </span>
       <% } %>
 

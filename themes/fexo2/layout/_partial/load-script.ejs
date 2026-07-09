@@ -220,15 +220,15 @@
     var button = document.createElement('button');
     button.className = 'code-copy-btn';
     button.type = 'button';
-    button.textContent = '复制';
+    button.textContent = '<%= __("copy") %>';
     button.addEventListener('click', function() {
       var text = getCodeText(block);
       if (!text) return;
 
       navigator.clipboard.writeText(text).then(function() {
-        button.textContent = '已复制';
+        button.textContent = '<%= __("copied") %>';
         setTimeout(function() {
-          button.textContent = '复制';
+          button.textContent = '<%= __("copy") %>';
         }, 1600);
       });
     });

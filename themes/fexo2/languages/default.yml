@@ -20,3 +20,10 @@ location:
   projects: 项目
   search: 搜索
   tags: 标签
+words: " words"
+readtime: "~%d min read"
+visits: "Views: "
+visits_suffix: ""
+toggle_theme: Toggle dark mode
+copy: Copy
+copied: Copied
