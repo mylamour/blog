@@ -10,6 +10,7 @@
   var $close = document.getElementById('close');
   var $modalDialog = document.getElementById('modal-dialog');
   var scrollTop = 0;
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function getScrollTop() {
     return window.pageYOffset || document.documentElement.scrollTop || 0;
@@ -59,7 +60,11 @@
 
   if ($backTop) {
     Util.bind($backTop, 'click', function() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (reduceMotion) {
+        window.scrollTo(0, 0);
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     });
   }
 
@@ -70,7 +75,11 @@
     links.forEach(function(element) {
       Util.bind(element, 'click', function(e) {
         var $target = document.getElementById(this.hash.substring(1));
-        zenscroll.to($target)
+        if (reduceMotion) {
+          $target.scrollIntoView();
+        } else {
+          zenscroll.to($target);
+        }
         e.preventDefault();
       });
     });
