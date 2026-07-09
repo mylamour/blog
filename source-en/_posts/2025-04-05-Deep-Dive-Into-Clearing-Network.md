@@ -10,7 +10,7 @@ description: How clearing networks work — the business of acquiring and issuin
 
 # 0x00 Introduction
 
-Clearing networks are the connective tissue of the payment industry. They do two things that everyone else in the value chain depends on: **switching** transactions between acquirers and issuers, and **clearing & settlement** of the money that moves as a result. Globally, the well-known clearing organizations are Visa, Mastercard, American Express (AMEX for the rest of the article), Discover, and UnionPay. In China the picture is more layered — UnionPay (CUP) handles bank-card payments, NUCC ("Nets Union Clearing Corporation") handles non-bank third-party payments, and if you widen the lens further there are also domain-specific systems like the City Bank Clearing Payment System and the Rural Credit Bank Payment Clearing System.
+Clearing networks are the connective tissue of the payment industry. They do two things that everyone else in the value chain depends on: **switching** transactions between acquirers and issuers, and **clearing & settlement** of the money that moves as a result. Globally, the well-known clearing organizations are Visa, Mastercard, American Express (AMEX for the rest of the article), Discover, and UnionPay. In China the picture is more layered — UnionPay (CUP) handles bank-card payments, NUCC ("NetsUnion Clearing Corporation") handles non-bank third-party payments, and if you widen the lens further there are also domain-specific systems like the City Bank Clearing Payment System and the Rural Credit Bank Payment Clearing System.
 
 NUCC exists because Chinese regulators wanted third-party payment providers to route through a licensed, supervised clearing house rather than plug straight into commercial banks — the so-called **"cutting the direct connection" (`断直连`) mandate of 2017–2018**. The result is a very different topology from the US or EU, and it will come up more than once below.
 
@@ -48,7 +48,7 @@ A "classic" transaction breaks into two phases: **authorization** and **clearing
 
 The common protocols on the wire are **ISO 8583**, **ISO 20022**, and — specific to the Chinese domestic ecosystem — an XML-over-HTTPS style protocol we'll refer to as the "domestic XML protocol". Back to the flow itself, this is what an authorization looks like:
 
-![authroization](https://img.iami.xyz/images/d4eac8944f2879566eec10f6a807b9fe238ea9e11b4588ef19bb48bbd4d20556.png)
+![authorization](https://img.iami.xyz/images/d4eac8944f2879566eec10f6a807b9fe238ea9e11b4588ef19bb48bbd4d20556.png)
 
 Abstracted:
 
@@ -148,7 +148,7 @@ Data protection here is grounded in applied cryptography — primarily symmetric
 * The message body is signed and the signature appended at the tail of the message.
 * The network publishes its signing verification cert to all institutions, and loads the verification certs of every participant.
 
-![certifcate useage](https://img.iami.xyz/images/181fb0b4dbaa4f19eac85444acd4bd7606ebe77d3d23e94f17279c17bf2acdb7.png)
+![certificate usage](https://img.iami.xyz/images/181fb0b4dbaa4f19eac85444acd4bd7606ebe77d3d23e94f17279c17bf2acdb7.png)
 
 The rest of the flow is in the diagram. Beyond this, other things worth watching include: how certificates are used on cards themselves (anti-counterfeit); how certificate-based auth is applied to operational back-office login; and how hardware key injection guarantees the private key never leaves the secure boundary.
 
@@ -156,7 +156,7 @@ The rest of the flow is in the diagram. Beyond this, other things worth watching
 
 If you just want the shape:
 
-![MMK Delvier and how encrypted](https://img.iami.xyz/images/4376c43dceba8acf977e9c2baee77ec973f86b75ae3c9a8f50cfbe54b51f4440.png)
+![MMK Delivery and how encrypted](https://img.iami.xyz/images/4376c43dceba8acf977e9c2baee77ec973f86b75ae3c9a8f50cfbe54b51f4440.png)
 
 For the detail:
 
