@@ -44,5 +44,5 @@ Hello World，我是**放之**(Felix Zhao)，欢迎来到我的博客《开新�
 * 如果你需要联系我，可以邮件**ZnpAY2lzby5jaGF0** （Base64 编码）也可以通过领英或者公众号联系到我。我对生活真实面目后的热爱使我保持至少信任陌生人一次（目前看来是这样，以后暂时也不知道......）
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Person","name":"放之","alternateName":"Felix Zhao","url":"https://fz.cool/about/","jobTitle":"安全架构师","sameAs":["https://github.com/mylamour","https://iami.xyz/about/"]}
+{"@context":"https://schema.org","@type":"Person","name":"放之","alternateName":"Felix Zhao","url":"https://fz.cool/about/","jobTitle":"高级信息安全架构师","sameAs":["https://github.com/mylamour","https://iami.xyz/about/"]}
 </script>

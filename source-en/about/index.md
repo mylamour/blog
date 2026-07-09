@@ -45,5 +45,5 @@ There was a stretch where I felt lost, and I started reading the *Tao Te Ching*,
 * If you need to reach me, email **ZnpAY2lzby5jaGF0** (Base64-encoded), or ping me via LinkedIn or the WeChat public account. My genuine love for life-as-it-actually-is keeps me willing to trust a stranger at least once — that's the current stance, anyway; we'll see how long it lasts.
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Person","name":"Felix Zhao","alternateName":"放之","url":"https://iami.xyz/about/","jobTitle":"Principal Security Architect","sameAs":["https://github.com/mylamour","https://fz.cool/about/"]}
+{"@context":"https://schema.org","@type":"Person","name":"Felix Zhao","alternateName":"放之","url":"https://iami.xyz/about/","jobTitle":"Senior Information Security Architect","sameAs":["https://github.com/mylamour","https://fz.cool/about/"]}
 </script>
