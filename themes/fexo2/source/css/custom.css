@@ -191,13 +191,26 @@ body::-webkit-scrollbar {
 }
 
 .article-content a {
-  color: #333333;
-  text-decoration: none;
-  transition: all 0.3s ease;
+  color: var(--reading-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(155, 91, 71, 0.45);
+  transition: color 0.3s ease, text-decoration-color 0.3s ease;
 }
 
 .article-content a:hover {
-  color: var(--reading-accent);
+  color: #7f4635;
+  text-decoration-color: currentColor;
+}
+
+.article-content a:has(> img) {
+  text-decoration: none;
+}
+
+.article-content a strong,
+.article-content a b {
+  color: inherit;
 }
 
 .article-content strong,
@@ -1220,8 +1233,8 @@ html[data-theme="dark"] .article-content h3,
 html[data-theme="dark"] .article-content h4,
 html[data-theme="dark"] .article-content h5,
 html[data-theme="dark"] .article-content h6 { color: var(--reading-title); }
-html[data-theme="dark"] .article-content a { color: #d3a586; }
-html[data-theme="dark"] .article-content a:hover { color: var(--reading-accent); text-shadow: none; }
+html[data-theme="dark"] .article-content a { color: #d3a586; text-decoration-color: rgba(211, 165, 134, 0.45); }
+html[data-theme="dark"] .article-content a:hover { color: var(--reading-accent); text-decoration-color: currentColor; text-shadow: none; }
 html[data-theme="dark"] .article-content strong,
 html[data-theme="dark"] .article-content b { color: #e08d75; }
 html[data-theme="dark"] .article-content blockquote {
