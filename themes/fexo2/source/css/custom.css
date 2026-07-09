@@ -1133,6 +1133,38 @@ html[data-theme="dark"] a.back-top:hover { background: #332c26; }
   a.back-top { right: 14px; bottom: 66px; width: 36px; height: 36px; }
 }
 
+/* ============================================================
+   搜索页：去掉时间线残留装饰，统一高亮色
+   ============================================================ */
+
+.content.content-search {
+  border-left-color: transparent;
+}
+html[data-theme="dark"] .content.content-search {
+  border-left-color: transparent;
+}
+.content.content-search .wrap-search-box::before,
+.content.content-search .list-search .item a::before {
+  display: none;
+}
+.content.content-search .list-search .item .color-hightlight {
+  color: var(--reading-accent);
+  font-weight: 600;
+}
+.content.content-search .list-search .item .title .color-hightlight {
+  font-weight: inherit;
+}
+.content.content-search .list-search .item .title:hover {
+  color: var(--reading-accent);
+}
+
+/* 页头：桌面端头像与标题留出间距（搜索/归档等页共用 page-header） */
+@media screen and (min-width: 768px) {
+  .page-header .box-blog-info .info {
+    margin-left: 14px;
+  }
+}
+
 /* 阅读进度条（仅文章页，JS 注入） */
 #readingProgress {
   position: fixed;
@@ -1374,6 +1406,17 @@ html[data-theme="dark"] .ais-Pagination-item--selected .ais-Pagination-link {
   color: #211c18;
   background: var(--reading-accent);
   border-color: var(--reading-accent);
+}
+
+/* 暗色下主题自带 JS 搜索结果的可读性 */
+html[data-theme="dark"] .content-search .list-search .item .title {
+  color: var(--reading-title);
+}
+html[data-theme="dark"] .content-search .list-search .item .post-content {
+  color: var(--reading-text);
+}
+html[data-theme="dark"] .content-search .list-search .tip {
+  color: var(--reading-muted);
 }
 
 /* —— 搜索框 / 移动工具按钮 —— */
