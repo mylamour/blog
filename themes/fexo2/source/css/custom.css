@@ -1507,3 +1507,10 @@ html[data-theme="dark"] .toolbox-mobile {
 .article-meta .lang-switch a:hover {
   border-color: var(--reading-accent);
 }
+
+/* 英文站主页单字 I：拉丁单字符视觉密度远低于中文方块字，放大对齐「開」的存在感 */
+html[lang="en"] .content-home h1.name {
+  font-size: 64px;
+  line-height: 1.1;
+  height: auto;
+}

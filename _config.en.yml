@@ -18,12 +18,12 @@ alt_lang: zh-CN
 alt_lang_url: https://fz.cool
 
 theme_config:
-  blog_name: iami
+  blog_name: I
   slogan: Life is finite, while knowledge is infinite.
   url: https://iami.xyz
   keywords: security architecture, enterprise security, data security, applied cryptography, AI security, agentic engineering
-  # FZShuSong 子集只含中文字符，英文站名用系统字体
-  blog_name_font_familiy: Helvetica
+  # 单字 I 须用衬线体：大写 I 上下有横衬线，可与 l/i 区分；FZShuSong 子集只含中文字符不可用
+  blog_name_font_familiy: Georgia
   home_nav:
     - name: Blog
       url: /blog/
