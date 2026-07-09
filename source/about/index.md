@@ -42,3 +42,7 @@ Hello World，我是**放之**(Felix Zhao)，欢迎来到我的博客《开新�
 * 如果你想了解一些我的三观，或者我放的臭屁，可以查看《[漫漫人生路](https://fz.cool/tag/#%E6%BC%AB%E6%BC%AB%E4%BA%BA%E7%94%9F%E8%B7%AF)》
 
 * 如果你需要联系我，可以邮件**ZnpAY2lzby5jaGF0** （Base64 编码）也可以通过领英或者公众号联系到我。我对生活真实面目后的热爱使我保持至少信任陌生人一次（目前看来是这样，以后暂时也不知道......）
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"放之","alternateName":"Felix Zhao","url":"https://fz.cool/about/","jobTitle":"安全架构师","sameAs":["https://github.com/mylamour","https://iami.xyz/about/"]}
+</script>
