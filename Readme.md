@@ -2,6 +2,20 @@
 
 ## Changelog
 
+### 2026/07/09
+
+* Launch English edition at https://iami.xyz (single repo + `_config.en.yml` + second Netlify site, `HEXO_CONFIG` env driven)
+* First 3 posts translated into English, plus English About page; hreflang and language switcher between fz.cool and iami.xyz
+* Force 301 iami.xyz → fz.cool until the English site goes live (remove duplicate content)
+* SEO: canonical / JSON-LD / Open Graph / robots.txt; GA ID moved to theme config
+* In-post links switched from absolute iami.xyz URLs to relative paths
+* Theme UI strings internationalized (word count, read time, visits, copy button)
+
+### 2026/07/07
+
+* Performance: subset FZShuSong font to woff2, minify HTML/CSS at build time, lazy-load images at generate time, Netlify cache headers, asset cache-busting via rev.js
+* New theme components: light/dark theme toggle, reading progress bar, image zoom
+* Clean up gh-pages deploy leftovers (hexo-deployer-git, CNAME, deploy config)
 
 ### 2026/1/15
 
