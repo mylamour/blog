@@ -126,7 +126,7 @@ MMO：我一张证书走天下，方便使用，又好管理。还能降本增�
 * [Standard curve database](http://neuromancer.sk/std/methods/)
 * [国密算法OID](http://gmssl.org/docs/oid.html)
 * [Object Identifier (OID) Repository](https://oid-base.com/)
-* [浅谈加密基础设施](https://fz.cool/Applied-Cryptography-And-Crypto-Infrastructure)
+* [浅谈加密基础设施](https://fz.cool/Applied-Cryptography-And-Crypto-Infrastructure/)
 * [浅谈隐私计算和数据安全](https://fz.cool/Privacy-Computing-And-Data-Security/)
 * [数学公式可视化工具](https://www.desmos.com/calculator)
 * [Safe Curves](http://safecurves.cr.yp.to/rigid.html)

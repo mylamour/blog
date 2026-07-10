@@ -74,7 +74,7 @@ Collaboration is crucial. Originally, I pulled it out and put it into policy pro
 Consulting is a complicated job that tests self-control. Just like in operational work, you inevitably encounter some silly questions. Should we vent or sulk? Obviously not necessary. This also greatly tests the psychology of those in support roles who provide consulting and Q&A services. The compliance auditing mentioned in the specialized services below actually has a large part that is consulting work. But many enterprises won't set up a separate role for this service alone.
 
 4 Specialized Services
-Specific basic work that can be done can refer to a previous article I wrote [Talk about Data Security](/Talk-about-data-security/). Of course, this article doesn't list everything either. Below I'll just give a couple of simple examples. (Since each item needs systematic basic operation and maintenance log collection monitoring, etc., it's not listed below for now)
+Specific basic work that can be done can refer to a previous article I wrote [Talk about Data Security](/talk-about-data-security/). Of course, this article doesn't list everything either. Below I'll just give a couple of simple examples. (Since each item needs systematic basic operation and maintenance log collection monitoring, etc., it's not listed below for now)
 
 * Crypto/Secret - Algorithm selection consulting / Key lifecycle management (add, supplement, delete)
 * PKI —— CA/RA - Certificate application Q&A consulting / Certificate lifecycle management
@@ -100,9 +100,9 @@ Unlike the high risk of basic security and the high threat of application securi
 Whenever you encounter a bottleneck, tell yourself that beyond the bottleneck there are new technical horizons. Keep learning!
 
 I've written three articles about security architecture, briefly discussing application security architecture, basic security architecture, and data security architecture respectively:
-* [What is Security Architecture Part I](/Security-Architecture-Review/) 
-* [What is Security Architecture Part II](/Security-Architecture-Review-II/)
-* [What is Security Architecture Part III](/Security-Architecture-Review-III/)
+* [What is Security Architecture Part I](/security-architecture-review/)
+* [What is Security Architecture Part II](/security-architecture-review-ii/)
+* [What is Security Architecture Part III](/security-architecture-review-iii/)
 
 
 

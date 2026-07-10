@@ -54,4 +54,4 @@ tags: 漫漫人生路
 
 我又看了几遍，还是要坚持做好自己，经常反省。后面有空再总结一下SOC的文章。
 * [做Project Leader的一些经验](/Project-Manager/)
-* [管理团队与项目](/summary-of-pmo-experience/)
+* [管理团队与项目](/Summary-OF-PMO-Experience/)

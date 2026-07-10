@@ -35,7 +35,7 @@ Just read a book for these — more authoritative and detailed (or I'll update t
 
 ## TF-IDF
 
-Used to extract features from text. Already covered in a previous [text summarization post](/Text-Summarization-GF/), not going to repeat it here. Can be combined with `sklearn pipeline` for preprocessing.
+Used to extract features from text. Already covered in a previous [text summarization post](/text-summarization-gf/), not going to repeat it here. Can be combined with `sklearn pipeline` for preprocessing.
 
 ```python
 
@@ -246,5 +246,5 @@ Or just use an [Aliyun](https://help.aliyun.com/document_detail/60149.html?spm=5
 * [cudnn install guide](http://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html) -->
 * [Pros and cons of classification algorithms in data mining](https://www.zhihu.com/question/24169940)
 * [Feature engineering on a single machine with sklearn](https://www.cnblogs.com/jasonfreak/p/5448385.html)
-* [CNN notes summary](/Review-NN-Note/)
+* [CNN notes summary](/review-nn-note/)
 * [Keras Chinese documentation](https://keras-cn.readthedocs.io/en/latest/)

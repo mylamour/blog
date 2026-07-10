@@ -9,6 +9,7 @@ const {
   routeForOutputFile,
   buildRouteIndex,
   resolveLocalReference,
+  validateGeneratedLinks,
   validateHtmlPage,
   validateSitemap,
   validateAtom,
@@ -23,6 +24,25 @@ function codes(diagnostics) {
 
 function routes(values) {
   return new Map(values.map((route) => [route, route === '/' ? 'index.html' : `${route.slice(1)}index.html`]));
+}
+
+function generatedLinks({
+  html,
+  siteId = 'zh',
+  sourceRoute = '/page/',
+  routeValues = [sourceRoute],
+  targetHtml = {},
+  baseline = []
+}) {
+  const routeIndex = routes(routeValues);
+  const htmlByRoute = new Map([
+    [sourceRoute, { html, file: routeIndex.get(sourceRoute) }],
+    ...Object.entries(targetHtml).map(([route, target]) => [
+      route,
+      { html: target, file: routeIndex.get(route) }
+    ])
+  ]);
+  return validateGeneratedLinks({ siteId, routeIndex, htmlByRoute, baseline });
 }
 
 function post(file, side, translated = true) {
@@ -268,7 +288,102 @@ test('local references decode once, normalize NFC, preserve case, and skip non-l
   assert.equal(invalid.diagnostic.code, 'GEN_REFERENCE_DOUBLE_ENCODED');
 });
 
-test('generated English audit validates redirect contract and English 404 language', async (t) => {
+test('generated links require case-sensitive direct routes', () => {
+  const diagnostics = generatedLinks({
+    html: '<a href="/Foo/">direct</a><a href="/foo/">wrong case</a><a href="/Foo">rewrite only</a>',
+    routeValues: ['/page/', '/Foo/']
+  });
+  const missing = diagnostics.filter((item) => item.code === 'GEN_LINK_TARGET_MISSING');
+
+  assert.equal(diagnostics.length, 2);
+  assert.equal(missing.length, 2);
+  assert.equal(missing.some((item) => item.message.includes('/foo/')), true);
+  assert.equal(missing.some((item) => item.message.includes('/Foo"')), true);
+});
+
+test('an exact missing-link baseline tuple suppresses only that pair and emits one aggregate warning', () => {
+  const diagnostics = generatedLinks({
+    html: '<a href="/missing-a">approved</a><a href="/missing-b">new regression</a>',
+    baseline: [{ source: '/page/', target: '/missing-a', reason: 'historical deletion' }]
+  });
+
+  assert.deepEqual(
+    diagnostics.map(({ severity, code }) => ({ severity, code })),
+    [
+      { severity: 'warning', code: 'GEN_LINK_BASELINE_MATCHED' },
+      { severity: 'error', code: 'GEN_LINK_TARGET_MISSING' }
+    ]
+  );
+  assert.equal(diagnostics[1].message.includes('/missing-b'), true);
+});
+
+test('a link baseline entry is stale when its source reference disappears', () => {
+  const diagnostics = generatedLinks({
+    html: '<p>No historical reference remains.</p>',
+    baseline: [{ source: '/page/', target: '/missing', reason: 'historical deletion' }]
+  });
+
+  assert.deepEqual(codes(diagnostics), ['GEN_LINK_BASELINE_STALE']);
+  assert.equal(diagnostics[0].severity, 'error');
+});
+
+test('a link baseline entry is stale when its target starts existing', () => {
+  const diagnostics = generatedLinks({
+    html: '<a href="/restored/">restored</a>',
+    routeValues: ['/page/', '/restored/'],
+    targetHtml: { '/restored/': '<h1>Restored</h1>' },
+    baseline: [{ source: '/page/', target: '/restored/', reason: 'historical deletion' }]
+  });
+
+  assert.deepEqual(codes(diagnostics), ['GEN_LINK_BASELINE_STALE']);
+  assert.equal(diagnostics[0].severity, 'error');
+});
+
+test('internal HTML fragments decode once and must match an exact target id', () => {
+  const diagnostics = generatedLinks({
+    html: '<div id="local"></div><a href="#local">local</a><a href="/target/#%E4%BD%A0%E5%A5%BD">valid</a><a href="/target/#missing">invalid</a>',
+    routeValues: ['/page/', '/target/'],
+    targetHtml: { '/target/': '<h2 id="你好">Decoded once</h2>' }
+  });
+
+  assert.deepEqual(codes(diagnostics), ['GEN_FRAGMENT_MISSING']);
+  assert.equal(diagnostics[0].message.includes('#missing'), true);
+});
+
+test('generated link audit inspects resource attributes and parses srcset URLs', () => {
+  const diagnostics = generatedLinks({
+    html: `
+      <a href="/missing-a">a</a>
+      <link href="/missing-link.css">
+      <script src="/missing-script.js"></script>
+      <img src="/missing-image.png" data-src="/missing-lazy.png"
+        srcset="data:image/svg+xml,%3Csvg%3E 1x, /missing-srcset.png 2x">
+      <source src="/missing-source.mp4" srcset="/missing-source-1.png 1x, /missing-source-2.png 2x">
+      <video poster="/missing-poster.png"></video>
+    `
+  });
+
+  const missingMessages = diagnostics
+    .filter((item) => item.code === 'GEN_LINK_TARGET_MISSING')
+    .map((item) => item.message);
+  for (const target of [
+    '/missing-a',
+    '/missing-link.css',
+    '/missing-script.js',
+    '/missing-image.png',
+    '/missing-lazy.png',
+    '/missing-srcset.png',
+    '/missing-source.mp4',
+    '/missing-source-1.png',
+    '/missing-source-2.png',
+    '/missing-poster.png'
+  ]) {
+    assert.equal(missingMessages.some((message) => message.includes(target)), true, target);
+  }
+  assert.equal(missingMessages.length, 10);
+});
+
+test('generated English audit composes links, redirect contract, and English 404 language', async (t) => {
   const root = await fs.mkdtemp(path.join(os.tmpdir(), 'generated-site-'));
   t.after(() => fs.rm(root, { recursive: true, force: true }));
   const home = pageHtml({
@@ -277,7 +392,7 @@ test('generated English audit validates redirect contract and English 404 langua
     alternate: `${SITES.zh.origin}/`,
     alternateLanguage: SITES.zh.language,
     xDefault: `${SITES.en.origin}/`
-  });
+  }).replace('</body>', '<a href="/historical-missing">legacy</a></body>');
   await fs.writeFile(path.join(root, 'index.html'), home);
   for (const route of ['/blog/', '/about/', '/search/', '/category/', '/tag/', '/project/']) {
     const directory = path.join(root, route.slice(1));
@@ -298,7 +413,14 @@ test('generated English audit validates redirect contract and English 404 langua
   const diagnostics = await validateGeneratedSite({
     publicDir: root,
     siteId: 'en',
-    inventory: buildInventory([])
+    inventory: buildInventory([]),
+    linkBaseline: [{
+      source: '/',
+      target: '/historical-missing',
+      reason: 'historical deletion'
+    }]
   });
-  assert.deepEqual(diagnostics, []);
+  assert.deepEqual(diagnostics.map(({ severity, code }) => ({ severity, code })), [
+    { severity: 'warning', code: 'GEN_LINK_BASELINE_MATCHED' }
+  ]);
 });

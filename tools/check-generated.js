@@ -2,6 +2,7 @@
 'use strict';
 
 const path = require('node:path');
+const { readFile } = require('node:fs/promises');
 const { loadTrackedInventory } = require('../lib/content-inventory');
 const { printDiagnostics, exitCodeFor } = require('../lib/diagnostics');
 const { validateGeneratedSite } = require('../lib/generated-audit');
@@ -26,7 +27,14 @@ async function main() {
   try {
     const input = parseArguments(process.argv.slice(2));
     const inventory = await loadTrackedInventory(process.cwd());
-    const diagnostics = await validateGeneratedSite({ ...input, inventory });
+    const linkBaselineFile = path.resolve(__dirname, '../config/link-baseline.json');
+    const linkBaseline = JSON.parse(await readFile(linkBaselineFile, 'utf8'));
+    const diagnostics = await validateGeneratedSite({
+      ...input,
+      inventory,
+      linkBaseline: linkBaseline[input.siteId],
+      linkBaselineFile
+    });
     printDiagnostics(diagnostics);
     process.exitCode = exitCodeFor(diagnostics);
   } catch (cause) {

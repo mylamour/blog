@@ -10,7 +10,7 @@ translated: true
 
 # Preface
 
-> Actually, it's been a while since the first article on security architecture /Security-Architecture-Review/. The previous one mainly talked about the required capabilities from the perspective of a security architect's main responsibilities. However, our understanding always evolves with experience. Today I'll write a second piece on what security architecture is, again from a shallow perspective - focusing on specific solutions. You might have seen in a previous article that I explored a workflow for designing solutions. It may not be universally applicable, just sharing my experience.
+> Actually, it's been a while since the first article on security architecture /security-architecture-review/. The previous one mainly talked about the required capabilities from the perspective of a security architect's main responsibilities. However, our understanding always evolves with experience. Today I'll write a second piece on what security architecture is, again from a shallow perspective - focusing on specific solutions. You might have seen in a previous article that I explored a workflow for designing solutions. It may not be universally applicable, just sharing my experience.
 
 
 # A New Perspective
@@ -122,4 +122,4 @@ Looking at it, again dragging and pulling, fixing and patching for 2 weeks
 <img width="149" alt="Screen Shot 2020-05-04 at 11 37 17 PM" src="https://img.iami.xyz/images/80984301-41ca4100-8e60-11ea-861b-e6a4f3e03936.png">
 
 
-2020/11/07 update: This is the first article [What is Security Architecture](/Security-Architecture-Review/)
+2020/11/07 update: This is the first article [What is Security Architecture](/security-architecture-review/)

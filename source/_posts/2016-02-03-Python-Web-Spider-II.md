@@ -6,7 +6,7 @@ kerywords: Spider Web Crawler
 tags: 爬虫与反爬虫 旧文迁移
 ---
 
-[爬虫学习一](/Python-Web-Spider-I)
+[爬虫学习一](/Python-Web-Spider-I/)
 
 # 基础
 

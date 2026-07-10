@@ -87,7 +87,7 @@ Of course, there are some details not written, and related architecture review f
 Security architecture isn't achieved overnight, and enterprises can't rely solely on penetration testing to improve security defense construction. While keeping up with technical progress, you also need to accurately distinguish whether something is hype or bandwagoning. As an important role in enterprise security departments, security architects need continuous learning while having corresponding capabilities. Hope there will be more qualified security architects among security industry practitioners in the future. As a youngster in the security industry, there's still much to learn. Along the way, thanks.
 Late night, putting down the pen.
 
-2020/11/09 update: [What is Security Architecture Part II](/Security-Architecture-Review-II/)
+2020/11/09 update: [What is Security Architecture Part II](/security-architecture-review-ii/)
 
 <!-- # References
 * "Clean Architecture"

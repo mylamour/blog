@@ -65,11 +65,11 @@ The Agentic SOC architecture above wasn't heavily AI-assisted (it didn't start o
 
 * During overall architecture design, use `Gemini 3 Pro` for feasibility analysis (Deep Research), then use `Opus 4.5` for component/domain refinement. Don't rush straight to coding.
 * Domain-driven architecture design: drill down into each domain for specific framework-level code — e.g., agent domain → execution and reasoning, validation domain → anti-hallucination, knowledge domain → RAG and documents, tools domain → invocation and execution.
-* Once architecture is done, you'll have multiple feature areas to implement. Use Opus to break work into Phases and document them. Treat documentation as the model's "memory bank" — organize the directory structure and track document status so coding can flow smoothly. See the [Documentation section](#4-documentation-keep-a-record) for details.
+* Once architecture is done, you'll have multiple feature areas to implement. Use Opus to break work into Phases and document them. Treat documentation as the model's "memory bank" — organize the directory structure and track document status so coding can flow smoothly. See the [Documentation section](#4-Documentation-Keep-a-Record) for details.
 
 For documentation and diagramming (keep throwing your architecture docs at AI to check for implementation consistency, gaps, and ongoing architecture reviews during the coding phase):
 * `Mermaid` works better than `PlantUML` in most cases, but note that Gemini generates Mermaid syntax errors significantly more often than Opus.
-* For presentation-quality architecture diagrams, have Gemini describe a Mermaid diagram, then feed that description to AI for rendering — the result is surprisingly technical-looking. [See reference here](#3-testing-trust-but-verify). Works for fancy unusual diagrams too.
+* For presentation-quality architecture diagrams, have Gemini describe a Mermaid diagram, then feed that description to AI for rendering — the result is surprisingly technical-looking. [See reference here](#3-Testing-Trust-but-Verify). Works for fancy unusual diagrams too.
 
 Some common Prompt patterns for similar scenarios (filling in an existing architecture, analyzing implementation gaps):
 

@@ -262,5 +262,5 @@ AI session 的阅读顺序也要固定：先读产品当前 context（`VIBE_CODI
 * [git-worktree 官方文档](https://git-scm.com/docs/git-worktree)
 * [Trunk-Based Development](https://trunkbaseddevelopment.com/)
 * [Conventional Commits](https://www.conventionalcommits.org/)
-* [Vibe Coding 生存指南](/2026/03/09/vibe-coding-complete-guide/)
+* [Vibe Coding 生存指南](/vibe-coding-complete-guide/)
 * [AI软件工程实践：构建企业级Agentic SOC平台](https://fz.cool/AI-Software-Engineing-With-Project-Agentic-SOC-Design-And-Implement/)

@@ -1,0 +1,13 @@
+{
+  "zh": [
+    { "source": "/Recent-Time-II/", "target": "/CrossGFW", "reason": "original article was deleted" },
+    { "source": "/Text-Summarization-GF/", "target": "/image/NLP/n-gram-example.png", "reason": "historical image is unavailable" },
+    { "source": "/Text-Summarization-GF/", "target": "/image/NLP/cbo_vs_skipgram.png", "reason": "historical image is unavailable" },
+    { "source": "/Text-Summarization-GF/", "target": "/image/NLP/pg-note.jpg", "reason": "historical image is unavailable" }
+  ],
+  "en": [
+    { "source": "/text-summarization-gf/", "target": "/image/NLP/n-gram-example.png", "reason": "historical image is unavailable" },
+    { "source": "/text-summarization-gf/", "target": "/image/NLP/cbo_vs_skipgram.png", "reason": "historical image is unavailable" },
+    { "source": "/text-summarization-gf/", "target": "/image/NLP/pg-note.jpg", "reason": "historical image is unavailable" }
+  ]
+}

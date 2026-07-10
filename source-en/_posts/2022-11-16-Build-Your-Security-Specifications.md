@@ -9,7 +9,7 @@ translated: true
 
 # 0x01 Introduction
 
-In my article last year about [enterprise security architecture](/MY-Enterprise-Cyber-Security-Architecture/), I mentioned that doing security architecture requires management, operations, and technology to work together. But how do they work together? How should technology be implemented? There needs to be a reference point or baseline. If everything is just made up on the fly, over time there won't be much "architecture" to speak of. Documents, as a form of deliverable, can serve as the most basic reference. Today, let's look at how to build security specifications from an architecture perspective.
+In my article last year about [enterprise security architecture](/my-enterprise-cyber-security-architecture/), I mentioned that doing security architecture requires management, operations, and technology to work together. But how do they work together? How should technology be implemented? There needs to be a reference point or baseline. If everything is just made up on the fly, over time there won't be much "architecture" to speak of. Documents, as a form of deliverable, can serve as the most basic reference. Today, let's look at how to build security specifications from an architecture perspective.
 
 # 0x02 Main Content
 

@@ -14,7 +14,7 @@ tags: Linux 全栈 实习笔记 工具
 
 选项简介
 
-* [path](#→.0) :没啥可说的，路径大家可以试试`find $pwd`和`find $PWD`
+* [path](#find的基本格式) :没啥可说的，路径大家可以试试`find $pwd`和`find $PWD`
 * [options](#1.1)
 * [tests](#2.2)
 * [actions](#-.-)___________点我URL会卖萌

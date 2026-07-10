@@ -93,5 +93,5 @@ translated: true
 企业内的IT基本环境可区分为 IDC（On-Prem） , Cloud（Serverless， IAAS，PAAS，SAAS）,  SAAS。从IDC到Cloud到SAAS过程中，Self-Managed的东西越来越少（[可以查看这张图](https://img.iami.xyz/images/on-prem-to-saas.png) ）。换个视角说可能有更多的精力/资源投入对Data的控制中。但实际情况却是恰恰相反。在IAAS到SAAS的过程中，企业对自己数据的管理手段越来越少，即便SAAS服务提供商受GDPR约束，也无法**提供完整的数据管理功能给到客户**。因为厂商在提供SAAS服务的过程中，对用户来说虽然是屏蔽了底层的控制行为，但实际的数据还是存储在Data Center。那么如果需要开放这部分能力给到客户，就会带来很高的成本。作为甲方，更希望能够获取对数据的完整控制能力，而不是仅仅关注数据防泄漏上。只有获取了完整的控制能力，才能处理数据流动所产生的相关问题。我看到大部分的文章，一谈数据安全，就是分类分级，生命周期管理，数据防泄漏三大块话题。至于密钥加密，架构设计，日志监控等，则在数据安全中提到的很少，且不能因为云化过程基础设施被屏蔽而忽视基础设施的重要性。
 
 有兴趣的同学可以阅读下之前写的关于数据安全的一些文章。
-* [再聊聊数据安全](/build-your-data-security-architecture/)
+* [再聊聊数据安全](/Build-Your-Data-Security-Architecture/)
 * [浅谈加密基础设施](/Applied-Cryptography-And-Crypto-Infrastructure/)

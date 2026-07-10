@@ -262,5 +262,5 @@ When these rules become the default workflow, multiple IDEs, multiple agents, mu
 * [git-worktree official documentation](https://git-scm.com/docs/git-worktree)
 * [Trunk-Based Development](https://trunkbaseddevelopment.com/)
 * [Conventional Commits](https://www.conventionalcommits.org/)
-* [Vibe Coding Survival Guide](/2026/03/09/vibe-coding-complete-guide/)
-* [AI Software Engineering Practices: Building Enterprise-Level Agentic SOC Platform](https://fz.cool/AI-Software-Engineing-With-Project-Agentic-SOC-Design-And-Implement/)
+* [Vibe Coding Survival Guide](/vibe-coding-complete-guide/)
+* [AI Software Engineering Practices: Building Enterprise-Level Agentic SOC Platform](/ai-software-engineing-with-project-agentic-soc-design-and-implement/)

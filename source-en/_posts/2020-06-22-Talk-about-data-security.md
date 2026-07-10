@@ -45,13 +45,13 @@ What I'm talking about here should be applications of trusted computing. Basic s
 
 * Anti-Crawling
 
-Whether it's black/gray market, competitors, or regulators, getting first-hand data has inexpressible value. How to prevent batch fast data acquisition through public interfaces is a crucial step. Full-chain anti-crawling is very difficult - through trusted SDKs on the client side collecting relevant info, getting unique identifiers, network layer proxy identification, indicator statistical analysis, combined with threat intelligence and account security to do it, while fitting specific scenarios to do rate limiter, captcha, deny, etc., and how to subsequently achieve platformization, how to control granularity to API level, etc., all gradually develops. Compared to previous work experience, an obvious difference is before we only collected corresponding business requirements when doing anti-crawling for specific businesses, then opened corresponding defense rules, gray-scale launch. But now the action is moved forward - before app launch, have business give expected rate limiter threshold, configure policies for specific APIs, and enable observation mode. Also refer to previous summary [Breaking Out of Anti-Crawling Difficulties](/Anti-Spider/)
+Whether it's black/gray market, competitors, or regulators, getting first-hand data has inexpressible value. How to prevent batch fast data acquisition through public interfaces is a crucial step. Full-chain anti-crawling is very difficult - through trusted SDKs on the client side collecting relevant info, getting unique identifiers, network layer proxy identification, indicator statistical analysis, combined with threat intelligence and account security to do it, while fitting specific scenarios to do rate limiter, captcha, deny, etc., and how to subsequently achieve platformization, how to control granularity to API level, etc., all gradually develops. Compared to previous work experience, an obvious difference is before we only collected corresponding business requirements when doing anti-crawling for specific businesses, then opened corresponding defense rules, gray-scale launch. But now the action is moved forward - before app launch, have business give expected rate limiter threshold, configure policies for specific APIs, and enable observation mode. Also refer to previous summary [Breaking Out of Anti-Crawling Difficulties](/anti-spider/)
 
 ## Transmission
 
 * Full-Site TLS
 
-Including encrypted communication for internal and external systems, not just business but management platforms, audit systems, and encryption for inter-business system calls. For example, grpc calls using TLS protocol. But also need to note two things - one is watch for TLS version vulnerabilities, don't choose wrong. Two is certificate selection (algorithm support, which TLS suites does the server support?), generation, distribution, storage. Update mechanisms, etc. Of course, might even need to build offline CA, RA, and internally build multiple intermediate sub-CAs, or in other words issuer CAs. For internal systems like istio doing mTLS, no need to integrate the entire RA API, but make it a separate sub-CA. For more, refer to previous summary [Some Gains from CA/RA](/What-Hells-In-CA-And-RA/)
+Including encrypted communication for internal and external systems, not just business but management platforms, audit systems, and encryption for inter-business system calls. For example, grpc calls using TLS protocol. But also need to note two things - one is watch for TLS version vulnerabilities, don't choose wrong. Two is certificate selection (algorithm support, which TLS suites does the server support?), generation, distribution, storage. Update mechanisms, etc. Of course, might even need to build offline CA, RA, and internally build multiple intermediate sub-CAs, or in other words issuer CAs. For internal systems like istio doing mTLS, no need to integrate the entire RA API, but make it a separate sub-CA. For more, refer to previous summary [Some Gains from CA/RA](/what-hells-in-ca-and-ra/)
 
 * Keyless CDN
 
@@ -75,7 +75,7 @@ Single file encryption, especially photos, or liveness authentication videos all
 
 * Keys
 
-Keys are the foundation of all encryption. Don't really understand the principle of true random number generation, so in application the root key is still mainly HSM-based, hierarchical keys given to different businesses, establish unified algorithm usage standards, including strength, algorithm types. Plus considering domestic requirements for algorithms, especially national cryptographic algorithms in financial industry reform plans. Of course, key data synchronization and backup should all be key focuses. Meanwhile, KMS does key management, provides unified API interfaces, best if KMS can directly connect to HSM. Of course, domestic vendor package products still need improvement, poor user experience. Foreign products don't suit domestic conditions. Details can refer to previous record [Some Gains from KMS/HSM](/What-Hells-In-HSM/)  
+Keys are the foundation of all encryption. Don't really understand the principle of true random number generation, so in application the root key is still mainly HSM-based, hierarchical keys given to different businesses, establish unified algorithm usage standards, including strength, algorithm types. Plus considering domestic requirements for algorithms, especially national cryptographic algorithms in financial industry reform plans. Of course, key data synchronization and backup should all be key focuses. Meanwhile, KMS does key management, provides unified API interfaces, best if KMS can directly connect to HSM. Of course, domestic vendor package products still need improvement, poor user experience. Foreign products don't suit domestic conditions. Details can refer to previous record [Some Gains from KMS/HSM](/what-hells-in-hsm/)
 
 
 * Safe
@@ -122,13 +122,13 @@ Farmers have farmers' hardships, scholars have scholars' hardships. Temper and m
 
 # Resources
 
-* [DSMM Phase IV and My Data Security Perspective](/DSMM-Date-Security/)
+* [DSMM Phase IV and My Data Security Perspective](/dsmm-date-security/)
 * [Building a Data Security System for Internet Companies](https://tech.meituan.com/2018/05/24/data-security-system-construction.html)
 * [From SDL to DevSecOps: Security Throughout the Development Lifecycle](https://www.freebuf.com/vuls/240074.html)
 <!-- * [Ele.me MySQL Multi-Region Active-Active Bidirectional Data Replication Experience](https://dbaplus.cn/news-11-1399-1.html) -->
 * [Google Infrastructure Security Design Overview](https://cloud.google.com/security/infrastructure/design/)
-* [Some Gains from KMS/HSM](/What-Hells-In-HSM/)
-* [Some Gains from CA/RA](/What-Hells-In-CA-And-RA/)
-* [Some Gains from Bastion Host](/What-Hells-In-JumpServer/)
-* [Breaking Out of Anti-Crawling Difficulties](/Anti-Spider/)
+* [Some Gains from KMS/HSM](/what-hells-in-hsm/)
+* [Some Gains from CA/RA](/what-hells-in-ca-and-ra/)
+* [Some Gains from Bastion Host](/what-hells-in-jumpserver/)
+* [Breaking Out of Anti-Crawling Difficulties](/anti-spider/)
 * [istio Security](https://istio.io/latest/docs/concepts/security/)

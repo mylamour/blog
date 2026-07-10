@@ -9,7 +9,7 @@ translated: true
 
 # Preface
 
-I wasn't planning to write another piece in the security architecture series anytime soon. After finishing [*Security Architecture Reference*](https://book.iami.xyz), I figured my understanding of security architecture wouldn't shift significantly in the short term. And that's pretty much held true — except that some recent team changes pulled me back into application architecture reviews. It reminded me of how I got started with architecture reviews two-plus years ago in [the first security architecture post](/Security-Architecture-Review/) — learning technical architecture review, building solutions. So I figured I'd write up some notes: how global businesses handle architecture reviews, mixed in with some other thoughts.
+I wasn't planning to write another piece in the security architecture series anytime soon. After finishing [*Security Architecture Reference*](https://book.iami.xyz), I figured my understanding of security architecture wouldn't shift significantly in the short term. And that's pretty much held true — except that some recent team changes pulled me back into application architecture reviews. It reminded me of how I got started with architecture reviews two-plus years ago in [the first security architecture post](/security-architecture-review/) — learning technical architecture review, building solutions. So I figured I'd write up some notes: how global businesses handle architecture reviews, mixed in with some other thoughts.
 
 # Security Capability vs. Security Execution
 
@@ -74,4 +74,4 @@ Starting to feel what it's like to prioritize hitting a target without being att
 # References
 
 * [Security Architecture Reference: Building Enterprise-Ready Security Architecture](https://book.iami.xyz)
-* [What Is Security Architecture](/Security-Architecture-Review/)
+* [What Is Security Architecture](/security-architecture-review/)

@@ -188,5 +188,5 @@ ps: Recently binged the first 4 Mission Impossible movies, seeing so many imposs
 * [On The Performance of ARM TrustZone](https://arxiv.org/pdf/1906.09799.pdf)
 * [Xandu](https://cloud.xanadu.ai/)
 * [Differential Privacy Algorithm Basics](https://differential-privacy.cn/3-Basic-Techniques-and-Composition-Theorems/Composition-theorems/Laplace-versus-Gauss.html)
-* [A Brief Introduction to Cryptographic Infrastructure](/Applied-Cryptography-And-Crypto-Infrastructure/)
-* [A Brief Introduction to Data Security](/Talk-about-data-security/)
+* [A Brief Introduction to Cryptographic Infrastructure](/applied-cryptography-and-crypto-infrastructure/)
+* [A Brief Introduction to Data Security](/talk-about-data-security/)
