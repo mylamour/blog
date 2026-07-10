@@ -1,0 +1,51 @@
+name: verify
+
+on:
+  pull_request:
+  push:
+    branches: [withexo]
+
+jobs:
+  unit-and-content:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run check:content
+      - if: github.event_name == 'pull_request'
+        run: VERIFY_BASE_SHA=${{ github.event.pull_request.base.sha }} npm run check:translations
+      - if: github.event_name != 'pull_request'
+        run: npm run check:translations
+
+  generated:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        site: [zh, en]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build:${{ matrix.site }}
+      - run: npm run check:generated:${{ matrix.site }}
+
+  theme-assets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --prefix themes/fexo2
+      - run: npm run check:theme

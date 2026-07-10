@@ -1,6 +1,6 @@
 [build]
   publish = "public"
-  command = "node themes/fexo2/rev.js && hexo generate --config ${HEXO_CONFIG:-_config.yml}"
+  command = "npm run netlify:build"
 
 # 压缩由本地构建链完成（dart-sass/esbuild/minify-html.js/minify-css.js），
 # 关闭 Netlify 后处理避免它改写带 ?v= 的资源引用。

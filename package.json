@@ -15,6 +15,11 @@
     "check:generated:en": "node tools/check-generated.js --site en --dir public",
     "verify:zh": "npm run build:zh && npm run check:generated:zh",
     "verify:en": "npm run build:en && npm run check:generated:en",
+    "verify": "npm test && npm run check:content && npm run check:translations && npm run verify:zh && npm run verify:en",
+    "check:prebuild": "npm test && npm run check:content && npm run check:translations",
+    "build:theme": "npm run build --prefix themes/fexo2",
+    "check:theme": "npm run build:theme && git diff --exit-code -- themes/fexo2/source/css/styles.css themes/fexo2/source/js/bundle.js themes/fexo2/layout/_partial/style.ejs themes/fexo2/layout/_partial/head.ejs themes/fexo2/layout/_partial/load-script.ejs",
+    "netlify:build": "npm run check:prebuild && node themes/fexo2/rev.js && hexo generate --bail --config ${HEXO_CONFIG:-_config.yml}",
     "server:en": "hexo clean && hexo server --config _config.yml,_config.en.yml -p 4124"
   },
   "hexo": {
