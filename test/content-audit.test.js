@@ -2,8 +2,18 @@
 
 const test = require('node:test');
 const assert = require('node:assert/strict');
+const os = require('node:os');
 const path = require('node:path');
 const { createHash } = require('node:crypto');
+const { execFile, spawn } = require('node:child_process');
+const { promisify } = require('node:util');
+const {
+  mkdtemp,
+  mkdir,
+  readFile,
+  rm,
+  writeFile
+} = require('node:fs/promises');
 const {
   parsePostSource,
   buildInventory,
@@ -26,6 +36,8 @@ const EXPECTED_KERYWORDS_BASELINE = Object.freeze({
   count: 242,
   sha256: '277a56a4d490e2dafe2a47d651649b396038f1134ed299d18486cbb43bc6c80c'
 });
+const execFileAsync = promisify(execFile);
+const REPO_ROOT = path.resolve(__dirname, '..');
 
 function compareText(left, right) {
   if (left < right) return -1;
@@ -80,6 +92,57 @@ function legacyPathSet(posts) {
 
 function hashPaths(paths) {
   return createHash('sha256').update(`${paths.join('\n')}\n`).digest('hex');
+}
+
+function runCli(script, cwd, env = process.env) {
+  return new Promise((resolve, reject) => {
+    const child = spawn(process.execPath, [path.join(REPO_ROOT, script)], {
+      cwd,
+      env,
+      stdio: ['ignore', 'pipe', 'pipe']
+    });
+    let stdout = '';
+    let stderr = '';
+    child.stdout.setEncoding('utf8');
+    child.stderr.setEncoding('utf8');
+    child.stdout.on('data', (chunk) => { stdout += chunk; });
+    child.stderr.on('data', (chunk) => { stderr += chunk; });
+    child.once('error', reject);
+    child.once('close', (code, signal) => resolve({ code, signal, stdout, stderr }));
+  });
+}
+
+async function temporaryDirectory(t, prefix) {
+  const directory = await mkdtemp(path.join(os.tmpdir(), prefix));
+  t.after(() => rm(directory, { recursive: true, force: true }));
+  return directory;
+}
+
+async function createCliRepository(t, posts) {
+  const root = await temporaryDirectory(t, 'content-audit-cli-');
+  await execFileAsync('git', ['init', '--quiet'], { cwd: root });
+  for (const post of posts) {
+    const absolutePath = path.join(root, post.file);
+    await mkdir(path.dirname(absolutePath), { recursive: true });
+    await writeFile(absolutePath, post.source);
+  }
+  if (posts.length > 0) {
+    await execFileAsync('git', ['add', '--', ...posts.map((post) => post.file)], { cwd: root });
+  }
+  return root;
+}
+
+function cliPostSource(translated) {
+  return [
+    '---',
+    'layout: post',
+    'title: CLI fixture',
+    'categories: Security',
+    'tags: Testing',
+    `translated: ${String(translated)}`,
+    '---',
+    'Body'
+  ].join('\n');
 }
 
 test('rejects impossible filename dates and accepts valid leap days', () => {
@@ -180,6 +243,51 @@ test('does not accept inherited required front-matter properties', () => {
     'CONTENT_INVALID_TAGS'
   ]);
   assert.equal(diagnostics.every((diagnostic) => diagnostic.location.line === 1), true);
+});
+
+test('reports cyclic YAML taxonomy aliases as schema diagnostics without throwing', () => {
+  const post = parsePostSource({
+    file: 'source/_posts/2024-02-29-Cyclic-Taxonomy.md',
+    side: 'zh',
+    source: [
+      '---',
+      'layout: post',
+      'title: Cyclic taxonomy',
+      'categories: &categories',
+      '  - *categories',
+      'tags: &tags',
+      '  - *tags',
+      'translated: false',
+      '---',
+      'Body'
+    ].join('\n')
+  });
+  assert.equal(post.data.categories[0], post.data.categories);
+  assert.equal(post.data.tags[0], post.data.tags);
+
+  const diagnostics = validateContent(buildInventory([post]), {
+    kerywordsBaseline: { count: 0, sha256: hashPaths([]) }
+  });
+
+  assert.equal(diagnosticsWithCode(diagnostics, 'CONTENT_INVALID_CATEGORIES').length, 1);
+  assert.equal(diagnosticsWithCode(diagnostics, 'CONTENT_INVALID_TAGS').length, 1);
+});
+
+test('rejects nested tags and deeper-than-one-level category arrays', () => {
+  const post = postFixture({
+    file: 'source-en/_posts/2024-02-29-Unsupported-Taxonomy.md',
+    side: 'en',
+    fields: {
+      categories: [[['Too', 'Deep']]],
+      tags: [['Nested tag']]
+    }
+  });
+
+  const schemaDiagnostics = validatePostSchema([post]);
+
+  assert.equal(diagnosticsWithCode(schemaDiagnostics, 'CONTENT_INVALID_CATEGORIES').length, 1);
+  assert.equal(diagnosticsWithCode(schemaDiagnostics, 'CONTENT_INVALID_TAGS').length, 1);
+  assert.deepEqual(validateTaxonomyCollisions(buildInventory([post])), []);
 });
 
 test('reports English posts without an exact same-basename Chinese source', () => {
@@ -382,6 +490,44 @@ test('does not treat identical repeated taxonomy spelling as a collision', () =>
   assert.deepEqual(validateTaxonomyCollisions(buildInventory(posts)), []);
 });
 
+test('keeps same-slug category children distinct when their parent routes differ', () => {
+  const alpha = postFixture({
+    file: 'source-en/_posts/2024-03-01-Alpha-Dev-Ops.md',
+    side: 'en',
+    fields: { categories: [['Alpha', 'Dev Ops']], tags: 'Alpha tag' }
+  });
+  const beta = postFixture({
+    file: 'source-en/_posts/2024-03-02-Beta-Dev-Ops.md',
+    side: 'en',
+    fields: { categories: [['Beta', 'dev ops']], tags: 'Beta tag' }
+  });
+
+  assert.deepEqual(validateTaxonomyCollisions(buildInventory([alpha, beta])), []);
+});
+
+test('blocks distinct category paths at the same ancestor-qualified route', () => {
+  const first = postFixture({
+    file: 'source-en/_posts/2024-03-01-Parent-Child-A.md',
+    side: 'en',
+    fields: { categories: [['Alpha', 'Dev Ops']], tags: 'First tag' }
+  });
+  const second = postFixture({
+    file: 'source-en/_posts/2024-03-02-Parent-Child-B.md',
+    side: 'en',
+    fields: { categories: [['Alpha', 'dev ops']], tags: 'Second tag' }
+  });
+
+  const collisions = diagnosticsWithCode(
+    validateTaxonomyCollisions(buildInventory([first, second])),
+    'CONTENT_TAXONOMY_COLLISION'
+  );
+
+  assert.equal(collisions.length, 1);
+  assert.equal(collisions[0].message.includes('alpha/dev-ops'), true);
+  assert.equal(collisions[0].message.includes(first.file), true);
+  assert.equal(collisions[0].message.includes(second.file), true);
+});
+
 test('blocks English post-route case collisions through the shared site policy', () => {
   const upper = postFixture({
     file: 'source-en/_posts/2024-02-29-Case-Route.md',
@@ -424,6 +570,30 @@ test('rejects any changed top-level kerywords tracked path set', async () => {
   assert.equal(diagnostics.length, 1);
   assert.equal(diagnostics[0].severity, 'error');
   assert.equal(diagnostics[0].code, 'CONTENT_KERYWORDS_BASELINE_CHANGED');
+  assert.deepEqual(diagnostics[0].location, {
+    file: 'config/content-baseline.json',
+    line: 1,
+    column: 1
+  });
+});
+
+test('locates malformed kerywords baseline data at the baseline configuration', () => {
+  const post = postFixture({
+    file: 'source/_posts/2024-02-29-Legacy.md',
+    side: 'zh',
+    fields: { kerywords: 'legacy' }
+  });
+
+  const diagnostics = validateKerywordsBaseline([post], {
+    count: '1',
+    sha256: null
+  });
+
+  assert.deepEqual(diagnostics[0].location, {
+    file: 'config/content-baseline.json',
+    line: 1,
+    column: 1
+  });
 });
 
 test('validateContent composes hard rules, sorts results, and includes diff reminders only explicitly', () => {
@@ -471,4 +641,87 @@ test('validateContent composes hard rules, sorts results, and includes diff remi
     withDiff.some((diagnostic) => diagnostic.code === 'TRANS_SOURCE_CHANGED_ONLY'),
     true
   );
+});
+
+test('content CLI exits zero after flushing its aggregate warning', async () => {
+  const result = await runCli('tools/check-content.js', REPO_ROOT);
+
+  assert.deepEqual({ code: result.code, signal: result.signal, stdout: result.stdout }, {
+    code: 0,
+    signal: null,
+    stdout: ''
+  });
+  assert.match(result.stderr, /warning CONTENT_KERYWORDS_BASELINE_MATCHED:/);
+  assert.match(result.stderr, /242 tracked posts retain the approved historical top-level "kerywords" spelling\.\n$/);
+});
+
+test('content CLI exits one for a business baseline violation', async (t) => {
+  const root = await createCliRepository(t, [{
+    file: 'source/_posts/2024-02-29-Cli-Baseline.md',
+    source: cliPostSource(false)
+  }]);
+
+  const result = await runCli('tools/check-content.js', root);
+
+  assert.equal(result.code, 1);
+  assert.equal(result.signal, null);
+  assert.equal(result.stdout, '');
+  assert.match(result.stderr, /error CONTENT_KERYWORDS_BASELINE_CHANGED:/);
+  assert.match(result.stderr, /\n$/);
+});
+
+test('content CLI exits two for a non-Git repository infrastructure failure', async (t) => {
+  const root = await temporaryDirectory(t, 'content-audit-non-git-');
+
+  const result = await runCli('tools/check-content.js', root);
+
+  assert.equal(result.code, 2);
+  assert.equal(result.signal, null);
+  assert.equal(result.stdout, '');
+  assert.match(result.stderr, /^check-content: Unable to list tracked bilingual posts/);
+  assert.match(result.stderr, /\n$/);
+});
+
+test('translation CLI skips diff loading without a base and loads an explicit invalid base', async (t) => {
+  const key = '2024-02-29-Cli-Translations.md';
+  const root = await createCliRepository(t, [
+    { file: `source/_posts/${key}`, source: cliPostSource(true) },
+    { file: `source-en/_posts/${key}`, source: cliPostSource(true) }
+  ]);
+  const noBaseEnvironment = { ...process.env };
+  delete noBaseEnvironment.VERIFY_BASE_SHA;
+
+  const withoutBase = await runCli('tools/check-translations.js', root, noBaseEnvironment);
+  assert.deepEqual(withoutBase, {
+    code: 0,
+    signal: null,
+    stdout: '',
+    stderr: ''
+  });
+
+  const invalidBase = 'definitely-not-a-valid-base';
+  const withInvalidBase = await runCli('tools/check-translations.js', root, {
+    ...process.env,
+    VERIFY_BASE_SHA: invalidBase
+  });
+  assert.equal(withInvalidBase.code, 2);
+  assert.equal(withInvalidBase.signal, null);
+  assert.equal(withInvalidBase.stdout, '');
+  assert.match(
+    withInvalidBase.stderr,
+    new RegExp(`^check-translations: Unable to list bilingual post changes from ${invalidBase}`)
+  );
+  assert.match(withInvalidBase.stderr, /\n$/);
+});
+
+test('CLI adapters set exitCode and never call process.exit', async () => {
+  const sources = await Promise.all([
+    readFile(path.join(REPO_ROOT, 'tools/check-content.js'), 'utf8'),
+    readFile(path.join(REPO_ROOT, 'tools/check-translations.js'), 'utf8')
+  ]);
+
+  for (const source of sources) {
+    assert.match(source, /process\.exitCode\s*=/);
+    assert.doesNotMatch(source, /process\.exit\s*\(/);
+  }
 });
