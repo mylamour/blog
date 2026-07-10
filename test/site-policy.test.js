@@ -4,12 +4,22 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const {
   EQUIVALENT_PATHS,
+  siteFor,
   pairingKeyFromSourcePath,
   postPath,
   normalizePagePath,
   resolveBilingualUrls,
   findPathCollisions
 } = require('../lib/site-policy');
+
+test('rejects inherited object properties as unknown sites', () => {
+  for (const siteId of ['constructor', 'toString', '__proto__']) {
+    assert.throws(
+      () => siteFor(siteId),
+      { name: 'TypeError', message: `Unknown site: ${siteId}` }
+    );
+  }
+});
 
 test('derives the exact pairing key from a dated source filename', () => {
   assert.equal(
@@ -83,7 +93,7 @@ test('normalizes index routes and reports lowercase collisions', () => {
   assert.equal(normalizePagePath('blog/index.html'), '/blog/');
   assert.equal(normalizePagePath('index.html'), '/');
   assert.deepEqual(findPathCollisions([
-    { id: 'a', path: '/Security-Architecture/' },
-    { id: 'b', path: '/security-architecture/' }
+    { id: 'b', path: '/Security-Architecture/' },
+    { id: 'a', path: '/security-architecture/' }
   ], 'en'), [{ key: '/security-architecture/', ids: ['a', 'b'] }]);
 });
