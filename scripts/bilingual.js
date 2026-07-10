@@ -26,7 +26,7 @@ function register(hexoInstance) {
       post.slug = slug;
       return post.update({ slug });
     }));
-  });
+  }, 5);
 }
 
 if (typeof hexo !== 'undefined') register(hexo);

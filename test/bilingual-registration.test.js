@@ -9,6 +9,7 @@ function registeredBilingual({ language = 'en', posts = [] } = {}) {
   let helper;
   let registeredFilterName;
   let beforeGenerate;
+  let registeredFilterPriority;
   const requestedModelNames = [];
   const mockHexo = {
     config: { language },
@@ -34,9 +35,10 @@ function registeredBilingual({ language = 'en', posts = [] } = {}) {
         }
       },
       filter: {
-        register(name, implementation) {
+        register(name, implementation, priority) {
           registeredFilterName = name;
           beforeGenerate = implementation;
+          registeredFilterPriority = priority;
         }
       }
     }
@@ -46,7 +48,13 @@ function registeredBilingual({ language = 'en', posts = [] } = {}) {
 
   assert.equal(registeredName, 'bilingual_urls');
   assert.equal(typeof helper, 'function');
-  return { helper, registeredFilterName, beforeGenerate, requestedModelNames };
+  return {
+    helper,
+    registeredFilterName,
+    beforeGenerate,
+    registeredFilterPriority,
+    requestedModelNames
+  };
 }
 
 function registeredHelper() {
@@ -197,6 +205,18 @@ test('targetPage overrides this.page and terminal index.html is canonicalized', 
   assert.equal(urls.canonicalUrl, 'https://iami.xyz/about/');
   assert.equal(urls.alternateUrl, 'https://fz.cool/about/');
   assert.equal(urls.xDefaultUrl, 'https://iami.xyz/about/');
+});
+
+test('registers before_generate ahead of Hexo core render filters', () => {
+  const registration = registeredBilingual();
+  const order = [
+    { name: 'core', priority: 10 },
+    { name: 'bilingual', priority: registration.registeredFilterPriority }
+  ].sort((left, right) => left.priority - right.priority);
+
+  assert.equal(registration.registeredFilterName, 'before_generate');
+  assert.equal(registration.registeredFilterPriority, 5);
+  assert.deepEqual(order.map((entry) => entry.name), ['bilingual', 'core']);
 });
 
 test('before_generate derives English slugs from source basenames using shared policy', async () => {
