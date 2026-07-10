@@ -2,8 +2,10 @@
 ## Docs: https://hexo.io/docs/configuration.html
 ## Source: https://github.com/hexojs/hexo/
 
-sitemap:  
-  path: sitemap.xml  
+sitemap:
+  path: sitemap.xml
+  tags: true
+  categories: true
 
 # Site
 title: 開新小室|放之
