@@ -3,7 +3,7 @@ layout: post
 title: Study Notes on Data Security Regulations
 categories: Security Architect
 kerywords: security compliance data security law cybersecurity law security regulations China personal information protection law
-tags: security architecture
+tags: Security Architecture
 translated: true
 ---
 

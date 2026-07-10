@@ -3,7 +3,7 @@ layout: post
 title:  Security Operations — Design for Failure
 categories: Security Architect
 kerywords: security architecture security design secure by default security operations design for failure security operations failure security operations as a service ideal vs reality ragtag team two negatives make a positive learning summary
-tags: security operations
+tags: Security Operations
 translated: true
 ---
 

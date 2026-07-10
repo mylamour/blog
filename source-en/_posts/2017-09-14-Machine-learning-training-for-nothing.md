@@ -3,7 +3,7 @@ layout: post
 title: My First Machine Learning Training Session - A Summary
 categories: Security Engineer
 kerywords: AI and Machine Learning, Learning Data Mining
-tags: AI and Machine Learning, Learning Data Mining
+tags: AI and Machine Learning Learning Data Mining
 translated: true
 ---
 

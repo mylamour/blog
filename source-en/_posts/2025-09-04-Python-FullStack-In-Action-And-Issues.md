@@ -3,7 +3,7 @@ layout: post
 title: "From Dropping the DB to Running Away: My Python Full-Stack Pitfall Log"
 categories: Security Architect
 kerywords: python flask celery react nextjs OOP object-oriented programming AI database ORM framework software engineering logging exception handling version control deployment continuous delivery containerization cloud K8S AI-Driven fullstack
-tags: security-dev
+tags: Security Dev
 translated: true
 ---
 

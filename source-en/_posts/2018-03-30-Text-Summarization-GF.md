@@ -4,7 +4,7 @@ title: Text Summarization
 categories: Security Engineer
 keywords: Extraction Summarization, FastText, PageRank, Rouge, NLP
 kerywords: Extraction Summarization, FastText, PageRank, Rouge, NLP
-tags: AI-and-Machine-Learning Learning-Data-Mining
+tags: AI and Machine Learning Learning Data Mining
 translated: true
 ---
 

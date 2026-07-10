@@ -3,7 +3,7 @@ layout: post
 title: "More on Security Architecture, Part II"
 categories: Security Architect
 kerywords: application architecture security architecture data security enterprise security architecture architecture design business driven
-tags: security architecture
+tags: Security Architecture
 translated: true
 ---
 

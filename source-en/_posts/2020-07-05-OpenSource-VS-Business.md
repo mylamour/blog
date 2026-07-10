@@ -3,7 +3,7 @@ layout: post
 title: Working with Commercial Security Appliances
 categories: Security Engineer
 kerywords: enterprise security internet security data security
-tags: security operations security architecture
+tags: Security Operations Security Architecture
 translated: true
 ---
 

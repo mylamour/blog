@@ -3,7 +3,7 @@ layout: post
 title: Has Security Actually Shifted Left?
 categories: Security Architect
 kerywords: shift left security architecture enterprise security security governance left shift right shift
-tags: security architecture
+tags: Security Architecture
 translated: true
 ---
 

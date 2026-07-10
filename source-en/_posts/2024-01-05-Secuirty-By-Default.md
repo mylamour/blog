@@ -3,7 +3,7 @@ layout: post
 title:  What Are We Really Talking About When We Say Security by Default
 categories: Security Architect
 kerywords: security architecture security compliance network security application security data security secure design security by default
-tags: security architecture
+tags: Security Architecture
 translated: true
 ---
 

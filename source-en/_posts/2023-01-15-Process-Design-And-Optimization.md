@@ -3,7 +3,7 @@ layout: post
 title: Process Design and Optimization
 categories: Security Architect
 kerywords: security architecture enterprise security process design security governance systems thinking solutions
-tags: security architecture
+tags: Security Architecture
 translated: true
 ---
 

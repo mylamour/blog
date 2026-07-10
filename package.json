@@ -7,6 +7,8 @@
   },
   "scripts": {
     "test": "node --test",
+    "check:content": "node tools/check-content.js",
+    "check:translations": "node tools/check-translations.js",
     "build:en": "hexo clean && hexo generate --bail --config _config.yml,_config.en.yml",
     "server:en": "hexo clean && hexo server --config _config.yml,_config.en.yml -p 4124"
   },
