@@ -11,6 +11,7 @@ const {
   mkdir,
   rename,
   rm,
+  symlink,
   writeFile
 } = require('node:fs/promises');
 const {
@@ -143,6 +144,36 @@ test('collects only top-level front-matter key lines', () => {
   assert.deepEqual([...keyLines], [['title', 2], ['metadata', 3]]);
 });
 
+test('uses matching four-hyphen front-matter delimiters for key lines', () => {
+  const keyLines = frontMatterKeyLines([
+    '----',
+    'title: Example',
+    'tags: Test',
+    '----',
+    'Body'
+  ].join('\n'));
+
+  assert.deepEqual([...keyLines], [['title', 2], ['tags', 3]]);
+});
+
+test('returns no key lines for unrecognized or unclosed prefix delimiters', () => {
+  const sources = [
+    [' ---', 'title: padded', ' ---', 'Body'].join('\n'),
+    ['---', 'title: dot close', '...', 'Body'].join('\n'),
+    ['---', 'title: unclosed'].join('\n')
+  ];
+
+  for (const source of sources) {
+    assert.deepEqual([...frontMatterKeyLines(source)], []);
+  }
+});
+
+test('reports suffix-delimited front-matter keys from line one', () => {
+  const keyLines = frontMatterKeyLines(['title: Example', '---', 'Body'].join('\n'));
+
+  assert.deepEqual([...keyLines], [['title', 1]]);
+});
+
 test('builds exact bilingual maps without scanning the filesystem', () => {
   const zh = parsePostSource({ file: 'source/_posts/2024-02-29-Example.md', side: 'zh', source: crlf });
   const en = parsePostSource({ file: 'source-en/_posts/2024-02-29-Example.md', side: 'en', source: crlf });
@@ -151,12 +182,63 @@ test('builds exact bilingual maps without scanning the filesystem', () => {
   assert.equal(inventory.enByKey.get(en.pairingKey), en);
 });
 
+test('rejects duplicate inventory file records', () => {
+  const first = parsePostSource({
+    file: 'source/_posts/2024-02-29-Example.md',
+    side: 'zh',
+    source: crlf
+  });
+  const duplicate = { ...first };
+
+  assert.throws(
+    () => buildInventory([first, duplicate]),
+    {
+      name: 'Error',
+      message: 'Duplicate inventory file path: "source/_posts/2024-02-29-Example.md" conflicts with "source/_posts/2024-02-29-Example.md"'
+    }
+  );
+});
+
+test('rejects duplicate same-side pairing keys with both conflict paths', () => {
+  const first = parsePostSource({
+    file: 'source/_posts/first/2024-02-29-Example.md',
+    side: 'zh',
+    source: crlf
+  });
+  const second = parsePostSource({
+    file: 'source/_posts/second/2024-02-29-Example.md',
+    side: 'zh',
+    source: crlf
+  });
+
+  assert.throws(
+    () => buildInventory([first, second]),
+    {
+      name: 'Error',
+      message: 'Duplicate zh pairing key "2024-02-29-Example.md": "source/_posts/first/2024-02-29-Example.md" conflicts with "source/_posts/second/2024-02-29-Example.md"'
+    }
+  );
+});
+
 test('parses NUL-delimited Git name-status output', () => {
   assert.deepEqual(parseNameStatus('A\0source/_posts/a.md\0M\0source-en/_posts/b.md\0'), [
     { status: 'A', path: 'source/_posts/a.md' },
     { status: 'M', path: 'source-en/_posts/b.md' }
   ]);
 });
+
+for (const [description, output] of [
+  ['ordinary path', 'A\0\0'],
+  ['rename source path', 'R100\0\0source/_posts/new.md\0'],
+  ['rename destination path', 'R100\0source/_posts/old.md\0\0']
+]) {
+  test(`rejects an empty ${description} in Git name-status output`, () => {
+    assert.throws(
+      () => parseNameStatus(output),
+      { name: 'Error', message: 'Malformed NUL-delimited Git name-status output' }
+    );
+  });
+}
 
 test('loads only tracked Markdown posts and derives their side', async (t) => {
   const root = await createGitRepository(t);
@@ -184,6 +266,62 @@ test('loads only tracked Markdown posts and derives their side', async (t) => {
   assert.equal(inventory.byFile.get(zhFile).data.layout, 'post');
 });
 
+test('rejects tracked symlinks as non-regular posts before reading them', async (t) => {
+  const root = await createGitRepository(t);
+  const targetFile = path.join(root, 'target.md');
+  const linkFile = 'source/_posts/2024-02-29-Link.md';
+  await writeFile(targetFile, crlf);
+
+  try {
+    await symlink('../../target.md', path.join(root, linkFile));
+  } catch (error) {
+    if (['EACCES', 'ENOSYS', 'EPERM'].includes(error.code)) {
+      t.skip(`symbolic links unavailable: ${error.code}`);
+      return;
+    }
+    throw error;
+  }
+
+  await execFileAsync('git', ['add', '--', linkFile], { cwd: root });
+
+  await assert.rejects(
+    loadTrackedPosts(root),
+    {
+      name: 'Error',
+      message: `Tracked post ${linkFile} in ${root} is not a regular file`
+    }
+  );
+});
+
+test('deduplicates unmerged index stages when listing tracked posts', async (t) => {
+  const root = await createGitRepository(t);
+  const file = 'source/_posts/2024-02-29-Conflict.md';
+  const filePath = path.join(root, file);
+  await writeFile(filePath, 'base\n');
+  await execFileAsync('git', ['add', '--', file], { cwd: root });
+  await execFileAsync('git', ['commit', '--quiet', '-m', 'base'], { cwd: root });
+
+  await execFileAsync('git', ['checkout', '--quiet', '-b', 'left'], { cwd: root });
+  await writeFile(filePath, 'left\n');
+  await execFileAsync('git', ['add', '--', file], { cwd: root });
+  await execFileAsync('git', ['commit', '--quiet', '-m', 'left'], { cwd: root });
+
+  await execFileAsync('git', ['checkout', '--quiet', '-b', 'right', 'HEAD~1'], { cwd: root });
+  await writeFile(filePath, 'right\n');
+  await execFileAsync('git', ['add', '--', file], { cwd: root });
+  await execFileAsync('git', ['commit', '--quiet', '-m', 'right'], { cwd: root });
+
+  await execFileAsync('git', ['checkout', '--quiet', 'left'], { cwd: root });
+  await assert.rejects(
+    execFileAsync('git', ['merge', '--no-edit', 'right'], { cwd: root }),
+    (error) => error.code === 1
+  );
+
+  const { stdout } = await execFileAsync('git', ['ls-files', '--stage', '--', file], { cwd: root });
+  assert.equal(stdout.trim().split('\n').length, 3);
+  assert.deepEqual(await listTrackedPostPaths(root), [file]);
+});
+
 test('loads changes only for an explicit base and preserves rename paths', async (t) => {
   assert.deepEqual(await listGitChanges('/path/that/does/not/exist'), []);
 
@@ -199,6 +337,7 @@ test('loads changes only for an explicit base and preserves rename paths', async
   await rename(path.join(root, oldFile), path.join(root, newFile));
   await execFileAsync('git', ['add', '--all'], { cwd: root });
   await execFileAsync('git', ['commit', '--quiet', '-m', 'rename'], { cwd: root });
+  await execFileAsync('git', ['config', 'diff.renames', 'false'], { cwd: root });
   const changes = await listGitChanges(root, base);
 
   assert.deepEqual(changes, [{ status: 'R100', oldPath: oldFile, path: newFile }]);
