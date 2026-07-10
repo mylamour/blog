@@ -21,6 +21,25 @@ test('rejects inherited object properties as unknown sites', () => {
   }
 });
 
+test('post paths reject unknown site IDs', () => {
+  assert.throws(
+    () => postPath('fr', '2025-04-05-Deep-Dive-Into-Clearing-Network.md'),
+    { name: 'TypeError', message: 'Unknown site: fr' }
+  );
+});
+
+test('collision detection rejects unknown site IDs', () => {
+  assert.throws(
+    () => findPathCollisions([], 'fr'),
+    { name: 'TypeError', message: 'Unknown site: fr' }
+  );
+});
+
+test('preserves filenames that merely end with index.html', () => {
+  assert.equal(normalizePagePath('myindex.html'), '/myindex.html/');
+  assert.equal(normalizePagePath('dir/myindex.html'), '/dir/myindex.html/');
+});
+
 test('derives the exact pairing key from a dated source filename', () => {
   assert.equal(
     pairingKeyFromSourcePath('_posts/2025-04-05-Deep-Dive-Into-Clearing-Network.md'),
