@@ -9,13 +9,22 @@ function registeredBilingual({ language = 'en', posts = [] } = {}) {
   let helper;
   let registeredFilterName;
   let beforeGenerate;
+  const requestedModelNames = [];
   const mockHexo = {
     config: { language },
     locals: {
       get(name) {
         assert.equal(name, 'posts');
-        return posts;
+        return [];
       }
+    },
+    model(name) {
+      requestedModelNames.push(name);
+      return {
+        toArray() {
+          return posts;
+        }
+      };
     },
     extend: {
       helper: {
@@ -37,7 +46,7 @@ function registeredBilingual({ language = 'en', posts = [] } = {}) {
 
   assert.equal(registeredName, 'bilingual_urls');
   assert.equal(typeof helper, 'function');
-  return { helper, registeredFilterName, beforeGenerate };
+  return { helper, registeredFilterName, beforeGenerate, requestedModelNames };
 }
 
 function registeredHelper() {
@@ -204,6 +213,7 @@ test('before_generate derives English slugs from source basenames using shared p
   assert.equal(typeof registration.beforeGenerate, 'function');
   await registration.beforeGenerate();
 
+  assert.deepEqual(registration.requestedModelNames, ['Post']);
   assert.equal(posts[0].slug, 'deep-dive-into-clearing-network');
   assert.equal(posts[1].slug, 'elk小记');
   assert.equal(posts[0].getPersistedSlug(), 'deep-dive-into-clearing-network');
@@ -221,6 +231,7 @@ test('before_generate leaves Chinese post slugs untouched', async () => {
   assert.equal(typeof registration.beforeGenerate, 'function');
   await registration.beforeGenerate();
 
+  assert.deepEqual(registration.requestedModelNames, []);
   assert.equal(post.slug, 'Deep-Dive-Into-Clearing-Network');
   assert.equal(post.getPersistedSlug(), 'Deep-Dive-Into-Clearing-Network');
 });

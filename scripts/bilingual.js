@@ -20,7 +20,7 @@ function register(hexoInstance) {
   hexoInstance.extend.filter.register('before_generate', function () {
     if (hexoInstance.config.language !== 'en') return;
 
-    return Promise.all(hexoInstance.locals.get('posts').map((post) => {
+    return Promise.all(hexoInstance.model('Post').toArray().map((post) => {
       const slug = slugFromPairingKey(post.source, 1);
       if (post.slug === slug) return undefined;
       post.slug = slug;
