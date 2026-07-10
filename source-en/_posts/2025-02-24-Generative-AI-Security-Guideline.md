@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "A Practical Security Guideline for Generative AI"
-categories: Security Architecture
+categories: Security Architect
 kerywords: enterprise security generative AI LLM security AI governance security framework prompt injection data leakage
 tags:
   - Security Architecture

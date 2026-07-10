@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Understanding Clearing Networks: Business, Technology, and Security"
-categories: Security Architecture
+categories: Security Architect
 kerywords: clearing network settlement acquiring issuing card scheme UnionPay Visa Mastercard AMEX payment security cross-border payment applied cryptography network security
 tags: Security Architecture
 translated: true
