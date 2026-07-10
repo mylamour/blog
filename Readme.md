@@ -2,6 +2,10 @@
 
 ## Changelog
 
+### 2026/07/10
+
+* Bilingual correctness safeguards: lowercase English canonical URLs, repaired sitemap and 404 routing, site-level alternates, and automated bilingual verification
+
 ### 2026/07/09
 
 * Launch English edition at https://iami.xyz (single repo + `_config.en.yml` + second Netlify site, `HEXO_CONFIG` env driven)
