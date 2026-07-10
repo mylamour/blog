@@ -4,6 +4,7 @@ title: 流程设计与优化
 categories: 安全架构师
 kerywords: 安全架构 企业安全 流程设计 安全治理 系统思考 解决方案
 tags: 安全架构
+translated: true
 ---
 
 # 0x01 前言

@@ -4,6 +4,7 @@ title: Encryption As A Services with softhsm2 and flask
 categories: 安全工程师
 kerywords: softhsm2 encryptionasaservices
 tags: 安全研发 数据安全
+translated: true
 ---
 
 # 0x01 Intro

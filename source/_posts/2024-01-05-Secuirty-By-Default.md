@@ -4,6 +4,7 @@ title:  当我们在谈安全默认时我们在谈什么
 categories: 安全架构师
 kerywords: 安全架构 安全合规 网络安全架构 网络安全 应用安全 应用安全架构 数据安全 数据安全架构 安全设计 安全默认
 tags: 安全架构
+translated: true
 ---
 
 

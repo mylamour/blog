@@ -4,6 +4,7 @@ title: 新开始:webshell的检测
 categories: 安全工程师
 keywords: Webshell 检测 机器学习
 tags: 入侵检测与反入侵 安全研发
+translated: true
 ---
 
 #### 新的开始

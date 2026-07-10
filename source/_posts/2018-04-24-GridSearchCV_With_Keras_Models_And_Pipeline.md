@@ -4,6 +4,7 @@ title: 把Keras Models放进Sklearn的Pipeline
 categories: 安全工程师
 kerywords: 机器学习 聚类算法 GridSearch CV
 tags: AI与机器学习 学习数据挖掘
+translated: true
 ---
 
 # Create Keras Model 

@@ -4,6 +4,7 @@ title: 写了个自动机器学习的项目
 categories: 安全工程师
 kerywords: 机器学习 工具 AutoCLF Auto Machine Learning
 tags: AI与机器学习 工具 安全研发
+translated: true
 ---
 
 无论是在参加比赛，还是在实际工程中，把数据处理完之后，肯定不会只用一种算法进行测试，不可避免的采用多种算法进行比较。而[autoclf](https://github.com/mylamour/autoclf)就是这次在阿里风险支付大赛进行中，花了两天撸出来的一个简单框架。

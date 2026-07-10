@@ -4,6 +4,7 @@ title: 安全规范建设指北
 categories: 安全架构师
 kerywords: 安全策略 安全架构 企业安全 架构规范 SOP 安全规范 Policy Standard Procedure
 tags: 安全架构
+translated: true
 ---
 
 # 0x01 前言

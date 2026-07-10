@@ -4,6 +4,7 @@ title: Fuzzing学习笔记：Linux Kernel Fuzzing
 categories: 安全工程师
 kerywords: Fuzzing tutorial 
 tags: Fuzzing 旧文迁移
+translated: true
 ---
 
 (本教程主要在cnetos完成,工具主要为triforceAFL)

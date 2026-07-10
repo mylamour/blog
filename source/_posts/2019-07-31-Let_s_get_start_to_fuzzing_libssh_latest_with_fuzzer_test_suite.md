@@ -4,6 +4,7 @@ title: Fuzzing学习笔记：libssh with fuzzer-test-suite
 categories: 安全工程师
 kerywords: Fuzzing fuzzer-test-suite libssh
 tags: Fuzzing 旧文迁移
+translated: true
 ---
 
 First, you should read this [issues](https://github.com/mylamour/blog/issues/63), then you would got a overview of it.  and should able to use this docker image

@@ -4,6 +4,7 @@ title: 数据安全架构总结及案例分享
 categories: 安全架构师
 kerywords: 安全架构 企业安全 安全设计 Security Design 安全治理 数据安全
 tags: 安全架构
+translated: true
 ---
 
 > 写于六月十九，发布于六月二十五日

@@ -4,6 +4,7 @@ title: 企业中里证书碎碎念
 categories: 安全工程师
 kerywords: 企业安全 互联网企业安全 数据安全 证书 OpenSSL SSL证书 安全架构
 tags: 数据安全 安全运营
+translated: true
 ---
 
 

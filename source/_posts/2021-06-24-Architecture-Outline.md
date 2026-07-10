@@ -4,6 +4,7 @@ title: 架构要略
 categories: 安全工程师
 kerywords: 企业架构 应用架构 安全架构 数据安全 企业数据架构 数据架构
 tags: 安全架构
+translated: true
 ---
 
 

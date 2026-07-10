@@ -4,6 +4,7 @@ title: 软件工程实践：以Python为例
 categories: 安全架构师
 kerywords: python flask celery react nextjs OOP 面向对象编程 AI 数据库 ORM 框架 软件工程 日志管理 异常处理 版本管理 部署 持续发布 容器化 云 K8S AI-Driven Cursor Gemini ChatGPT Sqlachemy
 tags: 安全研发
+translated: true
 ---
 
 

@@ -4,6 +4,7 @@ title: 安全架构师的自我修炼：从原则到实践
 categories: 安全架构师
 kerywords: 企业安全 金融企业安全 架构设计 安全架构 数据安全 安全治理 安全设计 架构安全 安全运营
 tags: 安全架构
+translated: true
 ---
 
 # 0x00 前言

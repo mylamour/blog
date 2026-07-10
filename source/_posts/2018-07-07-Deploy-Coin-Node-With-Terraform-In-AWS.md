@@ -4,6 +4,7 @@ title: 使用Terraform在AWS多区部署虚拟货币钱包节点
 categories: 安全工程师
 kerywords: 自动化运维 AWS Terraform Coin
 tags: AWS IAC 工具
+translated: true
 ---
 
 Terrafrom多区部署虚拟货币的demo代码详见[这里](https://github.com/mylamour/devops-note/tree/master/terraform/cryptocoin)

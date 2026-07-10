@@ -4,6 +4,7 @@ title: FTP services with Data At Rest Encryption
 categories: 安全工程师
 kerywords: DARE Encryption Decryption
 tags: 安全研发 数据安全
+translated: true
 ---
 
 # 0x01 Intro

@@ -4,6 +4,7 @@ title: 关于内容安全的思考和一次反垃圾注册应急
 categories: 安全工程师
 kerywords: 内容安全 反爬 业务安全
 tags: 爬虫与反爬虫
+translated: true
 ---
 
 这是之前为即刻Anti-Spam，针对内容安全画的思维导图：

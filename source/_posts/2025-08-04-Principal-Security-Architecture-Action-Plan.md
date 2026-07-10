@@ -4,6 +4,7 @@ title: 首席安全架构师的行动指南
 categories: 安全架构师
 kerywords: 企业安全 架构设计 安全架构 数据安全 安全治理 安全设计 架构安全 安全运营 IT与OT 安全管理
 tags: 安全架构 安全洞见 AI共创
+translated: true
 ---
 
 

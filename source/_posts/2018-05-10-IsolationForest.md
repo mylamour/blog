@@ -4,6 +4,7 @@ title: 异常检测算法之IsolationForest
 categories: 安全工程师
 kerywords: 异常检测 IsolationForest
 tags: AI与机器学习 学习数据挖掘
+translated: true
 ---
 
 离职第一天，在家撸代码写博客，读读Write Up。

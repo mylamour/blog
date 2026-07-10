@@ -4,6 +4,7 @@ title: 内存取证,密码提取以及Volatility的使用
 categories: 安全工程师
 keywords: 内存取证 密码提取 Volatility
 tags: 工具 取证
+translated: true
 ---
 
 #### 前言: 简介

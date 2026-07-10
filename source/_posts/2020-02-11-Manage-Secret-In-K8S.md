@@ -4,6 +4,7 @@ title: Talking About K8S Secret Manager
 categories: 安全工程师
 kerywords: 企业安全 互联网企业安全 安全架构 Cloud K8s 云安全 K8S Secret
 tags: 安全架构
+translated: true
 ---
 
 # Intro

@@ -4,6 +4,7 @@ title: Openresty入门
 categories: 安全工程师
 kerywords: Openresty 
 tags: 工具
+translated: true
 ---
 
 # Openresty 入门

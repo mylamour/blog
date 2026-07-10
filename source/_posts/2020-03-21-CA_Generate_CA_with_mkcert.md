@@ -4,6 +4,7 @@ title: How to use mkcert
 categories: 安全工程师
 kerywords: 证书 CA Cert
 tags: 数据安全 工具 旧文迁移
+translated: true
 ---
 
 # install & generate root CA  with mkcert

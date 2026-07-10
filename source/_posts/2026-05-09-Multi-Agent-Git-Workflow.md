@@ -4,6 +4,7 @@ title: 多Agent协作时代的Git规范
 categories: 安全架构师
 keywords: 多Agent Worktree Claude Code Cursor Codex Gemini CLI Git AI编程 协作规范 Vibe Coding 工程实践 AI协作 Agent
 tags: 安全架构 安全产品 安全研发
+translated: true
 ---
 
 > 这不是Git入门教程。这是团队协作，单人多Agent在产品迭代时总结出来的一套"防互相踩踏"协作规约。文章系AI共同创作。

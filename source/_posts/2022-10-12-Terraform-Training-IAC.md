@@ -4,6 +4,7 @@ title: Terraform培训
 categories: 安全架构师
 kerywords: 自动化运维 AWS Terraform Coin
 tags: IAC 工具
+translated: true
 ---
 
 最近在公司内做了一次技术培训，PPT如下

@@ -4,6 +4,7 @@ title: fuzzing随机性与char-rnn样本生成
 categories: 安全工程师
 kerywords: 模糊测试，机器学习，fuzzing，char-rnn
 tags: AI与机器学习 Fuzzing
+translated: true
 ---
 
 

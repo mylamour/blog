@@ -4,6 +4,7 @@ title: 玩转安全架构：从安全治理到安全验证
 categories: 安全架构师
 kerywords: 安全架构 企业安全 安全设计 Security Design 微服务安全 安全治理 安全验证 
 tags: 安全架构
+translated: true
 ---
 
 # 0x01 前言

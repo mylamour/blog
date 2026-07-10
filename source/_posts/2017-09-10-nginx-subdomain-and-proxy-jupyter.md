@@ -4,6 +4,7 @@ title: Nginx SubDomain and Proxypass Jupyter notebook
 categories: 安全工程师
 keywords: Jupyter Nginx Proxy
 tags: 工具
+translated: true
 ---
 
 It was being executed it in my DigitOcean Machine Learning AI Droplet.

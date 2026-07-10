@@ -4,6 +4,7 @@ title: 什么是安全架构
 categories: 安全工程师
 kerywords: 企业安全 互联网企业安全 架构评审 安全架构 应用安全架构 应用安全 什么是安全架构
 tags: 安全架构
+translated: true
 ---
 
 # 前言

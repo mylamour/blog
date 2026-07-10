@@ -4,6 +4,7 @@ title: 文本摘要（Text Summarization）
 categories: 安全工程师
 keywords: Extraction Summariztation, FastText, PageRank, Rouge, NLP
 tags: AI与机器学习 学习数据挖掘
+translated: true
 ---
 
 # 前言

@@ -3,6 +3,7 @@ layout: post
 title: CNN笔记整理
 categories: 安全工程师
 tags: AI与机器学习 学习数据挖掘
+translated: true
 ---
 
 # FAQ

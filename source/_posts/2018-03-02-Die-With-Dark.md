@@ -3,6 +3,7 @@ layout: post
 title: 写在数据泄露之前
 categories: 安全工程师
 tags: 小技巧 学习数据挖掘 数据安全
+translated: true
 ---
 
 # 前言

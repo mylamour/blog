@@ -4,6 +4,7 @@ title: 建设安全架构
 categories: 安全架构师
 kerywords: 安全产品 安全架构 企业安全 信息保护 信息安全 数据安全 发展规划 畅聊随笔
 tags: 安全架构
+translated: true
 ---
 
 # 0x01 前言

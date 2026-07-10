@@ -4,6 +4,7 @@ title: AI编程实践总结
 categories: 安全架构师
 kerywords: AI编程 Cursor Gemini3 编码 产品设计 原型设计 上线 前后端分离 快速原型 敏捷开发
 tags: 安全架构 安全产品 安全研发
+translated: true
 ---
 
 

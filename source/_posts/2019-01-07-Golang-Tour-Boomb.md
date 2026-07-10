@@ -4,6 +4,7 @@ title: golang也要耍一耍
 categories: 安全工程师
 kerywords: golang 教程  golang tour burpforce demo project
 tags: 安全研发
+translated: true
 ---
 
 # 前言

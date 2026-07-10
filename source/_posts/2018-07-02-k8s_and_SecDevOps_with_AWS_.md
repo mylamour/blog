@@ -4,6 +4,7 @@ title: AWS中的K8S以及SecDevOps
 categories: 安全工程师
 kerywords: k8s 安全运维
 tags: AWS 基础安全
+translated: true
 ---
 
 # 前言

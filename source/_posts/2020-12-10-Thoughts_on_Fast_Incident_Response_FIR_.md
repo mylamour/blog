@@ -4,6 +4,7 @@ title: Thoughts on Fast Incident Response(FIR)
 categories: 安全工程师
 kerywords: Incident Response
 tags: 应急响应 旧文迁移
+translated: true
 ---
 
 About FireEye being attacked by APT. They showed a very sincere attitude. This is worthy of respect and learning. But for other companies how to deal with subsequent impact is a problem.

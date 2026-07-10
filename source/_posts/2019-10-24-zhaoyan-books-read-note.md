@@ -4,6 +4,7 @@ title: 《互联网企业安全高级指南》阅读笔记
 categories: 安全工程师
 kerywords:  企业安全 互联网企业安全 学习 阅读笔记 赵彦 好书 
 tags:  入侵检测与反入侵 安全架构
+translated: true
 ---
 
 

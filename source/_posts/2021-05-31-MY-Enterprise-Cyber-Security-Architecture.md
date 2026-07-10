@@ -4,6 +4,7 @@ title: 我的企业安全观
 categories: 安全工程师
 kerywords: 企业安全 互联网企业安全 架构评审 安全架构 数据安全 IAAS PAAS
 tags: 安全架构
+translated: true
 ---
 
 

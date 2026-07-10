@@ -4,6 +4,7 @@ title: Build a internal CA with Openssl and SoftHsm2
 categories: 安全工程师
 kerywords: 证书 CA Cert Softhsm2 Openssl PKI
 tags: 安全研发 数据安全 
+translated: true
 ---
 # Intro
 

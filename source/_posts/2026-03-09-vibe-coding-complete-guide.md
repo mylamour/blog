@@ -4,6 +4,7 @@ title: Vibe Coding生存指南
 categories: 安全架构师
 keywords: AI编程 Cursor Gemini3 Opus Claude 编码 产品设计 Agentic SOC 原型设计 上线 前后端分离 快速原型 敏捷开发 AI安全 LLM AI安全运营中心 Agent As Engineer Vibe Coding
 tags: 安全架构 安全产品 安全研发
+translated: true
 ---
 
 > 提前排雷：这不是一篇吹捧"AI编程多牛逼"的软文。这是用真金白银、443个真实项目会话、84亿Token，以及无数次被Bug搞懵逼之后总结来的经验和教训。本想拆成Vibe Coding深度实践系列，把每个章节单独拎出来，但实在精力有限。文章系AI共同创作。[个人写作风格点击此处](https://gist.github.com/mylamour/31fa99d431bae3130791479fcdcf4111)，系学习自本人过去两年的博文所得。

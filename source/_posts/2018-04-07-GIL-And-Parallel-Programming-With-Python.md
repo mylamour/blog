@@ -4,6 +4,7 @@ title: GIL和Python并行编程（一）
 categories: 安全工程师 
 keywords: GIL, mutliprocessing, threading, python, parallerl programing
 tags: 安全研发
+translated: true
 ---
 
 

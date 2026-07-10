@@ -4,6 +4,7 @@ title: Ansible与Redis集群的搭建
 categories: 安全工程师
 keywords: Ansible Redis DigitalOcean
 tags: 工具
+translated: true
 ---
 
 #### 前言: 就是废话啦

@@ -4,6 +4,7 @@ title: How to build your own Certificate Authority
 categories: 安全工程师
 kerywords: 证书 CA Cert
 tags: 数据安全 工具 旧文迁移
+translated: true
 ---
 
 ![image](https://img.iami.xyz/images/77220702-c5b0be00-6b7d-11ea-85cf-535409cb44b6.png)

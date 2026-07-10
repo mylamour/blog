@@ -4,6 +4,7 @@ title: 再聊聊数据安全
 categories: 安全架构师
 kerywords: 数据安全 应用安全 基础安全 安全策略 安全技术 安全运营 安全平台 企业安全 安全治理
 tags: 安全架构 数据安全
+translated: true
 ---
 
 # 0x00 前言

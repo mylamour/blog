@@ -4,6 +4,7 @@ title: 异常检测初尝试
 categories: 安全工程师
 kerywords: 学习笔记 机器学习 异常检测
 tags: AI与机器学习 学习数据挖掘
+translated: true
 ---
 
 # 常见异常检测算法

@@ -4,6 +4,7 @@ title: ATT&CK与入侵检测
 categories: 安全工程师
 kerywords: 日志收集 入侵检测 
 tags: 入侵检测与反入侵
+translated: true
 ---
 
 

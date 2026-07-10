@@ -4,6 +4,7 @@ title: AI软件工程实践：构建企业级Agentic SOC平台
 categories: 安全架构师
 kerywords: AI编程 Cursor Gemini3 Opus Claude 编码 产品设计 Agentic SOC 原型设计 上线 前后端分离 快速原型 敏捷开发 AI安全 LLM AI安全运营中心 Agent As Engineer
 tags: 安全架构 安全产品 安全研发
+translated: true
 ---
 
 > 在刚刚过去的一期项目中，我们消耗了约23亿Token，使用Cursor Ultra与Claude Code构建了一个企业级 Agentic SOC平台。本文从软件工程的角度，复盘如何通过架构约束、测试驱动与文档管理，驾驭AI完成从35万行生成代码到8万行核心代码的提炼。

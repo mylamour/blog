@@ -4,6 +4,7 @@ title: 微软安全产品速览
 categories: 安全架构师
 kerywords: 数据安全 云安全 安全策略 安全技术 安全运营 安全平台 企业安全 安全治理 信息保护 数据治理 数据保护
 tags: 安全产品
+translated: true
 ---
 
 # 前言

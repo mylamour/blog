@@ -4,6 +4,7 @@ title: 安全架构之困
 categories: 安全架构师
 kerywords: 数据安全 安全策略 安全技术 安全运营 安全平台 企业安全 安全治理
 tags: 安全架构
+translated: true
 ---
 
 # 前言

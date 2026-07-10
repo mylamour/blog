@@ -4,6 +4,7 @@ title: OWASP Top 10和安全开发指南
 categories: 安全工程师
 kerywords: OWASPTop10
 tags: 安全研发
+translated: true
 ---
 
 ![image](https://img.iami.xyz/images/38121820-270e056c-3404-11e8-80b9-6567dab571ba.png)

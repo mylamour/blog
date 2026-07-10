@@ -4,6 +4,7 @@ title: 反垃圾（注册/登录/KYC)
 categories: 安全工程师
 kerywords: 反垃圾 反爬 内容安全
 tags: 安全研发
+translated: true
 ---
 
 # 前言

@@ -4,6 +4,7 @@ title: 走出反爬困境
 categories: 安全工程师
 kerywords: 思考 反思 问题 工作经验 总结 反爬 爬虫 Spider Anti-Spider
 tags: 爬虫与反爬虫 安全运营
+translated: true
 ---
 
 # 前言

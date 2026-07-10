@@ -3,6 +3,7 @@ layout: post
 title: 机器学习笔记整理
 categories: 安全工程师
 tags: AI与机器学习
+translated: true
 ---
 
 整理自Bitbucket中机器学习笔记和手抄本

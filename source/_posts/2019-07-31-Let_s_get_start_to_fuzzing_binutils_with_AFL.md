@@ -4,6 +4,7 @@ title: Fuzzing学习笔记：binutils with AFL
 categories: 安全工程师
 kerywords: Fuzzing AFL
 tags: Fuzzing 旧文迁移
+translated: true
 ---
 
 In the begin at the blog,  look at this picture, it was fuzzing with `readelf` ( one of `binutils` )

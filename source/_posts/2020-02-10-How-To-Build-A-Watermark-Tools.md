@@ -4,6 +4,7 @@ title: 关于水印这件“小事“
 categories: 安全工程师
 kerywords: 水印工具
 tags: 安全研发 工具
+translated: true
 ---
 
 # 已经做的

@@ -4,6 +4,7 @@ title: 系统与架构
 categories: 安全架构师
 kerywords: 安全架构 企业安全 安全设计 Security Design 安全治理 安全验证 
 tags: 安全架构
+translated: true
 ---
 
 > 写于六月十二，发布于六月十六日

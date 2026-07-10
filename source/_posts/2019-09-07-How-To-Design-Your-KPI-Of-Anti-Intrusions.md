@@ -4,6 +4,7 @@ title: 怎么设计你的反入侵KPI
 categories: 安全工程师
 kerywords:  反入侵 KPI OKR
 tags: 入侵检测与反入侵 安全运营
+translated: true
 ---
 
 

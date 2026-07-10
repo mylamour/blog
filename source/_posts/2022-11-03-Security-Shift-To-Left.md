@@ -4,6 +4,7 @@ title: 安全左移移了么
 categories: 安全架构师
 kerywords: 安全左移 安全架构 企业安全 安全治理 左移 右移
 tags: 安全架构
+translated: true
 ---
 
 # 0x01 前言

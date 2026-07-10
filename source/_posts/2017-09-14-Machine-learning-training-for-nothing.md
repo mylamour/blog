@@ -3,6 +3,7 @@ layout: post
 title: 第一次机器学习培训总结
 categories: 安全工程师
 tags: AI与机器学习 学习数据挖掘
+translated: true
 ---
 
 # 前言

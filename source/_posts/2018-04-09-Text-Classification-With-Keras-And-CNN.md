@@ -4,6 +4,7 @@ title: 使用Keras和CNN进行文本分类
 categories: 安全工程师
 keywords: Text Classification, Keras, CNN, 文本分类
 tags: AI与机器学习 学习数据挖掘
+translated: true
 ---
 
 以下原为工作时编写的文档，现在进行重新整理
