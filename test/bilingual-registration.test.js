@@ -45,12 +45,16 @@ function registeredHelper() {
 }
 
 function postRecord(source, slug) {
+  let persistedSlug = slug;
   return {
     source,
     slug,
+    getPersistedSlug() {
+      return persistedSlug;
+    },
     update(values) {
-      Object.assign(this, values);
-      return Promise.resolve(this);
+      persistedSlug = values.slug;
+      return Promise.resolve({ ...this, ...values });
     }
   };
 }
@@ -202,6 +206,8 @@ test('before_generate derives English slugs from source basenames using shared p
 
   assert.equal(posts[0].slug, 'deep-dive-into-clearing-network');
   assert.equal(posts[1].slug, 'elk小记');
+  assert.equal(posts[0].getPersistedSlug(), 'deep-dive-into-clearing-network');
+  assert.equal(posts[1].getPersistedSlug(), 'elk小记');
 });
 
 test('before_generate leaves Chinese post slugs untouched', async () => {
@@ -216,4 +222,5 @@ test('before_generate leaves Chinese post slugs untouched', async () => {
   await registration.beforeGenerate();
 
   assert.equal(post.slug, 'Deep-Dive-Into-Clearing-Network');
+  assert.equal(post.getPersistedSlug(), 'Deep-Dive-Into-Clearing-Network');
 });

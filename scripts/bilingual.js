@@ -22,7 +22,9 @@ function register(hexoInstance) {
 
     return Promise.all(hexoInstance.locals.get('posts').map((post) => {
       const slug = slugFromPairingKey(post.source, 1);
-      return post.slug === slug ? undefined : post.update({ slug });
+      if (post.slug === slug) return undefined;
+      post.slug = slug;
+      return post.update({ slug });
     }));
   });
 }
