@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Fuzzing Learning Notes: sqlite3 with fuzzer-test-suite
+title: "Fuzzing Learning Notes: sqlite3 with fuzzer-test-suite"
 categories: Security Engineer
 kerywords: Fuzzing fuzzer-test-suite sqlite3
 tags: Fuzzing Archive

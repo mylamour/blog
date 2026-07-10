@@ -1524,12 +1524,7 @@ html[lang="en"] {
   --reading-font: Georgia, "Palatino Linotype", "Book Antiqua", "LXGW WenKai Lite", serif;
 }
 
-/* 归档/列表页标题：英文标题普遍较长，取消截断 */
+/* 归档/列表页标题：英文标题普遍较长，单行拓宽显示 */
 html[lang="en"] .item-post .post-title {
-  max-width: none;
-  white-space: normal;
-  overflow: visible;
-  text-overflow: unset;
-  display: inline;
-  line-height: 1.5;
+  max-width: 100%;
 }

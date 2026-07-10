@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Fuzzing Learning Notes: libfuzzer and Chromium
+title: "Fuzzing Learning Notes: libfuzzer and Chromium"
 categories: Security Engineer
 kerywords: Fuzzing tutorial 
 tags: Fuzzing
