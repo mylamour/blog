@@ -26,8 +26,8 @@
     title = 'Tag: ' + page.tag;
   }
 
-  var canonicalUrl = page.permalink || full_url_for(page.canonical_path || page.path || path);
-  canonicalUrl = canonicalUrl.replace(/\/index\.html$/, '/');
+  var bilingual = bilingual_urls(page);
+  var canonicalUrl = bilingual.canonicalUrl;
 
   var pageDescription = page.description || page.excerpt || page.content || config.description;
   if (pageDescription) {
@@ -46,14 +46,10 @@
   %>
   <title><% if (title){ %><%= title %> | <% } %><%= config.title %></title>
   <link rel="canonical" href="<%= canonicalUrl %>">
-  <% if (page.translated && config.alt_lang_url) {
-    var altPath = (page.canonical_path || page.path || '').replace(/index\.html$/, '');
-    var altUrl = config.alt_lang_url + '/' + altPath;
-    var enUrl = (config.language === 'en') ? canonicalUrl : altUrl;
-  %>
-  <link rel="alternate" hreflang="<%= config.language || 'zh-CN' %>" href="<%= canonicalUrl %>">
-  <link rel="alternate" hreflang="<%= config.alt_lang %>" href="<%= altUrl %>">
-  <link rel="alternate" hreflang="x-default" href="<%= enUrl %>">
+  <% if (bilingual.alternateUrl) { %>
+  <link rel="alternate" hreflang="<%= bilingual.language %>" href="<%= bilingual.canonicalUrl %>">
+  <link rel="alternate" hreflang="<%= bilingual.alternateLanguage %>" href="<%= bilingual.alternateUrl %>">
+  <link rel="alternate" hreflang="x-default" href="<%= bilingual.xDefaultUrl %>">
   <% } %>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -65,6 +61,9 @@
   <% } %>
 
   <%- open_graph({ url: canonicalUrl }) %>
+  <% if (bilingual.alternateUrl) { %>
+  <meta property="og:locale:alternate" content="<%= bilingual.alternateLocale %>">
+  <% } %>
 
   <% if (page.layout === 'post') {
     var tagNames = getTagNames(page.tags);
@@ -113,7 +112,7 @@
 
   <%- partial('style') %>
 
-  <link rel="stylesheet" href="/css/custom.css?v=79e787d3">
+  <link rel="stylesheet" href="/css/custom.css?v=8f7b9db7">
 
   <%- partial('google-analytics') %>
   <%- partial('baidu-analytics') %>

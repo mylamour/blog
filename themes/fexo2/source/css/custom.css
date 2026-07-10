@@ -1493,9 +1493,9 @@ html[data-theme="dark"] .toolbox-mobile {
   }
 }
 
-/* 语言切换器（文章 meta 行） */
-/* 兜底选择器 (0,2,1)；文章页高特异性选择器 (0,5,1) 胜过 .content.content-post .article-header .article-meta a (0,4,0) */
-.article-meta .lang-switch a,
+/* 语言切换器 */
+/* 文章页高特异性选择器 (0,5,1) 胜过 .content.content-post .article-header .article-meta a (0,4,0) */
+.lang-switch a,
 .content.content-post .article-header .article-meta .lang-switch a {
   color: var(--reading-accent);
   text-decoration: none;
@@ -1504,8 +1504,17 @@ html[data-theme="dark"] .toolbox-mobile {
   padding: 0 6px;
   font-size: 12px;
 }
-.article-meta .lang-switch a:hover {
+.lang-switch a:hover {
   border-color: var(--reading-accent);
+}
+.lang-switch a:focus-visible {
+  outline: 2px solid var(--reading-accent);
+  outline-offset: 2px;
+}
+.content-home > .lang-switch,
+.page-header .box-blog-info .lang-switch {
+  display: inline-block;
+  margin-top: 8px;
 }
 
 /* 英文站主页单字 I：拉丁单字符视觉密度远低于中文方块字，放大对齐「開」的存在感 */

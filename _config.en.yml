@@ -7,6 +7,7 @@ description: Security architecture, applied cryptography, and AI engineering —
 author: Felix Zhao
 language: en
 url: https://iami.xyz
+filename_case: 1
 source_dir: source-en
 
 include:

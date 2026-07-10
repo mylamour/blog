@@ -1,0 +1,10 @@
+<% var links = bilingual_urls(targetPage || page); %>
+<% if (links.alternateUrl) { %>
+  <span class="lang-switch">
+    <a href="<%= links.alternateUrl %>"
+       rel="alternate"
+       hreflang="<%= links.alternateLanguage %>"
+       lang="<%= links.alternateLanguage %>"
+       aria-label="<%= __('switch_language') %>"><%= links.alternateLanguage === 'en' ? 'EN' : '中文' %></a>
+  </span>
+<% } %>

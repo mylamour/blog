@@ -17,11 +17,7 @@
         </span>
       <% } %>
 
-      <% if (post.translated && config.alt_lang_url){ %>
-        <span class="lang-switch">
-          <a href="<%= config.alt_lang_url + '/' + post.path %>"><%= config.language === 'en' ? '中文' : 'EN' %></a>
-        </span>
-      <% } %>
+      <%- partial('component/language-switch', { targetPage: post }) %>
 
       <% if (theme.count.wordcount){ %>
         <span class="post-count">
