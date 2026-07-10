@@ -2,8 +2,12 @@
   "name": "hexo-site",
   "version": "0.0.0",
   "private": true,
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
-    "build:en": "hexo clean && hexo generate --config _config.yml,_config.en.yml",
+    "test": "node --test",
+    "build:en": "hexo clean && hexo generate --bail --config _config.yml,_config.en.yml",
     "server:en": "hexo clean && hexo server --config _config.yml,_config.en.yml -p 4124"
   },
   "hexo": {
@@ -26,6 +30,10 @@
   },
   "devDependencies": {
     "clean-css": "^5.3.3",
-    "html-minifier-terser": "^7.2.0"
+    "hexo-front-matter": "^4.2.1",
+    "hexo-util": "^2.7.0",
+    "html-minifier-terser": "^7.2.0",
+    "js-yaml": "^4.1.1",
+    "jsdom": "^25.0.1"
   }
 }
