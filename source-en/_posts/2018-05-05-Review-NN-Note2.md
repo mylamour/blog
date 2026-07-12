@@ -7,10 +7,10 @@ tags: AI and Machine Learning
 translated: true
 ---
 
-Compiled from machine learning notes and handwritten notebooks in Bitbucket
+Compiled from machine learning notes and handwritten notebooks in Bitbucket.
 
 
-* `from keras.utils.visualize_util import plot` api upgrade
+* `from keras.utils.visualize_util import plot` API update
 > 
 
 ```python 
@@ -52,9 +52,9 @@ Image('model.png')
 
 * E tensorflow/stream_executor/cuda/cuda_blas.cc:444] failed to create cublas handle: CUBLAS_STATUS_NOT_INITIALIZED
 
-> Probably Out Of Memory, Use `nvidia-smi ` check it, also `nvidia-smi -l 1`, and stop that process.
+> This is probably an out-of-memory issue. Check with `nvidia-smi ` or `nvidia-smi -l 1`, then stop the relevant process.
 
-* Save whole model(architecture + weights + optimizer state) or just save weights
+* Save the whole model (architecture, weights, and optimizer state) or only the weights
  
 > 
 
@@ -88,19 +88,19 @@ model = model_from_yaml(yaml_string)
 
 ```
 
-* Vairble-Size Image As Input
+* Variable-Size Images as Input
 
 > https://github.com/keras-team/keras/issues/1920
 
-* Numpy remove scientific notation
+* Disable scientific notation in NumPy
 
 > np.set_printoptions(suppress=True)
 
-* How get input sequence length by keras?
+* How do I get the input sequence length in Keras?
 
 > sequence_length = model.input.shape[1].value
 
-* How get most common value in passed array?
+* How do I get the most common value in an array?
 
 > 
 
@@ -111,10 +111,10 @@ mode(array)
 
 ```
 
-* What is val_loss and val_acc? what is different between acc and val_acc
-> val_loss and val_acc is meaning your model accuracy in valdation datasets
+* What are `val_loss` and `val_acc`? What is the difference between `acc` and `val_acc`?
+> `val_loss` and `val_acc` measure the model's loss and accuracy on the validation dataset.
 
-* how to tell which keras model is better, Do I use the "acc" (from the training data?) one or the "val acc" (from the validation data?) one?
+* How do I determine which Keras model is better? Should I use `acc` from the training data or `val_acc` from the validation data?
 
 > 
 
@@ -131,7 +131,7 @@ Model2:
 
 > If your training data accuracy ("acc") keeps improving while your validation data accuracy ("val_acc") gets worse, you are likely in an overfitting situation, i.e. your model starts to basically just memorize the data.
 
-* `fit` difference with `fit_transform`
+* Difference between `fit` and `fit_transform`
 > https://datascience.stackexchange.com/questions/12321/difference-between-fit-and-fit-transform-in-scikit-learn-models
 
 * Random Forest equals Decision Tree plus Bagging, what is Bagging?
@@ -155,4 +155,3 @@ Model2:
 
 
 <!-- * Can Loss be greater than 1, what value is good? -->
-

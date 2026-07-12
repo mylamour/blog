@@ -57,7 +57,7 @@ pipline = Pipeline([
     ('clf', keras_clf)
 ])
 ```
-`Pipeline` is sklearn's way of chaining your entire training workflow together — preprocessing, feature selection, model training, all as sequential steps. Just add them one by one.
+`Pipeline` is sklearn's way of chaining an entire training workflow together: preprocessing, feature selection, and model training as sequential steps. Add each step in order.
 
 # GridSearch CV
 ```python
@@ -72,7 +72,7 @@ param_grid = {
 grid = GridSearchCV(pipline, cv=3, param_grid=param_grid)
 grid.fit(X_train, y_train)
 ```
-GridSearchCV sounds fancy but it's really just automated hyperparameter tuning via brute-force search. Works great on small datasets, not so much when data gets large.
+GridSearchCV is automated hyperparameter tuning through brute-force search. It works well on small datasets, but becomes expensive as the data grows.
 
 ```python
 print(" Best {} using {}".format(grid.best_score_, grid.best_params_))
@@ -85,4 +85,4 @@ for mean, stdev, param in zip(means, stds, params):
 ```
 After training, grab `grid.best_score_` and `grid.best_params_` to get the best accuracy and the params that got you there. Full code is [here](https://ghostbin.com/paste/44wcu).
 
-The brute-force search does help, but a smarter approach is to look at what hyperparameters people used in a few relevant papers — they're usually in a reasonable range — pick a handful of those, and just compare across them. Why reinvent the wheel when someone already tuned it for you.
+Brute-force search can help, but it is often more efficient to review hyperparameters used in relevant papers, choose a reasonable subset, and compare those values. There is no need to rediscover a range that others have already established.

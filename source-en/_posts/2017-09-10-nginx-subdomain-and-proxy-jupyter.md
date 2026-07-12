@@ -7,11 +7,11 @@ tags: Tools
 translated: true
 ---
 
-It was being executed it in my DigitOcean Machine Learning AI Droplet.
+I ran this on a DigitalOcean Machine Learning AI Droplet.
 
-Firstly, Parser a domain name to your vps, (add A record, also your subdomain). Now we edit the config file in our configure file. locate at in `/etc/nginx/conf.d/yourselfdomain.conf`
+First, point a domain name and subdomain to your VPS by adding the appropriate A records. Then create an Nginx configuration file under `/etc/nginx/conf.d/`, for example `/etc/nginx/conf.d/yourselfdomain.conf`.
 
-for example , in my subdomain, i edit the file `/etc/nginx/conf.d/mldl.conf`, and change it to:
+For my subdomain, I edited `/etc/nginx/conf.d/mldl.conf` as follows:
 
 > 
 
@@ -26,19 +26,19 @@ server {
 }
 ```
 
-Note:Jupyter token was being writted in `~/.bashrc`, and was runing as service(also allow root acces),if your want stop it, and run it on yourself directory.Just follow the step:
+Note: The Jupyter token was stored in `~/.bashrc`, and Jupyter was running as a service with root access enabled. To stop the service and run it from your own directory, follow these steps:
 
-step 1:
+Step 1:
 > `systemctl stop jupyter.service`
 
-step 2:
+Step 2:
 > `jupyter-notebook --NotebookApp.token=2bab1e75-22c8-4328-b791-83a39a7170a7 --no-browser --port 8080 --ip=0.0.0.0`
 
-> if you need to allow root access,
+> If you need to allow root access:
 
 > `jupyter-notebook --NotebookApp.token=2bab1e75-22c8-4328-b791-83a39a7170a7 --no-browser --port 8080 --ip=0.0.0.0 --allow-root`
 
-But there was a problem, Jupyter use the ajax as a response. Nginx use proxy head to solve the cross domain problem. Now, the new configure file looke like this:
+The issue was that Jupyter uses AJAX responses. Nginx serves as the reverse proxy and forwards the required request and WebSocket headers, while `Access-Control-Allow-Origin` enables the browser's cross-origin response sharing. The resulting configuration looked like this:
 
 ```
 server {

@@ -7,7 +7,7 @@ tags: AI and Machine Learning Learning Data Mining
 translated: true
 ---
 
-First day after leaving the job, coding at home, writing blog posts, reading Write Ups.
+On my first day after leaving the job, I was coding at home, writing blog posts, and reading write-ups.
 
 # Main Content
 
@@ -125,13 +125,13 @@ plt.show()
 ![figure_1](https://img.iami.xyz/images/39852802-1cdf3648-5451-11e8-98de-a5ec017eeb44.png)
 
 
-For this kind of clearly labeled data, the results aren't that great, only 90% accuracy. XGBoost already performs above 99%, but the performance on the test set isn't very ideal either. Although some people say it's related to the time distribution of the test set, I believe each order should have independent features, unrelated to time distribution. In the anti-fraud practice shared by Boss Shou from JD.com on VSRC a few days ago, he operated the same way. Let's load the previous XGBoost model for prediction and visualization to see.
+For this kind of clearly labeled data, the results were not very strong: accuracy was only 90%. XGBoost already achieved more than 99%, although its test-set performance was not ideal either. Some people attribute this to the test set's time distribution, but I expected each order to have independent features unrelated to time. A recent anti-fraud presentation from JD.com used the same approach. I then loaded the earlier XGBoost model for prediction and visualization.
 
 
 ![figure_1-1](https://img.iami.xyz/images/39853097-be2446a0-5452-11e8-9fad-6b1ebe81e512.png)
 ![figure_2-1](https://img.iami.xyz/images/39853098-bfeb1798-5452-11e8-82eb-3ae70795cc2d.png)
 
-Here you can see that normal cases are detected fairly accurately, but the prediction performance on dangerous cases is pretty terrible. No wonder the ranking dropped to `40/201`. How to tune this is the key question, How, How???
+Normal cases were detected fairly accurately, but performance on malicious cases was poor. That explains the drop to `40/201`. The key question is how to tune the model effectively.
 
 # Reference
 * [IsolationForest](http://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/tkdd11.pdf)

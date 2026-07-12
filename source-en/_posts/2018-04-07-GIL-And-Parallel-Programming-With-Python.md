@@ -20,10 +20,10 @@ translated: true
 > Controlled and scheduled by some scheduler.
 
 * Blocking vs Non-blocking
-> Focuses on the program's state while waiting for a call result (message, return value). Both blocking and non-blocking are synchronous IO when handling IO. Only when special APIs are used is it asynchronous IO.
+> This describes the program's state while it waits for a call result (a message or return value). Both blocking and non-blocking I/O can be synchronous; I/O becomes asynchronous only when the relevant APIs are used.
 
 * Asynchronous vs Synchronous
-> Focuses on the message communication mechanism. Synchronous means returning the result immediately after making a call, or waiting for the result. Asynchronous means not getting the result after making a call; the called function will notify the caller after computing the result, or handle it through a callback function.
+> This describes the communication mechanism. A synchronous call returns a result immediately or waits for one. An asynchronous call returns before the result is available; the called function later notifies the caller or invokes a callback.
 
 
 # GIL
@@ -37,10 +37,10 @@ pass
 * Distributed approach
 * Directly use gevent's monkey patch (coroutine)
 * Write extensions, use ctypes to write C libraries called by Python, or write Rust extensions
-* Switch interpreters, switch to pypy interpreter, reportedly code execution speed can be 6.3x faster, but not very practical, many library implementations have different dependencies
+* Switch interpreters. PyPy can reportedly execute code up to 6.3 times faster, but this is not always practical because library implementations and dependencies differ.
 
 # Parallel Programming
-talk is cheap, show me the demo code...
+Theory is useful, but the examples below are more concrete.
 
 ## Thread
 
@@ -223,7 +223,7 @@ monkey.patch_all()
 
 ```
 
-Other stuff is not used much, not very familiar with it yet. Will add more when I get more familiar with it.
+I do not use the other approaches often and am not yet familiar enough with them to cover them here. I will add more as I learn.
 
 ## Other
 
@@ -300,7 +300,7 @@ p.join()
 
 # Other
 
-Will write about GIL and communication in parallel programming, inter-process communication, etc. in detail in the next post.
+I will cover the GIL, communication in parallel programs, and inter-process communication in more detail in the next post.
 
 # References
 

@@ -10,7 +10,7 @@ translated: true
 
 # Intro
 
-This post is mostly a practical take on how to generate summaries from text. Honestly, I had zero clue how it worked — you can just call a library and get results, but then you're completely at the mercy of whatever the third-party library does, with no room to tune things yourself. "What I cannot create, I do not understand" — so yeah, worth digging into. My understanding is pretty surface-level, so don't expect anything deep here.
+This post is a practical look at generating summaries from text. At first I had little idea how it worked: a library can return results immediately, but then its behavior is difficult to understand or tune. “What I cannot create, I do not understand,” so I decided to investigate. My understanding is still introductory, so this is not an in-depth treatment.
 
 # Survey Of Text Summarization
 
@@ -34,7 +34,7 @@ Also PageRank and TextRank both fit in here.
 
 # NLP Basics
 
-Let me just dump a bunch of NLP terms first: tokenization, tagging, training, keyword extraction, named entity recognition, text classification. These are all pretty basic, and each one has a bunch of ways to implement it — tokenization alone has N-gram, CRF analysis, and custom dictionary approaches. Most libraries already handle this for you. Take a look at [HanLP](https://github.com/hankcs/HanLP/)'s README and you'll get the picture. Below I'll cover TF-IDF and N-GRAM.
+To establish some terminology: tokenization, tagging, training, keyword extraction, named-entity recognition, and text classification are all basic NLP tasks. Each has several implementation options; tokenization alone can use N-grams, CRF analysis, or custom dictionaries. Most libraries handle these details already. The [HanLP](https://github.com/hankcs/HanLP/) README provides a useful overview. Below I focus on TF-IDF and N-grams.
 
 
 ## [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)
@@ -53,7 +53,7 @@ tfidf_matrix =  tf.fit_transform(corpus)
 ```
 
 ## [N-GRAM](https://en.wikipedia.org/wiki/N-gram)
-A picture is worth a thousand words — just look at the example on the wiki page and it'll click.
+A picture is worth a thousand words; the example on the Wikipedia page makes the idea clear.
 ![n-gram-example](../image/NLP/n-gram-example.png)
 
 # Word2vec, Doc2Vec, Sentence2Vec
@@ -86,11 +86,11 @@ def sentence2vec(sentences):
 
 # PageRank And TextRank
 
-PageRank is famous — I learned about it when writing crawlers. But applying it to text summarization was new to me.
+PageRank is well known; I first encountered it while writing crawlers. Applying it to text summarization was new to me.
 
 ## Cosine similarity Or NN
 
-Cosine similarity — once you've converted words/sentences/docs into vectors, you can measure the angle between them to compute similarity. While messing around with fasttext I also found you can use KNN to compute similarity.
+Once words, sentences, or documents have been converted into vectors, cosine similarity measures the angle between them. While experimenting with fastText, I also found that KNN can be used to compute similarity.
 
 ## PageRank And TextRank 
 
@@ -158,7 +158,7 @@ with open(trainfilepath,encoding="utf-8") as f:
 
 ## FastText Basic Useage
 
-Installation is simple — just `make` it, and all the CLI commands have Python bindings.
+Installation is simple: run `make`, and the CLI commands also have Python bindings.
 
 * Train a model (supports skipgram or cbow, unsupervised learning, Word Representations)
 > 
@@ -201,7 +201,7 @@ __label__1 , miata mx5 covercraft cover , the quality was fine however , it did 
 
 ## FastText Pybinding
 
-Don't `pip install fasttext` (that's the obvious move but it also needs `Cython` pre-installed via `pip install Cython`), and the pip version can't load fasttext's trained model files (model.bin). You need to install from source — inside the fasttext folder run `pip install .` (turns out the official docs had a guide all along, oops).
+Avoid `pip install fasttext`: it requires `Cython` to be installed first with `pip install Cython`, and that package cannot load fastText trained model files (`model.bin`). Install from source instead by running `pip install .` inside the fastText directory; the official documentation covers this approach.
 
 ```python
 
@@ -222,7 +222,7 @@ def sen2vec_by_fasttext(sentences,model=load_model('./oh_no.bin')):
 
 # Rouge And Automatic Evaluation of Summaries 
 
-Rouge is a tool for evaluating automatic summaries. Not going to dig into the evaluation methodology or internal mechanics — there's a paper linked below. Written in Perl, which makes installation a bit annoying, but once it's up it's fine.
+ROUGE is a tool for evaluating automatically generated summaries. I do not cover its evaluation methodology or internals here; a paper is linked below. It is written in Perl, which makes installation somewhat awkward, but it works reliably once configured.
 > `cpan install XML::DOM`
 > `export ROUGE_EVAL_HOME=/usr/local/ROUGE-1.5.4/data`
 After installing, run the test file, then install the Python binding with `pip install pyrouge`. Write your generated summaries and the reference summaries into the specified files, then use the test code below.
@@ -244,9 +244,9 @@ output_dict = r.output_to_dict(output)
 * Show your GPU memory info
 > `nvidia-smi -l 1` outputs info every 1 second.
 
-* gensim is pretty handy
+* `gensim` is useful.
 
-* How to implement a project of paper
+* How to implement a paper's project
 
 
 # References
