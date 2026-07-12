@@ -20,9 +20,16 @@ The local check validates the staged snapshot and compares staged post changes w
 
 ## Security notes
 
-`themes/fexo2` retains its direct development dependency `esbuild@0.21.5`, which is affected by the moderate advisory [GHSA-67mh-4wv8-2f99](https://github.com/advisories/GHSA-67mh-4wv8-2f99). The available `npm audit fix` upgrade is the breaking major release `esbuild@0.28.1`; it is deferred pending compatible theme-build validation. This does not affect the root production dependency audit.
+`themes/fexo2` declares direct development dependency `esbuild@^0.21.0`, currently resolved in its lockfile as `0.21.5`; that resolution is affected by the moderate advisory [GHSA-67mh-4wv8-2f99](https://github.com/advisories/GHSA-67mh-4wv8-2f99). The available `npm audit fix` upgrade is the breaking major release `esbuild@0.28.1`; it is deferred pending compatible theme-build validation. This does not affect the root production dependency audit.
 
 ## Changelog
+
+### 2026/07/12
+
+* English quality pass: improved Story, About, and 404 pages; reviewed the first 32 translations and polished 9 of them.
+* Added an optional staged-index-aware local pre-commit check (see [Optional local pre-commit check](#optional-local-pre-commit-check)); root `npm audit` now reports 0 vulnerabilities.
+* Performance polish: configurable WebP avatar with PNG fallback and `font-display: swap`.
+* `img.iami.xyz` image conversion requires separate CDN/storage work and is not included here. The deferred theme `esbuild` upgrade is tracked in the existing [Security notes](#security-notes).
 
 ### 2026/07/10
 
