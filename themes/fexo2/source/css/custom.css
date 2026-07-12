@@ -1549,3 +1549,49 @@ html[lang="en"] .item-post .post-title {
 html[lang="en"] .item-post .post-date {
   min-width: 52px;
 }
+
+/* ============================================================
+   内容体验优化
+   ============================================================ */
+
+/* 深色模式下白底配图刺眼，整体降亮 */
+html[data-theme="dark"] .article-content img {
+  filter: brightness(0.85);
+}
+
+/* 旧文提示：写于 2020 年前的技术文 */
+.stale-notice {
+  margin: 0 0 28px;
+  padding: 10px 14px;
+  border-left: 3px solid var(--reading-accent);
+  background: var(--reading-code-bg);
+  color: var(--reading-muted);
+  font-size: 14px;
+  line-height: 1.7;
+  border-radius: 0 3px 3px 0;
+}
+
+/* 首页近期文章：极简文字列表 */
+.content-home .recent-posts {
+  list-style: none;
+  margin: 26px auto 0;
+  padding: 0;
+  max-width: 420px;
+}
+.content-home .recent-posts li {
+  margin: 8px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.content-home .recent-posts a {
+  color: var(--reading-title);
+  text-decoration: none;
+}
+.content-home .recent-posts a:hover {
+  color: var(--reading-accent);
+}
+.content-home .recent-posts-date {
+  margin-left: 8px;
+  font-size: 12px;
+  color: var(--reading-muted);
+}

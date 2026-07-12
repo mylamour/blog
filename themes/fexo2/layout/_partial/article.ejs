@@ -57,6 +57,15 @@
   </header>
 
   <div class="article-content">
+    <% if (!index && post.layout === 'post' && post.date && post.date.year() < 2020 && !(post.tags && post.tags.toArray().some(function(t){ return t.name === '漫漫人生路'; }))) { %>
+      <div class="stale-notice">
+        <% if (config.language === 'en') { %>
+          This post was written in <%= post.date.year() %>. Tools and versions mentioned may be outdated, though the underlying ideas still hold.
+        <% } else { %>
+          本文写于 <%= post.date.year() %> 年，文中涉及的工具与版本可能已过时，思路仍可参考。
+        <% } %>
+      </div>
+    <% } %>
     <% if (post.excerpt && index){ %>
       <%- post.excerpt %>
       <% if (theme.excerpt_link){ %>
