@@ -11,7 +11,12 @@
 
   <div class="box-blog-info">
     <a class="avatar" href="/">
-      <img src="<%= theme.avatar %>" alt="" />
+      <picture>
+        <% if (theme.avatar_webp) { %>
+          <source srcset="<%= theme.avatar_webp %>" type="image/webp" />
+        <% } %>
+        <img src="<%= theme.avatar %>" alt="" />
+      </picture>
     </a>
     <div class="info">
       <h3 class="name" style="font-family: <%= theme.blog_name_font_familiy || 'calligraffittiregular' %>">

@@ -7,6 +7,7 @@ const os = require('node:os');
 const path = require('node:path');
 const { promisify } = require('node:util');
 const test = require('node:test');
+const ejs = require('hexo-renderer-ejs/node_modules/ejs');
 const {
   routeForOutputFile,
   buildRouteIndex,
@@ -455,4 +456,40 @@ test('English entry pages generate a Story route and a self-contained 404', asyn
   assert.match(notFound, /<a href="\/blog\/">All posts<\/a>/);
   assert.match(notFound, /<a href="\/search\/">Search<\/a>/);
   assert.doesNotMatch(notFound, /Chinese only|fz\.cool/);
+});
+
+test('avatar templates use a WebP source only when it is explicitly paired with the fallback avatar', async () => {
+  const templateFiles = [
+    'themes/fexo2/layout/_partial/home.ejs',
+    'themes/fexo2/layout/_partial/component/page-header.ejs'
+  ];
+  const templates = await Promise.all(templateFiles.map((file) => fs.readFile(path.join(repositoryRoot, file), 'utf8')));
+  const customAvatar = 'https://cdn.example.com/avatar.png';
+
+  for (const template of templates) {
+    const withoutWebp = ejs.render(template, {
+      theme: { avatar: customAvatar, blog_name: '', slogan: '', home_nav: [] },
+      location: '',
+      page: {},
+      partial: () => ''
+    });
+    assert.match(withoutWebp, new RegExp(`<img src="${customAvatar}" alt=""`));
+    assert.doesNotMatch(withoutWebp, /<source\s+srcset=/);
+
+    const withWebp = ejs.render(template, {
+      theme: {
+        avatar: customAvatar,
+        avatar_webp: '/images/custom-avatar.webp',
+        blog_name: '',
+        slogan: '',
+        home_nav: []
+      },
+      location: '',
+      page: {},
+      partial: () => ''
+    });
+    assert.match(withWebp, /<picture>/);
+    assert.match(withWebp, /<source\s+srcset="\/images\/custom-avatar\.webp"\s+type="image\/webp"\s*\/>/);
+    assert.match(withWebp, new RegExp(`<img src="${customAvatar}" alt=""`));
+  }
 });

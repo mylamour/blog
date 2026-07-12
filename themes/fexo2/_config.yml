@@ -7,6 +7,8 @@ url: https://fz.cool
 # author: 放之
 # Set avatar (Absolute url and relative url)
 avatar: /images/avatar.png
+# Optional WebP alternative for the avatar above; leave blank for custom or remote avatars without a paired WebP file.
+avatar_webp: /images/avatar.webp
 
 # Set favicon
 favicon: /favicon.ico
