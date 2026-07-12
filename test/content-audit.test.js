@@ -714,6 +714,47 @@ test('translation CLI skips diff loading without a base and loads an explicit in
   assert.match(withInvalidBase.stderr, /\n$/);
 });
 
+test('pre-commit check uses HEAD to warn for staged Chinese-only posts and fail reciprocal claims', async (t) => {
+  const root = await temporaryDirectory(t, 'pre-commit-check-cli-');
+  await execFileAsync('git', ['init', '--quiet'], { cwd: root });
+  await execFileAsync('git', ['config', 'user.email', 'test@example.com'], { cwd: root });
+  await execFileAsync('git', ['config', 'user.name', 'Test User'], { cwd: root });
+  await mkdir(path.join(root, 'tools'), { recursive: true });
+  await writeFile(path.join(root, 'package.json'), JSON.stringify({
+    private: true,
+    scripts: {
+      'check:content': 'node tools/check-content.js',
+      'check:translations': `node ${path.join(REPO_ROOT, 'tools/check-translations.js')}`
+    }
+  }));
+  await writeFile(path.join(root, 'tools/check-content.js'), [
+    "'use strict';",
+    "process.stderr.write('warning CONTENT_KERYWORDS_BASELINE_MATCHED: content check ran\\n');"
+  ].join('\n'));
+  await execFileAsync('git', ['add', '--', 'package.json', 'tools/check-content.js'], { cwd: root });
+  await execFileAsync('git', ['commit', '--quiet', '-m', 'baseline'], { cwd: root });
+  const postPath = path.join(root, 'source/_posts/2024-02-29-Staged.md');
+  await mkdir(path.dirname(postPath), { recursive: true });
+  await writeFile(postPath, cliPostSource(false));
+  await execFileAsync('git', ['add', '--', 'source/_posts/2024-02-29-Staged.md'], { cwd: root });
+
+  const warningOnly = await runCli('tools/pre-commit-check.js', root);
+  assert.equal(warningOnly.code, 0);
+  assert.match(warningOnly.stderr, /CONTENT_KERYWORDS_BASELINE_MATCHED: content check ran/);
+  assert.match(warningOnly.stderr, /warning TRANS_NEW_ZH_UNPAIRED:/);
+
+  await writeFile(postPath, cliPostSource(true));
+  await execFileAsync('git', ['add', '--', 'source/_posts/2024-02-29-Staged.md'], { cwd: root });
+  await writeFile(postPath, cliPostSource(false));
+  const invalid = await runCli('tools/pre-commit-check.js', root, {
+    ...process.env,
+    VERIFY_BASE_SHA: 'definitely-not-a-valid-base'
+  });
+  assert.equal(invalid.code, 1);
+  assert.match(invalid.stderr, /CONTENT_KERYWORDS_BASELINE_MATCHED: content check ran/);
+  assert.match(invalid.stderr, /error TRANS_RECIPROCAL_MISSING:/);
+});
+
 test('CLI adapters set exitCode and never call process.exit', async () => {
   const sources = await Promise.all([
     readFile(path.join(REPO_ROOT, 'tools/check-content.js'), 'utf8'),

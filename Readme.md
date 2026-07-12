@@ -1,5 +1,23 @@
 > Good morning, and in case I don't see ya, good afternoon, good evening, and good night
 
+## Optional local pre-commit check
+
+CI is authoritative, but you can opt in to the local content and translation reminder:
+
+```sh
+npm run check:pre-commit
+```
+
+Install it as a local hook with:
+
+```sh
+hook_path="$(git rev-parse --git-path hooks/pre-commit)"
+mkdir -p "$(dirname "$hook_path")"
+ln -sf "$(git rev-parse --show-toplevel)/tools/pre-commit-check.js" "$hook_path"
+```
+
+The local check validates the staged snapshot and compares staged post changes with `HEAD`. It warns when a new Chinese article has no English peer yet. It fails when an article declares `translated: true` without a reciprocal `translated: true` peer.
+
 ## Changelog
 
 ### 2026/07/10

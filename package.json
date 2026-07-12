@@ -9,6 +9,7 @@
     "test": "node --test",
     "check:content": "node tools/check-content.js",
     "check:translations": "node tools/check-translations.js",
+    "check:pre-commit": "node tools/pre-commit-check.js",
     "build:en": "hexo clean && hexo generate --bail --config _config.yml,_config.en.yml",
     "build:zh": "hexo clean && hexo generate --bail --config _config.yml",
     "check:generated:zh": "node tools/check-generated.js --site zh --dir public",

@@ -18,7 +18,9 @@ async function main() {
     const diagnostics = validateTranslationStructure(inventory);
     const base = process.env.VERIFY_BASE_SHA;
     if (typeof base === 'string' && base.length > 0) {
-      const changes = await listGitChanges(root, base);
+      const changes = await listGitChanges(root, base, {
+        staged: process.env.VERIFY_STAGED === '1'
+      });
       diagnostics.push(...validateTranslationDiff(inventory, changes));
     }
     printDiagnostics(diagnostics);
