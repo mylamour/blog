@@ -18,6 +18,10 @@ ln -sf "$(git rev-parse --show-toplevel)/tools/pre-commit-check.js" "$hook_path"
 
 The local check validates the staged snapshot and compares staged post changes with `HEAD`. It warns when a new Chinese article has no English peer yet. It fails when an article declares `translated: true` without a reciprocal `translated: true` peer.
 
+## Security notes
+
+`themes/fexo2` retains its direct development dependency `esbuild@0.21.5`, which is affected by the moderate advisory [GHSA-67mh-4wv8-2f99](https://github.com/advisories/GHSA-67mh-4wv8-2f99). The available `npm audit fix` upgrade is the breaking major release `esbuild@0.28.1`; it is deferred pending compatible theme-build validation. This does not affect the root production dependency audit.
+
 ## Changelog
 
 ### 2026/07/10
