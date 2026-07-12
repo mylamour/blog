@@ -1,9 +1,11 @@
 'use strict';
 
 const assert = require('node:assert/strict');
+const { execFile } = require('node:child_process');
 const fs = require('node:fs/promises');
 const os = require('node:os');
 const path = require('node:path');
+const { promisify } = require('node:util');
 const test = require('node:test');
 const {
   routeForOutputFile,
@@ -17,6 +19,22 @@ const {
 } = require('../lib/generated-audit');
 const { buildInventory, parsePostSource } = require('../lib/content-inventory');
 const { SITES, postPath } = require('../lib/site-policy');
+
+const execFileAsync = promisify(execFile);
+const repositoryRoot = path.resolve(__dirname, '..');
+
+async function buildEnglishSite() {
+  await execFileAsync(
+    path.join(repositoryRoot, 'node_modules', '.bin', 'hexo'),
+    ['clean'],
+    { cwd: repositoryRoot }
+  );
+  await execFileAsync(
+    path.join(repositoryRoot, 'node_modules', '.bin', 'hexo'),
+    ['generate', '--bail', '--config', '_config.yml,_config.en.yml'],
+    { cwd: repositoryRoot }
+  );
+}
 
 function codes(diagnostics) {
   return diagnostics.map((diagnostic) => diagnostic.code);
@@ -423,4 +441,18 @@ test('generated English audit composes links, redirect contract, and English 404
   assert.deepEqual(diagnostics.map(({ severity, code }) => ({ severity, code })), [
     { severity: 'warning', code: 'GEN_LINK_BASELINE_MATCHED' }
   ]);
+});
+
+test('English entry pages generate a Story route and a self-contained 404', async () => {
+  await buildEnglishSite();
+
+  const story = await fs.readFile(path.join(repositoryRoot, 'public', 'story', 'index.html'), 'utf8');
+  assert.match(story, /<title>My Story/);
+
+  const notFound = await fs.readFile(path.join(repositoryRoot, 'public', '404.html'), 'utf8');
+  assert.match(notFound, /<h1>The path ends here<\/h1>/);
+  assert.match(notFound, /<a href="\/">Home<\/a>/);
+  assert.match(notFound, /<a href="\/blog\/">All posts<\/a>/);
+  assert.match(notFound, /<a href="\/search\/">Search<\/a>/);
+  assert.doesNotMatch(notFound, /Chinese only|fz\.cool/);
 });
