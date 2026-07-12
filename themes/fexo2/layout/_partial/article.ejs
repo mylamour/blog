@@ -5,7 +5,7 @@
     <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
-        <span><%= date(post.date, 'YYYY.MM.DD') %></span>
+        <span><%= date(post.date, config.language === 'en' ? 'MMM D, YYYY' : 'YYYY.MM.DD') %></span>
       </span>
 
       <!-- <%- partial('component/category') %> -->

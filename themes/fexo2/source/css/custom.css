@@ -1537,3 +1537,15 @@ html[lang="en"] {
 html[lang="en"] .item-post .post-title {
   max-width: 100%;
 }
+
+/* 归档列宽：基础 .content 仅 500px，最长英文标题约需 760px */
+@media screen and (min-width: 768px) {
+  html[lang="en"] .content.content-archive {
+    width: min(860px, calc(100vw - 48px));
+  }
+}
+
+/* 英文日期 "Mar 3"/"Dec 31" 宽度不一，固定最小宽度保持标题左缘对齐 */
+html[lang="en"] .item-post .post-date {
+  min-width: 52px;
+}
