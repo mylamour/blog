@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Security Operations Center (SOC) and Collective Intelligence
+description: "Why a SOC is collective intelligence: alert handling, knowledge retention, and human-machine collaboration in security operations."
 categories: Security Architect
 kerywords: Security Operations SOC Security Architecture Enterprise Security Security Design
 tags: Security Architecture

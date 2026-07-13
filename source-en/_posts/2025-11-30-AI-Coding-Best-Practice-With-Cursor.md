@@ -1,6 +1,7 @@
 ---
 layout: post
 title: AI Coding Best Practices — What I've Learned
+description: "Practical AI coding lessons from GPT-3.5 to Gemini 3: prompt design, context engineering, tool selection, and quality control for real products."
 categories: Security Architect
 kerywords: AI coding Cursor Gemini3 coding product design prototype frontend backend agile development
 tags: Security Architecture Security Products Security Development

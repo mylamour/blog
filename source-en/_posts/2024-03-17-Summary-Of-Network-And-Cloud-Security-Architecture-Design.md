@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  Summary of Network and Cloud Security Architecture Design
+description: "Field notes on network and cloud security architecture: segmentation, perimeter design, traffic control, and fixing bad designs along the way."
 categories: Security Architect
 kerywords: security architecture security compliance cloud migration network security cloud security Alibaba Cloud AWS network security application security data security security design secure by default
 tags: Security Architecture

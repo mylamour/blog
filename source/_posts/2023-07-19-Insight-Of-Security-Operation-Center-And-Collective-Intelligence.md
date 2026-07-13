@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 安全运营中心（SOC）与集体智慧
+description: "安全运营中心（SOC）的本质是集体智慧：从告警处置、知识沉淀到人机协作，探讨SOC运营模式与团队智慧的构建路径。"
 categories: 安全架构师
 kerywords: 安全运营 安全运营中心 SOC 安全架构 企业安全 安全设计
 tags: 安全架构

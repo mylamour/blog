@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "AI Software Engineering in Practice: Building an Enterprise-Grade Agentic SOC Platform"
+description: "How we turned 2.3B tokens of AI-generated code into an enterprise Agentic SOC platform - architecture constraints, TDD, and doc-driven engineering."
 categories: Security Architect
 kerywords: AI Coding Cursor Gemini3 Opus Claude Coding Product Design Agentic SOC Prototype Design Launch Frontend Backend Separation Rapid Prototype Agile AI Security LLM AI Security Operations Center Agent As Engineer
 tags: Security Architecture Security Products Security Engineering

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Do We Really Need Security Architects?
+description: "Do we really need security architects? An honest look at the role's boundaries, controversies, and where it actually delivers value."
 categories: Security Architect
 kerywords: enterprise security architecture design data security security governance security design OT IT security management application security
 tags: security architecture security insight

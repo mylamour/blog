@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Study Notes on Data Security Regulations
+description: "A technologist's map of China's data security regulations: CSL, DSL, PIPL, and supporting standards - what actually matters for compliance."
 categories: Security Architect
 kerywords: security compliance data security law cybersecurity law security regulations China personal information protection law
 tags: Security Architecture

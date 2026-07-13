@@ -1,6 +1,7 @@
 ---
 layout: post
 title: The Vibe Coding Survival Guide
+description: "Lessons from 443 real project sessions and 8.4B tokens: a no-hype survival guide to vibe coding, from context management to debugging AI output."
 categories: Security Architect
 keywords: AI coding Cursor Gemini3 Opus Claude coding product design Agentic SOC prototyping deployment frontend-backend separation rapid prototyping agile AI security LLM AI security operations center Agent As Engineer Vibe Coding
 tags: Security Architecture Security Products Security R&D

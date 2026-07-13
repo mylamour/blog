@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  Security Operations — Design for Failure
+description: "Designing security operations for failure: assume defenses will break, then engineer detection, response, and recovery for resilience."
 categories: Security Architect
 kerywords: security architecture security design secure by default security operations design for failure security operations failure security operations as a service ideal vs reality ragtag team two negatives make a positive learning summary
 tags: Security Operations

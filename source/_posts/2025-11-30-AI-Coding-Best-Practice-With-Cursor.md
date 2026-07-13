@@ -1,6 +1,7 @@
 ---
 layout: post
 title: AI编程实践总结
+description: "从GPT-3.5到Gemini 3的AI编程实践总结：Prompt设计、上下文工程、工具选型与质量控制，安全工程师视角的AI辅助开发方法论。"
 categories: 安全架构师
 kerywords: AI编程 Cursor Gemini3 编码 产品设计 原型设计 上线 前后端分离 快速原型 敏捷开发
 tags: 安全架构 安全产品 安全研发

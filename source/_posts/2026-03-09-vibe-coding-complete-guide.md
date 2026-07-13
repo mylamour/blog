@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Vibe Coding生存指南
+description: "443个真实项目会话、84亿Token换来的Vibe Coding经验教训：从需求拆解、上下文管理到调试与返工成本，一份不吹捧AI编程的生存指南。"
 categories: 安全架构师
 keywords: AI编程 Cursor Gemini3 Opus Claude 编码 产品设计 Agentic SOC 原型设计 上线 前后端分离 快速原型 敏捷开发 AI安全 LLM AI安全运营中心 Agent As Engineer Vibe Coding
 tags: 安全架构 安全产品 安全研发

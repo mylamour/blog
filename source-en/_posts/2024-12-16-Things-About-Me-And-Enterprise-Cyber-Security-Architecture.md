@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Self-Cultivation of a Security Architect: From Principles to Practice"
+description: "Six years of security architecture distilled: principles, methodology, and a practical path to building enterprise security programs that last."
 categories: Security Architect
 kerywords: Enterprise Security Financial Enterprise Security Architecture Design Security Architecture Data Security Security Governance Security Design Architecture Security Security Operations
 tags: Security Architecture
