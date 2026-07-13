@@ -39,6 +39,7 @@
 
   <% var recentPosts = site.posts.sort('date', -1).limit(3).toArray(); %>
   <% if (recentPosts.length) { %>
+    <div class="recent-posts-label"><%= config.language === 'en' ? 'Recent' : '近期' %></div>
     <ul class="recent-posts">
       <% recentPosts.forEach(function(post){ %>
         <li>

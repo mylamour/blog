@@ -1571,14 +1571,24 @@ html[data-theme="dark"] .article-content img {
   border-radius: 0 3px 3px 0;
 }
 
-/* 首页近期文章：极简文字列表 */
+/* 首页近期文章：定宽块居中，块内标题左对齐、日期右对齐 */
+.content-home .recent-posts-label {
+  margin-top: 28px;
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  color: var(--reading-muted);
+}
 .content-home .recent-posts {
   list-style: none;
-  margin: 26px auto 0;
+  margin: 10px auto 0;
   padding: 0;
   max-width: 420px;
 }
 .content-home .recent-posts li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
   margin: 8px 0;
   font-size: 14px;
   line-height: 1.6;
@@ -1586,12 +1596,27 @@ html[data-theme="dark"] .article-content img {
 .content-home .recent-posts a {
   color: var(--reading-title);
   text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .content-home .recent-posts a:hover {
   color: var(--reading-accent);
 }
 .content-home .recent-posts-date {
-  margin-left: 8px;
   font-size: 12px;
   color: var(--reading-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+/* 英文标题偏长，列表块适当加宽 */
+html[lang="en"] .content-home .recent-posts {
+  max-width: 560px;
+}
+/* 窄屏防贴边 */
+@media screen and (max-width: 767px) {
+  .content-home .recent-posts {
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
 }
