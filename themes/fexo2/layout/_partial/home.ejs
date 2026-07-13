@@ -37,17 +37,4 @@
     <% }) %>
   </ul>
 
-  <% var recentPosts = site.posts.sort('date', -1).limit(3).toArray(); %>
-  <% if (recentPosts.length) { %>
-    <div class="recent-posts-label"><%= config.language === 'en' ? 'Recent' : '近期' %></div>
-    <ul class="recent-posts">
-      <% recentPosts.forEach(function(post){ %>
-        <li>
-          <a href="<%- url_for(post.path) %>"><%= post.title %></a>
-          <span class="recent-posts-date"><%= date(post.date, config.language === 'en' ? 'MMM D, YYYY' : 'YYYY.MM.DD') %></span>
-        </li>
-      <% }) %>
-    </ul>
-  <% } %>
-
 </div>
