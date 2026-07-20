@@ -78,3 +78,51 @@ test('shares the wide desktop archive layout without changing mobile limits', ()
   assert.match(itemPostSass, /min-width: 400px\) and \(max-width: 500px\)[\s\S]*?max-width: 330px;/);
   assert.match(itemPostSass, /min-width: 320px\) and \(max-width: 399px\)[\s\S]*?max-width: 250px;/);
 });
+
+test('keeps sidebar TOC links at a stable font weight', () => {
+  assert.doesNotMatch(customCss, /\.toc,\s*\.toc-title\s*\{/);
+  assert.match(customCss, /\.toc-title\s*\{[^}]*font-weight:\s*700;/);
+  assert.match(customCss, /\.toc-article a\s*\{[^}]*font-weight:\s*400;/);
+  assert.match(
+    customCss,
+    /\.toc-article a:hover,\s*\.toc-article a\.toc-link\.active\s*\{[^}]*font-weight:\s*400;/
+  );
+});
+
+test('uses level-two subsections in both latest article sources', () => {
+  const expectedSubsections = new Map([
+    [
+      'source/_posts/2026-07-19-agentic-software-engineering-real-sdlc.md',
+      [
+        '先审计真实 capability，再相信角色文档',
+        'Finding 不是结论，反证决定影响边界'
+      ]
+    ],
+    [
+      'source-en/_posts/2026-07-19-agentic-software-engineering-real-sdlc.md',
+      [
+        'Audit Real Capability Before Trusting Role Documentation',
+        'A Finding Is Not a Conclusion; Counterevidence Defines the Impact Boundary'
+      ]
+    ]
+  ]);
+
+  for (const [articlePath, expected] of expectedSubsections) {
+    const source = readFileSync(path.join(repositoryRoot, articlePath), 'utf8');
+    const headings = Array.from(
+      source.matchAll(/^(#{1,6})\s+(.+)$/gm),
+      (match) => ({ level: match[1].length, text: match[2] })
+    );
+    const levels = headings.map(({ level }) => level);
+
+    assert.deepEqual(
+      headings.filter(({ level }) => level === 2).map(({ text }) => text),
+      expected,
+      articlePath
+    );
+    assert.equal(levels.every((level) => level <= 2), true, articlePath);
+    for (let index = 1; index < levels.length; index += 1) {
+      assert.ok(levels[index] <= levels[index - 1] + 1, articlePath);
+    }
+  }
+});
