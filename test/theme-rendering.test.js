@@ -11,6 +11,14 @@ const loadScriptTemplate = readFileSync(
   path.join(repositoryRoot, 'themes/fexo2/layout/_partial/load-script.ejs'),
   'utf8'
 );
+const customCss = readFileSync(
+  path.join(repositoryRoot, 'themes/fexo2/source/css/custom.css'),
+  'utf8'
+);
+const itemPostSass = readFileSync(
+  path.join(repositoryRoot, 'themes/fexo2/source/sass/component/_item-post.scss'),
+  'utf8'
+);
 
 function loadIsMermaidSource() {
   const match = /(function isMermaidSource\(source\) \{[\s\S]*?\n  \})\n\n  function loadScript/.exec(loadScriptTemplate);
@@ -58,4 +66,15 @@ test('recognizes all Mermaid blocks in both latest article sources', () => {
     assert.equal(blocks.length, 14, articlePath);
     assert.equal(blocks.every(isMermaidSource), true, articlePath);
   }
+});
+
+test('shares the wide desktop archive layout without changing mobile limits', () => {
+  assert.match(
+    customCss,
+    /@media screen and \(min-width: 768px\) \{[\s\S]{0,500}\.content\.content-archive[\s\S]{0,200}width: min\(860px, calc\(100vw - 48px\)\);[\s\S]{0,300}\.item-post \.post-title[\s\S]{0,100}max-width: 100%;/
+  );
+  assert.doesNotMatch(customCss, /html\[lang="en"\] \.content\.content-archive/);
+  assert.doesNotMatch(customCss, /html\[lang="en"\] \.item-post \.post-title/);
+  assert.match(itemPostSass, /min-width: 400px\) and \(max-width: 500px\)[\s\S]*?max-width: 330px;/);
+  assert.match(itemPostSass, /min-width: 320px\) and \(max-width: 399px\)[\s\S]*?max-width: 250px;/);
 });
