@@ -349,7 +349,7 @@ git status --short --branch
 
 Expected: the branch is ahead of `origin/withexo`; the only untracked path is `source/_posts/2026-03-13-Meet-Yourself.md`.
 
-### Task 4: Push and confirm the published revision
+### Task 4: Merge the isolated feature and confirm the published revision
 
 **Files:**
 - No file changes
@@ -363,24 +363,56 @@ git fetch origin --prune
 git rev-list --left-right --count HEAD...origin/withexo
 ```
 
-Expected after the plan and two implementation commits: `4 0`; the local branch is ahead by four commits and the remote is not ahead.
+Expected after the worktree-plan correction and two implementation commits: `5 0`; the feature branch contains the two approved design/plan commits plus three feature-branch commits, and the remote is not ahead.
 
-- [ ] **Step 2: Push the verified branch**
+- [ ] **Step 2: Resolve and verify the primary checkout**
 
 Run:
 
 ```bash
-git push origin withexo
+main_root=$(git -C "$(git rev-parse --git-common-dir)/.." rev-parse --show-toplevel)
+test "$(git -C "$main_root" branch --show-current)" = "withexo"
+git -C "$main_root" status --short --branch
+```
+
+Expected: the primary checkout is on `withexo`; its only untracked path is `source/_posts/2026-03-13-Meet-Yourself.md`.
+
+- [ ] **Step 3: Fast-forward the verified feature into `withexo`**
+
+Run:
+
+```bash
+git -C "$main_root" merge --ff-only fix/archive-title-mermaid-rendering
+```
+
+Expected: `withexo` advances to the feature HEAD without a merge commit or conflict; the preserved untracked article remains untouched.
+
+- [ ] **Step 4: Re-run tests on the integrated branch**
+
+Run:
+
+```bash
+npm --prefix "$main_root" test
+```
+
+Expected: all tests pass on the integrated `withexo` branch.
+
+- [ ] **Step 5: Push the verified integrated branch**
+
+Run:
+
+```bash
+git -C "$main_root" push origin withexo
 ```
 
 Expected: `withexo -> withexo` without force-push.
 
-- [ ] **Step 3: Compare local and remote commit identities**
+- [ ] **Step 6: Compare local and remote commit identities**
 
 Run:
 
 ```bash
-local_sha=$(git rev-parse HEAD)
+local_sha=$(git -C "$main_root" rev-parse HEAD)
 remote_sha=$(git ls-remote --heads origin refs/heads/withexo | cut -f1)
 test "$local_sha" = "$remote_sha"
 printf 'published_sha=%s\n' "$local_sha"
@@ -388,17 +420,17 @@ printf 'published_sha=%s\n' "$local_sha"
 
 Expected: exit 0 and one `published_sha=` line followed by the 40-character commit SHA.
 
-- [ ] **Step 4: Check repository CI for the published SHA**
+- [ ] **Step 7: Check repository CI for the published SHA**
 
 Run:
 
 ```bash
-gh api -H 'Accept: application/vnd.github+json' "repos/mylamour/blog/commits/$(git rev-parse HEAD)/check-runs" --jq '{total_count, runs: [.check_runs[] | {name, status, conclusion, details_url}]}'
+gh api -H 'Accept: application/vnd.github+json' "repos/mylamour/blog/commits/$(git -C "$main_root" rev-parse HEAD)/check-runs" --jq '{total_count, runs: [.check_runs[] | {name, status, conclusion, details_url}]}'
 ```
 
 Expected: the repository verification jobs appear. If they are still queued or running, wait for completion before claiming the published revision is verified.
 
-- [ ] **Step 5: Confirm the live article routes after deployment**
+- [ ] **Step 8: Confirm the live article routes after deployment**
 
 Run:
 
