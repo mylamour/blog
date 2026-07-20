@@ -60,7 +60,11 @@
           }
         }
 
-        if (codeContent.trim().match(/^(graph|sequenceDiagram|classDiagram|stateDiagram|erDiagram|gantt|pie|flowchart|journey)/)) {
+        var shouldRenderMermaid = lang === 'mermaid'
+          ? codeContent.trim().length > 0
+          : isMermaidSource(codeContent);
+
+        if (shouldRenderMermaid) {
           var mermaidDiv = document.createElement('div');
           mermaidDiv.className = 'mermaid';
           mermaidDiv.textContent = codeContent;
@@ -81,6 +85,21 @@
     if (hasMermaid) {
       loadMermaidIfNeeded();
     }
+  }
+
+  function isMermaidSource(source) {
+    var remaining = String(source || '').trim();
+
+    while (remaining) {
+      var next = remaining
+        .replace(/^%%\{[\s\S]*?\}%%\s*/, '')
+        .replace(/^%%(?!\{)[^\r\n]*(?:\r?\n|$)\s*/, '');
+
+      if (next === remaining) break;
+      remaining = next;
+    }
+
+    return /^(graph|sequenceDiagram|classDiagram|stateDiagram|erDiagram|gantt|pie|flowchart|journey)\b/.test(remaining);
   }
 
   function loadScript(src, onload) {
