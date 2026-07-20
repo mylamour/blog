@@ -259,7 +259,7 @@ Lease 过期不是“可以覆盖”的许可证。它只表示需要接管审�
 
 这也是为什么 Git owner 设计必须进入文章。多 Agent AI Coding 的风险并不只在代码质量，而在 authority、approval、active write 与 execution provenance 被压进一个模糊的 owner 字段。写入速度变快以后，这种模糊会更快地变成事故。
 
-#### 先审计真实 capability，再相信角色文档
+## 先审计真实 capability，再相信角色文档
 
 Ownership 设计还需要一个反向检查：**文档说一个组件负责什么，不等于代码允许它做什么。固定基线上，X2-Orbit 的 remote Codex worker 可以修改产品仓、commit、push、创建 PR，并具备 merge/deploy 路径；X2-Bot 也能通过 Claude/Codex runner 在产品 scope 的 worktree 中实现、测试和提交。Orbit 到 Bot 的 feed bridge 已存在，只是默认关闭。**
 
@@ -607,7 +607,7 @@ flowchart TB
 
 Authority 本身也必须接受反证。6 月 19 日，X2-Docs 为 Orbit A2 写下 Sea replay path 与 tenant/org scope；五天后的 Orbit E2E proof 发现该 contract 与 Sea、Pulsar 实现不一致。修复不是要求产品迎合旧文档，而是把权威 path 改回真实的 `get_replay`、把 scope 改成 tenant+user，并写出 Sea→Pulsar 的合并/部署顺序。平台文字可以先变成 LIVE，产品组合仍保持 PARTIAL，AWS proof 继续是 MISSING，直到部署完成并重建 artifact。Authority 决定契约冲突在哪里收口，不享有免于被 runtime 纠正的特权。
 
-#### Finding 不是结论，反证决定影响边界
+## Finding 不是结论，反证决定影响边界
 
 2026 年 7 月，我们对固定的八仓提交做了一次平台实审，最后形成 96 个独立 current findings。原始 P0/P1 一共 43 条，随后交给独立 reviewer 主动找 counterevidence。复核结果是 29 条 supported、8 条 missing-counterevidence、6 条 overstated，共有 11 项 severity correction。
 

@@ -258,7 +258,7 @@ At handoff, I expect at least `git status`, the exact HEAD, diff/stat and commit
 
 This is why Git ownership belongs in this article. The risk of multi-agent AI Coding is not limited to code quality. It also comes from compressing authority, approval, active write, and execution provenance into one vague owner field. As writing becomes faster, that ambiguity turns into an incident faster too.
 
-#### Audit Real Capability Before Trusting Role Documentation
+## Audit Real Capability Before Trusting Role Documentation
 
 Ownership design also needs a reverse check: **what the documentation says a component is responsible for is not the same as what the code allows it to do. At the fixed baseline, X2-Orbit's remote Codex worker could modify product repositories, commit, push, open PRs, and reach merge/deploy paths. X2-Bot could also implement, test, and commit through Claude/Codex runners in product-scoped worktrees. An Orbit-to-Bot feed bridge already existed, although it was disabled by default.**
 
@@ -607,7 +607,7 @@ I used to apply Assurance mainly to code and agent output: testing implementatio
 
 Authority must also accept counterevidence. On June 19, X2-Docs documented a Sea replay path and tenant/org scope for Orbit A2. Five days later, Orbit E2E proof found that the contract disagreed with the Sea and Pulsar implementations. The fix did not force the products to conform to stale documentation. It changed the authoritative path back to the real `get_replay`, changed scope to tenant+user, and documented the Sea→Pulsar merge/deployment order. Platform text could become LIVE first while the product composition remained PARTIAL and AWS proof remained MISSING until deployment completed and the artifact was rebuilt. Authority decides where contract conflicts converge; it is not exempt from correction by runtime evidence.
 
-#### A Finding Is Not a Conclusion; Counterevidence Defines the Impact Boundary
+## A Finding Is Not a Conclusion; Counterevidence Defines the Impact Boundary
 
 In July 2026, we conducted a platform audit against fixed commits from eight repositories and produced 96 independent current findings. The original input contained 43 P0/P1 findings, which were then given to an independent reviewer tasked with actively finding counterevidence. The result was 29 supported, 8 missing-counterevidence, and 6 overstated findings, with 11 severity corrections in total.
 

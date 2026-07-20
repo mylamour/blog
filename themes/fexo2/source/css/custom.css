@@ -232,7 +232,6 @@ body::-webkit-scrollbar {
 }
 
 /* Table of Contents styling */
-.toc,
 .toc-title {
   font-weight: 700;
   font-size: 1.1em;
@@ -971,6 +970,7 @@ figure.highlight .code-copy-btn:hover {
   padding: 3px 0;
   color: #8b817a;
   font-size: 12px;
+  font-weight: 400;
   line-height: 1.55;
   text-decoration: none;
   overflow-wrap: anywhere;
