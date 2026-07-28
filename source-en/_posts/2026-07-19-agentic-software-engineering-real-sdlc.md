@@ -2,7 +2,7 @@
 layout: post
 title: "Agentic Assurance Engineering: Bringing AI Coding into Real-World Engineering"
 description: "An Agentic SDLC control plane distilled from real multi-repository development, review failures, runtime forensics, and platform audits—giving agents bounded authority, evidence-carrying delivery, and a path toward progressive productization."
-categories: Security Architect
+categories: CTO
 tags: [Security Architecture, AI Software Engineering, Agentic SDLC, Multi-Agent, AI Coding]
 keywords: [AI Coding, Agentic SDLC, Multi-Agent, Git Worktree, Grounded Review, Runtime Proof, Agentic Assurance Engineering]
 translated: true

@@ -2,7 +2,7 @@
 layout: post
 title: Agentic Assurance Engineering：让 AI Coding 进入真实工程
 description: "从真实多仓开发、Review 事故、运行时取证和平台审计中提炼出的一套 Agentic SDLC 控制面，让 Agent 的行动有边界、交付有证据，并具备渐进产品化的路径。"
-categories: 安全架构师
+categories: CTO
 tags: [安全架构, AI 软件工程, Agentic SDLC, Multi-Agent, AI Coding]
 keywords: [AI Coding, Agentic SDLC, Multi-Agent, Git Worktree, Grounded Review, Runtime Proof, Agentic Assurance Engineering]
 translated: true

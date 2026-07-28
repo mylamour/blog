@@ -2,7 +2,7 @@
 layout: post
 title: 多Agent协作时代的Git规范
 description: "单人多Agent与团队并行开发的Git协作规约：分支模型、提交规范、冲突预防与代码评审，防止AI Agent互相踩踏的工程实践。"
-categories: 安全架构师
+categories: CTO
 keywords: 多Agent Worktree Claude Code Cursor Codex Gemini CLI Git AI编程 协作规范 Vibe Coding 工程实践 AI协作 Agent
 tags: 安全架构 安全产品 安全研发
 translated: true

@@ -2,7 +2,7 @@
 layout: post
 title: Git Workflow for the Multi-Agent Era
 description: "A Git workflow for the multi-agent era: branching, commit conventions, and conflict prevention when multiple AI agents ship code in parallel."
-categories: Security Architect
+categories: CTO
 keywords: Multi-Agent Worktree Claude Code Cursor Codex Gemini CLI Git AI Programming Collaboration Standards Vibe Coding Engineering Practices AI Collaboration Agent
 tags: Security Architecture Security Products Security Development
 translated: true
