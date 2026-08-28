@@ -58,6 +58,10 @@ translated: true
 
 Agent 可以在一次任务里跨过这些阶段。它既能写实现，也能选择测试、解释失败、生成报告、创建 PR、触发部署，然后宣布“完成”。**速度提高以后，原来藏在等待和交接里的职责分离不再可靠。**
 
+这里先把三个经常混用的说法分开。**AI-assisted SDLC** 是人在主导生命周期，AI只参与其中的某些工作；**AI-native SDLC** 是围绕 AI 重新设计流程和工件；**Agentic SDLC** 关心的则是，一个拥有工具、状态、身份、权限和副作用能力的 Agent，如何在受控边界内持续推进任务。前两个词描述 AI 的使用方式或流程形态，第三个词描述自动化执行主体进入信任边界后带来的工程问题。
+
+这三者并不互相替代。一个组织可以采用 AI-native 的流程，却不给 Agent 生产环境的副作用权限；也可以在传统 SDLC 中引入 Agent。本文讨论的是后一种控制问题。
+
 ![img](https://img.iami.xyz/images/agent-sdlc/agent-sdlc-architecture-chapter-01.png)
 
 | 过去经常依赖的隐含边界 | Agent 参与后的变化 | 必须显式补上的控制 |

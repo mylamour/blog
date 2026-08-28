@@ -20,7 +20,6 @@ translated: true
 
 # 0x00 The Old Principles Still Hold; the Actor Has Changed
 
-<!-- ![img](https://img.iami.xyz/images/agent-sdlc/agent-sdlc-architecture-chapter-00.png) -->
 
 When I wrote [“What is Security Architecture”](https://iami.xyz/security-architecture-review/) in 2019, I placed security architecture at the intersection of business, applications, networks, deployment, and operations. **An architecture review is not a meeting followed by a checklist. It identifies risk from the business and its data flows, proposes solutions, and then tracks whether those solutions were actually implemented.**
 
@@ -58,7 +57,10 @@ In a traditional SDLC, requirements, design, development, testing, release, and 
 
 An agent can cross all of those stages within one task. It can write the implementation, choose the tests, explain failures, generate a report, create a PR, trigger a deployment, and then announce completion. **Once the pace increases, the separation of duties that used to hide inside waiting periods and handoffs is no longer reliable.**
 
-![img](https://img.iami.xyz/images/agent-sdlc/agent-sdlc-architecture-chapter-01.png)
+Let us first separate three terms that are often used interchangeably. **AI-assisted SDLC** keeps people in charge of the lifecycle, with AI participating in selected tasks; **AI-native SDLC** redesigns the process and its artifacts around AI; **Agentic SDLC** asks a different question: how can an agent with tools, state, identity, permissions, and the ability to create side effects continue to advance a task within controlled boundaries? The first two describe how AI is used or how the process is shaped; the third describes the engineering problem that appears when an automated actor enters the trust boundary.
+
+These three ideas are not mutually exclusive. An organization may adopt an AI-native process without giving an agent permission to create side effects in production; it may also introduce an agent into a traditional SDLC. This article addresses the latter control problem.
+
 
 | Implicit boundary we used to rely on | What changes when agents participate | What must become explicit |
 |---|---|---|
