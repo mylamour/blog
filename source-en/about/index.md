@@ -6,7 +6,7 @@ comments: false
 
 # Who I Am
 
-Hello — I'm **Felix Zhao** (放之), a Senior Information Security Architect in China. I work on enterprise security architecture, keep learning through practice, and use this blog for notes on security, technology, and life. Please do not blindly trust anything you read online, including this page; I hope you still find something useful here.
+Hello — I'm **Felix Zhao** (放之), a Co-founder at X2 Tech. Also I'm Senior Information Security Architect. I work on enterprise security architecture, keep learning through practice, and use this blog for notes on security, technology, and life. Please do not blindly trust anything you read online, including this page; I hope you still find something useful here.
 
 For the longer, messier version of how I got here, read [My Story](/story/). If you need to reach me, email **ZnpAY2lzby5jaGF0** (Base64-encoded), or find me on [LinkedIn](https://www.linkedin.com/in/zhaokunpeng/).
 

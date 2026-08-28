@@ -3,6 +3,10 @@ title: 关于
 layout: page
 comments: no
 ---
+> 2026年4月1日，仍然愚蠢
+
+开始创业
+以做的Agentic SOC产品作为X2 Tech的合伙人，寄希望于通过AI Native的研发能力结合过去的安全经验做一些AI for Security的工作。希望能够通过闭环Code，Runtime和SOC运营来使企业安全更加有效。
 
 > 2025年4月1日，做个愚人
 * 目前在AMEX China担任高级信息安全架构师，看整体安全架构；
