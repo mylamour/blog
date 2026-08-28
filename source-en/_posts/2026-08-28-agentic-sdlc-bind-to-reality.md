@@ -268,16 +268,6 @@ Second, **automation strength must match risk and infrastructure maturity.** An 
 
 **“Done” is derived from facts. It is not a Boolean that the agent writes back.**
 
-Equally important is preserving the boundary of what cannot yet be claimed:
-
-1. Writing down these controls does not mean any organization has implemented them.
-2. One `PASS` does not establish long-term control effectiveness or production reliability.
-3. Passing SoftHSM, sandbox, or adapter tests does not establish production-HSM capability, production isolation, or production authority.
-4. A merged PR, generated artifact, healthy deployment, or visible page does not by itself prove a business outcome.
-5. An agent's review, summary, or retrospective is a candidate judgment, not inherently independent evidence.
-6. Token count, lines of code, session count, and completion claims do not directly establish productivity, security benefit, or failure rate.
-7. `Agentic SDLC` is only a working label in this article, not a methodology I invented or a standard that already exists.
-
 After rereading those earlier articles, I did not arrive at a security theory that needed a new name. I arrived at the same simple chain:
 
 > **The established principles of security engineering still hold.**  
