@@ -48,5 +48,8 @@
     "html-minifier-terser": "^7.2.0",
     "js-yaml": "^4.1.1",
     "jsdom": "^25.0.1"
+  },
+  "overrides": {
+    "brace-expansion": "1.1.18"
   }
 }
