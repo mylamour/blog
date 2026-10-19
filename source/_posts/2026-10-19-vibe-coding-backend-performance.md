@@ -5,6 +5,7 @@ description: "把一个AI参与编写的后端项目里做过的性能优化整�
 categories: CTO
 tags: [安全架构, AI软件工程, Agentic SDLC, AI Coding, 后端, 性能, Vibe Coding]
 keywords: [AI后端, Vibe Coding, 后端性能优化, 事件循环, 同步Session, Celery, 超时预算, N+1, 连接池, LLM成本, Agent循环]
+translated: true
 ---
 
 > 前端出错会画出一个看起来很正常的页面，后端变慢会给你一个一直在running的任务。
