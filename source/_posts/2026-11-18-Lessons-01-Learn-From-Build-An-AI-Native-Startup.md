@@ -5,7 +5,7 @@ description: "从个人项目到合伙创业，我学到了什么？"
 categories: CTO
 tags: [安全架构, AI软件工程, Agentic SDLC, AI Coding, 前端, Vibe Coding, 创业, 成长]
 keywords: [产品, 架构, 设计, Agent, Agentic, 安全产品, 安全架构, 创业经验, 经验总结]
-translated: false
+translated: true
 ---
 
 
